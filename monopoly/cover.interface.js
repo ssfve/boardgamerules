@@ -40,7 +40,7 @@ $(document).ready(function() {
 	$('#categorys').html(categorys);
 	$('#button1').html(button1);
 	$('#button2').html(button2);
-	$('#button3').html(button3);
+	//$('#button3').html(button3);
 	$('#caption-pic').css({'background-image':imgCaption})
 });
 

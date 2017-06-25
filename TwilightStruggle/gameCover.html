@@ -4,7 +4,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>gameCover</title>
+		<title>coverpage</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="桌游规则，桌游说明书">
 		<meta name="author" content="boardgamerules">
@@ -22,14 +22,14 @@
 		<script type="text/JavaScript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="cover.variables.js"></script>
-		<script type="text/javascript" src="cover.event.js"></script>
+		<script type="text/javascript" src="../js/cover.event.js"></script>
+		<script type="text/javascript" src="../js/cover.interface.js"></script>
 		<script type="text/javascript" src="../js/wechat.config.js"></script>
 	</head>
 
 	<body>
 		<div class="mui-card cover-card">
-			<div id='caption-pic' class="mui-card-header mui-card-media" style="height:50vw;"></div>
+			<div class="mui-card-header mui-card-media" style="height:50vw;background-image:url(../img/ChefAlfredo/caption.jpg)"></div>
 		</div>
 		<div class="mui-content">
 			<div class="mui-content-padded no-margin-bottom">
@@ -115,15 +115,15 @@
 		<div class="mui-content">
 			<div class="mui-content-padded no-margin-top">
 				<div class="mui-row">
-					<div class="mui-col-sm-12 mui-col-xs-12">
+					<div class="mui-col-sm-6 mui-col-xs-6">
 						<h6>
 							<span id="designerTitle" class="h6-text-grey"></span>
 							<span id="designerName" class="h6-text-black"></span>
 						</h6>
 					</div>
-					<div class="mui-col-sm-12 mui-col-xs-12">
-						<h6>
-							<span id="langTitleHigh"></span><span id="langTitleLow" class="h6-text-grey"></span>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<h6 align="right">
+							<span id="langTitleHigh" class="h6-text-black"></span><span id="langTitleLow" class="h6-text-grey"></span>
 							<span id="langLvl0" class="h6-text-grey"></span>
 							<span id="langLvl1" class="h6-text-grey"></span>
 							<span id="langLvl2" class="h6-text-grey"></span>
@@ -144,15 +144,9 @@
 			<div class="mui-content-padded">
 				<button type="button" id="button1" onclick="btn1_click()" class="mui-btn mui-btn-block bs-wo" />
 				<button type="button" id="button2" onclick="btn2_click()" class="mui-btn mui-btn-block bs-wo" />
-				<!--
-                	作者：ssfvessfve@163.com
-                	时间：2017-06-25
-                	描述：
-                	<button type="button" id="button3" onclick="btn3_click()" class="mui-btn mui-btn-block bs-wo" />
-                -->
-				
+				<button type="button" id="button3" onclick="btn3_click()" class="mui-btn mui-btn-block bs-wo" />
 			</div>
 		</div>
 	</body>
-	<script type="text/javascript" src="cover.interface.js"></script>
+
 </html>
