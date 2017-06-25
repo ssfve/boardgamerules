@@ -2,6 +2,17 @@ mui.init({
 	swipeBack: false
 });
 
+function setScrollHeader() {
+	//$('#inittitle').html(players4);
+	$('#gameSetup').html(gameSetup);
+	$('#gameFlow').html(gameFlow);
+	$('#gameEnd').html(gameEnd);
+	$('#initlist').html(html1);
+};
+setScrollHeader();
+
+
+
 (function($) {
 	$('.mui-scroll-wrapper').scroll({
 		indicators: true //是否显示滚动条

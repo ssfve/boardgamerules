@@ -1,22 +1,25 @@
-var numRates = '78'
+var page_title = '时间守望T.I.M.E.'
+$("title").html(page_title);
+
+var numRates = '11000'
 var valueRates = '8.0'
 var yearPub = '2015'
-var weight = '1.00'
-var age = '5'
+var weight = '2.67'
+var age = '12'
 var players = '2~4'
 var playersBestNum = '4'
-var playtime = '15'
-var designerName = 'Michael Schacht'
-var langDepLvl = '0'
-var categorys = '儿童游戏、记忆游戏'
-var button1 = '游戏概念'
-var button2 = '游戏准备'
-var button3 = '游戏玩法'
-var button4 = ''
+var playtime = '90'
+var designerName = 'Peggy Chassenet, Manuel Rozoy'
+var langDepLvl = '4'
+var categorys = '冒险、成人、中世纪、科幻'
+var button1 = '主题概念'
+var button2 = '>>进入时间守望T.I.M.E.<<'
+var button3 = '敬请期待'
+var button4 = '胜利条件'
 var button5 = ''
 var button6 = ''
 
-var numRatesMea = '人'
+var numRatesMea = '点评'
 var valueRatesMea = '/10'
 var yearPubMea = '年'
 var weightLimit = '/5'
@@ -177,10 +180,10 @@ $(document).ready(function() {
 	if(langLvl2 === langDepLvl) {
 		$('#langLvl2').addClass('color-orange');
 	}
-	if(langLvl2 === langDepLvl) {
-		$('#langLvl2').addClass('color-orange');
-	}
 	if(langLvl3 === langDepLvl) {
 		$('#langLvl3').addClass('color-orange');
+	}
+	if(langLvl4 === langDepLvl) {
+		$('#langLvl4').addClass('color-orange');
 	}
 });
