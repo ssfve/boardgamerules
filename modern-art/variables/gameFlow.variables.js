@@ -1,5 +1,3 @@
-list_line = '';
-array=[];
 array[0]='﻿H';
 array[1]='G起始玩家随机，';
 array[2]='O顺时针';
