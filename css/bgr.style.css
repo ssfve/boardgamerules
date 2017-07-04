@@ -94,9 +94,7 @@ input {
 	background-color: #f4f4f4;
 }
 
-.mui-bar-nav~.mui-content{
-	padding-top: 30px;
-}
+
 .cover-img {
 	margin-left: 8px;
 	margin-right: 8px;
@@ -345,6 +343,27 @@ h4,
 	padding-bottom: 10px;
 	padding-top: 10px;
 	padding-left: 16px;
+}
+
+.mui-table-view-cell.mui-active {
+    background-color: #ff6600;
+}
+
+.mui-table-view-cell>a:not(.mui-btn){
+	color:#999999;
+}
+
+.mui-table-view-cell.mui-active>a:not(.mui-btn){
+	color:#ffffff;
+}
+
+.mui-table-view-cell.mui-collapse.mui-active{
+	background-color:#FF6600;
+
+}
+
+.mui-table-view-cell.mui-collapse.mui-active .mui-collapse-content{
+	background-color:#FFF3E0;
 }
 
 .mui-table-view-cell:after {

@@ -3,39 +3,38 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Hello MUI</title>
+		<title>gameRule</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 		<!--标准mui.css-->
-		<link rel="stylesheet" href="../css/mui.min.css">
-		<link rel="stylesheet" type="text/css" href="../css/bgr.style.css" />
-
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<script src="../../js/mui.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../css/bgr.style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bgr.imageviewer.css" />
+		
 		<!--App自定义的css-->
-		<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+		<script src="../variables/title.variables.js"></script>
+		<script src="../../js/functions/functions.js"></script>
+		<script src="rule.variables.js"></script>
+		<script src="../variables/gameSetup.variables.js"></script>
 		<script src="gameSetup.js"></script>
+		<script src="../variables/gameFlow.variables.js"></script>
 		<script src="gameFlow.js"></script>
+		<script src="../variables/gameEnd.variables.js"></script>
 		<script src="gameEnd.js"></script>
-		<style>
-			.mui-control-content {
-				background-color: #F4F4F4;
-				min-height: 215px;
-			}
-			
-			.mui-control-content .mui-loading {
-				margin-top: 50px;
-			}
-		</style>
 	</head>
-
+	
 	<body>
-		<header class="mui-bar mui-bar-nav">
+		
+		<header id="mui_header" class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 id='inittitle' class="mui-title"></h1>
+			<h1 id='header_title' class="mui-title"></h1>
 		</header>
-		<div class="mui-content">
+		
+		<div class="mui-content" style="padding-top: 44px;">
 			<div id="slider" class="mui-slider">
 				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 					<a id='gameSetup' class="mui-control-item" href="#item1mobile"></a>
@@ -43,7 +42,7 @@
 					<a id='gameEnd' class="mui-control-item" href="#item3mobile"></a>
 				</div>
 				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
-				<div class="mui-slider-group">
+				<div id="mui-group" class="mui-slider-group">
 					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
 						<div id="scroll1" class="mui-scroll-wrapper">
 							<div id='initlist' class="mui-scroll">
@@ -59,27 +58,21 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
 					<div id="item3mobile" class="mui-slider-item mui-control-content">
 						<div id="scroll3" class="mui-scroll-wrapper">
 							<div class="mui-scroll">
-
 								<div class="mui-loading">
 									<div class="mui-spinner">
 									</div>
 								</div>
-
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<script src="../js/detail.interface.js"></script>
-		<script src="../js/detail.event.js"></script>
 	</body>
-
+		<script src="../../js/detail.interface.js"></script>
+		<script src="../../js/detail.event.js"></script>
 </html>

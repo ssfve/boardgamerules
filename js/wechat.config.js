@@ -1,4 +1,4 @@
-var bookTitle = '大厨阿尔弗雷多Chef Alfredo';
+/*var bookTitle = '大厨阿尔弗雷多Chef Alfredo';
 var msgContent = '不要忘了大厨阿尔弗雷多的私房菜：蒜头汤！'; // 微信转发短语
 var msgTitle = '大厨阿尔弗雷多Chef Alfredo'; // 微信转发标题
 var shareTitle = '大厨阿尔弗雷多Chef Alfredo'; // 微信分享朋友圈标题
@@ -57,3 +57,34 @@ wx.ready(function() {
 		alert("errorMSG:" + res);
 	});
 });
+
+
+var action = function(){
+	//获取ticket
+	String jsapi_ticket = weiXinRequest.getWeiXinTicket();
+	
+	//logger.debug("[jsapi_ticket] = " + jsapi_ticket);
+	
+	//获取URL
+	String url = request.getRequestURL().toString();
+	
+	Map<String, String> ret = signature.signature(jsapi_ticket, url);
+	mav.addObject("ret", ret);
+	//logger.debug("[ret] = " + ret);
+	return mav;
+}
+
+Map<String, String> ret = signature.signature(jsapi_ticket, url);
+mav.addObject("ret", ret);
+
+var timestamp = parseInt('${ret.timestamp}');
+var nonceStr = '${ret.nonceStr}';
+var signature = '${ret.signature}';
+wx.config({
+    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: 'wxa034b7003154ee6c', // 必填，公众号的唯一标识
+    timestamp: timestamp, // 必填，生成签名的时间戳
+    nonceStr: nonceStr, // 必填，生成签名的随机串
+    signature: signature,// 必填，签名，见附录1
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});*/
