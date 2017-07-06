@@ -14,6 +14,9 @@ var list_line = '';
 
 var sideContent = generateside(hot_arrayEN,hot_arrayCN);
 
+if (rateNum >= 1000){
+	rateNum = rateNum/1000+'k';
+}
 if(maxtime === '' || maxtime === 'None') {
 	var playtime = mintime + '’'
 } else {

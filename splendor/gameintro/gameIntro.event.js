@@ -7,11 +7,13 @@ nameEN = change_nameEN(nameEN);
 var pageTitle = nameCN + nameEN;
 $("title").html(pageTitle);
 
-final_html = '';
+
 part.forEach(function(val,index){
-	final_html += part[index]
+	list_line += part[index]
 });
 
+final_html = '';
+var final_html = table_seg.replace('%data%',list_line);
 
 $(document).ready(function() {
 	$('#header_title').html(header_title);

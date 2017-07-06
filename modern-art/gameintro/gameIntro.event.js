@@ -1,8 +1,10 @@
+var header_title = '主题概念';
+
 list_line = generate(array);
 var html1 = table_seg.replace('%data%',list_line);
 
-nameEN = nameEN.substring(0,1).toUpperCase()+nameEN.substring(1);
-var pageTitle = nameCN + nameEN;
+nameEN_temp = change_nameEN(nameEN);
+var pageTitle = nameCN + nameEN_temp;
 $("title").html(pageTitle);
 
 $(document).ready(function() {

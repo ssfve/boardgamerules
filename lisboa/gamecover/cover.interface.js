@@ -1,50 +1,9 @@
-var numRatesMea = '点评'
-var valueRatesMea = '/10'
-var yearPubMea = '年'
-var weightLimit = '/5'
-var weightExp = '复杂度'
-var ageMea = '岁'
-var ageMeaPlus = '+'
-var playersMea = '人'
-var playersBest = bestplayer + '人最佳'
-var playtimeMea = '分钟'
-var designerTitle = '设计师:'
-var langTitleHigh = '语言'
-var langTitleLow = '依赖:'
-var langLvl0 = '0'
-var langLvl1 = '1'
-var langLvl2 = '2'
-var langLvl3 = '3'
-var langLvl4 = '4'
-var categoryTitle = '分类机制:'
-var cover_img_scale_factor = 0.5
-var pixels = 'px'
-var imgCaption = 'url(../../img/'+nameEN+'/caption.jpg)'
-var numRatesMea = '点评'
-var valueRatesMea = '/10'
-var yearPubMea = '年'
-var weightLimit = '/5'
-var weightExp = '复杂度'
-var ageMea = '岁'
-var ageMeaPlus = '+'
-var playersMea = '人'
-var playersBest = bestplayer + '人最佳'
-var playtimeMea = '分钟'
-var designerTitle = '设计师:'
-var langTitleHigh = '语言'
-var langTitleLow = '依赖:'
-var langLvl0 = '0'
-var langLvl1 = '1'
-var langLvl2 = '2'
-var langLvl3 = '3'
-var langLvl4 = '4'
-var categoryTitle = '分类机制:'
-var cover_img_scale_factor = 0.5
-var pixels = 'px'
 
-nameEN = nameEN.substring(0,1).toUpperCase()+nameEN.substring(1);
-var pageTitle = nameCN + nameEN
+
+nameEN_temp = change_nameEN(nameEN);
+var pageTitle = nameCN + nameEN_temp
 $("title").html(pageTitle);
+
 
 var button1 = '主题概念'
 var button2 = '>>'+pageTitle+'<<'
@@ -52,12 +11,18 @@ var button3 = '我是讲解员'
 var button4 = '我是玩家'
 var button5 = '规则详解'
 var players = minplayer+'~'+maxplayer
-if (maxtime === '' || maxtime === 'None'){
-	var playtime = mintime
+bestplayer = bestplayer.replace('-', '~');
+var playersBest = '[' + bestplayer + ']';
+
+var sideContent = generateside(hot_arrayEN,hot_arrayCN);
+
+if(maxtime === '' || maxtime === 'None') {
+	var playtime = mintime + '’'
+} else {
+	var playtime = mintime + '’~' + maxtime + '’'
 }
-else{
-	var playtime = mintime+'~'+maxtime
-}
+
+
 $(document).ready(function() {
 	$('#numRatesMea').html(numRatesMea);
 	$('#numRates').html(rateNum);
@@ -93,6 +58,13 @@ $(document).ready(function() {
 	$('#button4').html(button4);
 	$('#button5').html(button5);
 	$('#caption-pic').css({'background-image':imgCaption})
+	
+	$('#gameName').html(gameName);
+	$('#nameCNEN').html(pageTitle);
+	
+	$('#sideHeader').html(sideHeader);
+	$('#subText').html(subText);
+	$('#subName').html(subName);
 });
 
 $(document).ready(function() {
@@ -206,4 +178,141 @@ $(document).ready(function() {
 	if(langLvl4 === langDepLvl) {
 		$('#langLvl4').addClass('color-orange');
 	}
+});
+
+//侧滑容器父节点
+var offCanvasWrapper = mui('#offCanvasWrapper');
+//主界面容器
+var offCanvasInner = offCanvasWrapper[0].querySelector('.mui-inner-wrap');
+//菜单容器
+var offCanvasSide = document.getElementById("offCanvasSide");
+
+/*if(!mui.os.android) {
+	document.getElementById("move-togger").classList.remove('mui-hidden');
+	var spans = document.querySelectorAll('.android-only');
+	for(var i = 0, len = spans.length; i < len; i++) {
+		spans[i].style.display = "none";
+	}
+}*/
+
+//移动效果是否为整体移动
+var moveTogether = false;
+//侧滑容器的class列表，增加.mui-slide-in即可实现菜单移动、主界面不动的效果；
+var classList = offCanvasWrapper[0].classList;
+//变换侧滑动画移动效果；
+
+mui('.mui-input-group').on('change', 'input', function() {
+	if(this.checked) {
+		offCanvasSide.classList.remove('mui-transitioning');
+		offCanvasSide.setAttribute('style', '');
+		classList.remove('mui-slide-in');
+		classList.remove('mui-scalable');
+		switch(this.value) {
+			case 'main-move':
+				if(moveTogether) {
+					//仅主内容滑动时，侧滑菜单在off-canvas-wrap内，和主界面并列
+					offCanvasWrapper[0].insertBefore(offCanvasSide, offCanvasWrapper[0].firstElementChild);
+				}
+				break;
+			case 'main-move-scalable':
+				if(moveTogether) {
+					//仅主内容滑动时，侧滑菜单在off-canvas-wrap内，和主界面并列
+					offCanvasWrapper[0].insertBefore(offCanvasSide, offCanvasWrapper[0].firstElementChild);
+				}
+				classList.add('mui-scalable');
+				break;
+			case 'menu-move':
+				classList.add('mui-slide-in');
+				break;
+			case 'all-move':
+				moveTogether = true;
+				//整体滑动时，侧滑菜单在inner-wrap内
+				offCanvasInner.insertBefore(offCanvasSide, offCanvasInner.firstElementChild);
+				break;
+		}
+		offCanvasWrapper.offCanvas().refresh();
+	}
+});
+
+//主界面和侧滑菜单界面均支持区域滚动；
+mui('#offCanvasSideScroll').scroll();
+mui('#offCanvasContentScroll').scroll();
+
+//实现ios平台原生侧滑关闭页面；
+/*if(mui.os.plus && mui.os.ios) {
+	mui.plusReady(function() { //5+ iOS暂时无法屏蔽popGesture时传递touch事件，故该demo直接屏蔽popGesture功能
+		plus.webview.currentWebview().setStyle({
+			'popGesture': 'none'
+		});
+	});
+}*/
+
+document.getElementById("valueRates").addEventListener('tap', function() {
+	mui.toast(numRatesMea,3500);
+});
+
+document.getElementById("numRates").addEventListener('tap', function() {
+	mui.toast(numRatesMea,3500);
+});
+
+//icon2
+document.getElementById("yearPub").addEventListener('tap', function() {
+	mui.toast(yearPubMea,3500);
+});
+document.getElementById("yearsvg").addEventListener('tap', function() {
+	mui.toast(yearPubMea,3500);
+});
+document.getElementById("orangesvg2").addEventListener('tap', function() {
+	mui.toast(yearPubMea,3500);
+});
+
+//icon3
+document.getElementById("weight").addEventListener('tap', function() {
+	mui.toast(weightExp,3500);
+});
+document.getElementById("weightsvg").addEventListener('tap', function() {
+	mui.toast(weightExp,3500);
+});
+document.getElementById("orangesvg3").addEventListener('tap', function() {
+	mui.toast(weightExp,3500);
+});
+
+//icon4
+document.getElementById("age").addEventListener('tap', function() {
+	mui.toast(ageMea,3500);
+});
+document.getElementById("agesvg").addEventListener('tap', function() {
+	mui.toast(ageMea,3500);
+});
+document.getElementById("orangesvg4").addEventListener('tap', function() {
+	mui.toast(ageMea,3500);
+});
+
+//icon5
+document.getElementById("players").addEventListener('tap', function() {
+	mui.toast(playersMea,3500);
+});
+document.getElementById("playerssvg").addEventListener('tap', function() {
+	mui.toast(playersMea,3500);
+});
+document.getElementById("orangesvg5").addEventListener('tap', function() {
+	mui.toast(playersMea,3500);
+});
+
+//icon6
+document.getElementById("playtime").addEventListener('tap', function() {
+	mui.toast(playtimeMea,3500);
+});
+document.getElementById("clocksvg").addEventListener('tap', function() {
+	mui.toast(playtimeMea,3500);
+});
+document.getElementById("orangesvg6").addEventListener('tap', function() {
+	mui.toast(playtimeMea,3500);
+});
+
+
+$('#sideContent').html(sideContent);
+$(document).ready(function() {
+	generateSidelink(hot_arrayEN);
+	//document.location.reload();
 });

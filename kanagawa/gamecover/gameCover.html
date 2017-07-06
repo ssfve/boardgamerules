@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://avvbxt.epub360.cn/v2/manage/book/2qrzue/ -->
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>gameCover</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="桌游规则，桌游说明书">
+		<meta name="author" content="boardgamerules">
+		<meta name="version" content="boardgamerules 2.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+
+		<link rel="stylesheet" type="text/css" href="../../css/normalize.css" />
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/app.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bgr.style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bgr.imageviewer.css" />
+
+		<script type="text/JavaScript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+
+		<script src="../../js/functions/functions.js"></script>
+		<script type="text/javascript" src="../variables/title.variables.js"></script>
+		<script src="../../js/page/sidepane.variables.js"></script>
+		<script type="text/javascript" src="../../js/page/hotlist.variables.js"></script>
+		<script type="text/javascript" src="cover.variables.js"></script>
+		<script type="text/javascript" src="cover.event.js"></script>
+		<!--
+							<script type="text/javascript" src="../../js/wechat.config.js"></script>
+                        	作者：ssfvessfve@163.com
+                        	时间：2017-07-02
+                        	描述：
+                        	<div class="mui-scroll-wrapper">
+                        	<div class="mui-scroll">
+                        -->
+	</head>
+
+	<body>
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+			<!--侧滑菜单部分-->
+			<aside id="offCanvasSide" class="mui-off-canvas-left background-color-orange">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div id="sideHeader" class="title" style="margin-bottom: 25px;"></div>
+					<ul id="sideContent" class="mui-table-view mui-table-view-chevron mui-table-view-inverted background-color-orange"></ul>
+					<div class="mui-grid_view" style="background-color:#FFFFFF;">
+						<div class="mui-media">
+							<div class="mui-table-view-cell mui-media-body">
+								<span id="subText" class="h6-text-grey"></span><span id="subName" class="h6-text-orange"></span>
+							</div>
+							<img style="width:100%;" class="mui-media-object" src="../../img/interface/logo.png">
+						</div>
+					</div>
+				</div>
+			</aside>
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav set-transparent">
+					<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+					<a class="mui-action-back mui-btn mui-btn-link mui-pull-right"></a>
+					<h1 class="mui-title"></h1>
+				</header>
+				<div class="mui-card cover-card">
+					<div id='caption-pic' class="mui-card-header mui-card-media" style="height:50vw;"></div>
+				</div>
+				<div class="mui-content" style="padding-top: 0px;">
+					<div class="mui-content-padded no-margin-bottom">
+						<div id="" class="mui-row">
+							<div class="mui-col-sm-2 mui-col-xs-2">
+								<div id="icon1" class="mui-grid-view">
+									<div class="stack-imgs no-margin-top">
+
+										<!--
+                                        	作者：ssfvessfve@163.com
+                                        	时间：2017-07-02
+                                        	描述：
+                                        	<h6 id="valueRatesMea" class="corner-inner-text color-orange"></h6>
+                                        -->
+										<h4 id="valueRates" align="center" class="cover-inner-text h6-text-white text-image-font"></h4>
+										<img id="orangesvg1" class="cover-img" src="../../img/interface/orange.svg" />
+									</div>
+									<h6 align="center" class="h7">
+										<span id="numRates" class="h6-text-orange"></span></div>
+								</h6>
+								</div>
+								<div class="mui-col-sm-2 mui-col-xs-2">
+									<div class="mui-grid-view">
+										<td class="stack-imgs">
+											<img id="yearsvg" class="cover-inner-img" src="../../img/interface/year.svg" />
+											<img id="orangesvg2" class="cover-img" src="../../img/interface/orange.svg" />
+											<!--
+                                        	作者：ssfvessfve@163.com
+                                        	时间：2017-07-02
+                                        	描述：
+                                        	<img id="orangesvg2" class="cover-img" src="../../img/interface/orange.svg" />
+                                        -->
+
+										</td>
+										<h6 align="center" class="h7">
+									<span id="yearPub" class="h6-text-orange"></span>
+									</h6>
+									</div>
+								</div>
+								<div class="mui-col-sm-2 mui-col-xs-2">
+									<div class="mui-grid-view">
+										<td class="stack-imgs">
+											<img id="weightsvg" class="cover-inner-img" src="../../img/interface/weight.svg" />
+											<img id="orangesvg3" class="cover-img" src="../../img/interface/orange.svg" />
+										</td>
+										<h6 align="center" class="h7">
+										<span id="weight" class="h6-text-orange"></span><span id="weightLimit" class="h6-text-grey"></span>
+									</h6>
+									</div>
+								</div>
+								<div class="mui-col-sm-2 mui-col-xs-2">
+									<div class="mui-grid-view">
+										<td class="stack-imgs">
+											<img id="agesvg" class="cover-inner-img" src="../../img/interface/age.svg" />
+											<img id="orangesvg4" class="cover-img" src="../../img/interface/orange.svg" />
+										</td>
+										<h6 align="center" class="h7">
+									<span id="age" class="h6-text-orange"></span><span id="ageMeaPlus" class="h6-text-orange"></span>
+									</h6>
+									</div>
+								</div>
+								<div class="mui-col-sm-2 mui-col-xs-2">
+									<div class="mui-grid-view">
+										<td class="stack-imgs">
+											<img id="playerssvg" class="cover-inner-img" src="../../img/interface/players.svg" />
+											<img id="orangesvg5" class="cover-img" src="../../img/interface/orange.svg" />
+										</td>
+										<h6 align="center" class="h7">
+										<span id="players" class="h6-text-orange"></span><span id="playersBest" class="h6-text-grey"></span>
+									</h6>
+										<div id="info" align="center"></div>
+									</div>
+								</div>
+								<div class="mui-col-sm-2 mui-col-xs-2">
+									<div class="mui-grid-view">
+										<td class="stack-imgs">
+											<img id="clocksvg" class="cover-inner-img" src="../../img/interface/clock.svg" />
+											<img id="orangesvg6" class="cover-img" src="../../img/interface/orange.svg" />
+										</td>
+										<h6 align="center" class="h7">
+										<span id="playtime" class="h6-text-orange"></span>
+									</h6>
+										<div id="info" align="center"></div>
+									</div>
+								</div>
+							</div>
+							<div id="" class="mui-row">
+								<div class="mui-col-sm-2 mui-col-xs-2"> </div>
+								<div class="mui-col-sm-2 mui-col-xs-2"> </div>
+								<div class="mui-col-sm-2 mui-col-xs-2">
+
+									<!--
+                                	作者：ssfvessfve@163.com
+                                	时间：2017-07-02
+                                	描述：
+                                	<h6 align="center" class="no-margin-top no-margin-bottom">
+								<span id="weightExp" class="h6-text-grey"></span>
+								
+								</h6>
+                               -->
+
+								</div>
+								<div class="mui-col-sm-2 mui-col-xs-2">
+
+								</div>
+								<div class="mui-col-sm-2 mui-col-xs-2">
+
+									<!--
+                                	作者：ssfvessfve@163.com
+                                	时间：2017-07-02
+                                	描述：
+                                	<h6 align="center" class="no-margin-top">
+								<span id="playersBest" class="h6-text-grey"></span>
+							</h6>
+                                -->
+
+								</div>
+								<div class="mui-col-sm-2 mui-col-xs-2">
+
+									<!--
+                                	作者：ssfvessfve@163.com
+                                	时间：2017-07-02
+                                	描述：
+                                	<span id="playtimeMea" class="h6-text-grey"></span>
+                                -->
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="mui-content" style="padding-top: 0px;">
+						<div class="mui-content-padded">
+							<div class="mui-row">
+								<div class="mui-col-sm-12 mui-col-xs-12">
+									<h6>
+								<span id="gameName" class="h6-text-grey"></span>
+								<span id="nameCNEN" class="h6-text-black"></span>
+							</h6>
+									<div class="mui-col-sm-12 mui-col-xs-12">
+										<h6>
+								<span id="designerTitle" class="h6-text-grey"></span>
+								<span id="designerName" class="h6-text-black"></span>
+							</h6>
+									</div>
+									<div class="mui-col-sm-12 mui-col-xs-12">
+										<h6>
+								<span id="langTitleHigh"></span><span id="langTitleLow" class="h6-text-grey"></span>
+								<span id="langLvl0" class="h6-text-grey"></span>
+								<span id="langLvl1" class="h6-text-grey"></span>
+								<span id="langLvl2" class="h6-text-grey"></span>
+								<span id="langLvl3" class="h6-text-grey"></span>
+								<span id="langLvl4" class="h6-text-grey"></span>
+							</h6>
+									</div>
+									<div class="mui-col-sm-12 mui-col-xs-12">
+										<h6>
+								<span id="categoryTitle" class="h6-text-grey"></span>
+								<span id="categorys" class="h6-text-black"></span>
+							</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mui-content">
+							<div class="mui-content-padded">
+
+								<button type="button" id="button1" onclick="btn1_click()" class="mui-btn mui-btn-block bs-wo" />
+								<button type="button" id="button5" onclick="btn5_click()" class="mui-btn mui-btn-block bs-wo" />
+								<button type="button" id="button6" onclick="btn6_click()" class="mui-btn mui-btn-block bs-wo" />
+								<!--
+                	作者：ssfvessfve@163.com
+                	时间：2017-06-25
+                	描述：
+                	<button type="button" id="button2" onclick="btn2_click()" class="mui-btn mui-btn-block bs-wo" />
+                	<button type="button" id="button3" onclick="btn3_click()" class="mui-btn mui-btn-block bs-wo" />
+					<button type="button" id="button4" onclick="btn4_click()" class="mui-btn mui-btn-block bs-wo" />
+                -->
+
+							</div>
+							<div class="mui-off-canvas-backdrop"></div>
+						</div>
+					</div>
+				</div>
+	</body>
+	<script type="text/javascript" src="cover.interface.js"></script>
+
+</html>
