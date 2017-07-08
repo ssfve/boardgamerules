@@ -1,0 +1,16 @@
+part=[];
+array[0]='﻿H';
+array[1]='GE今天，你们中的吃货将成为起始玩家。';
+array[2]='GE游戏无需设置，玩家无初始手牌，立刻开始游戏！';
+array[3]='OE游戏配件';
+array[4]='GE游戏卡牌一共110张。';
+array[5]='G其中有';
+array[6]='O7';
+array[7]='G种美食（各';
+array[8]='O15';
+array[9]='G张），';
+array[10]='O5';
+array[11]='GE张龙';
+part[0]=generate(array);
+list_line = '';
+array=[];

@@ -6,6 +6,8 @@ var players3 = '3人游戏规则';
 var players4 = '4人游戏规则';
 var players5 = '5人游戏规则';
 
+
+
 header_height = $('#mui_header').outerHeight(true);
 //alert(header_height);
 //alert(navigation_bar_height);
@@ -20,3 +22,4 @@ $('#item1mobile').css({'min-height': document_height});
 //alert($("#item1mobile").css("min-height"));
 $('#item2mobile').css({'min-height': document_height});
 $('#item3mobile').css({'min-height': document_height});
+

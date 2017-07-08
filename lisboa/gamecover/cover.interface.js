@@ -1,33 +1,21 @@
 
+var pageTitle = '';
+var button1 = '主题概念';
+var button2 = '';
+var button3 = '我是讲解员';
+var button4 = '我是玩家';
+var button5 = '规则详解';
+var players = '';
+var playersBest = '';
+var playtime = '';
 
-nameEN_temp = change_nameEN(nameEN);
-var pageTitle = nameCN + nameEN_temp
+alternations();
 $("title").html(pageTitle);
-
-
-var button1 = '主题概念'
-var button2 = '>>'+pageTitle+'<<'
-var button3 = '我是讲解员'
-var button4 = '我是玩家'
-var button5 = '规则详解'
-var players = minplayer+'~'+maxplayer
-bestplayer = bestplayer.replace('-', '~');
-var playersBest = '[' + bestplayer + ']';
-
-var sideContent = generateside(hot_arrayEN,hot_arrayCN);
-
-if(maxtime === '' || maxtime === 'None') {
-	var playtime = mintime + '’'
-} else {
-	var playtime = mintime + '’~' + maxtime + '’'
-}
-
-
 $(document).ready(function() {
-	$('#numRatesMea').html(numRatesMea);
+	//$('#numRatesMea').html(numRatesMea);
 	$('#numRates').html(rateNum);
 	$('#valueRates').html(rateScore);
-	$('#valueRatesMea').html(valueRatesMea);
+	//$('#valueRatesMea').html(valueRatesMea);
 	$('#yearPub').html(yearPub);
 	$('#yearPubMea').html(yearPubMea);
 	$('#weight').html(weight);
@@ -247,70 +235,7 @@ mui('#offCanvasContentScroll').scroll();
 	});
 }*/
 
-document.getElementById("valueRates").addEventListener('tap', function() {
-	mui.toast(numRatesMea,3500);
-});
-
-document.getElementById("numRates").addEventListener('tap', function() {
-	mui.toast(numRatesMea,3500);
-});
-
-//icon2
-document.getElementById("yearPub").addEventListener('tap', function() {
-	mui.toast(yearPubMea,3500);
-});
-document.getElementById("yearsvg").addEventListener('tap', function() {
-	mui.toast(yearPubMea,3500);
-});
-document.getElementById("orangesvg2").addEventListener('tap', function() {
-	mui.toast(yearPubMea,3500);
-});
-
-//icon3
-document.getElementById("weight").addEventListener('tap', function() {
-	mui.toast(weightExp,3500);
-});
-document.getElementById("weightsvg").addEventListener('tap', function() {
-	mui.toast(weightExp,3500);
-});
-document.getElementById("orangesvg3").addEventListener('tap', function() {
-	mui.toast(weightExp,3500);
-});
-
-//icon4
-document.getElementById("age").addEventListener('tap', function() {
-	mui.toast(ageMea,3500);
-});
-document.getElementById("agesvg").addEventListener('tap', function() {
-	mui.toast(ageMea,3500);
-});
-document.getElementById("orangesvg4").addEventListener('tap', function() {
-	mui.toast(ageMea,3500);
-});
-
-//icon5
-document.getElementById("players").addEventListener('tap', function() {
-	mui.toast(playersMea,3500);
-});
-document.getElementById("playerssvg").addEventListener('tap', function() {
-	mui.toast(playersMea,3500);
-});
-document.getElementById("orangesvg5").addEventListener('tap', function() {
-	mui.toast(playersMea,3500);
-});
-
-//icon6
-document.getElementById("playtime").addEventListener('tap', function() {
-	mui.toast(playtimeMea,3500);
-});
-document.getElementById("clocksvg").addEventListener('tap', function() {
-	mui.toast(playtimeMea,3500);
-});
-document.getElementById("orangesvg6").addEventListener('tap', function() {
-	mui.toast(playtimeMea,3500);
-});
-
-
+var sideContent = generateside(hot_arrayEN,hot_arrayCN);
 $('#sideContent').html(sideContent);
 $(document).ready(function() {
 	generateSidelink(hot_arrayEN);

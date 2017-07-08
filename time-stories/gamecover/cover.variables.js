@@ -9,5 +9,6 @@ var bestplayer = '4'
 var mintime = '90'
 var maxtime = 'None'
 var designers = 'Peggy Chassenet,Manuel Rozoy'
+var artists = '';
 var langDepLvl = '4'
 var categorys = '冒险，成年/成人，中世纪，科幻'

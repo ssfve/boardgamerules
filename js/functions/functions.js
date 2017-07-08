@@ -1,5 +1,6 @@
-var table_seg = '<ul class="mui-table-view">%data%</ul>';
-var list_seg = '<li class="mui-table-view-cell">%data%</li>';
+var table_seg = '<ul class="mui-table-view" >%data%</ul>';
+var list_seg_disabled = '<li class="mui-table-view-cell">%data%</li>';
+var list_seg_enabled = '<li class="mui-table-view-cell">%data%</li>';
 var list_seg_pre = '<li class="mui-table-view-cell">';
 var list_seg_post = '</li>';
 var stack_seg = '<li class="mui-table-view-cell mui-collapse">%data%</li>';
@@ -31,6 +32,9 @@ var text_line = '';
 var index_line = '';
 var stack_line = '';
 var final_html = '';
+var list_seg = '';
+var default_color = '#999999';
+var bg_color = '#F4F4F4';
 
 var change_nameEN = function(name) {
 	name_copy = name;
@@ -53,6 +57,7 @@ var change_nameEN = function(name) {
 
 
 var generate = function(array){
+	list_seg = list_seg_disabled
 	array.forEach(function(val,index){
 		//alert(text_line);
 		if(val.substr(0,1)==='O'){
@@ -86,6 +91,7 @@ var generate = function(array){
 		
 		if(val.substr(0,1)==='S'){
 			if(val.substr(1,1)==='E'){
+				list_seg = list_seg_disabled
 				//alert(list_line);
 				re = new RegExp(list_seg_pre,"g");
 				list_line = list_line.replace(re,'<p class="add-margin-top add-margin-bottom">');
@@ -98,6 +104,7 @@ var generate = function(array){
 				list_line = stack_seg.replace('%data%',stack_line);
 				stack_line = '';
 			}else{
+				list_seg = list_seg_enabled
 				var text = val.substr(1,val.length);
 				stack_line += stack_seg_header.replace('%data%',text)
 			}
@@ -108,6 +115,7 @@ var generate = function(array){
 
 
 var generateside = function(arrayEN,arrayCN){
+	list_seg = list_seg_disabled
 	arrayEN.forEach(function(val,index){
 		nameEN_temp = change_nameEN(arrayEN[index]);
 		name_data = arrayCN[index] +' '+ nameEN_temp;
@@ -128,7 +136,7 @@ var gotoPage = function(nameEN){
 	//link_data = address_seg.replace('%data%',nameEN);
 	//alert(link_data)
 	
-	//alert(nameEN_temp);
+	//alert(nameEN);
 	document.getElementById(nameEN).addEventListener('tap', function() {
 		nameEN_temp = document.getElementById(nameEN).id
 		//alert(nameEN_temp);
@@ -189,3 +197,106 @@ var generateIndexlink = function(array){
 		
 	});
 }
+
+
+highPR = 'important'
+lowPR = '!important'
+var change_theme = function(color,number){
+	
+	
+	//alert('../../img/interface/'+color+'.svg')
+	$("#svg1").attr('src','../../img/interface/'+color.substr(1,6)+'.svg');
+	$("#svg2").attr('src','../../img/interface/'+color.substr(1,6)+'.svg'); 
+	$("#svg3").attr('src','../../img/interface/'+color.substr(1,6)+'.svg'); 
+	$("#svg4").attr('src','../../img/interface/'+color.substr(1,6)+'.svg'); 
+	$("#svg5").attr('src','../../img/interface/'+color.substr(1,6)+'.svg'); 
+	$("#svg6").attr('src','../../img/interface/'+color.substr(1,6)+'.svg'); 
+	
+	$('.h6-text-orange').css({'color': color});
+	$('.color-orange').css({'color': color});
+	$('.background-color-orange').css({'background-color': color});
+	$('.bs-wo').css({'background-color': color});
+	$('.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar').css({'background-color': color});
+	$('.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active').css({'color': color});
+	//$('.mui-segmented-control.mui-segmented-control-inverted .mui-control-item').css({'color': color + priority});
+	$('.mui-segmented-control.mui-segmented-control-inverted .mui-control-item').css({'color': color + lowPR});
+	$('.mui-table-view-cell.mui-active').css({'background-color': color});
+	//$('.mui-table-view-cell.mui-active').css({'background-color': color});
+	$('.mui-table-cell.mui-active').css({'background-color': color});
+	
+	if (number === 1){
+		$('#gameSetup').css({'color': default_color});
+		$('#gameEnd').css({'color': default_color});
+	}
+	if (number === 2){
+		$('#gameSetup').css({'color': default_color});
+		$('#gameFlow').css({'color': default_color});
+	}
+	if (number === 0){
+		$('#gameFlow').css({'color': default_color});
+		$('#gameEnd').css({'color': default_color});
+	}
+	//$('#gameSetup').css({'color': default_color});
+	
+	//alert($('#gameFlow').attr('class'))
+	
+};
+
+
+var collapse_event_gen = function(){
+		var active_sec = document.getElementsByClassName("mui-table-view-cell mui-collapse");
+		//alert(active_sec.length)
+		for(var i=0; i<active_sec.length; i++){
+			//alert('in')
+			//alert(i)
+			active_sec[i].addEventListener('tap', function(e) {
+				//alert('in')
+				setTimeout(function() {
+					$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color});
+					$('.mui-table-view-cell.mui-collapse.mui-active').css({'background-color': theme_color});
+					$('.mui-table-view-cell.mui-collapse.mui-active .mui-collapse-content').css({'background-color': subcontent_color});
+				}, 10);
+				
+			});
+			//index = index+1
+			//alert('out');
+		};
+};
+
+
+var alternations = function(){
+	designers_temp = designers + ',' + artists
+	// best players
+	//alert(bestplayer)
+	if (bestplayer === 'None'){
+		playersBest = ''
+	}else{
+		bestplayer = bestplayer.replace('-', '~');
+		playersBest = '[' + bestplayer + ']';
+	}
+	players = minplayer + '~' + maxplayer;
+	//alert(players)
+	if (playersBest === ''){
+		playersMea = '游戏人数: '+players+'人'
+	}else{
+		playersMea = '游戏人数[最佳人数]: '+players+playersBest+'人'
+	}
+	
+	// rate number to k
+	if (rateNum >= 1000){
+		rateNum = rateNum/1000+'k';
+	}
+	// mintime and maxtime
+	if(maxtime === '' || maxtime === 'None') {
+		playtime = mintime + '’'
+	} else {
+		playtime = mintime + '’~' + maxtime + '’'
+	}
+	playtimeMea = '游戏时间: '+playtime.replace('’','').replace('’','')+'分钟'
+	
+	
+	nameEN_mod = change_nameEN(nameEN);
+	pageTitle = nameCN + nameEN_mod
+	
+	button2 = '>>' + pageTitle + '<<';
+};

@@ -25,15 +25,44 @@ setScrollHeader();
 			if(item2.querySelector('.mui-loading')) {
 				setTimeout(function() {
 					item2.querySelector('.mui-scroll').innerHTML = html2;
-				}, 500);
+					//collapse_event_gen();
+				}, 100);
 			}
 		} else if(e.detail.slideNumber === 2) {
 			if(item3.querySelector('.mui-loading')) {
 				setTimeout(function() {
 					item3.querySelector('.mui-scroll').innerHTML = html3;
-				}, 500);
+					//collapse_event_gen();
+				}, 100);
 			}
+		}else if(e.detail.slideNumber === 0) {
 		}
+		setTimeout(function() {
+			change_theme(theme_color,e.detail.slideNumber);
+			collapse_event_gen();
+		}, 100);
+		
+		
 	});
 	
 })(mui);
+
+document.getElementById('gameSetup').addEventListener('tap', function(e) {
+	$('#gameSetup').css({'color': theme_color});
+	$('#gameFlow').css({'color': default_color});
+	$('#gameEnd').css({'color': default_color});
+});
+
+document.getElementById('gameFlow').addEventListener('tap', function(e) {
+	$('#gameSetup').css({'color': default_color});
+	$('#gameFlow').css({'color': theme_color});
+	$('#gameEnd').css({'color': default_color});
+});
+	
+document.getElementById('gameEnd').addEventListener('tap', function(e) {
+	$('#gameSetup').css({'color': default_color});
+	$('#gameFlow').css({'color': default_color});
+	$('#gameEnd').css({'color': theme_color});	
+});
+
+collapse_event_gen();

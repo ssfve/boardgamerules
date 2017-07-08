@@ -23,10 +23,10 @@ if(maxtime === '' || maxtime === 'None') {
 	var playtime = mintime + '’~' + maxtime + '’'
 }
 $(document).ready(function() {
-	$('#numRatesMea').html(numRatesMea);
+	//$('#numRatesMea').html(numRatesMea);
 	$('#numRates').html(rateNum);
 	$('#valueRates').html(rateScore);
-	$('#valueRatesMea').html(valueRatesMea);
+	//$('#valueRatesMea').html(valueRatesMea);
 	$('#yearPub').html(yearPub);
 	$('#yearPubMea').html(yearPubMea);
 	$('#weight').html(weight);

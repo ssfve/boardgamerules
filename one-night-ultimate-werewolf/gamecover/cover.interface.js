@@ -1,33 +1,24 @@
-nameEN_mod = change_nameEN(nameEN);
-var pageTitle = nameCN + nameEN_mod
-$("title").html(pageTitle);
-
-bestplayer = bestplayer.replace('-', '~');
-var playersBest = '[' + bestplayer + ']';
 var button1 = '主题概念';
-var button2 = '>>' + pageTitle + '<<';
+var button2 = '';
 var button3 = '我是讲解员';
 var button4 = '我是玩家';
 var button5 = '规则详解';
 var button6 = '浮世绘画廊';
-var players = minplayer + '~' + maxplayer;
 var list_line = '';
+var designers_temp = '';
+var playersBest = '';
+var players = '';
+var playtime = '';
+var pageTitle = '';
 
-var sideContent = generateside(hot_arrayEN,hot_arrayCN);
+alternations();
 
-if (rateNum >= 1000){
-	rateNum = rateNum/1000+'k';
-}
-if(maxtime === '' || maxtime === 'None') {
-	var playtime = mintime + '’'
-} else {
-	var playtime = mintime + '’~' + maxtime + '’'
-}
+$("title").html(pageTitle);
 $(document).ready(function() {
-	$('#numRatesMea').html(numRatesMea);
+	//$('#numRatesMea').html(numRatesMea);
 	$('#numRates').html(rateNum);
 	$('#valueRates').html(rateScore);
-	$('#valueRatesMea').html(valueRatesMea);
+	//$('#valueRatesMea').html(valueRatesMea);
 	$('#yearPub').html(yearPub);
 	$('#yearPubMea').html(yearPubMea);
 	$('#weight').html(weight);
@@ -42,9 +33,10 @@ $(document).ready(function() {
 	$('#playtime').html(playtime);
 	$('#playtimeMea').html(playtimeMea);
 	$('#designerTitle').html(designerTitle);
-	$('#designerName').html(designers);
-	$('#langTitleHigh').html(langTitleHigh);
+	$('#designerName').html(designers_temp);
+	//$('#langTitleHigh').html(langTitleHigh);
 	$('#langTitleLow').html(langTitleLow);
+	//$('#langTitle').html(langTitle);
 	$('#langLvl0').html(langLvl0);
 	$('#langLvl1').html(langLvl1);
 	$('#langLvl2').html(langLvl2);
@@ -58,16 +50,15 @@ $(document).ready(function() {
 	$('#button4').html(button4);
 	$('#button5').html(button5);
 	$('#button6').html(button6);
-	$('#caption-pic').css({
-		'background-image': imgCaption
-	})
+	$('#caption-pic').css({'background-image': imgCaption})
 	$('#gameName').html(gameName);
 	$('#nameCNEN').html(pageTitle);
-	
+	$('#nameCN').html(nameCN);
 	$('#subText').html(subText);
 	$('#subName').html(subName);
 	$('#sideHeader').html(sideHeader);
 });
+
 
 $(document).ready(function() {
 	valueRates_w = $('#valueRates').width();
@@ -87,16 +78,16 @@ $(document).ready(function() {
 		'left': (valueRates_w - valueRatesMea_w) + pixels
 	});
 
-	orangesvg1_w = $('#orangesvg1').width();
-	orangesvg1_h = $('#orangesvg1').height();
+	svg1_w = $('#svg1').width();
+	svg1_h = $('#svg1').height();
 	//position inner image
 	yearsvg_w = $('#yearsvg').width() * cover_img_scale_factor;
 	yearsvg_h = $('#yearsvg').height() * cover_img_scale_factor;
 	$('#yearsvg').css({
-		'left': (orangesvg1_w - yearsvg_w + 16) / 2 + pixels
+		'left': (svg1_w - yearsvg_w + 16) / 2 + pixels
 	});
 	$('#yearsvg').css({
-		'top': (orangesvg1_h - yearsvg_h) / 2 + pixels
+		'top': (svg1_h - yearsvg_h) / 2 + pixels
 	});
 	$('#yearsvg').css({
 		'width': yearsvg_w + pixels
@@ -106,28 +97,28 @@ $(document).ready(function() {
 	});
 
 	$('#hexagon').css({
-		'height': orangesvg1_h / 3 + pixels
+		'height': svg1_h / 3 + pixels
 	});
 	$('#hexagon').css({
-		'top': orangesvg1_h / 3 + pixels
+		'top': svg1_h / 3 + pixels
 	});
 	$('#hexagon:before').css({
-		'border-left': orangesvg1_w/2 + 'px solid transparent'
+		'border-left': svg1_w/2 + 'px solid transparent'
 	});
 	$('#hexagon:before').css({
-		'border-right': orangesvg1_w/2 + 'px solid transparent'
+		'border-right': svg1_w/2 + 'px solid transparent'
 	});
 	$('#hexagon').css({
-		'top': orangesvg1_h / 3 + pixels
+		'top': svg1_h / 3 + pixels
 	});
 	
 	weightsvg_w = $('#weightsvg').width() * cover_img_scale_factor;
 	weightsvg_h = $('#weightsvg').height() * cover_img_scale_factor;
 	$('#weightsvg').css({
-		'left': (orangesvg1_w - weightsvg_w + 16) / 2 + pixels
+		'left': (svg1_w - weightsvg_w + 16) / 2 + pixels
 	});
 	$('#weightsvg').css({
-		'top': (orangesvg1_h - weightsvg_h) / 2 + pixels
+		'top': (svg1_h - weightsvg_h) / 2 + pixels
 	});
 	$('#weightsvg').css({
 		'width': weightsvg_w + pixels
@@ -139,10 +130,10 @@ $(document).ready(function() {
 	agesvg_w = $('#agesvg').width() * cover_img_scale_factor;
 	agesvg_h = $('#agesvg').height() * cover_img_scale_factor;
 	$('#agesvg').css({
-		'left': (orangesvg1_w - agesvg_w + 16) / 2 + pixels
+		'left': (svg1_w - agesvg_w + 16) / 2 + pixels
 	});
 	$('#agesvg').css({
-		'top': (orangesvg1_h - agesvg_h) / 2 + pixels
+		'top': (svg1_h - agesvg_h) / 2 + pixels
 	});
 	$('#agesvg').css({
 		'width': agesvg_w + pixels
@@ -154,10 +145,10 @@ $(document).ready(function() {
 	playerssvg_w = $('#playerssvg').width() * cover_img_scale_factor;
 	playerssvg_h = $('#playerssvg').height() * cover_img_scale_factor;
 	$('#playerssvg').css({
-		'left': (orangesvg1_w - playerssvg_w + 16) / 2 + pixels
+		'left': (svg1_w - playerssvg_w + 16) / 2 + pixels
 	});
 	$('#playerssvg').css({
-		'top': (orangesvg1_h - playerssvg_h) / 2 + pixels
+		'top': (svg1_h - playerssvg_h) / 2 + pixels
 	});
 	$('#playerssvg').css({
 		'width': playerssvg_w + pixels
@@ -169,10 +160,10 @@ $(document).ready(function() {
 	clocksvg_w = $('#clocksvg').width() * cover_img_scale_factor;
 	clocksvg_h = $('#clocksvg').height() * cover_img_scale_factor;
 	$('#clocksvg').css({
-		'left': (orangesvg1_w - clocksvg_w + 16) / 2 + pixels
+		'left': (svg1_w - clocksvg_w + 16) / 2 + pixels
 	});
 	$('#clocksvg').css({
-		'top': (orangesvg1_h - clocksvg_h) / 2 + pixels
+		'top': (svg1_h - clocksvg_h) / 2 + pixels
 	});
 	$('#clocksvg').css({
 		'width': clocksvg_w + pixels
@@ -281,7 +272,7 @@ document.getElementById("yearPub").addEventListener('tap', function() {
 document.getElementById("yearsvg").addEventListener('tap', function() {
 	mui.toast(yearPubMea,3500);
 });
-document.getElementById("orangesvg2").addEventListener('tap', function() {
+document.getElementById("svg2").addEventListener('tap', function() {
 	mui.toast(yearPubMea,3500);
 });
 
@@ -292,7 +283,7 @@ document.getElementById("weight").addEventListener('tap', function() {
 document.getElementById("weightsvg").addEventListener('tap', function() {
 	mui.toast(weightExp,3500);
 });
-document.getElementById("orangesvg3").addEventListener('tap', function() {
+document.getElementById("svg3").addEventListener('tap', function() {
 	mui.toast(weightExp,3500);
 });
 
@@ -303,7 +294,7 @@ document.getElementById("age").addEventListener('tap', function() {
 document.getElementById("agesvg").addEventListener('tap', function() {
 	mui.toast(ageMea,3500);
 });
-document.getElementById("orangesvg4").addEventListener('tap', function() {
+document.getElementById("svg4").addEventListener('tap', function() {
 	mui.toast(ageMea,3500);
 });
 
@@ -314,7 +305,7 @@ document.getElementById("players").addEventListener('tap', function() {
 document.getElementById("playerssvg").addEventListener('tap', function() {
 	mui.toast(playersMea,3500);
 });
-document.getElementById("orangesvg5").addEventListener('tap', function() {
+document.getElementById("svg5").addEventListener('tap', function() {
 	mui.toast(playersMea,3500);
 });
 
@@ -325,13 +316,19 @@ document.getElementById("playtime").addEventListener('tap', function() {
 document.getElementById("clocksvg").addEventListener('tap', function() {
 	mui.toast(playtimeMea,3500);
 });
-document.getElementById("orangesvg6").addEventListener('tap', function() {
+document.getElementById("svg6").addEventListener('tap', function() {
 	mui.toast(playtimeMea,3500);
 });
 
 
+var sideContent = generateside(hot_arrayEN,hot_arrayCN);
 $('#sideContent').html(sideContent);
+
 $(document).ready(function() {
 	generateSidelink(hot_arrayEN);
 	//document.location.reload();
+	change_theme(theme_color);
 });
+
+
+

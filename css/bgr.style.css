@@ -215,6 +215,8 @@ input {
 
 h6,
 .h6 {
+	margin-top: 0px;
+	padding-top: 5px;
 	margin-bottom: 0px;
 	font-size: 1em;
 }
@@ -345,9 +347,9 @@ h4,
 	padding-left: 16px;
 }
 
-.mui-table-view-cell.mui-active {
+/*.mui-table-view-cell.mui-active {
     background-color: #ff6600;
-}
+}*/
 
 .mui-table-view-cell>a:not(.mui-btn){
 	color:#999999;
@@ -375,8 +377,9 @@ h4,
 }
 
 .mui-navigate-right:after, .mui-push-left:after, .mui-push-right:after{
-	color:#FFFFFF
+	color:#FFFFFF;
 }
+
 .mui-title {
 	color: #999999
 }
@@ -443,4 +446,13 @@ h4,
     border-left: 22px solid transparent;
     border-right: 22px solid transparent;
     border-top: 15px solid #ff6600;
+}
+
+.my-overflow-style{
+	width: 100%;  
+    overflow: hidden; 
+    white-space: nowrap;   
+    display: block;  
+    text-overflow: ellipsis;  
+    cursor: pointer;  
 }

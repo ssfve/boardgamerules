@@ -1,33 +1,25 @@
-nameEN_mod = change_nameEN(nameEN);
-var pageTitle = nameCN + nameEN_mod
-$("title").html(pageTitle);
 
-bestplayer = bestplayer.replace('-', '~');
-var playersBest = '[' + bestplayer + ']';
+var pageTitle = '';
 var button1 = '主题概念';
-var button2 = '>>' + pageTitle + '<<';
+var button2 = '';
 var button3 = '我是讲解员';
 var button4 = '我是玩家';
 var button5 = '规则详解';
 var button6 = '浮世绘画廊';
-var players = minplayer + '~' + maxplayer;
 var list_line = '';
+var designers_temp = '';
+var playersBest = '';
+var players = '';
+var playtime = '';
+var pageTitle = '';
 
-var sideContent = generateside(hot_arrayEN,hot_arrayCN);
-
-if (rateNum >= 1000){
-	rateNum = rateNum/1000+'k';
-}
-if(maxtime === '' || maxtime === 'None') {
-	var playtime = mintime + '’'
-} else {
-	var playtime = mintime + '’~' + maxtime + '’'
-}
+alternations();
+$("title").html(pageTitle);
 $(document).ready(function() {
-	$('#numRatesMea').html(numRatesMea);
+	//$('#numRatesMea').html(numRatesMea);
 	$('#numRates').html(rateNum);
 	$('#valueRates').html(rateScore);
-	$('#valueRatesMea').html(valueRatesMea);
+	//$('#valueRatesMea').html(valueRatesMea);
 	$('#yearPub').html(yearPub);
 	$('#yearPubMea').html(yearPubMea);
 	$('#weight').html(weight);
@@ -329,7 +321,7 @@ document.getElementById("orangesvg6").addEventListener('tap', function() {
 	mui.toast(playtimeMea,3500);
 });
 
-
+var sideContent = generateside(hot_arrayEN,hot_arrayCN);
 $('#sideContent').html(sideContent);
 $(document).ready(function() {
 	generateSidelink(hot_arrayEN);

@@ -1,0 +1,10 @@
+part=[];
+array[0]='H';
+array[1]='GE单击图片放大，全屏时单击屏边黑色区域返回';
+array[2]='Ikanagawa/1.jpg';
+array[3]='Ikanagawa/3.jpg';
+array[4]='Ikanagawa/4.jpg';
+array[5]='Ikanagawa/5.jpg';
+part[0]=generate(array);
+list_line = '';
+array=[];

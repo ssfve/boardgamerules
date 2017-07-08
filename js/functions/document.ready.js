@@ -1,0 +1,45 @@
+$(document).ready(function() {
+	//$('#numRatesMea').html(numRatesMea);
+	$('#numRates').html(rateNum);
+	$('#valueRates').html(rateScore);
+	//$('#valueRatesMea').html(valueRatesMea);
+	$('#yearPub').html(yearPub);
+	$('#yearPubMea').html(yearPubMea);
+	$('#weight').html(weight);
+	$('#weightLimit').html(weightLimit);
+	$('#weightExp').html(weightExp);
+	$('#age').html(minAge);
+	$('#ageMea').html(ageMea);
+	$('#ageMeaPlus').html(ageMeaPlus);
+	$('#players').html(players);
+	$('#playersMea').html(playersMea);
+	$('#playersBest').html(playersBest);
+	$('#playtime').html(playtime);
+	$('#playtimeMea').html(playtimeMea);
+	$('#designerTitle').html(designerTitle);
+	$('#designerName').html(designers_temp);
+	$('#langTitleHigh').html(langTitleHigh);
+	$('#langTitleLow').html(langTitleLow);
+	$('#langLvl0').html(langLvl0);
+	$('#langLvl1').html(langLvl1);
+	$('#langLvl2').html(langLvl2);
+	$('#langLvl3').html(langLvl3);
+	$('#langLvl4').html(langLvl4);
+	$('#categoryTitle').html(categoryTitle);
+	$('#categorys').html(categorys);
+	$('#button1').html(button1);
+	$('#button2').html(button2);
+	$('#button3').html(button3);
+	$('#button4').html(button4);
+	$('#button5').html(button5);
+	$('#button6').html(button6);
+	$('#caption-pic').css({
+		'background-image': imgCaption
+	})
+	$('#gameName').html(gameName);
+	$('#nameCN').html(nameCN);
+	
+	$('#subText').html(subText);
+	$('#subName').html(subName);
+	$('#sideHeader').html(sideHeader);
+});

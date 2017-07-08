@@ -9,6 +9,7 @@ var bestplayer = '4'
 var mintime = '25'
 var maxtime = ''
 var designers = 'Antoine Bauza'
+var artists = '';
 var langDepLvl = '0'
 var categorys = '卡牌，推断，记忆'
 
