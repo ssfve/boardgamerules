@@ -9,6 +9,7 @@ var bestplayer = '3'
 var mintime = '30'
 var maxtime = ''
 var designers = 'Marc Andre'
+var artists = '';
 var langDepLvl = '0'
 var categorys = '卡牌，经营，文艺复兴'
 

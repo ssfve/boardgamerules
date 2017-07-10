@@ -9,5 +9,6 @@ var bestplayer = '5'
 var mintime = '45'
 var maxtime = 'None'
 var designers = 'Reiner Knizia'
+var artists = '';
 var langDepLvl = '0'
 var categorys = '卡牌游戏，经营'

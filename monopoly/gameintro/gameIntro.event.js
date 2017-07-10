@@ -20,5 +20,6 @@ var final_html = table_seg.replace('%data%',list_line);
 $(document).ready(function() {
 	$('#header_title').html(header_title);
 	$('#introtext').html(final_html);
+	change_theme(theme_color);
 });
 

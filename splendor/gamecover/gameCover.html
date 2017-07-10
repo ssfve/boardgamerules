@@ -97,7 +97,7 @@
                                         	<h6 id="valueRatesMea" class="corner-inner-text color-orange"></h6>
                                         -->
 										<h4 id="valueRates" align="center" class="cover-inner-text h6-text-white text-image-font"></h4>
-										<img id="orangesvg1" class="cover-img" src="../../img/interface/orange.svg"/>
+										<img id="svg1" class="cover-img" src="../../img/interface/orange.svg"/>
 									</div>
 									<h6 align="center" class="h7">
 										<span id="numRates" class="h6-text-orange"></span></div>
@@ -107,12 +107,12 @@
 								<div class="mui-grid-view">
 									<td class="stack-imgs">
 											<img id="yearsvg" class="cover-inner-img" src="../../img/interface/year.svg" />
-											<img id="orangesvg2" class="cover-img" src="../../img/interface/orange.svg"/>
+											<img id="svg2" class="cover-img" src="../../img/interface/orange.svg"/>
 										<!--
                                         	作者：ssfvessfve@163.com
                                         	时间：2017-07-02
                                         	描述：
-                                        	<img id="orangesvg2" class="cover-img" src="../../img/interface/orange.svg" />
+                                        	<img id="svg2" class="cover-img" src="../../img/interface/orange.svg" />
                                         -->
 										
 									</td>
@@ -125,7 +125,7 @@
 								<div class="mui-grid-view">
 									<td class="stack-imgs">
 										<img id="weightsvg" class="cover-inner-img" src="../../img/interface/weight.svg" />
-										<img id="orangesvg3" class="cover-img" src="../../img/interface/orange.svg" />
+										<img id="svg3" class="cover-img" src="../../img/interface/orange.svg" />
 									</td>
 									<h6 align="center" class="h7">
 										<span id="weight" class="h6-text-orange"></span><span id="weightLimit" class="h6-text-grey"></span>
@@ -136,7 +136,7 @@
 								<div class="mui-grid-view">
 									<td class="stack-imgs">
 										<img id="agesvg" class="cover-inner-img" src="../../img/interface/age.svg" />
-										<img id="orangesvg4" class="cover-img" src="../../img/interface/orange.svg" />
+										<img id="svg4" class="cover-img" src="../../img/interface/orange.svg" />
 									</td>
 									<h6 align="center" class="h7">
 									<span id="age" class="h6-text-orange"></span><span id="ageMeaPlus" class="h6-text-orange"></span>
@@ -147,7 +147,7 @@
 								<div class="mui-grid-view">
 									<td class="stack-imgs">
 										<img id="playerssvg" class="cover-inner-img" src="../../img/interface/players.svg" />
-										<img id="orangesvg5" class="cover-img" src="../../img/interface/orange.svg" />
+										<img id="svg5" class="cover-img" src="../../img/interface/orange.svg" />
 									</td>
 									<h6 align="center" class="h7">
 										<span id="players" class="h6-text-orange"></span><span id="playersBest" class="h6-text-grey"></span>
@@ -159,7 +159,7 @@
 								<div class="mui-grid-view">
 									<td class="stack-imgs">
 										<img id="clocksvg" class="cover-inner-img" src="../../img/interface/clock.svg" />
-										<img id="orangesvg6" class="cover-img" src="../../img/interface/orange.svg" />
+										<img id="svg6" class="cover-img" src="../../img/interface/orange.svg" />
 									</td>
 									<h6 align="center" class="h7">
 										<span id="playtime" class="h6-text-orange"></span>
@@ -217,34 +217,36 @@
 				<div class="mui-content" style="padding-top: 0px;">
 					<div class="mui-content-padded">
 						<div class="mui-row">
-							<div class="mui-col-sm-12 mui-col-xs-12">
-								<h6>
-								<span id="gameName" class="h6-text-grey"></span>
-								<span id="nameCNEN" class="h6-text-black"></span>
-							</h6>
-								<div class="mui-col-sm-12 mui-col-xs-12">
-									<h6>
-								<span id="designerTitle" class="h6-text-grey"></span>
-								<span id="designerName" class="h6-text-black"></span>
-							</h6>
-								</div>
-								<div class="mui-col-sm-12 mui-col-xs-12">
-									<h6>
-								<span id="langTitleHigh"></span><span id="langTitleLow" class="h6-text-grey"></span>
-								<span id="langLvl0" class="h6-text-grey"></span>
-								<span id="langLvl1" class="h6-text-grey"></span>
-								<span id="langLvl2" class="h6-text-grey"></span>
-								<span id="langLvl3" class="h6-text-grey"></span>
-								<span id="langLvl4" class="h6-text-grey"></span>
-							</h6>
-								</div>
-								<div class="mui-col-sm-12 mui-col-xs-12">
-									<h6>
-								<span id="categoryTitle" class="h6-text-grey"></span>
-								<span id="categorys" class="h6-text-black"></span>
-							</h6>
-								</div>
+							<div class="mui-col-sm-3 mui-col-xs-3">
+								<h6 id="gameName" class="h6-text-grey"></h6>
 							</div>
+							<div class="mui-col-sm-9 mui-col-xs-9">
+								<h6 id="nameCN" class="h6-text-orange my-overflow-style"></h6>
+							</div>
+							<div class="mui-col-sm-3 mui-col-xs-3">
+								<h6 id="designerTitle" class="h6-text-grey"></h6>
+							</div>
+							<div class="mui-col-sm-9 mui-col-xs-9">
+								<h6 id="designerName" class="h6-text-grey my-overflow-style"></h6>
+							</div>
+							<div class="mui-col-sm-3 mui-col-xs-3">
+								<h6 id="langTitleLow" class="h6-text-grey"></h6>
+							</div>
+							<div class="mui-col-sm-9 mui-col-xs-9">
+								<h6>
+									<span id="langLvl0" class="h6-text-grey"></span>
+									<span id="langLvl1" class="h6-text-grey"></span>
+									<span id="langLvl2" class="h6-text-grey"></span>
+									<span id="langLvl3" class="h6-text-grey"></span>
+									<span id="langLvl4" class="h6-text-grey"></span>
+								</h6>
+							</div>
+							<div class="mui-col-sm-3 mui-col-xs-3">
+									<h6 id="categoryTitle" class="h6-text-grey"></h6>
+								</div>
+							<div class="mui-col-sm-9 mui-col-xs-9">
+									<h6 id="categorys" class="h6-text-grey my-overflow-style"></h6>
+								</div>
 						</div>
 					</div>
 					<div class="mui-content">
@@ -266,7 +268,7 @@
 				</div>
 			</div>
 			<script type="text/javascript" src="cover.interface.js"></script>
-	<script type="text/javascript" src="cover.event.js"></script>
+			<script type="text/javascript" src="cover.event.js"></script>
 	</body>
 	
 	

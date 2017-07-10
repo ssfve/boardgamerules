@@ -9,5 +9,6 @@ var bestplayer = '4'
 var mintime = '60'
 var maxtime = '180'
 var designers = 'Elizabeth J. Magie (Phillips)'
+var artists = '';
 var langDepLvl = '2'
 var categorys = '经营，谈判'

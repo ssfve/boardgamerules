@@ -9,6 +9,7 @@ var bestplayer = '3'
 var mintime = '45'
 var maxtime = '60'
 var designers = 'Uwe Rosenberg'
+var artists = '';
 var langDepLvl = '0'
 var categorys = '家庭，拼图'
 

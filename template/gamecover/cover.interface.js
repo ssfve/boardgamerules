@@ -1,5 +1,5 @@
 var button1 = '主题概念';
-var button2 = '>>' + pageTitle + '<<';
+var button2 = '';
 var button3 = '我是讲解员';
 var button4 = '我是玩家';
 var button5 = '规则详解';

@@ -9,5 +9,6 @@ var bestplayer = '6'
 var mintime = '30'
 var maxtime = 'None'
 var designers = 'Jean-Louis Roubira'
+var artists = '';
 var langDepLvl = '0'
 var categorys = '卡牌游戏，幽默，聚会游戏'
