@@ -14,7 +14,7 @@ var langLvl4 = '4'
 var categoryTitle = '机制分类:'
 var cover_img_scale_factor = 0.5
 var pixels = 'px'
-var subText = '长按关注微信公众号 : ';
+var subText = '关注我们 : ';
 var subName = '桌游怎么玩';
 var sideHeader = '最新说明书';
 

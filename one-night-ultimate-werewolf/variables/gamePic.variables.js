@@ -1,10 +1,11 @@
 part=[];
-array[0]='H';
-array[1]='GE单击图片放大，全屏时单击屏边黑色区域返回';
-array[2]='Ikanagawa/1.jpg';
-array[3]='Ikanagawa/3.jpg';
-array[4]='Ikanagawa/4.jpg';
-array[5]='Ikanagawa/5.jpg';
+array[0]='﻿H';
+array[1]='GE长按识别下方二维码，关注我们哦！';
+array[2]='G我们';
+array[3]='O承诺';
+array[4]='GE每天推送一本桌游中文规则书。';
+array[5]='GE祝你快乐每一天！';
+array[6]='Itwo-rooms-and-boom/logo.jpg';
 part[0]=generate(array);
 list_line = '';
 array=[];

@@ -1,7 +1,10 @@
-nameEN = change_nameEN(nameEN);
-var pageTitle = nameCN + nameEN
-var header_title = nameCN + nameEN
+nameEN_temp = change_nameEN(nameEN);
+var pageTitle = nameCN + nameEN_temp
+var header_title = nameCN + nameEN_temp
 
+//alert(nameEN)
+$('#back_arrow').attr('id',nameEN);
+gotoPage(nameEN)
 
 $("title").html(pageTitle);
 $(document).ready(function() {

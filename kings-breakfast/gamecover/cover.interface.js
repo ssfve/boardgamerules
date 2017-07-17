@@ -3,7 +3,7 @@ var button2 = '>>' + pageTitle + '<<';
 var button3 = '我是讲解员';
 var button4 = '我是玩家';
 var button5 = '规则详解';
-var button6 = '浮世绘画廊';
+var button6 = '关注我们';
 var players = '';
 var list_line = '';
 var designers_temp = '';
@@ -59,22 +59,21 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-	valueRates_w = $('#valueRates').width();
-	valueRates_h = $('#valueRates').height();
-	//vertical align middle
-	$('#valueRates').css({'line-height': valueRates_h + pixels});
-
-	svg1_w = $('#svg1').width();
-	svg1_h = $('#svg1').height();
-	//position inner image
-	yearsvg_w = $('#yearsvg').width() * cover_img_scale_factor;
-	yearsvg_h = $('#yearsvg').height() * cover_img_scale_factor;
-	
-	left_position =(svg1_w - yearsvg_w + 16) / 2 + pixels;
-	top_position =(svg1_h - yearsvg_h) / 2 + pixels;
-	svg_width = yearsvg_w;
-	svg_height = yearsvg_h;
-	setTimeout(function() {
+	setTimeout(function(){
+		valueRates_w = $('#valueRates').width();
+		valueRates_h = $('#valueRates').height();
+		//vertical align middle
+		$('#valueRates').css({'line-height': valueRates_h + pixels});
+		svg1_w = $('#svg1').width();
+		svg1_h = $('#svg1').height();
+		//position inner image
+		yearsvg_w = $('#yearsvg').width() * cover_img_scale_factor;
+		yearsvg_h = $('#yearsvg').height() * cover_img_scale_factor;
+		
+		left_position =(svg1_w - yearsvg_w + 16) / 2 + pixels;
+		top_position =(svg1_h - yearsvg_h) / 2 + pixels;
+		svg_width = yearsvg_w;
+		svg_height = yearsvg_h;
 		$('#yearsvg').css({'left': left_position});
 		$('#yearsvg').css({'top': top_position});
 		$('#yearsvg').css({'width': svg_width});
@@ -99,7 +98,7 @@ $(document).ready(function() {
 		$('#clocksvg').css({'top': top_position});
 		$('#clocksvg').css({'width': svg_width});
 		$('#clocksvg').css({'height': svg_height});
-	}, 100);
+	},150);
 	
 	$('#langLvl'+langDepLvl).addClass('color-orange');
 

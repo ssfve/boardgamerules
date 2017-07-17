@@ -1,0 +1,9 @@
+part=[];
+array[0]='﻿H';
+array[1]='OE游戏目的';
+array[2]='GE找出一组由8个标识构成的图形序列，它们之间的距离要符合相同规律。8个棋子全部连起来就像一条蛇一样。';
+array[3]='GE如下图设置，每个玩家拿取6个蓝色标识和6个黄色标识，随机选定起始玩家。';
+array[4]='Ilex-lemniscate/setup.jpg';
+part[0]=generate(array);
+list_line = '';
+array=[];

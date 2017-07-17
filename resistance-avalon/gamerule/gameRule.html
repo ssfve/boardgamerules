@@ -27,14 +27,23 @@
 		<script src="../variables/gameEnd.variables.js"></script>
 		<script src="gameEnd.js"></script>
 		
-		<script src="rule.interface.js"></script>
-		
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<style>
+			.flex-container {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-flex-flow: row wrap;
+				justify-content: space-between;
+				text-align: center;
+			}
+		</style>
 	</head>
 	
 	<body>
 		
 		<header id="mui_header" class="mui-bar mui-bar-nav">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<a id="back_arrow" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 id='header_title' class="mui-title"></h1>
 		</header>
 		
@@ -76,7 +85,9 @@
 				</div>
 			</div>
 		</div>
-	</body>
+		<script src="rule.interface.js"></script>
 		<script src="../../js/detail.interface.js"></script>
 		<script src="../../js/detail.event.js"></script>
+	</body>
+		
 </html>

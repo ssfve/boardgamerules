@@ -9,7 +9,7 @@ var stack_seg_class = 'mui-table-view-cell mui-collapse';
 
 var orange_text_seg = '<span class="h6-text-orange">%data%</span>';
 var grey_text_seg = '<span class="h6-text-grey">%data%</span>';
-var img_text_seg = '<img src="../../img/%data%" alt="Error!Refresh!" width="100%" data-preview-src="" data-preview-group="1"/>';
+var img_text_seg = '<img src="../../img/%data%" alt="Please Refresh this Page!" width="100%" data-preview-src="" data-preview-group="1"/>';
 
 var stack_seg_header = '<a class="mui-navigate-right" href="#">%data%</a>';
 var stack_seg_content = '<div class="mui-collapse-content">%data%</div>';
@@ -18,12 +18,29 @@ var link_seg = '<a id="%link%" class="mui-navigate-right" style="color:#FFFFFF;"
 var address_seg = '../../%data%/gamecover/gameCover.html';
 var local_address_seg = '../../%data%/gamecover/gameCover.html';
 var local_hotlist_seg = '../../js/page/hotlist.html';
+var a_seg = '<a>%data%</a>';
 
 var index_seg = '<div class="mui-indexed-list-bar">%data%</div>';
-var a_seg = '<a>%data%</a>';
 
 var index_class_seg = '<li data-group="%1%" class="mui-table-view-divider mui-indexed-list-group">%0%</li>';
 var index_value_seg = '<li data-value="%2%" data-tags="%3%" id="%4%" class="mui-table-view-cell mui-indexed-list-item">%1% %0%</li>';
+var row_seg = '<div class="mui-row">%data%</div>'
+// use D
+var seg_list = []
+seg_list[1] = '<div class="mui-col-sm-1 mui-col-xs-1">'
+seg_list[2] = '<div class="mui-col-sm-2 mui-col-xs-2">'
+seg_list[3] = '<div class="mui-col-sm-3 mui-col-xs-3">'
+seg_list[4] = '<div class="mui-col-sm-4 mui-col-xs-4">'
+seg_list[5] = '<div class="mui-col-sm-5 mui-col-xs-5">'
+seg_list[6] = '<div class="mui-col-sm-6 mui-col-xs-6">'
+seg_list[7] = '<div class="mui-col-sm-7 mui-col-xs-7">'
+seg_list[8] = '<div class="mui-col-sm-8 mui-col-xs-8">'
+seg_list[9] = '<div class="mui-col-sm-9 mui-col-xs-9">'
+seg_list[10] = '<div class="mui-col-sm-10 mui-col-xs-10">'
+seg_list[11] = '<div class="mui-col-sm-11 mui-col-xs-11">'
+seg_list[12] = '<div class="mui-col-sm-12 mui-col-xs-12">'
+
+var mic_seg = '<div class="flex-container"><a id="icon-mic" class="active"><span class="mui-icon mui-icon-mic-filled"></span></a></div>'
 
 var array=[];
 var part=[];
@@ -59,7 +76,7 @@ var change_nameEN = function(name) {
 var generate = function(array){
 	list_seg = list_seg_disabled
 	array.forEach(function(val,index){
-		//alert(text_line);
+		//alert(array[index]);
 		if(val.substr(0,1)==='O'){
 			if(val.substr(1,1)==='E'){
 				var text = val.substr(2,val.length);
@@ -84,11 +101,34 @@ var generate = function(array){
 			}
 		}
 		if(val.substr(0,1)==='I'){
+			//alert('asdf')
 			var text = val.substr(1,val.length);
 			text_line = img_text_seg.replace('%data%',text)
 			list_line += list_seg.replace('%data%',text_line)
+			text_line = ''
 		}
-		
+		if(val.substr(0,1)==='D'){
+			//alert('asdf')
+			if (val.substr(1,val.length) === 'A'){
+				text_line += seg_list[10];
+			}else if (val.substr(1,val.length) === 'B'){
+				text_line += seg_list[11];
+			}else if (val.substr(1,val.length) === 'E'){
+				//alert(val)
+				//alert('in')
+				text_line += '</div>';
+				text_line = row_seg.replace('%data%',text_line)
+				list_line += list_seg.replace('%data%',text_line)
+				text_line = ''
+			}else{
+				text_line += '</div>';
+				text_line += seg_list[val.substr(1,val.length)];
+			}
+		}
+		if(val.substr(0,1)==='M'){
+			//alert('asdf')
+			text_line += mic_seg;
+		}
 		if(val.substr(0,1)==='S'){
 			if(val.substr(1,1)==='E'){
 				list_seg = list_seg_disabled
@@ -274,7 +314,12 @@ var alternations = function(){
 		bestplayer = bestplayer.replace('-', '~');
 		playersBest = '[' + bestplayer + ']';
 	}
-	players = minplayer + '~' + maxplayer;
+	if (maxplayer === 'None'){
+		players = minplayer;
+	}else{
+		players = minplayer + '~' + maxplayer;
+	}
+	
 	//alert(players)
 	if (playersBest === ''){
 		playersMea = '游戏人数: '+players+'人'
@@ -300,3 +345,22 @@ var alternations = function(){
 	
 	button2 = '>>' + pageTitle + '<<';
 };
+
+
+var toast_alter = function(){
+	if (rateScore === 'N/A'){
+		numRatesMea = '评分: '+rateScore+'  数量: '+rateNum+'条'
+	}else{
+		numRatesMea = '评分: '+rateScore+'/10  数量: '+rateNum+'条'
+	}
+	//icon2
+	yearPubMea = '出版时间: '+yearPub+'年'
+	weightExp = '复杂度(重度): '+weight+'/5'
+	ageMea = '适合年龄: '+minAge+'岁'+ageMeaPlus
+	if (playersBest === ''){
+		playersMea = '游戏人数: '+players+'人'
+	}else{
+		playersMea = '游戏人数[最佳人数]: '+players+playersBest+'人'
+	}
+	playtimeMea = '游戏时间: '+playtime.replace('’','').replace('’','')+'分钟'
+}

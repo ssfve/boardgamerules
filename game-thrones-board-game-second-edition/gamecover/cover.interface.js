@@ -1,62 +1,58 @@
-nameEN_mod = change_nameEN(nameEN);
-var pageTitle = nameCN + nameEN_mod
-$("title").html(pageTitle);
-
-bestplayer = bestplayer.replace('-', '~');
-var playersBest = '[' + bestplayer + ']';
 var button1 = '主题概念';
-var button2 = '>>' + pageTitle + '<<';
-var button3 = '我是讲解员';
-var button4 = '我是玩家';
+var button2 = '';
+var button3 = '游戏概念';
+var button4 = '其它规则';
 var button5 = '规则详解';
-var button6 = '浮世绘画廊';
-var players = minplayer + '~' + maxplayer;
+var button6 = '关注我们';
+var players = '';
 var list_line = '';
-var designers_temp = ''
+var designers_temp = '';
+var playersBest = '';
+var pageTitle = '';
 
 alternations();
-
+$("title").html(pageTitle);
 $(document).ready(function() {
-	valueRates_w = $('#valueRates').width();
-	valueRates_h = $('#valueRates').height();
-	//vertical align middle
-	$('#valueRates').css({'line-height': valueRates_h + pixels});
-
-	svg1_w = $('#svg1').width();
-	svg1_h = $('#svg1').height();
-	//position inner image
-	yearsvg_w = $('#yearsvg').width() * cover_img_scale_factor;
-	yearsvg_h = $('#yearsvg').height() * cover_img_scale_factor;
+	setTimeout(function(){
+		valueRates_w = $('#valueRates').width();
+		valueRates_h = $('#valueRates').height();
+		//vertical align middle
+		$('#valueRates').css({'line-height': valueRates_h + pixels});
+		svg1_w = $('#svg1').width();
+		svg1_h = $('#svg1').height();
+		//position inner image
+		yearsvg_w = $('#yearsvg').width() * cover_img_scale_factor;
+		yearsvg_h = $('#yearsvg').height() * cover_img_scale_factor;
+		
+		left_position =(svg1_w - yearsvg_w + 16) / 2 + pixels;
+		top_position =(svg1_h - yearsvg_h) / 2 + pixels;
+		svg_width = yearsvg_w;
+		svg_height = yearsvg_h;
+		$('#yearsvg').css({'left': left_position});
+		$('#yearsvg').css({'top': top_position});
+		$('#yearsvg').css({'width': svg_width});
+		$('#yearsvg').css({'height': svg_height});
+		
+		$('#weightsvg').css({'left': left_position});
+		$('#weightsvg').css({'top': top_position});
+		$('#weightsvg').css({'width': svg_width});
+		$('#weightsvg').css({'height': svg_height});
+		
+		$('#agesvg').css({'left': left_position});
+		$('#agesvg').css({'top': top_position});
+		$('#agesvg').css({'width': svg_width});
+		$('#agesvg').css({'height': svg_height});
+		
+		$('#playerssvg').css({'left': left_position});
+		$('#playerssvg').css({'top': top_position});
+		$('#playerssvg').css({'width': svg_width});
+		$('#playerssvg').css({'height': svg_height});
 	
-	left_position =(svg1_w - yearsvg_w + 16) / 2 + pixels;
-	top_position =(svg1_h - yearsvg_h) / 2 + pixels;
-	svg_width = yearsvg_w;
-	svg_height = yearsvg_h;
-	
-	$('#yearsvg').css({'left': left_position});
-	$('#yearsvg').css({'top': top_position});
-	$('#yearsvg').css({'width': svg_width});
-	$('#yearsvg').css({'height': svg_height});
-	
-	$('#weightsvg').css({'left': left_position});
-	$('#weightsvg').css({'top': top_position});
-	$('#weightsvg').css({'width': svg_width});
-	$('#weightsvg').css({'height': svg_height});
-	
-	$('#agesvg').css({'left': left_position});
-	$('#agesvg').css({'top': top_position});
-	$('#agesvg').css({'width': svg_width});
-	$('#agesvg').css({'height': svg_height});
-	
-	$('#playerssvg').css({'left': left_position});
-	$('#playerssvg').css({'top': top_position});
-	$('#playerssvg').css({'width': svg_width});
-	$('#playerssvg').css({'height': svg_height});
-
-	$('#clocksvg').css({'left': left_position});
-	$('#clocksvg').css({'top': top_position});
-	$('#clocksvg').css({'width': svg_width});
-	$('#clocksvg').css({'height': svg_height});
+		$('#clocksvg').css({'left': left_position});
+		$('#clocksvg').css({'top': top_position});
+		$('#clocksvg').css({'width': svg_width});
+		$('#clocksvg').css({'height': svg_height});
+	},150);
 	
 	$('#langLvl'+langDepLvl).addClass('color-orange');
 

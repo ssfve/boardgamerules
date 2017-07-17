@@ -1,7 +1,6 @@
 mui.init({
 	swipeBack: false
 });
-
 function setScrollHeader() {
 	//$('#inittitle').html(players4);
 	$('#gameSetup').html(gameSetup);
