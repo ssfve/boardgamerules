@@ -307,17 +307,17 @@ var collapse_event_gen = function(){
 var alternations = function(){
 	designers_temp = designers + ',' + artists
 	// best players
-	//alert(bestplayer)
-	if (bestplayer === 'None'){
+	//alert(suggested_numplayers)
+	if (suggested_numplayers === 'None'){
 		playersBest = ''
 	}else{
-		bestplayer = bestplayer.replace('-', '~');
-		playersBest = '[' + bestplayer + ']';
+		suggested_numplayers = suggested_numplayers.replace('-', '~');
+		playersBest = '[' + suggested_numplayers + ']';
 	}
-	if (maxplayer === 'None'){
-		players = minplayer;
+	if (maxplayers === 'None'){
+		players = minplayers;
 	}else{
-		players = minplayer + '~' + maxplayer;
+		players = minplayers + '~' + maxplayers;
 	}
 	
 	//alert(players)
@@ -328,18 +328,18 @@ var alternations = function(){
 	}
 	
 	// rate number to k
-	if (rateNum >= 1000){
-		rateNum = rateNum/1000+'k';
+	if (usersrated >= 1000){
+		usersrated = (usersrated/1000).toFixed(1)+'k';
 	}
-	// mintime and maxtime
-	if(maxtime === '' || maxtime === 'None') {
-		playtime = mintime + '’'
+	// minplaytime and maxplaytime
+	if(maxplaytime === '' || maxplaytime === 'None'|| maxplaytime === '0') {
+		playtime = minplaytime + '’'
 	} else {
-		playtime = mintime + '’~' + maxtime + '’'
+		playtime = minplaytime + '’~' + maxplaytime + '’'
 	}
 	playtimeMea = '游戏时间: '+playtime.replace('’','').replace('’','')+'分钟'
 	
-	
+	//weight = averageweight+'/5';
 	nameEN_mod = change_nameEN(nameEN);
 	pageTitle = nameCN + nameEN_mod
 	
@@ -348,15 +348,15 @@ var alternations = function(){
 
 
 var toast_alter = function(){
-	if (rateScore === 'N/A'){
-		numRatesMea = '评分: '+rateScore+'  数量: '+rateNum+'条'
+	if (average === 'N/A'){
+		numRatesMea = '评分: '+average+'  数量: '+usersrated+'条'
 	}else{
-		numRatesMea = '评分: '+rateScore+'/10  数量: '+rateNum+'条'
+		numRatesMea = '评分: '+average+'/10  数量: '+usersrated+'条'
 	}
 	//icon2
-	yearPubMea = '出版时间: '+yearPub+'年'
-	weightExp = '复杂度(重度): '+weight+'/5'
-	ageMea = '适合年龄: '+minAge+'岁'+ageMeaPlus
+	yearMea = '出版时间: '+yearpublished+'年'
+	weightExp = '复杂度(重度): '+averageweight+'/5'
+	ageMea = '适合年龄: '+age+'岁'+ageMeaPlus
 	if (playersBest === ''){
 		playersMea = '游戏人数: '+players+'人'
 	}else{

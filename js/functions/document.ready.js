@@ -1,14 +1,14 @@
 $(document).ready(function() {
 	//$('#numRatesMea').html(numRatesMea);
-	$('#numRates').html(rateNum);
-	$('#valueRates').html(rateScore);
+	$('#numRates').html(usersrated);
+	$('#valueRates').html(average);
 	//$('#valueRatesMea').html(valueRatesMea);
-	$('#yearPub').html(yearPub);
-	$('#yearPubMea').html(yearPubMea);
-	$('#weight').html(weight);
+	$('#yearpublished').html(yearpublished);
+	$('#yearMea').html(yearMea);
+	$('#averageweight').html(averageweight);
 	$('#weightLimit').html(weightLimit);
 	$('#weightExp').html(weightExp);
-	$('#age').html(minAge);
+	$('#age').html(age);
 	$('#ageMea').html(ageMea);
 	$('#ageMeaPlus').html(ageMeaPlus);
 	$('#players').html(players);

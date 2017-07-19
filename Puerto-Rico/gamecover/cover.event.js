@@ -130,13 +130,13 @@ document.getElementById("numRates").addEventListener('tap', function() {
 
 //icon2
 document.getElementById("yearpublished").addEventListener('tap', function() {
-	mui.toast(yearMea,3500);
+	mui.toast(yearPubMea,3500);
 });
 document.getElementById("yearsvg").addEventListener('tap', function() {
-	mui.toast(yearMea,3500);
+	mui.toast(yearPubMea,3500);
 });
 document.getElementById("svg2").addEventListener('tap', function() {
-	mui.toast(yearMea,3500);
+	mui.toast(yearPubMea,3500);
 });
 
 //icon3

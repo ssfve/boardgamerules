@@ -19,13 +19,13 @@ var subName = '桌游怎么玩';
 var sideHeader = '最新说明书';
 
 //icon1
-var numRatesMea = '评分: '+rateScore+'/10  数量: '+rateNum+'条'
+var numRastesMea = '评分: '+average+'/10  数量: '+usersrated+'条'
 //icon2
-var yearPubMea = '出版时间: '+yearPub+'年'
+var yearMea = '出版时间: '+yearpublished+'年'
 //icon3
-var weightExp = '复杂度(重度): '+weight+'/5'
+var weightExp = '复杂度(重度): '+averageweight+'/5'
 //icon4
-var ageMea = '适合年龄: '+minAge+'岁'+ageMeaPlus
+var ageMea = '适合年龄: '+age+'岁'+ageMeaPlus
 //icon5
 var playersMea = '';
 //icon6
