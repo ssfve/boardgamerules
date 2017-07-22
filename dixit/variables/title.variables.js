@@ -1,4 +1,4 @@
 var nameCN = '只言片语';
-var nameEN = 'dixit';
-var theme_color = '#283593'
-var subcontent_color = '#E8EAF6';
+var nameEN = 'Dixit';
+var theme_color = '#FF6600';
+var subcontent_color = '#FFF3E0';

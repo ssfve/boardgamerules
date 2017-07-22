@@ -8,6 +8,7 @@ $('#back_arrow').attr('id',nameEN);
 gotoPage(nameEN)
 
 
+mui.previewImage();
 $("title").html(pageTitle);
 $(document).ready(function() {
 	

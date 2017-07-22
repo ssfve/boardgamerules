@@ -19,18 +19,18 @@
 		<link rel="stylesheet" type="text/css" href="../../css/bgr.style.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/bgr.imageviewer.css" />
 
-		
+		<script type="text/JavaScript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		<script type="text/javascript" src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
 		
-		
 		<script type="text/javascript" src="../../js/sys.variables/global.variables.js"></script>
 		<script type="text/javascript" src="../variables/title.variables.js"></script>
+		
 		<script type="text/javascript" src="../../js/page/hotlist.variables.js"></script>
 		<script type="text/javascript" src="cover.variables.js"></script>
 		<script type="text/javascript" src="../../js/page/sidepane.variables.js"></script>
-		
 		<script type="text/javascript" src="../../js/functions/functions.js"></script>
+		
 	</head>
 
 	<body>
@@ -38,24 +38,18 @@
 			<!--侧滑菜单部分-->
 			<aside id="offCanvasSide" class="mui-off-canvas-left background-color-orange">
 				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
-					<div id="sideHeader" class="title" style="margin-bottom: 15px;margin-top: 15px;"></div>
+					<div id="sideHeader" class="title" style="margin-bottom: 25px;"></div>
 					<ul id="sideContent" class="mui-table-view mui-table-view-chevron mui-table-view-inverted background-color-orange"></ul>
 					<div class="mui-grid_view" style="background-color:#FFFFFF;">
 						<div class="mui-media">
 							<div class="mui-table-view-cell mui-media-body">
 								<span id="subText" class="h6-text-grey"></span><span id="subName" class="h6-text-orange"></span>
 							</div>
+							<img style="width:100%;" class="mui-media-object" src="../../img/interface/logo.png">
 						</div>
 					</div>
-					<img style="width:100%;" src="../../img/interface/logo.jpg" data-preview-src="" data-preview-group="1"/>
-					<!--
-                    	作者：ssfvessfve@163.com
-                    	时间：2017-07-10
-                    	描述：
-                    	<img style="width:100%;" src="../../img/interface/logo.jpg" data-preview-src="" data-preview-group="1"/>
-                    -->
-					
 				</div>
+
 			</aside>
 			<div class="mui-inner-wrap">
 				<header class="mui-bar mui-bar-nav set-transparent">
@@ -88,7 +82,7 @@
 
 										</td>
 										<h6 align="center" class="h7">
-									<span id="yearPub" class="h6-text-orange"></span>
+									<span id="yearpublished" class="h6-text-orange"></span>
 									</h6>
 									</div>
 								</div>
@@ -99,7 +93,7 @@
 											<img id="svg3" class="cover-img" src="../../img/interface/orange.svg" />
 										</td>
 										<h6 align="center" class="h7">
-										<span id="weight" class="h6-text-orange"></span><span id="weightLimit" class="h6-text-grey"></span>
+										<span id="averageweight" class="h6-text-orange"></span><span id="weightLimit" class="h6-text-grey"></span>
 									</h6>
 									</div>
 								</div>
@@ -179,31 +173,35 @@
 				</div>
 				<div class="mui-content" style="padding-top: 0px;">
 					<div class="mui-content-padded">
-								
-								<button type="button" id="button3" onclick="btn3_click()" class="mui-btn mui-btn-block bs-wo" />
-								<button type="button" id="button5" onclick="btn5_click()" class="mui-btn mui-btn-block bs-wo" />
-								<button type="button" id="button6" onclick="btn6_click()" class="mui-btn mui-btn-block bs-wo" />
+						<button type="button" id="button2" onclick="btn2_click()" class="mui-btn mui-btn-block bs-wo" />		
+						<button type="button" id="button5" onclick="btn5_click()" class="mui-btn mui-btn-block bs-wo" />		
+						<button type="button" id="button6" onclick="btn6_click()" class="mui-btn mui-btn-block bs-wo" />
 								<!--
                 	作者：ssfvessfve@163.com
                 	时间：2017-06-25
                 	描述：
-                	<button type="button" id="button2" onclick="btn2_click()" class="mui-btn mui-btn-block bs-wo" />
+                	var button1 = '主题概念';
+					var button2 = 'name';
+					var button3 = '游戏概念';
+					var button4 = '其它规则';
+					var button5 = '规则详解';
+					var button6 = '关注我们';
                 	<button type="button" id="button1" onclick="btn1_click()" class="mui-btn mui-btn-block bs-wo" />
                 	
+                	<button type="button" id="button3" onclick="btn3_click()" class="mui-btn mui-btn-block bs-wo" />
 					<button type="button" id="button4" onclick="btn4_click()" class="mui-btn mui-btn-block bs-wo" />
+                	
+					
                 -->
 
 							</div>
 							<div class="mui-off-canvas-backdrop"></div>
 				</div>
 			</div>
-			<script src="../../js/mui.zoom.js"></script>
-			<script src="../../js/mui.previewimage.js"></script>
-			<script type="text/javascript" src="cover.interface.js"></script>
-			<script type="text/javascript" src="cover.event.js"></script>
-			
 		</div>
-		
+		<script type="text/javascript" src="cover.event.js"></script>
+		<script type="text/javascript" src="cover.interface.js"></script>
+		<script type="text/javascript" src="../../js/functions/document.ready.js"></script>
 	</body>
 	
 </html>

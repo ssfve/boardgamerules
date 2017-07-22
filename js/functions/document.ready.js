@@ -33,9 +33,7 @@ $(document).ready(function() {
 	$('#button4').html(button4);
 	$('#button5').html(button5);
 	$('#button6').html(button6);
-	$('#caption-pic').css({
-		'background-image': imgCaption
-	})
+	$('#caption-pic').css({'background-image': imgCaption})
 	$('#gameName').html(gameName);
 	$('#nameCN').html(nameCN);
 	

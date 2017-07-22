@@ -129,18 +129,18 @@ document.getElementById("numRates").addEventListener('tap', function() {
 });
 
 //icon2
-document.getElementById("yearPub").addEventListener('tap', function() {
-	mui.toast(yearPubMea,3500);
+document.getElementById("yearpublished").addEventListener('tap', function() {
+	mui.toast(yearMea,3500);
 });
 document.getElementById("yearsvg").addEventListener('tap', function() {
-	mui.toast(yearPubMea,3500);
+	mui.toast(yearMea,3500);
 });
 document.getElementById("svg2").addEventListener('tap', function() {
-	mui.toast(yearPubMea,3500);
+	mui.toast(yearMea,3500);
 });
 
 //icon3
-document.getElementById("weight").addEventListener('tap', function() {
+document.getElementById("averageweight").addEventListener('tap', function() {
 	mui.toast(weightExp,3500);
 });
 document.getElementById("weightsvg").addEventListener('tap', function() {

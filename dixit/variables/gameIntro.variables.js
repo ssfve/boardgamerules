@@ -49,3 +49,7 @@ array[4]='SE';
 part[5]=generate(array);
 list_line = '';
 array=[];
+array[0]='IDixit/1.jpg';
+part[6]=generate(array);
+list_line = '';
+array=[];

@@ -1,4 +1,4 @@
-var button1 = '故事背景';
+var button1 = '主题概念';
 var button2 = '';
 var button3 = '游戏概念';
 var button4 = '其它规则';
@@ -10,9 +10,7 @@ var designers_temp = '';
 var playersBest = '';
 var pageTitle = '';
 
-
 alternations();
-toast_alter();
 $("title").html(pageTitle);
 $(document).ready(function() {
 	setTimeout(function(){
@@ -56,7 +54,7 @@ $(document).ready(function() {
 		$('#clocksvg').css({'height': svg_height});
 	},150);
 	
-	$('#langLvl'+langDepLvl).addClass('color-orange');
+	$('#langLvl'+language_dependence).addClass('color-orange');
 
 });
 

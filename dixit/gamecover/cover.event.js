@@ -104,6 +104,22 @@ function btn5_click() {
 	})
 };
 
+function btn6_click() {
+	mui.openWindow({
+		url: "../gamepic/gamePic.html",
+		id: "pic",
+		createNew: false,
+		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+		show: {
+			autoShow: true
+		},
+		waiting: {
+			autoShow: true, //自动显示等待框，默认为true
+			title: '正在加载...' //等待对话框上显示的提示内容
+		}
+	})
+};
+
 document.getElementById("valueRates").addEventListener('tap', function() {
 	mui.toast(numRatesMea,3500);
 });
@@ -113,24 +129,24 @@ document.getElementById("numRates").addEventListener('tap', function() {
 });
 
 //icon2
-document.getElementById("yearPub").addEventListener('tap', function() {
-	mui.toast(yearPubMea,3500);
+document.getElementById("yearpublished").addEventListener('tap', function() {
+	mui.toast(yearMea,3500);
 });
 document.getElementById("yearsvg").addEventListener('tap', function() {
-	mui.toast(yearPubMea,3500);
+	mui.toast(yearMea,3500);
 });
-document.getElementById("orangesvg2").addEventListener('tap', function() {
-	mui.toast(yearPubMea,3500);
+document.getElementById("svg2").addEventListener('tap', function() {
+	mui.toast(yearMea,3500);
 });
 
 //icon3
-document.getElementById("weight").addEventListener('tap', function() {
+document.getElementById("averageweight").addEventListener('tap', function() {
 	mui.toast(weightExp,3500);
 });
 document.getElementById("weightsvg").addEventListener('tap', function() {
 	mui.toast(weightExp,3500);
 });
-document.getElementById("orangesvg3").addEventListener('tap', function() {
+document.getElementById("svg3").addEventListener('tap', function() {
 	mui.toast(weightExp,3500);
 });
 
@@ -141,7 +157,7 @@ document.getElementById("age").addEventListener('tap', function() {
 document.getElementById("agesvg").addEventListener('tap', function() {
 	mui.toast(ageMea,3500);
 });
-document.getElementById("orangesvg4").addEventListener('tap', function() {
+document.getElementById("svg4").addEventListener('tap', function() {
 	mui.toast(ageMea,3500);
 });
 
@@ -152,7 +168,7 @@ document.getElementById("players").addEventListener('tap', function() {
 document.getElementById("playerssvg").addEventListener('tap', function() {
 	mui.toast(playersMea,3500);
 });
-document.getElementById("orangesvg5").addEventListener('tap', function() {
+document.getElementById("svg5").addEventListener('tap', function() {
 	mui.toast(playersMea,3500);
 });
 
@@ -163,6 +179,6 @@ document.getElementById("playtime").addEventListener('tap', function() {
 document.getElementById("clocksvg").addEventListener('tap', function() {
 	mui.toast(playtimeMea,3500);
 });
-document.getElementById("orangesvg6").addEventListener('tap', function() {
+document.getElementById("svg6").addEventListener('tap', function() {
 	mui.toast(playtimeMea,3500);
 });

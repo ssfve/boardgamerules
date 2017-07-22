@@ -54,7 +54,7 @@ $(document).ready(function() {
 		$('#clocksvg').css({'height': svg_height});
 	},150);
 	
-	$('#langLvl'+language_dependence).addClass('color-orange');
+	$('#langLvl'+(language_dependence-1)).addClass('color-orange');
 
 });
 

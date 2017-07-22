@@ -19,7 +19,6 @@ mui.init({
 	swipeBack: true //启用右滑关闭功能
 });
 
-mui.previewImage();
 
 
 var slider = mui("#slider");
@@ -121,29 +120,27 @@ function btn6_click() {
 	})
 };
 
-toast_alter()
-
 document.getElementById("valueRates").addEventListener('tap', function() {
 	mui.toast(numRatesMea,3500);
 });
+
 document.getElementById("numRates").addEventListener('tap', function() {
 	mui.toast(numRatesMea,3500);
 });
 
-
-document.getElementById("yearPub").addEventListener('tap', function() {
-	mui.toast(yearPubMea,3500);
+//icon2
+document.getElementById("yearpublished").addEventListener('tap', function() {
+	mui.toast(yearMea,3500);
 });
 document.getElementById("yearsvg").addEventListener('tap', function() {
-	mui.toast(yearPubMea,3500);
+	mui.toast(yearMea,3500);
 });
 document.getElementById("svg2").addEventListener('tap', function() {
-	mui.toast(yearPubMea,3500);
+	mui.toast(yearMea,3500);
 });
 
 //icon3
-
-document.getElementById("weight").addEventListener('tap', function() {
+document.getElementById("averageweight").addEventListener('tap', function() {
 	mui.toast(weightExp,3500);
 });
 document.getElementById("weightsvg").addEventListener('tap', function() {
@@ -154,7 +151,6 @@ document.getElementById("svg3").addEventListener('tap', function() {
 });
 
 //icon4
-
 document.getElementById("age").addEventListener('tap', function() {
 	mui.toast(ageMea,3500);
 });
@@ -166,7 +162,6 @@ document.getElementById("svg4").addEventListener('tap', function() {
 });
 
 //icon5
-
 document.getElementById("players").addEventListener('tap', function() {
 	mui.toast(playersMea,3500);
 });
@@ -178,7 +173,6 @@ document.getElementById("svg5").addEventListener('tap', function() {
 });
 
 //icon6
-
 document.getElementById("playtime").addEventListener('tap', function() {
 	mui.toast(playtimeMea,3500);
 });

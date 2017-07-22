@@ -314,7 +314,7 @@ var alternations = function(){
 		suggested_numplayers = suggested_numplayers.replace('-', '~');
 		playersBest = '[' + suggested_numplayers + ']';
 	}
-	if (maxplayers === 'None'){
+	if (maxplayers === 'None'||maxplayers === minplayers){
 		players = minplayers;
 	}else{
 		players = minplayers + '~' + maxplayers;
@@ -332,7 +332,7 @@ var alternations = function(){
 		usersrated = (usersrated/1000).toFixed(1)+'k';
 	}
 	// minplaytime and maxplaytime
-	if(maxplaytime === '' || maxplaytime === 'None'|| maxplaytime === '0') {
+	if(maxplaytime === '' || maxplaytime === 'None'|| maxplaytime === '0'||maxplaytime === minplaytime) {
 		playtime = minplaytime + '’'
 	} else {
 		playtime = minplaytime + '’~' + maxplaytime + '’'
