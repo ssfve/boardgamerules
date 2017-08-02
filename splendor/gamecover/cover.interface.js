@@ -1,9 +1,9 @@
-
-var button1 = '主题概念';
+//var button1 = '行者介绍';
 var button2 = '';
-var button3 = '我是讲解员';
-var button4 = '我是玩家';
-var button5 = '规则详解';
+var button3 = '游戏概念';
+var button4 = '其它规则';
+var button5 = '中文规则';
+var button6 = '关注我们';
 var players = '';
 var list_line = '';
 var designers_temp = '';
@@ -13,176 +13,49 @@ var pageTitle = '';
 alternations();
 $("title").html(pageTitle);
 $(document).ready(function() {
-	//$('#numRatesMea').html(numRatesMea);
-	$('#numRates').html(rateNum);
-	$('#valueRates').html(rateScore);
-	//$('#valueRatesMea').html(valueRatesMea);
-	$('#yearPub').html(yearPub);
-	$('#yearPubMea').html(yearPubMea);
-	$('#weight').html(weight);
-	$('#weightLimit').html(weightLimit);
-	$('#weightExp').html(weightExp);
-	$('#age').html(minAge);
-	$('#ageMea').html(ageMea);
-	$('#ageMeaPlus').html(ageMeaPlus);
-	$('#players').html(players);
-	$('#playersMea').html(playersMea);
-	$('#playersBest').html(playersBest);
-	$('#playtime').html(playtime);
-	$('#playtimeMea').html(playtimeMea);
-	$('#designerTitle').html(designerTitle);
-	$('#designerName').html(designers);
-	$('#langTitleHigh').html(langTitleHigh);
-	$('#langTitleLow').html(langTitleLow);
-	$('#langLvl0').html(langLvl0);
-	$('#langLvl1').html(langLvl1);
-	$('#langLvl2').html(langLvl2);
-	$('#langLvl3').html(langLvl3);
-	$('#langLvl4').html(langLvl4);
-	$('#categoryTitle').html(categoryTitle);
-	$('#categorys').html(categorys);
-	$('#button1').html(button1);
-	$('#button2').html(button2);
-	$('#button3').html(button3);
-	$('#button4').html(button4);
-	$('#button5').html(button5);
-	$('#caption-pic').css({'background-image': imgCaption})
-	$('#gameName').html(gameName);
-	$('#nameCN').html(nameCN);
+	setTimeout(function(){
+		valueRates_w = $('#valueRates').width();
+		valueRates_h = $('#valueRates').height();
+		//vertical align middle
+		$('#valueRates').css({'line-height': valueRates_h + pixels});
+		svg1_w = $('#svg1').width();
+		svg1_h = $('#svg1').height();
+		//position inner image
+		yearsvg_w = $('#yearsvg').width() * cover_img_scale_factor;
+		yearsvg_h = $('#yearsvg').height() * cover_img_scale_factor;
+		
+		left_position =(svg1_w - yearsvg_w + 16) / 2 + pixels;
+		top_position =(svg1_h - yearsvg_h) / 2 + pixels;
+		svg_width = yearsvg_w;
+		svg_height = yearsvg_h;
+		$('#yearsvg').css({'left': left_position});
+		$('#yearsvg').css({'top': top_position});
+		$('#yearsvg').css({'width': svg_width});
+		$('#yearsvg').css({'height': svg_height});
+		
+		$('#weightsvg').css({'left': left_position});
+		$('#weightsvg').css({'top': top_position});
+		$('#weightsvg').css({'width': svg_width});
+		$('#weightsvg').css({'height': svg_height});
+		
+		$('#agesvg').css({'left': left_position});
+		$('#agesvg').css({'top': top_position});
+		$('#agesvg').css({'width': svg_width});
+		$('#agesvg').css({'height': svg_height});
+		
+		$('#playerssvg').css({'left': left_position});
+		$('#playerssvg').css({'top': top_position});
+		$('#playerssvg').css({'width': svg_width});
+		$('#playerssvg').css({'height': svg_height});
 	
-	//$('#sideContent').html(sideContent);
-	$('#subText').html(subText);
-	$('#subName').html(subName);
-	$('#sideHeader').html(sideHeader);
-});
-
-$(document).ready(function() {
-	valueRates_w = $('#valueRates').width();
-	valueRates_h = $('#valueRates').height();
-	//vertical align middle
-	$('#valueRates').css({
-		'line-height': valueRates_h + pixels
-	});
-
-	valueRatesMea_w = $('#valueRatesMea').width();
-	valueRatesMea_h = $('#valueRatesMea').height();
-	//bottom right
-	$('#valueRatesMea').css({
-		'top': (valueRates_h - valueRatesMea_h) + pixels
-	});
-	$('#valueRatesMea').css({
-		'left': (valueRates_w - valueRatesMea_w) + pixels
-	});
-
-	svg1_w = $('#svg1').width();
-	svg1_h = $('#svg1').height();
-	//position inner image
-	yearsvg_w = $('#yearsvg').width() * cover_img_scale_factor;
-	yearsvg_h = $('#yearsvg').height() * cover_img_scale_factor;
-	$('#yearsvg').css({
-		'left': (svg1_w - yearsvg_w + 16) / 2 + pixels
-	});
-	$('#yearsvg').css({
-		'top': (svg1_h - yearsvg_h) / 2 + pixels
-	});
-	$('#yearsvg').css({
-		'width': yearsvg_w + pixels
-	});
-	$('#yearsvg').css({
-		'height': yearsvg_h + pixels
-	});
-
-	$('#hexagon').css({
-		'height': svg1_h / 3 + pixels
-	});
-	$('#hexagon').css({
-		'top': svg1_h / 3 + pixels
-	});
-	$('#hexagon:before').css({
-		'border-left': svg1_w/2 + 'px solid transparent'
-	});
-	$('#hexagon:before').css({
-		'border-right': svg1_w/2 + 'px solid transparent'
-	});
-	$('#hexagon').css({
-		'top': svg1_h / 3 + pixels
-	});
+		$('#clocksvg').css({'left': left_position});
+		$('#clocksvg').css({'top': top_position});
+		$('#clocksvg').css({'width': svg_width});
+		$('#clocksvg').css({'height': svg_height});
+	},150);
 	
-	weightsvg_w = $('#weightsvg').width() * cover_img_scale_factor;
-	weightsvg_h = $('#weightsvg').height() * cover_img_scale_factor;
-	$('#weightsvg').css({
-		'left': (svg1_w - weightsvg_w + 16) / 2 + pixels
-	});
-	$('#weightsvg').css({
-		'top': (svg1_h - weightsvg_h) / 2 + pixels
-	});
-	$('#weightsvg').css({
-		'width': weightsvg_w + pixels
-	});
-	$('#weightsvg').css({
-		'height': weightsvg_h + pixels
-	});
+	$('#langLvl'+(language_dependence-1)).addClass('color-orange');
 
-	agesvg_w = $('#agesvg').width() * cover_img_scale_factor;
-	agesvg_h = $('#agesvg').height() * cover_img_scale_factor;
-	$('#agesvg').css({
-		'left': (svg1_w - agesvg_w + 16) / 2 + pixels
-	});
-	$('#agesvg').css({
-		'top': (svg1_h - agesvg_h) / 2 + pixels
-	});
-	$('#agesvg').css({
-		'width': agesvg_w + pixels
-	});
-	$('#agesvg').css({
-		'height': agesvg_h + pixels
-	});
-
-	playerssvg_w = $('#playerssvg').width() * cover_img_scale_factor;
-	playerssvg_h = $('#playerssvg').height() * cover_img_scale_factor;
-	$('#playerssvg').css({
-		'left': (svg1_w - playerssvg_w + 16) / 2 + pixels
-	});
-	$('#playerssvg').css({
-		'top': (svg1_h - playerssvg_h) / 2 + pixels
-	});
-	$('#playerssvg').css({
-		'width': playerssvg_w + pixels
-	});
-	$('#playerssvg').css({
-		'height': playerssvg_h + pixels
-	});
-
-	clocksvg_w = $('#clocksvg').width() * cover_img_scale_factor;
-	clocksvg_h = $('#clocksvg').height() * cover_img_scale_factor;
-	$('#clocksvg').css({
-		'left': (svg1_w - clocksvg_w + 16) / 2 + pixels
-	});
-	$('#clocksvg').css({
-		'top': (svg1_h - clocksvg_h) / 2 + pixels
-	});
-	$('#clocksvg').css({
-		'width': clocksvg_w + pixels
-	});
-	$('#clocksvg').css({
-		'height': clocksvg_h + pixels
-	});
-
-	if(langLvl0 === langDepLvl) {
-		$('#langLvl0').addClass('color-orange');
-	}
-	if(langLvl1 === langDepLvl) {
-		$('#langLvl1').addClass('color-orange');
-	}
-	if(langLvl2 === langDepLvl) {
-		$('#langLvl2').addClass('color-orange');
-	}
-	if(langLvl3 === langDepLvl) {
-		$('#langLvl3').addClass('color-orange');
-	}
-	if(langLvl4 === langDepLvl) {
-		$('#langLvl4').addClass('color-orange');
-	}
 });
 
 //侧滑容器父节点
@@ -251,8 +124,6 @@ mui('#offCanvasContentScroll').scroll();
 		});
 	});
 }*/
-
-
 
 
 var sideContent = generateside(hot_arrayEN,hot_arrayCN);

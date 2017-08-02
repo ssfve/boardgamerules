@@ -9,7 +9,7 @@ var stack_seg_class = 'mui-table-view-cell mui-collapse';
 
 var orange_text_seg = '<span class="h6-text-orange">%data%</span>';
 var grey_text_seg = '<span class="h6-text-grey">%data%</span>';
-var img_text_seg = '<img src="../../img/%data%" alt="Please Refresh this Page!" width="100%" data-preview-src="" data-preview-group="1"/>';
+var img_text_seg = '<center><img src="../../img/%data%" alt="Please Refresh this Page!" width="100%" data-preview-src="" data-preview-group="1"/></center>';
 
 var stack_seg_header = '<a class="mui-navigate-right" href="#">%data%</a>';
 var stack_seg_content = '<div class="mui-collapse-content">%data%</div>';
@@ -83,6 +83,9 @@ var generate = function(array){
 				text_line += orange_text_seg.replace('%data%',text)
 				list_line += list_seg.replace('%data%',text_line)
 				text_line = ''
+			}else if(val.substr(1,1)==='%'){
+				var text = val.substr(2,val.length);
+				text_line += orange_text_seg.replace('%data%',text)
 			}else{
 				var text = val.substr(1,val.length);
 				text_line += orange_text_seg.replace('%data%',text)
@@ -130,7 +133,7 @@ var generate = function(array){
 			text_line += mic_seg;
 		}
 		if(val.substr(0,1)==='S'){
-			if(val.substr(1,1)==='E'){
+			if(val.length === 2 && val.substr(0,2)==='SE'){
 				list_seg = list_seg_disabled
 				//alert(list_line);
 				re = new RegExp(list_seg_pre,"g");
@@ -264,18 +267,27 @@ var change_theme = function(color,number){
 	//$('.mui-table-view-cell.mui-active').css({'background-color': color});
 	$('.mui-table-cell.mui-active').css({'background-color': color});
 	
+	if (number === 0){
+		$('#gameFlow').css({'color': default_color});
+		$('#gameOther').css({'color': default_color});
+		$('#gameEnd').css({'color': default_color});
+	}
 	if (number === 1){
 		$('#gameSetup').css({'color': default_color});
+		$('#gameOther').css({'color': default_color});
 		$('#gameEnd').css({'color': default_color});
 	}
 	if (number === 2){
 		$('#gameSetup').css({'color': default_color});
 		$('#gameFlow').css({'color': default_color});
+		$('#gameOther').css({'color': default_color});
 	}
-	if (number === 0){
+	if (number === 3){
+		$('#gameSetup').css({'color': default_color});
 		$('#gameFlow').css({'color': default_color});
 		$('#gameEnd').css({'color': default_color});
 	}
+	
 	//$('#gameSetup').css({'color': default_color});
 	
 	//alert($('#gameFlow').attr('class'))
@@ -305,7 +317,14 @@ var collapse_event_gen = function(){
 
 
 var alternations = function(){
-	designers_temp = designers + ',' + artists
+	if (designers === '(Uncredited)'){
+		designers = '匿名'
+	}
+	if (artists === ''){
+		designers_temp = designers
+	}else{ 
+		designers_temp = designers + ',' + artists
+	}
 	// best players
 	//alert(suggested_numplayers)
 	if (suggested_numplayers === 'None'){
@@ -341,7 +360,7 @@ var alternations = function(){
 	
 	//weight = averageweight+'/5';
 	nameEN_mod = change_nameEN(nameEN);
-	pageTitle = nameCN + nameEN_mod
+	pageTitle = nameCN + ' ' + nameEN_mod
 	
 	button2 = '>>' + pageTitle + '<<';
 };
