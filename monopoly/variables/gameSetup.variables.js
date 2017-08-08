@@ -1,5 +1,4 @@
-list_line = '';
-array=[];
+part=[];
 array[0]='﻿H';
 array[1]='OE游戏配件';
 array[2]='GE正方形游戏板一块。';
@@ -26,8 +25,8 @@ array[22]='GE张。';
 array[23]='OE游戏开始(标准版)';
 array[24]='G每位玩家拿取';
 array[25]='O1500';
-array[26]='GE元作为初始资本。 ';
-array[27]='';
+array[26]='GE元作为初始资本。';
 part[0]=generate(array);
 list_line = '';
 array=[];
+array[0]='';

@@ -1,4 +1,4 @@
-var header_title = button1;
+var header_title = '关注我们';
 
 //list_line = generate(array);
 //var html1 = table_seg.replace('%data%',list_line);
@@ -15,8 +15,6 @@ part.forEach(function(val,index){
 });
 
 final_html = '';
-
-
 var final_html = table_seg.replace('%data%',list_line);
 
 //alert(nameEN)
@@ -26,7 +24,10 @@ gotoPage(nameEN)
 $(document).ready(function() {
 	$('#header_title').html(header_title);
 	$('#introtext').html(final_html);
-	collapse_event_gen();
 	change_theme(theme_color);
+	
+	
+	//
+	
 });
 

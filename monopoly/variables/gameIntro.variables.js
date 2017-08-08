@@ -1,5 +1,4 @@
-list_line = '';
-array=[];
+part=[];
 array[0]='﻿H';
 array[1]='O大富翁';
 array[2]='GE，又名地产大亨，是一款桌面游戏。';

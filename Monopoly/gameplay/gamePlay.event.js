@@ -1,32 +1,25 @@
-var header_title = button1;
-
-//list_line = generate(array);
-//var html1 = table_seg.replace('%data%',list_line);
+var header_title = '玩家帮助';
 
 nameEN_temp = change_nameEN(nameEN);
 var pageTitle = nameCN + nameEN_temp;
 $("title").html(pageTitle);
 
 
-mui.previewImage();
-
+final_html = ''
 part.forEach(function(val,index){
-	list_line += part[index]
+	final_html += part[index]
 });
-
-final_html = '';
-
-
-var final_html = table_seg.replace('%data%',list_line);
+//list_line = generate(array);
+var html1 = table_seg.replace('%data%',final_html);
 
 //alert(nameEN)
 $('#back_arrow').attr('id',nameEN);
 gotoPage(nameEN)
+collapse_event_gen()
 
 $(document).ready(function() {
 	$('#header_title').html(header_title);
-	$('#introtext').html(final_html);
-	collapse_event_gen();
+	$('#introtext').html(html1);
 	change_theme(theme_color);
 });
 

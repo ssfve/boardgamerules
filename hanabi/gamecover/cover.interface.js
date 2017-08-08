@@ -1,11 +1,9 @@
-
-
-var button1 = '主题概念';
+//var button1 = '行者介绍';
 var button2 = '';
-var button3 = '我是讲解员';
-var button4 = '我是玩家';
-var button5 = '规则详解';
-var list_line = '';
+var button3 = '游戏概念';
+var button4 = '其它规则';
+var button5 = '中文规则';
+var button6 = '关注我们';
 var players = '';
 var list_line = '';
 var designers_temp = '';
@@ -15,76 +13,21 @@ var pageTitle = '';
 alternations();
 $("title").html(pageTitle);
 $(document).ready(function() {
-	//$('#numRatesMea').html(numRatesMea);
-	$('#numRates').html(rateNum);
-	$('#valueRates').html(rateScore);
-	//$('#valueRatesMea').html(valueRatesMea);
-	$('#yearPub').html(yearPub);
-	$('#yearPubMea').html(yearPubMea);
-	$('#weight').html(weight);
-	$('#weightLimit').html(weightLimit);
-	$('#weightExp').html(weightExp);
-	$('#age').html(minAge);
-	$('#ageMea').html(ageMea);
-	$('#ageMeaPlus').html(ageMeaPlus);
-	$('#players').html(players);
-	$('#playersMea').html(playersMea);
-	$('#playersBest').html(playersBest);
-	$('#playtime').html(playtime);
-	$('#playtimeMea').html(playtimeMea);
-	$('#designerTitle').html(designerTitle);
-	$('#designerName').html(designers);
-	$('#langTitleHigh').html(langTitleHigh);
-	$('#langTitleLow').html(langTitleLow);
-	$('#langLvl0').html(langLvl0);
-	$('#langLvl1').html(langLvl1);
-	$('#langLvl2').html(langLvl2);
-	$('#langLvl3').html(langLvl3);
-	$('#langLvl4').html(langLvl4);
-	$('#categoryTitle').html(categoryTitle);
-	$('#categorys').html(categorys);
-	$('#button1').html(button1);
-	$('#button2').html(button2);
-	$('#button3').html(button3);
-	$('#button4').html(button4);
-	$('#button5').html(button5);
-	$('#caption-pic').css({'background-image': imgCaption})
-	$('#gameName').html(gameName);
-	$('#nameCN').html(nameCN);
-	
-	$('#subText').html(subText);
-	$('#subName').html(subName);
-	$('#sideHeader').html(sideHeader);
-});
-
-$(document).ready(function() {
-	valueRates_w = $('#valueRates').width();
-	valueRates_h = $('#valueRates').height();
-	//vertical align middle
-	$('#valueRates').css({
-		'line-height': valueRates_h + pixels
-	});
-
-	valueRatesMea_w = $('#valueRatesMea').width();
-	valueRatesMea_h = $('#valueRatesMea').height();
-	//bottom right
-	$('#valueRatesMea').css({
-		'top': (valueRates_h - valueRatesMea_h) + pixels
-	});
-	$('#valueRatesMea').css({
-		'left': (valueRates_w - valueRatesMea_w) + pixels
-	});
-
-	svg1_w = $('#svg1').width();
-	svg1_h = $('#svg1').height();
-	//position inner image
-	yearsvg_w = $('#yearsvg').width() * cover_img_scale_factor;
-	yearsvg_h = $('#yearsvg').height() * cover_img_scale_factor;
-	left_position =(svg1_w - yearsvg_w + 16) / 2 + pixels;
-	top_position =(svg1_h - yearsvg_h) / 2 + pixels;
-	svg_width = yearsvg_w;
-	svg_height = yearsvg_h;
-	setTimeout(function() {
+	setTimeout(function(){
+		valueRates_w = $('#valueRates').width();
+		valueRates_h = $('#valueRates').height();
+		//vertical align middle
+		$('#valueRates').css({'line-height': valueRates_h + pixels});
+		svg1_w = $('#svg1').width();
+		svg1_h = $('#svg1').height();
+		//position inner image
+		yearsvg_w = $('#yearsvg').width() * cover_img_scale_factor;
+		yearsvg_h = $('#yearsvg').height() * cover_img_scale_factor;
+		
+		left_position =(svg1_w - yearsvg_w + 16) / 2 + pixels;
+		top_position =(svg1_h - yearsvg_h) / 2 + pixels;
+		svg_width = yearsvg_w;
+		svg_height = yearsvg_h;
 		$('#yearsvg').css({'left': left_position});
 		$('#yearsvg').css({'top': top_position});
 		$('#yearsvg').css({'width': svg_width});
@@ -109,9 +52,10 @@ $(document).ready(function() {
 		$('#clocksvg').css({'top': top_position});
 		$('#clocksvg').css({'width': svg_width});
 		$('#clocksvg').css({'height': svg_height});
-	}, 100);
+	},150);
 	
-	$('#langLvl'+langDepLvl).addClass('color-orange');
+	$('#langLvl'+(language_dependence-1)).addClass('color-orange');
+
 });
 
 //侧滑容器父节点
@@ -180,8 +124,6 @@ mui('#offCanvasContentScroll').scroll();
 		});
 	});
 }*/
-
-
 
 
 var sideContent = generateside(hot_arrayEN,hot_arrayCN);
