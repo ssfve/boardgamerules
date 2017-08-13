@@ -1,0 +1,16 @@
+part=[];
+array[0]='﻿H';
+array[1]='IStop-Thief!/gamesetup.jpg';
+part[0]=generate(array);
+list_line = '';
+array=[];
+array[0]='S游戏目标：';
+array[1]='IStop-Thief!/objective.jpg';
+array[2]='SE';
+part[1]=generate(array);
+list_line = '';
+array=[];
+array[0]='IStop-Thief!/setuppic.jpg';
+part[2]=generate(array);
+list_line = '';
+array=[];

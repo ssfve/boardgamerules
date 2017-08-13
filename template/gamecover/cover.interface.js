@@ -1,9 +1,3 @@
-//var button1 = '行者介绍';
-var button2 = '';
-var button3 = '游戏概念';
-var button4 = '其它规则';
-var button5 = '中文规则';
-var button6 = '关注我们';
 var players = '';
 var list_line = '';
 var designers_temp = '';
@@ -54,7 +48,7 @@ $(document).ready(function() {
 		$('#clocksvg').css({'height': svg_height});
 	},150);
 	
-	$('#langLvl'+(language_dependence-1)).addClass('color-orange');
+	$('#langLvl'+language_dependence).addClass('color-orange');
 
 });
 

@@ -1,4 +1,4 @@
-var header_title = '游戏概念';
+var header_title = button3;
 
 nameEN_temp = change_nameEN(nameEN);
 var pageTitle = nameCN + nameEN_temp;

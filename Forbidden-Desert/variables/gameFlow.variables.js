@@ -1,0 +1,14 @@
+part=[];
+array[0]='H';
+array[1]='GE从起始玩家开始顺时针进行游戏。';
+array[2]='IForbidden-Desert/gameflow.jpg';
+array[3]='GE当前玩家行动完后，由下家开始行动。';
+part[0]=generate(array);
+list_line = '';
+array=[];
+array[0]='S卡牌介绍：';
+array[1]='IForbidden-Desert/cards.jpg';
+array[2]='SE';
+part[1]=generate(array);
+list_line = '';
+array=[];
