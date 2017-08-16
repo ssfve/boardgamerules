@@ -1,26 +1,16 @@
-var button1 = '主题概念';
-var button2 = '';
-var button3 = '我是讲解员';
-var button4 = '我是玩家';
-var button5 = '规则详解';
-var button6 = '关注我们';
-var players = '';
-var list_line = '';
-var designers_temp = '';
-var playersBest = '';
-var pageTitle = '';
+//alternations();
+//toast_alter();
 
-alternations();
-toast_alter();
+var sideContent = generateside(hot_arrayEN,hot_arrayCN);
+$('#sideContent').html(sideContent);
 $("title").html(pageTitle);
 $(document).ready(function() {
-	//$('#numRatesMea').html(numRatesMea);
+	
 	$('#numRates').html(usersrated);
 	$('#valueRates').html(average);
-	//$('#valueRatesMea').html(valueRatesMea);
 	$('#yearPub').html(yearpublished);
 	$('#yearPubMea').html(yearMea);
-	$('#weight').html(weight);
+	$('#weight').html(averageweight);
 	$('#weightLimit').html(weightLimit);
 	$('#weightExp').html(weightExp);
 	$('#age').html(age);
@@ -41,16 +31,16 @@ $(document).ready(function() {
 	$('#langLvl3').html(langLvl3);
 	$('#langLvl4').html(langLvl4);
 	$('#categoryTitle').html(categoryTitle);
-	$('#categorys').html(categorys);
+	$('#categorys').html(categorysCN);
 	$('#button1').html(button1);
 	$('#button2').html(button2);
 	$('#button3').html(button3);
 	$('#button4').html(button4);
 	$('#button5').html(button5);
 	$('#button6').html(button6);
-	$('#caption-pic').css({
-		'background-image': imgCaption
-	})
+	//alert(imgCaption)
+	$('#caption-pic').css({'background-image': 'url('+imgCaption+')'})
+	$('#caption-pic').css({'height': slide_height})
 	$('#gameName').html(gameName);
 	$('#nameCN').html(nameCN);
 	
@@ -102,9 +92,17 @@ $(document).ready(function() {
 	},150);
 	
 	
-	$('#langLvl'+averageweight).addClass('color-orange');
+	$('#langLvl'+language_dependence).addClass('color-orange');
 
 });
+
+$(document).ready(function() {
+	generateSidelink(hot_arrayEN);
+	//document.location.reload();
+	//alert(theme_color)
+	change_theme(theme_color);
+});
+
 
 //侧滑容器父节点
 var offCanvasWrapper = mui('#offCanvasWrapper');
@@ -127,57 +125,5 @@ var moveTogether = false;
 var classList = offCanvasWrapper[0].classList;
 //变换侧滑动画移动效果；
 
-mui('.mui-input-group').on('change', 'input', function() {
-	if(this.checked) {
-		offCanvasSide.classList.remove('mui-transitioning');
-		offCanvasSide.setAttribute('style', '');
-		classList.remove('mui-slide-in');
-		classList.remove('mui-scalable');
-		switch(this.value) {
-			case 'main-move':
-				if(moveTogether) {
-					//仅主内容滑动时，侧滑菜单在off-canvas-wrap内，和主界面并列
-					offCanvasWrapper[0].insertBefore(offCanvasSide, offCanvasWrapper[0].firstElementChild);
-				}
-				break;
-			case 'main-move-scalable':
-				if(moveTogether) {
-					//仅主内容滑动时，侧滑菜单在off-canvas-wrap内，和主界面并列
-					offCanvasWrapper[0].insertBefore(offCanvasSide, offCanvasWrapper[0].firstElementChild);
-				}
-				classList.add('mui-scalable');
-				break;
-			case 'menu-move':
-				classList.add('mui-slide-in');
-				break;
-			case 'all-move':
-				moveTogether = true;
-				//整体滑动时，侧滑菜单在inner-wrap内
-				offCanvasInner.insertBefore(offCanvasSide, offCanvasInner.firstElementChild);
-				break;
-		}
-		offCanvasWrapper.offCanvas().refresh();
-	}
-});
 
-//主界面和侧滑菜单界面均支持区域滚动；
-mui('#offCanvasSideScroll').scroll();
-mui('#offCanvasContentScroll').scroll();
-
-//实现ios平台原生侧滑关闭页面；
-/*if(mui.os.plus && mui.os.ios) {
-	mui.plusReady(function() { //5+ iOS暂时无法屏蔽popGesture时传递touch事件，故该demo直接屏蔽popGesture功能
-		plus.webview.currentWebview().setStyle({
-			'popGesture': 'none'
-		});
-	});
-}*/
-
-
-var sideContent = generateside(hot_arrayEN,hot_arrayCN);
-$('#sideContent').html(sideContent);
-$(document).ready(function() {
-	generateSidelink(hot_arrayEN);
-	//document.location.reload();
-	change_theme(theme_color);
-});
+var slider = mui("#slider");

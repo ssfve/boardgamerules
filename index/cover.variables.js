@@ -34,3 +34,24 @@ var theme_color = '';
 var content_color = '';
 var default_color = '';
 var bg_color = '';
+
+// cover
+var button1 = '主题概念';
+var button2 = '';
+var button3 = '我是讲解员';
+var button4 = '我是玩家';
+var button5 = '中文规则';
+var button6 = '关注我们';
+var players = '';
+var list_line = '';
+var designers_temp = '';
+var playersBest = '';
+var pageTitle = '';
+
+//image
+var imgCaption = '';
+
+//page
+var current_page = 'gamecover';
+var gameid = '';
+var slide_height = '50vw'

@@ -1,12 +1,7 @@
 
 
-
-
-
 pageTitle = '说明书列表 Rulebook List'
 $("title").html(pageTitle);
-
-
 
 
 index_bar = index_gen(index_letters);

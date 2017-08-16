@@ -9,15 +9,15 @@ var stack_seg_class = 'mui-table-view-cell mui-collapse';
 
 var orange_text_seg = '<span class="h6-text-orange">%data%</span>';
 var grey_text_seg = '<span class="h6-text-grey">%data%</span>';
-var img_text_seg = '<center><img src="../../img/%data%" alt="Please Refresh this Page!" width="100%" data-preview-src="" data-preview-group="1"/></center>';
+var img_text_seg = '<center><img src="../img/%data%" alt="Please Refresh this Page!" width="100%" data-preview-src="" data-preview-group="1"/></center>';
 
 var stack_seg_header = '<a class="mui-navigate-right" href="#">%data%</a>';
 var stack_seg_content = '<div class="mui-collapse-content">%data%</div>';
 
 var link_seg = '<a id="%link%" class="mui-navigate-right" style="color:#FFFFFF;">%data%</a>';
-var address_seg = '../../%data%/gamecover/gameCover.html';
-var local_address_seg = '../../%data%/gamecover/gameCover.html';
-var local_hotlist_seg = '../../js/page/hotlist.html';
+var address_seg = '../%data%/gamecover/gameCover.html';
+var local_address_seg = '../%data%/gamecover/gameCover.html';
+var local_hotlist_seg = '../js/page/hotlist.html';
 var a_seg = '<a>%data%</a>';
 
 var index_seg = '<div class="mui-indexed-list-bar">%data%</div>';
@@ -50,8 +50,8 @@ var index_line = '';
 var stack_line = '';
 var final_html = '';
 var list_seg = '';
-var default_color = '#999999';
-var bg_color = '#F4F4F4';
+highPR = 'important'
+lowPR = '!important'
 
 var change_nameEN = function(name) {
 	name_copy = name;
@@ -242,18 +242,17 @@ var generateIndexlink = function(array){
 }
 
 
-highPR = 'important'
-lowPR = '!important'
+
 var change_theme = function(color,number){
 	
 	
-	//alert('../../img/interface/'+color+'.svg')
-	$("#svg1").attr('src','../../img/interface/'+color.substr(1,6)+'.svg');
-	$("#svg2").attr('src','../../img/interface/'+color.substr(1,6)+'.svg'); 
-	$("#svg3").attr('src','../../img/interface/'+color.substr(1,6)+'.svg'); 
-	$("#svg4").attr('src','../../img/interface/'+color.substr(1,6)+'.svg'); 
-	$("#svg5").attr('src','../../img/interface/'+color.substr(1,6)+'.svg'); 
-	$("#svg6").attr('src','../../img/interface/'+color.substr(1,6)+'.svg'); 
+	//alert('../img/interface/'+color+'.svg')
+	$("#svg1").attr('src','../img/interface/'+color.substr(1,6)+'.svg');
+	$("#svg2").attr('src','../img/interface/'+color.substr(1,6)+'.svg'); 
+	$("#svg3").attr('src','../img/interface/'+color.substr(1,6)+'.svg'); 
+	$("#svg4").attr('src','../img/interface/'+color.substr(1,6)+'.svg'); 
+	$("#svg5").attr('src','../img/interface/'+color.substr(1,6)+'.svg'); 
+	$("#svg6").attr('src','../img/interface/'+color.substr(1,6)+'.svg'); 
 	
 	$('.h6-text-orange').css({'color': color});
 	$('.color-orange').css({'color': color});
@@ -306,7 +305,7 @@ var collapse_event_gen = function(){
 				setTimeout(function() {
 					$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color});
 					$('.mui-table-view-cell.mui-collapse.mui-active').css({'background-color': theme_color});
-					$('.mui-table-view-cell.mui-collapse.mui-active .mui-collapse-content').css({'background-color': subcontent_color});
+					$('.mui-table-view-cell.mui-collapse.mui-active .mui-collapse-content').css({'background-color': content_color});
 				}, 10);
 				
 			});
@@ -315,15 +314,14 @@ var collapse_event_gen = function(){
 		};
 };
 
-
 var alternations = function(){
-	if (designers === '(Uncredited)'){
-		designers = '匿名'
+	if (designersCN === '(Uncredited)'){
+		designersCN = '匿名'
 	}
-	if (artists === ''){
-		designers_temp = designers
+	if (artistsCN === ''){
+		designers_temp = designersCN
 	}else{ 
-		designers_temp = designers + ',' + artists
+		designers_temp = designersCN + ',' + artistsCN
 	}
 	// best players
 	//alert(suggested_numplayers)
@@ -333,6 +331,7 @@ var alternations = function(){
 		suggested_numplayers = suggested_numplayers.replace('-', '~');
 		playersBest = '[' + suggested_numplayers + ']';
 	}
+	
 	if (maxplayers === 'None'||maxplayers === minplayers){
 		players = minplayers;
 	}else{

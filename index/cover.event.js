@@ -1,3 +1,49 @@
+mui('.mui-input-group').on('change', 'input', function() {
+	if(this.checked) {
+		offCanvasSide.classList.remove('mui-transitioning');
+		offCanvasSide.setAttribute('style', '');
+		classList.remove('mui-slide-in');
+		classList.remove('mui-scalable');
+		switch(this.value) {
+			case 'main-move':
+				if(moveTogether) {
+					//仅主内容滑动时，侧滑菜单在off-canvas-wrap内，和主界面并列
+					offCanvasWrapper[0].insertBefore(offCanvasSide, offCanvasWrapper[0].firstElementChild);
+				}
+				break;
+			case 'main-move-scalable':
+				if(moveTogether) {
+					//仅主内容滑动时，侧滑菜单在off-canvas-wrap内，和主界面并列
+					offCanvasWrapper[0].insertBefore(offCanvasSide, offCanvasWrapper[0].firstElementChild);
+				}
+				classList.add('mui-scalable');
+				break;
+			case 'menu-move':
+				classList.add('mui-slide-in');
+				break;
+			case 'all-move':
+				moveTogether = true;
+				//整体滑动时，侧滑菜单在inner-wrap内
+				offCanvasInner.insertBefore(offCanvasSide, offCanvasInner.firstElementChild);
+				break;
+		}
+		offCanvasWrapper.offCanvas().refresh();
+	}
+});
+
+//主界面和侧滑菜单界面均支持区域滚动；
+mui('#offCanvasSideScroll').scroll();
+mui('#offCanvasContentScroll').scroll();
+
+//实现ios平台原生侧滑关闭页面；
+/*if(mui.os.plus && mui.os.ios) {
+	mui.plusReady(function() { //5+ iOS暂时无法屏蔽popGesture时传递touch事件，故该demo直接屏蔽popGesture功能
+		plus.webview.currentWebview().setStyle({
+			'popGesture': 'none'
+		});
+	});
+}*/
+
 mui.init({
 	preloadPages: [{
 			url: '../gamerule/gameRule.html',
@@ -22,12 +68,12 @@ mui.init({
 mui.previewImage();
 
 
-var slider = mui("#slider");
+
 //var btn1 = document.getElementById("button1").id;
 //监听点击事件
 function btn1_click() {
 	mui.openWindow({
-		url: "../gameintro/gameIntro.html",
+		url: "gameIntro.html",
 		id: "intro",
 		createNew: false,
 		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
@@ -90,8 +136,14 @@ function btn4_click() {
 };
 
 function btn5_click() {
+	//alert('hello');
+	//Page = plus.webview.getWebviewById('gameRule.html');  
+    //mui.fire(Page, 'show', {
+    	//id: gameid
+    //});
+    var url_page = "id="+gameid
 	mui.openWindow({
-		url: "../gamerule/gameRule.html",
+		url: "gameRule.html?"+url_page,
 		id: "rule",
 		createNew: false,
 		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
@@ -107,7 +159,7 @@ function btn5_click() {
 
 function btn6_click() {
 	mui.openWindow({
-		url: "../gamepic/gamePic.html",
+		url: "gamePic.html",
 		id: "pic",
 		createNew: false,
 		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示

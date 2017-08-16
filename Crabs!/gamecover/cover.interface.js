@@ -1,9 +1,3 @@
-var button1 = '主题概念';
-var button2 = '';
-var button3 = '我是讲解员';
-var button4 = '我是玩家';
-var button5 = '规则详解';
-var button6 = '关注我们';
 var players = '';
 var list_line = '';
 var designers_temp = '';
@@ -11,54 +5,7 @@ var playersBest = '';
 var pageTitle = '';
 
 alternations();
-toast_alter();
 $("title").html(pageTitle);
-$(document).ready(function() {
-	//$('#numRatesMea').html(numRatesMea);
-	$('#numRates').html(usersrated);
-	$('#valueRates').html(average);
-	//$('#valueRatesMea').html(valueRatesMea);
-	$('#yearPub').html(yearpublished);
-	$('#yearPubMea').html(yearMea);
-	$('#weight').html(weight);
-	$('#weightLimit').html(weightLimit);
-	$('#weightExp').html(weightExp);
-	$('#age').html(age);
-	$('#ageMea').html(ageMea);
-	$('#ageMeaPlus').html(ageMeaPlus);
-	$('#players').html(players);
-	$('#playersMea').html(playersMea);
-	$('#playersBest').html(playersBest);
-	$('#playtime').html(playtime);
-
-	$('#designerTitle').html(designerTitle);
-	$('#designerName').html(designers_temp);
-	$('#langTitleHigh').html(langTitleHigh);
-	$('#langTitleLow').html(langTitleLow);
-	$('#langLvl0').html(langLvl0);
-	$('#langLvl1').html(langLvl1);
-	$('#langLvl2').html(langLvl2);
-	$('#langLvl3').html(langLvl3);
-	$('#langLvl4').html(langLvl4);
-	$('#categoryTitle').html(categoryTitle);
-	$('#categorys').html(categorys);
-	$('#button1').html(button1);
-	$('#button2').html(button2);
-	$('#button3').html(button3);
-	$('#button4').html(button4);
-	$('#button5').html(button5);
-	$('#button6').html(button6);
-	$('#caption-pic').css({
-		'background-image': imgCaption
-	})
-	$('#gameName').html(gameName);
-	$('#nameCN').html(nameCN);
-	
-	$('#subText').html(subText);
-	$('#subName').html(subName);
-	$('#sideHeader').html(sideHeader);
-});
-
 $(document).ready(function() {
 	setTimeout(function(){
 		valueRates_w = $('#valueRates').width();
@@ -101,8 +48,7 @@ $(document).ready(function() {
 		$('#clocksvg').css({'height': svg_height});
 	},150);
 	
-	
-	$('#langLvl'+averageweight).addClass('color-orange');
+	$('#langLvl'+language_dependence).addClass('color-orange');
 
 });
 

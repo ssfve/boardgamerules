@@ -7,11 +7,24 @@ function setScrollHeader() {
 	$('#gameFlow').html(gameFlow);
 	$('#gameEnd').html(gameEnd);
 	$('#gameOther').html(gameOther);
-	$('#initlist').html(html1);
+	$('#setup_tab').html(html1);
+	$('#flow_tab').html(html2);
+	$('#end_tab').html(html3);
 };
-setScrollHeader();
+setScrollHeader(); 
+mui.previewImage();
+//mui.plusReady(function() {
+	//alert('in')
+    //var self = plus.webview.currentWebview();  
+    //alert(gameid)
+//});  
 
 
+//window.addEventListener('show', function(event) {
+	//alert('in')
+    //gameid = event.detail.id;
+    //alert(gameid)
+//});
 
 (function($) {
 	$('.mui-scroll-wrapper').scroll({

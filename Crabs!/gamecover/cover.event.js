@@ -19,7 +19,6 @@ mui.init({
 	swipeBack: true //启用右滑关闭功能
 });
 
-mui.previewImage();
 
 
 var slider = mui("#slider");
@@ -121,18 +120,16 @@ function btn6_click() {
 	})
 };
 
-//toast_alter();
-//var numRatesMea = '评分: '+average+'/10  数量: '+usersrated+'条'
 document.getElementById("valueRates").addEventListener('tap', function() {
 	mui.toast(numRatesMea,3500);
 });
+
 document.getElementById("numRates").addEventListener('tap', function() {
 	mui.toast(numRatesMea,3500);
 });
 
 //icon2
-//var yearPubMea = '出版时间: '+yearPub+'年'
-document.getElementById("yearPub").addEventListener('tap', function() {
+document.getElementById("yearpublished").addEventListener('tap', function() {
 	mui.toast(yearMea,3500);
 });
 document.getElementById("yearsvg").addEventListener('tap', function() {
@@ -143,8 +140,7 @@ document.getElementById("svg2").addEventListener('tap', function() {
 });
 
 //icon3
-//var weightExp = '复杂度(重度): '+weight+'/5'
-document.getElementById("weight").addEventListener('tap', function() {
+document.getElementById("averageweight").addEventListener('tap', function() {
 	mui.toast(weightExp,3500);
 });
 document.getElementById("weightsvg").addEventListener('tap', function() {
@@ -155,7 +151,6 @@ document.getElementById("svg3").addEventListener('tap', function() {
 });
 
 //icon4
-//var ageMea = '适合年龄: '+age+'岁'+ageMeaPlus
 document.getElementById("age").addEventListener('tap', function() {
 	mui.toast(ageMea,3500);
 });
@@ -167,11 +162,6 @@ document.getElementById("svg4").addEventListener('tap', function() {
 });
 
 //icon5
-//if (playersBest === ''){
-//	var playersMea = '游戏人数: '+players+'人'
-//}else{
-//	var playersMea = '游戏人数[最佳人数]: '+players+playersBest+'人'
-//}
 document.getElementById("players").addEventListener('tap', function() {
 	mui.toast(playersMea,3500);
 });
@@ -183,7 +173,6 @@ document.getElementById("svg5").addEventListener('tap', function() {
 });
 
 //icon6
-//var playtimeMea = '游戏时间: '+playtime.replace('’','')+'分钟'
 document.getElementById("playtime").addEventListener('tap', function() {
 	mui.toast(playtimeMea,3500);
 });

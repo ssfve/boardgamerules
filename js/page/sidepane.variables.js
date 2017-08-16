@@ -1,4 +1,3 @@
-var imgCaption = 'url(../../img/'+nameEN+'/caption.jpg)'
 //var valueRatesMea = '/10'
 var weightLimit = '/5'
 var ageMeaPlus = '+'
@@ -18,6 +17,7 @@ var subText = '关注我们 : ';
 var subName = '桌游怎么玩';
 var sideHeader = '最新说明书';
 
+//alert(suggested_numplayers);
 //icon1
 var numRastesMea = '评分: '+average+'/10  数量: '+usersrated+'条'
 //icon2
@@ -30,4 +30,3 @@ var ageMea = '适合年龄: '+age+'岁'+ageMeaPlus
 var playersMea = '';
 //icon6
 var playtimeMea = '';
-

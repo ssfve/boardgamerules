@@ -34,3 +34,4 @@ $('#item2mobile').css({'min-height': document_height});
 $('#item3mobile').css({'min-height': document_height});
 $('#item4mobile').css({'min-height': document_height});
 
+//alert(getImagePath(gameid,'setup','a'))
