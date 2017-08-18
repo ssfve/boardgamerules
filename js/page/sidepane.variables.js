@@ -16,17 +16,9 @@ var pixels = 'px'
 var subText = '关注我们 : ';
 var subName = '桌游怎么玩';
 var sideHeader = '最新说明书';
-
-//alert(suggested_numplayers);
-//icon1
-var numRastesMea = '评分: '+average+'/10  数量: '+usersrated+'条'
-//icon2
-var yearMea = '出版时间: '+yearpublished+'年'
-//icon3
-var weightExp = '复杂度(重度): '+averageweight+'/5'
-//icon4
-var ageMea = '适合年龄: '+age+'岁'+ageMeaPlus
-//icon5
+var numRastesMea = ''
+var yearMea = ''
+var weightExp = ''
+var ageMea = ''
 var playersMea = '';
-//icon6
 var playtimeMea = '';

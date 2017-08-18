@@ -56,7 +56,7 @@ mui.previewImage();
 		} else if(e.detail.slideNumber === 0) {
 		}
 		setTimeout(function() {
-			change_theme(theme_color,e.detail.slideNumber);
+			change_tab_theme(theme_color,e.detail.slideNumber);
 			collapse_event_gen();
 		}, 100);
 	});
@@ -85,7 +85,7 @@ document.getElementById('gameEnd').addEventListener('tap', function(e) {
 });
 
 if (document.getElementById('gameOther') !== null){
-	document.getElementById('gameOther').addEventListener('tap', function(e) {
+	document.getElementById('cssgameOther').addEventListener('tap', function(e) {
 	$('#gameSetup').css({'color': default_color});
 	$('#gameFlow').css({'color': default_color});
 	$('#gameEnd').css({'color': default_color});	

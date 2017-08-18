@@ -2,7 +2,10 @@ var nameEN = '';
 var nameCN = '';
 var gameid = '';
 var current_page = 'gamepic';
-part=[];
+
+var array=[];
+var part=[];
+
 array[0]='H';
 array[1]='GE长按识别下方二维码，关注我们哦！';
 array[2]='G我们';

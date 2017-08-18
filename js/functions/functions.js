@@ -16,8 +16,9 @@ var stack_seg_content = '<div class="mui-collapse-content">%data%</div>';
 
 var link_seg = '<a id="%link%" class="mui-navigate-right" style="color:#FFFFFF;">%data%</a>';
 var address_seg = '../%data%/gamecover/gameCover.html';
+var new_address_seg = 'gameCover.html?id=%data%';
 var local_address_seg = '../%data%/gamecover/gameCover.html';
-var local_hotlist_seg = '../js/page/hotlist.html';
+var local_hotlist_seg = 'hotlist.html';
 var a_seg = '<a>%data%</a>';
 
 var index_seg = '<div class="mui-indexed-list-bar">%data%</div>';
@@ -42,8 +43,7 @@ seg_list[12] = '<div class="mui-col-sm-12 mui-col-xs-12">'
 
 var mic_seg = '<div class="flex-container"><a id="icon-mic" class="active"><span class="mui-icon mui-icon-mic-filled"></span></a></div>'
 
-var array=[];
-var part=[];
+
 var list_line = '';
 var text_line = '';
 var index_line = '';
@@ -157,7 +157,7 @@ var generate = function(array){
 };
 
 
-var generateside = function(arrayEN,arrayCN){
+var generateside = function(arrayEN,arrayCN,arrayID){
 	list_seg = list_seg_disabled
 	arrayEN.forEach(function(val,index){
 		nameEN_temp = change_nameEN(arrayEN[index]);
@@ -165,7 +165,7 @@ var generateside = function(arrayEN,arrayCN){
 		//link_data = address_seg.replace('%data%',arrayEN[index]);
 		//link_data = local_address_seg.replace('%data%',arrayEN[index]);
 		//alert(link_data);
-		link_seg_temp = link_seg.replace('%link%',arrayEN[index]);
+		link_seg_temp = link_seg.replace('%link%',arrayID[index]);
 		list_seg_data = link_seg_temp.replace('%data%',name_data);
 		list_line += list_seg.replace('%data%',list_seg_data);
 	});
@@ -174,17 +174,25 @@ var generateside = function(arrayEN,arrayCN){
 
 
 
-var gotoPage = function(nameEN){
-	//alert(nameEN);
-	//link_data = address_seg.replace('%data%',nameEN);
-	//alert(link_data)
-	
-	//alert(nameEN);
-	document.getElementById(nameEN).addEventListener('tap', function() {
-		nameEN_temp = document.getElementById(nameEN).id
-		//alert(nameEN_temp);
-		window.location.href = address_seg.replace('%data%',nameEN_temp);
-		if (nameEN_temp === 'rulebook-list'){
+var gotoPage = function(Id){
+	//alert(document.getElementById(Id))
+	document.getElementById(Id).addEventListener('tap', function() {
+		gameid = document.getElementById(Id).id
+		//alert(window.location.href)
+		//alert(window.location.href.replace('gameRule','gameCover'))
+		var index = window.location.href.lastIndexOf("\/");  
+		var address_prefix = window.location.href.substring(0,index+1)
+		//alert(address_prefix)
+		
+		var address_postfix = new_address_seg.replace('%data%',Id)
+		//alert(address_postfix)
+		
+		var new_address = address_prefix + address_postfix
+		//alert(new_address)
+		
+		location.href = new_address;
+		//window.location.reload();
+		if (gameid === 'rulebook-list'){
 			window.location.href = local_hotlist_seg;
 		}
 			
@@ -217,11 +225,11 @@ var index_games_gen = function(array){
 			temp_line = index_class_seg.replace('%0%',val[0]);
 			html_line += temp_line.replace('%1%',val[1]);
 		}
-		if (val.length === 3){
-			temp_line = index_value_seg.replace('%0%',change_nameEN(val[0]));
-			temp_line = temp_line.replace('%1%',val[1]);
-			temp_line = temp_line.replace('%2%',val[2]);
-			temp_line = temp_line.replace('%3%',val[0]);
+		if (val.length === 4){
+			temp_line = index_value_seg.replace('%0%',change_nameEN(val[1]));
+			temp_line = temp_line.replace('%1%',val[2]);
+			temp_line = temp_line.replace('%2%',val[3]);
+			temp_line = temp_line.replace('%3%',val[1]);
 			html_line += temp_line.replace('%4%',val[0]);
 		}
 		
@@ -234,7 +242,8 @@ var index_games_gen = function(array){
 
 var generateIndexlink = function(array){
 	array.forEach(function(val,index){
-		if(val.length === 3){
+		if(val.length === 4){
+			// 0 is gameid
 			gotoPage(val[0]);
 		}
 		
@@ -243,9 +252,10 @@ var generateIndexlink = function(array){
 
 
 
-var change_theme = function(color,number){
-	
-	
+var change_theme = function(color){
+	$('.h6-text-orange').css({'color': color});
+	$('.background-color-orange').css({'background-color': color});
+	$('.bs-wo').css({'background-color': color});
 	//alert('../img/interface/'+color+'.svg')
 	$("#svg1").attr('src','../img/interface/'+color.substr(1,6)+'.svg');
 	$("#svg2").attr('src','../img/interface/'+color.substr(1,6)+'.svg'); 
@@ -253,11 +263,9 @@ var change_theme = function(color,number){
 	$("#svg4").attr('src','../img/interface/'+color.substr(1,6)+'.svg'); 
 	$("#svg5").attr('src','../img/interface/'+color.substr(1,6)+'.svg'); 
 	$("#svg6").attr('src','../img/interface/'+color.substr(1,6)+'.svg'); 
-	
-	$('.h6-text-orange').css({'color': color});
-	$('.color-orange').css({'color': color});
-	$('.background-color-orange').css({'background-color': color});
-	$('.bs-wo').css({'background-color': color});
+};
+
+var change_tab_theme = function(color,number){
 	$('.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar').css({'background-color': color});
 	$('.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active').css({'color': color});
 	//$('.mui-segmented-control.mui-segmented-control-inverted .mui-control-item').css({'color': color + priority});
@@ -287,10 +295,6 @@ var change_theme = function(color,number){
 		$('#gameEnd').css({'color': default_color});
 	}
 	
-	//$('#gameSetup').css({'color': default_color});
-	
-	//alert($('#gameFlow').attr('class'))
-	
 };
 
 
@@ -315,9 +319,14 @@ var collapse_event_gen = function(){
 };
 
 var alternations = function(){
+	
+	average = average.toFixed(1);
+	averageweight = averageweight.toFixed(2);
+	designersCN = designersCN.replace('|','')
 	if (designersCN === '(Uncredited)'){
 		designersCN = '匿名'
 	}
+	artistsCN = artistsCN.replace('|','')
 	if (artistsCN === ''){
 		designers_temp = designersCN
 	}else{ 
@@ -362,6 +371,7 @@ var alternations = function(){
 	pageTitle = nameCN + ' ' + nameEN_mod
 	
 	button2 = '>>' + pageTitle + '<<';
+	
 };
 
 

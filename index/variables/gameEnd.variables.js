@@ -1,38 +1,69 @@
-part=[];
-array[0]='﻿H';
-array[1]='S赌徒：';
-array[2]='GE当玩家人数为奇数时，将会有1名赌徒。在3轮结束后玩家翻开身份前，赌徒先亮明自己身份，并猜测红队还是蓝队获胜，只要猜对，就能与其同时获胜。';
-array[3]='GE注意：赌徒卡为灰色(第三方角色)，第三方角色的胜利方式往往不同，特殊人物有很多是第三方角色。';
-array[4]='SE';
-part[0]=generate(array);
-list_line = '';
-array=[];
-array[0]='OE胜利条件：';
-array[1]='GE当第3轮结束时，两个房间由各自的队长主持，所有玩家翻开身份。翻开后，如果炸弹人和总统在同一个房间，红队获胜；如果不在同一房间，蓝队获胜。';
-array[2]='OE进阶规则：';
-array[3]='G在进阶规则下，玩家将使用特殊角色卡，并进行5轮的讨论。';
-array[4]='G第一、二、三、四、五轮分别讨论5、4、3、2、1分钟。';
-array[5]='GE每轮流放人数见下表：';
-array[6]='O6~10';
-array[7]='G人局 第1/2/3轮流放';
-array[8]='O1/1/1';
-array[9]='GE人 （6~10人只进行3轮）';
-array[10]='O11~13';
-array[11]='G人局 第1/2/3/4/5轮流放';
-array[12]='O2/2/2/1/1';
-array[13]='GE人';
-array[14]='O14~17';
-array[15]='G人局 第1/2/3/4/5轮流放';
-array[16]='O3/2/2/1/1';
-array[17]='GE人 ';
-array[18]='O18~21';
-array[19]='G人局 第1/2/3/4/5轮流放';
-array[20]='O4/3/2/1/1';
-array[21]='GE人';
-array[22]='O22+';
-array[23]='G人局 第1/2/3/4/5轮流放';
-array[24]='O5/4/3/2/1';
-array[25]='GE人';
-part[1]=generate(array);
-list_line = '';
-array=[];
+var html3 = ""
++"<ul class=\"mui-table-view\">"
++"<li class=\"mui-table-view-cell\">"
++"<img id='end_a_0' width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">"
++"</li>"
++"<li class=\"mui-table-view-cell mui-collapse\">"
++"<a id=\"end_a\" class=\"mui-navigate-right\" href=\"#\"></a>"
++"<div class=\"mui-collapse-content\">"
++"<img id='end_a_1' width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">"
++"</div>"
++"</li>"
++"<li class=\"mui-table-view-cell\">"
++"<img id='end_b_0' width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">"
++"</li>"
++"<li class=\"mui-table-view-cell mui-collapse\">"
++"<a id=\"end_b\" class=\"mui-navigate-right\" href=\"#\"></a>"
++"<div class=\"mui-collapse-content\">"
++"<img id='end_b_1' width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">"
++"</div>"
++"</li>"
++"<li class=\"mui-table-view-cell\">"
++"<img id='end_c_0' width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">"
++"</li>"
++"<li class=\"mui-table-view-cell mui-collapse\">"
++"<a id=\"end_c\" class=\"mui-navigate-right\" href=\"#\"></a>"
++"<div class=\"mui-collapse-content\">"
++"<img id='end_c_1' width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">"
++"</div>"
++"</li>"
++"<li class=\"mui-table-view-cell\">"
++"<img id='end_d_0' width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">"
++"</li>"
++"<li class=\"mui-table-view-cell mui-collapse\">"
++"<a id=\"end_d\" class=\"mui-navigate-right\" href=\"#\"></a>"
++"<div class=\"mui-collapse-content\">"
++"<img id='end_d_1' width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">"
++"</div>"
++"</li>"
++"<li class=\"mui-table-view-cell\">"
++"<img id='end_e_0' width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">"
++"</li>"
++"<li class=\"mui-table-view-cell mui-collapse\">"
++"<a id=\"end_e\" class=\"mui-navigate-right\" href=\"#\"></a>"
++"<div class=\"mui-collapse-content\">"
++"<img id='end_e_1' width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">"
++"</div>"
++"</li>"
++"<li class=\"mui-table-view-cell mui-collapse\">"
++"<a id=\"end_f\" class=\"mui-navigate-right\" href=\"#\"></a>"
++"<div class=\"mui-collapse-content\">"
++"<img id='end_f_1' width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">"
++"</div>"
++"</li>"
++"<li class=\"mui-table-view-cell mui-collapse\">"
++"<a id=\"end_g\" class=\"mui-navigate-right\" href=\"#\"></a>"
++"<div class=\"mui-collapse-content\">"
++"<img id='end_g_1' width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">"
++"</div>"
++"</li>"
++"<li class=\"mui-table-view-cell\">"
++"<img id='end_h_0' width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">"
++"</li>"
++"<li class=\"mui-table-view-cell mui-collapse\">"
++"<a id=\"end_h\" class=\"mui-navigate-right\" href=\"#\"></a>"
++"<div class=\"mui-collapse-content\">"
++"<img id='end_h_1' width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">"
++"</div>"
++"</li>"
++"</ul>";

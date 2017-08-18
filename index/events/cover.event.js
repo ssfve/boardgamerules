@@ -72,8 +72,10 @@ mui.previewImage();
 //var btn1 = document.getElementById("button1").id;
 //监听点击事件
 function btn1_click() {
+	
+	var url_page = "id="+gameid
 	mui.openWindow({
-		url: "gameIntro.html",
+		url: "gameIntro.html?"+url_page,
 		id: "intro",
 		createNew: false,
 		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
@@ -158,8 +160,9 @@ function btn5_click() {
 };
 
 function btn6_click() {
+	var url_page = "id="+gameid
 	mui.openWindow({
-		url: "gamePic.html",
+		url: "gamePic.html?"+url_page,
 		id: "pic",
 		createNew: false,
 		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
