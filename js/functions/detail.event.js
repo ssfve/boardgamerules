@@ -7,9 +7,6 @@ function setScrollHeader() {
 	$('#gameFlow').html(gameFlow);
 	$('#gameEnd').html(gameEnd);
 	$('#gameOther').html(gameOther);
-	$('#setup_tab').html(html1);
-	$('#flow_tab').html(html2);
-	$('#end_tab').html(html3);
 };
 setScrollHeader(); 
 mui.previewImage();

@@ -174,7 +174,12 @@ var queryStyleInfo = function(json) {
 
 var queryImageInfo = function(json,obj) {
     try { 
-		$(obj).attr('src',json.image_path); 
+    	if(json.image_path !== null){
+    		img_with_src = img_template.replace('%value%',json.image_path)
+    		add_img(obj);
+		}else{
+			//$(obj).attr('height',0); 
+		}
     } catch (e) { 
     	alert(e)
     } finally { 
@@ -184,7 +189,27 @@ var queryImageInfo = function(json,obj) {
 
 var queryTextInfo = function(json,obj) {
     try { 
+    	if(json.text_content !== null){
+    		a_with_value = a_template.replace('%value%',json.text_content)
+    		//alert(a_template)
+    		add_a(obj);
+    	}else{
+    		//alert('in')
+    		//end_a(obj);
+    	}
+    } catch (e) { 
+    	//alert('error')
+    	alert(e)
+    } finally {
+    	
+    } 
+};
+
+var queryControlInfo = function(json,obj) {
+    try { 
     	//alert(json.text_content)
+    	flag = json.flag
+    	pageType = json.pageType
     	if(json.text_content !== null){
     		document.getElementById(obj.replace('#','')).innerHTML = json.text_content
     	}
@@ -194,6 +219,7 @@ var queryTextInfo = function(json,obj) {
     	
     } 
 };
+
 
 function getQueryString(name) { 
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
@@ -208,6 +234,8 @@ id = getQueryString('id')
 //alert(gameid)
 var gameURL = 'http://180.76.244.130:3000/games/getGameInfo'
 var styleURL = 'http://180.76.244.130:3000/games/getStyleInfo'
+var controlURL = 'http://180.76.244.130:3000/games/getControlInfo'
+//alert(age)
 
 //alert(URL)
 
@@ -232,7 +260,10 @@ if (current_page === 'gamerule'){
 			success:queryGameInfoSimple,
 			dataType:'json'
 			});
-	}
+			
+		
+};
+
 if (current_page === 'gamepic'){
 		$.ajax({
 			url: gameURL,
@@ -241,7 +272,9 @@ if (current_page === 'gamepic'){
 			success:queryGameInfoSimple,
 			dataType:'json'
 		});
-	}
+		
+	
+};
 if (current_page === 'gameintro'){
 		$.ajax({
 			url: gameURL,
@@ -292,8 +325,20 @@ var setImagePath = function(id,type,loc,obj){
 		pageType: type,
 		location: loc},
 		dataType:'json',
-		success:function(data){queryImageInfo(data,obj)}
+		success:function(data){queryImageInfo(data,obj)},
+		async:false
 	});
+	
+	/*
+	$.ajax({
+			url: controlURL,
+			data:{gameid:id,
+		pageType: type,
+		location: loc},
+			success:queryControlInfo,
+			dataType:'json'
+		});
+	*/
 };
 
 var setTextContent = function(id,type,loc,obj){
@@ -306,9 +351,21 @@ var setTextContent = function(id,type,loc,obj){
 		pageType: type,
 		location: loc},
 		dataType:'json',
-		success:function(data){queryTextInfo(data,obj)}
+		success:function(data){queryTextInfo(data,obj)},
+		error:function(data){end_a(obj)},
+		async:false
 	});
 	
+	/*
+	$.ajax({
+			url: controlURL,
+			data:{gameid:id,
+		pageType: type,
+		location: loc},
+			success:queryControlInfo,
+			dataType:'json'
+		});
+	*/
 };
 
-//alert(age)
+
