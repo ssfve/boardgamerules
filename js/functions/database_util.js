@@ -191,11 +191,7 @@ var queryTextInfo = function(json,obj) {
     try { 
     	if(json.text_content !== null){
     		a_with_value = a_template.replace('%value%',json.text_content)
-    		//alert(a_template)
     		add_a(obj);
-    	}else{
-    		//alert('in')
-    		//end_a(obj);
     	}
     } catch (e) { 
     	//alert('error')

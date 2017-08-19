@@ -34,21 +34,23 @@ mui.previewImage();
 	document.getElementById('slider').addEventListener('slide', function(e) {
 		if(e.detail.slideNumber === 1) {
 			if(item2.querySelector('.mui-loading')) {
-				setTimeout(function() {
+				//setTimeout(function() {
+					generate_html2();
 					item2.querySelector('.mui-scroll').innerHTML = html2;
-				}, 100);
+				//}, 100);
 			}
 		} else if(e.detail.slideNumber === 2) {
 			if(item3.querySelector('.mui-loading')) {
-				setTimeout(function() {
+				//setTimeout(function() {
+					generate_html3();
 					item3.querySelector('.mui-scroll').innerHTML = html3;
-				}, 100);
+				//}, 100);
 			}
 		} else if(e.detail.slideNumber === 3) {
 			if(item4.querySelector('.mui-loading')) {
-				setTimeout(function() {
+				//setTimeout(function() {
 					item4.querySelector('.mui-scroll').innerHTML = html4;
-				}, 100);
+				//}, 100);
 			}
 		} else if(e.detail.slideNumber === 0) {
 		}
@@ -91,4 +93,4 @@ if (document.getElementById('gameOther') !== null){
 }
 
 
-collapse_event_gen();
+

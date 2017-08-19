@@ -60,16 +60,6 @@ if (current_page === 'gameintro'){
 	
     $(document).ready(function() {
 		$('#introtext').html(intro_html);
-		
-		
-        
-        
-        
-        
-        
-		
-		
-        
 		collapse_event_gen();
 		gotoPage(gameid)
 		$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
@@ -180,6 +170,30 @@ if (current_page === 'gamerule'){
 	//alert(html2)
 	//////////////////////////////////////////////////////////////
 	
+	//generate_html2();
+	//generate_html3();
+	/////////////////////////////////////////////////////////////
+	
+	$('#setup_tab').html(html1);
+	//alert(html1)
+	//$('#flow_tab').html(html2);
+	//$('#end_tab').html(html3);
+		
+	$(document).ready(function() {
+		//change_theme(theme_color);
+		//alert(theme_color)
+		collapse_event_gen();
+		change_tab_theme(theme_color,0);
+		$('#gameSetup').css({'color': theme_color});
+		$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
+		
+		gotoPage(gameid)
+		
+	});
+}
+
+
+var generate_html2 = function(){
 	add_no_collapse('flow')
 	setImagePath(gameid,'flow','a_0','#flow_a_0')
 	end_img('flow')
@@ -283,9 +297,9 @@ if (current_page === 'gamerule'){
 	end_img('flow')
 	
 	end_data('flow');
-	
-	/////////////////////////////////////////////////////////////
-	
+}
+
+var generate_html3 = function(){
 	add_no_collapse('end')
     setImagePath(gameid,'end','a_0','#end_a_0')
     end_img('end')
@@ -335,18 +349,4 @@ if (current_page === 'gamerule'){
     end_img('end')
     
 	end_data('end');
-	
-	$('#setup_tab').html(html1);
-	//alert(html1)
-	$('#flow_tab').html(html2);
-	$('#end_tab').html(html3);
-		
-	$(document).ready(function() {
-		//change_theme(theme_color);
-		$('#gameSetup').css({'color': theme_color});
-		$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
-		
-		gotoPage(gameid)
-		
-	});
 }
