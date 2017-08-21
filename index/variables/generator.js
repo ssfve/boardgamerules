@@ -15,19 +15,35 @@ var add_collapse = function(pageType){
 	}
 }
 
-var add_no_collapse = function(pageType){
+var add_no_collapse_img = function(pageType){
 	if (pageType === 'setup'){
 		//alert('in')
-		html1 = html1.replace('%data%',no_collapse_template)
+		html1 = html1.replace('%data%',no_collapse_img)
 	}
 	if (pageType === 'flow'){
-		html2 = html2.replace('%data%',no_collapse_template)
+		html2 = html2.replace('%data%',no_collapse_img)
 	}
 	if (pageType === 'end'){
-		html3 = html3.replace('%data%',no_collapse_template)
+		html3 = html3.replace('%data%',no_collapse_img)
 	}
 	if (pageType === 'stuff'){
-		intro_html = intro_html.replace('%data%',no_collapse_template)
+		intro_html = intro_html.replace('%data%',no_collapse_img)
+	}
+}
+
+var add_no_collapse_text = function(pageType){
+	if (pageType === 'setup'){
+		//alert('in')
+		html1 = html1.replace('%data%',no_collapse_text)
+	}
+	if (pageType === 'flow'){
+		html2 = html2.replace('%data%',no_collapse_text)
+	}
+	if (pageType === 'end'){
+		html3 = html3.replace('%data%',no_collapse_text)
+	}
+	if (pageType === 'stuff'){
+		intro_html = intro_html.replace('%data%',no_collapse_text)
 	}
 }
 

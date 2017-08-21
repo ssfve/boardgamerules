@@ -10,48 +10,45 @@ if (current_page === 'gameintro'){
     $('#back_arrow').attr('id',gameid);
     
     
-    add_no_collapse('stuff')
     setImagePath(gameid,'stuff','a_0','#stuff_a_0')
     end_img('stuff')
     
-    add_collapse('stuff');
     setTextContent(gameid,'stuff','a','#stuff_a');
 	setImagePath(gameid,'stuff','a_1','#stuff_a_1')
     end_img('stuff')
     
-    add_collapse('stuff');
+    setImagePath(gameid,'stuff','b_0','#stuff_b_0')
+    end_img('stuff')
+    
     setTextContent(gameid,'stuff','b','#stuff_b');
-		setImagePath(gameid,'stuff','b_1','#stuff_b_1')
+	setImagePath(gameid,'stuff','b_1','#stuff_b_1')
     end_img('stuff')
     
-    add_collapse('stuff');
+    setImagePath(gameid,'stuff','c_0','#stuff_c_0')
+    end_img('stuff')
+    
     setTextContent(gameid,'stuff','c','#stuff_c');
-		setImagePath(gameid,'stuff','c_1','#stuff_c_1')
+	setImagePath(gameid,'stuff','c_1','#stuff_c_1')
     end_img('stuff')
     
-    add_collapse('stuff');
     setTextContent(gameid,'stuff','d','#stuff_d');
-		setImagePath(gameid,'stuff','d_1','#stuff_d_1')
+	setImagePath(gameid,'stuff','d_1','#stuff_d_1')
     end_img('stuff')
     
-    add_collapse('stuff');
     setTextContent(gameid,'stuff','e','#stuff_e');
-		setImagePath(gameid,'stuff','e_1','#stuff_e_1')
+	setImagePath(gameid,'stuff','e_1','#stuff_e_1')
     end_img('stuff')
     
-    add_collapse('stuff');
     setTextContent(gameid,'stuff','f','#stuff_f');
-		setImagePath(gameid,'stuff','f_1','#stuff_f_1')
+	setImagePath(gameid,'stuff','f_1','#stuff_f_1')
     end_img('stuff')
     
-    add_collapse('stuff');
     setTextContent(gameid,'stuff','g','#stuff_g');
-		setImagePath(gameid,'stuff','g_1','#stuff_g_1')
+	setImagePath(gameid,'stuff','g_1','#stuff_g_1')
     end_img('stuff')
     
-    add_collapse('stuff');
     setTextContent(gameid,'stuff','h','#stuff_h');
-		setImagePath(gameid,'stuff','h_1','#stuff_h_1')
+	setImagePath(gameid,'stuff','h_1','#stuff_h_1')
     end_img('stuff')
     
 	end_data('stuff');
@@ -115,57 +112,68 @@ if (current_page === 'gamecover'){
 if (current_page === 'gamerule'){
 	$('#back_arrow').attr('id',gameid);
 	
-	add_collapse('setup');
+	//add_collapse('setup');
 	setTextContent(gameid,'setup','a','#setup_a');
 	setImagePath(gameid,'setup','a_1','#setup_a_1');
 	end_img('setup')
 	
-	add_collapse('setup');
 	setTextContent(gameid,'setup','b','#setup_b');
 	setImagePath(gameid,'setup','b_1','#setup_b_1');
 	setImagePath(gameid,'setup','b_2','#setup_b_2');
 	setImagePath(gameid,'setup','b_3','#setup_b_3');
 	end_img('setup')
 	
-	add_collapse('setup');
+    setImagePath(gameid,'setup','c_0','#setup_c_0')
+    end_img('setup')
+    
 	setTextContent(gameid,'setup','c','#setup_c');
 	setImagePath(gameid,'setup','c_1','#setup_c_1');
 	end_img('setup')
 	
-	add_collapse('setup');
 	setTextContent(gameid,'setup','d','#setup_d');
 	setImagePath(gameid,'setup','d_1','#setup_d_1');
 	end_img('setup')
 	
-	add_collapse('setup');
+    setImagePath(gameid,'setup','e_0','#setup_e_0')
+    end_img('setup')
+    
 	setTextContent(gameid,'setup','e','#setup_e');
 	setImagePath(gameid,'setup','e_1','#setup_e_1');
 	end_img('setup')
 	
-	add_collapse('setup');
+    setImagePath(gameid,'setup','f_0','#setup_f_0')
+    end_img('setup')
+    
 	setTextContent(gameid,'setup','f','#setup_f');
 	setImagePath(gameid,'setup','f_1','#setup_f_1');
 	end_img('setup')
 	
-	add_no_collapse('setup')
 	setImagePath(gameid,'setup','g_0','#setup_g_0');
-	//alert(html1)
 	end_img('setup')
 	
-	add_collapse('setup');
 	setTextContent(gameid,'setup','g','#setup_g');
 	setImagePath(gameid,'setup','g_1','#setup_g_1');
 	end_img('setup')
 	
-	add_collapse('setup');
+	setImagePath(gameid,'setup','h_0','#setup_h_0');
+	end_img('setup')
+	
 	setTextContent(gameid,'setup','h','#setup_h');
 	setImagePath(gameid,'setup','h_1','#setup_h_1');
 	end_img('setup')
 	
-	add_collapse('setup');
 	setTextContent(gameid,'setup','i','#setup_i');
 	setImagePath(gameid,'setup','i_1','#setup_i_1');
 	end_img('setup')
+	
+	setTextContent(gameid,'setup','j','#setup_j');
+	setImagePath(gameid,'setup','j_1','#setup_j_1');
+	end_img('setup')
+	
+	setTextContent(gameid,'setup','k','#setup_k');
+	setImagePath(gameid,'setup','k_1','#setup_k_1');
+	end_img('setup')
+	
 	end_data('setup');
 	//alert(html2)
 	//////////////////////////////////////////////////////////////
@@ -194,16 +202,16 @@ if (current_page === 'gamerule'){
 
 
 var generate_html2 = function(){
-	add_no_collapse('flow')
+	//add_no_collapse('flow')
 	setImagePath(gameid,'flow','a_0','#flow_a_0')
 	end_img('flow')
 	
-	add_collapse('flow');
+	//add_collapse('flow');
 	setTextContent(gameid,'flow','a','#flow_a')
 	setImagePath(gameid,'flow','a_1','#flow_a_1')
 	end_img('flow')
 	
-	add_collapse('flow');
+	//add_collapse('flow');
 	setTextContent(gameid,'flow','b','#flow_b');
     setImagePath(gameid,'flow','b_1','#flow_b_1')
     setImagePath(gameid,'flow','b_2','#flow_b_2')
@@ -215,83 +223,82 @@ var generate_html2 = function(){
     setImagePath(gameid,'flow','b_8','#flow_b_8')
 	end_img('flow')
 	
-	//alert('geeg'+html2)
-	add_no_collapse('flow')
 	setImagePath(gameid,'flow','c_0','#flow_c_0')
 	end_img('flow')
-	//alert(html2)
 	
-	add_collapse('flow');
 	setTextContent(gameid,'flow','c','#flow_c');
     setImagePath(gameid,'flow','c_1','#flow_c_1')
 	end_img('flow')
 	
-	add_collapse('flow');
+	setTextContent(gameid,'flow','d_0','#flow_d_0');
+	
 	setTextContent(gameid,'flow','d','#flow_d');
-        setImagePath(gameid,'flow','d_1','#flow_d_1')
+    setImagePath(gameid,'flow','d_1','#flow_d_1')
 	end_img('flow')
 	
-	add_collapse('flow');
+	setImagePath(gameid,'flow','e_0','#flow_e_0')
+	end_img('flow')
+	
 	setTextContent(gameid,'flow','e','#flow_e');
-        setImagePath(gameid,'flow','e_1','#flow_e_1')
+    setImagePath(gameid,'flow','e_1','#flow_e_1')
 	end_img('flow')
 	
-	add_collapse('flow');
+	//add_collapse('flow');
 	setTextContent(gameid,'flow','f','#flow_f');
         setImagePath(gameid,'flow','f_1','#flow_f_1')
 	end_img('flow')
 	
-	add_collapse('flow');
+	//add_collapse('flow');
 	setTextContent(gameid,'flow','g','#flow_g');
         setImagePath(gameid,'flow','g_1','#flow_g_1')
 	end_img('flow')
 	
-	add_collapse('flow');
+	//add_collapse('flow');
 	setTextContent(gameid,'flow','h','#flow_h');
         setImagePath(gameid,'flow','h_1','#flow_h_1')
 	end_img('flow')
 	
 	//alert('geeg'+html2)
-	add_no_collapse('flow')
+	//add_no_collapse('flow')
 	setImagePath(gameid,'flow','i_0','#flow_i_0')
 	end_img('flow')
 	
-	add_collapse('flow');
+	//add_collapse('flow');
 	setTextContent(gameid,'flow','i','#flow_i');
 	setImagePath(gameid,'flow','i_1','#flow_i_1')
 	end_img('flow')
 	
-	add_collapse('flow');
+	//add_collapse('flow');
 	setTextContent(gameid,'flow','j','#flow_j');
 	setImagePath(gameid,'flow','j_1','#flow_j_1')
 	end_img('flow')
 	
-	add_collapse('flow');
-	 setTextContent(gameid,'flow','k','#flow_k');
+	//add_collapse('flow');
+	setTextContent(gameid,'flow','k','#flow_k');
         setImagePath(gameid,'flow','k_1','#flow_k_1')
 	end_img('flow')
 	
-	add_collapse('flow');
-	 setTextContent(gameid,'flow','l','#flow_l');
+	//add_collapse('flow');
+	setTextContent(gameid,'flow','l','#flow_l');
         setImagePath(gameid,'flow','l_1','#flow_l_1')
 	end_img('flow')
 	
-	add_collapse('flow');
+	//add_collapse('flow');
 	setTextContent(gameid,'flow','m','#flow_m');
         setImagePath(gameid,'flow','m_1','#flow_m_1')
 	end_img('flow')
 	
-	add_collapse('flow');
+	//add_collapse('flow');
 	setTextContent(gameid,'flow','n','#flow_n');
         setImagePath(gameid,'flow','n_1','#flow_n_1')
 	end_img('flow')
 	
-	add_collapse('flow');
+	//add_collapse('flow');
 	setTextContent(gameid,'flow','o','#flow_o');
         setImagePath(gameid,'flow','o_1','#flow_o_1')
 	end_img('flow')
 	
-	add_collapse('flow');
+	//add_collapse('flow');
 	setTextContent(gameid,'flow','p','#flow_p');
         setImagePath(gameid,'flow','p_1','#flow_p_1')
 	end_img('flow')
@@ -300,50 +307,51 @@ var generate_html2 = function(){
 }
 
 var generate_html3 = function(){
-	add_no_collapse('end')
+	
     setImagePath(gameid,'end','a_0','#end_a_0')
     end_img('end')
     
-    add_collapse('end');
     setTextContent(gameid,'end','a','#end_a')
-        setImagePath(gameid,'end','a_1','#end_a_1')
+    setImagePath(gameid,'end','a_1','#end_a_1')
     end_img('end')
     
-    add_collapse('end');
+    setImagePath(gameid,'end','b_0','#end_b_0')
+    end_img('end')
+    
     setTextContent(gameid,'end','b','#end_b')
         setImagePath(gameid,'end','b_1','#end_b_1')
     end_img('end')
     
-    add_collapse('end');
+    //add_collapse('end');
     setTextContent(gameid,'end','c','#end_c')
         setImagePath(gameid,'end','c_1','#end_c_1')
     end_img('end')
     
-    add_collapse('end');
+    //add_collapse('end');
     setTextContent(gameid,'end','d','#end_d')
         setImagePath(gameid,'end','d_1','#end_d_1')
     end_img('end')
     
-    add_collapse('end');
+    //add_collapse('end');
     setTextContent(gameid,'end','e','#end_e')
 		setImagePath(gameid,'end','e_1','#end_e_1')
     end_img('end')
     
-    add_collapse('end');
+    //add_collapse('end');
     setTextContent(gameid,'end','f','#end_f')
 		setImagePath(gameid,'end','f_1','#end_f_1')
     end_img('end')
     
-    add_collapse('end');
+    //add_collapse('end');
     setTextContent(gameid,'end','g','#end_g')
 		setImagePath(gameid,'end','g_1','#end_g_1')
     end_img('end')
     
-    add_no_collapse('end')
+    //add_no_collapse('end')
     setImagePath(gameid,'end','h_0','#end_h_0')
     end_img('end')
     
-    add_collapse('end');
+    //add_collapse('end');
     setTextContent(gameid,'end','h','#end_h')
 	setImagePath(gameid,'end','h_1','#end_h_1')
     end_img('end')

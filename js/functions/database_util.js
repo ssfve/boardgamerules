@@ -321,7 +321,16 @@ var setImagePath = function(id,type,loc,obj){
 		pageType: type,
 		location: loc},
 		dataType:'json',
-		success:function(data){queryImageInfo(data,obj)},
+		success:function(data){
+			//alert(loc.split('_')[1])
+			if (loc.split('_')[1] === '0'){
+				add_no_collapse_img(type);
+			}
+			queryImageInfo(data,obj)
+			},
+		error:function(data){
+			end_img(obj)
+		},
 		async:false
 	});
 	
@@ -347,8 +356,17 @@ var setTextContent = function(id,type,loc,obj){
 		pageType: type,
 		location: loc},
 		dataType:'json',
-		success:function(data){queryTextInfo(data,obj)},
-		error:function(data){end_a(obj)},
+		success:function(data){
+			if (loc.split('_')[1] === '0'){
+				add_no_collapse_text(type);
+			}else{
+				add_collapse(type);
+			}
+			queryTextInfo(data,obj)
+		},
+		error:function(data){
+			end_a(obj)
+		},
 		async:false
 	});
 	

@@ -326,7 +326,11 @@ var alternations = function(){
 	if (designersCN === '(Uncredited)'){
 		designersCN = '匿名'
 	}
+	
 	artistsCN = artistsCN.replace('|','')
+	if (artistsCN === '(Uncredited)'){
+		artistsCN = '匿名'
+	}
 	if (artistsCN === ''){
 		designers_temp = designersCN
 	}else{ 

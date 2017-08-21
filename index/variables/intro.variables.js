@@ -23,7 +23,9 @@ var collapse_template = "<li class=\"mui-table-view-cell mui-collapse\">%a%"
 +"<div class=\"mui-collapse-content\">%img%</div>"
 +"</li>%data%"
 
-var no_collapse_template = "<li class=\"mui-table-view-cell\">%img%</li>%data%"
+//var no_collapse_template = "<li class=\"mui-table-view-cell\">%img%</li>%data%"
+var no_collapse_img = "<li class=\"mui-table-view-cell\">%img%</li>%data%"
+var no_collapse_text = "<li class=\"mui-table-view-cell\">%a%</li>%data%"
 
 var a_template = "<a id=\"%id%\" class=\"mui-navigate-right\" href=\"#\">%value%</a>"
 var b_template = "<div class=\"mui-collapse-content\">%img%</div>"
