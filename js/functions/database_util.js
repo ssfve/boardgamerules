@@ -190,8 +190,17 @@ var queryImageInfo = function(json,obj) {
 var queryTextInfo = function(json,obj) {
     try { 
     	if(json.text_content !== null){
-    		a_with_value = a_template.replace('%value%',json.text_content)
-    		add_a(obj);
+    		//alert(obj.split('_')[2])
+    		if(obj.split('_')[2] === '0'){
+    			a_with_value = a_template.replace('%value%',json.text_content)
+    			add_a(obj);
+    		}else if(obj.split('_')[2] !== undefined){
+    			a_img_with_value = a_img_template.replace('%value%',json.text_content)
+    			add_a_where_img(obj);
+    		}else{
+    			a_with_value = a_template.replace('%value%',json.text_content)
+    			add_a(obj);
+    		}
     	}
     } catch (e) { 
     	//alert('error')
@@ -329,7 +338,7 @@ var setImagePath = function(id,type,loc,obj){
 			queryImageInfo(data,obj)
 			},
 		error:function(data){
-			end_img(obj)
+			//end_img(obj)
 		},
 		async:false
 	});
@@ -359,7 +368,7 @@ var setTextContent = function(id,type,loc,obj){
 		success:function(data){
 			if (loc.split('_')[1] === '0'){
 				add_no_collapse_text(type);
-			}else{
+			}else if (loc.split('_')[1] === undefined){
 				add_collapse(type);
 			}
 			queryTextInfo(data,obj)

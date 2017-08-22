@@ -50,16 +50,10 @@ var add_no_collapse_text = function(pageType){
 var add_a = function(obj){
 	//alert(obj)
 	pageType_temp = obj.replace('#','').split('_')[0]
-	//alert(pageType_temp)
 	id_temp = obj.replace('#','')
-	//alert(id_temp)
-	//alert(a_template)
 	a_html = a_with_value.replace('%id%',id_temp)
-    //alert(a_html)
-    //id_temp = obj.replace('#','')
+	
 	if (pageType_temp === 'setup'){
-		//alert('in')
-		//alert(html)
 		html1 = html1.replace('%a%',a_html)
 	}
 	if (pageType_temp === 'flow'){
@@ -70,6 +64,26 @@ var add_a = function(obj){
 	}
 	if (pageType_temp === 'stuff'){
 		intro_html = intro_html.replace('%a%',a_html)
+	}
+}
+
+var add_a_where_img = function(obj){
+	//alert(obj)
+	pageType_temp = obj.replace('#','').split('_')[0]
+	id_temp = obj.replace('#','')
+	a_html = a_img_with_value.replace('%id%',id_temp)
+	
+	if (pageType_temp === 'setup'){
+		html1 = html1.replace('%img%',a_html)
+	}
+	if (pageType_temp === 'flow'){
+		html2 = html2.replace('%img%',a_html)
+	}
+	if (pageType_temp === 'end'){
+		html3 = html3.replace('%img%',a_html)
+	}
+	if (pageType_temp === 'stuff'){
+		intro_html = intro_html.replace('%img%',a_html)
 	}
 }
 
@@ -91,13 +105,8 @@ var add_b = function(pageType){
 var add_img = function(obj){
 	//alert(obj)
 	pageType_temp = obj.replace('#','').split('_')[0]
-	//alert(pageType_temp)
 	id_temp = obj.replace('#','')
-	//alert(id_temp)
-	//alert(a_template)
 	img_html = img_with_src.replace('%id%',id_temp)
-    //alert(a_html)
-    //id_temp = obj.replace('#','')
 	if (pageType_temp === 'setup'){
 		html1 = html1.replace('%img%',img_html)
 	}

@@ -14,28 +14,52 @@ if (current_page === 'gameintro'){
     end_img('stuff')
     
     setTextContent(gameid,'stuff','a','#stuff_a');
+    setTextContent(gameid,'stuff','a_1','#stuff_a_1');
+    setTextContent(gameid,'stuff','a_2','#stuff_a_2');
+    setTextContent(gameid,'stuff','a_3','#stuff_a_3');
+    setTextContent(gameid,'stuff','a_4','#stuff_a_4');
 	setImagePath(gameid,'stuff','a_1','#stuff_a_1')
     end_img('stuff')
     
     setImagePath(gameid,'stuff','b_0','#stuff_b_0')
-    end_img('stuff')
     
     setTextContent(gameid,'stuff','b','#stuff_b');
+    //alert(intro_html)
+    setTextContent(gameid,'stuff','b_1','#stuff_b_1');
+    setTextContent(gameid,'stuff','b_2','#stuff_b_2');
+    setTextContent(gameid,'stuff','b_3','#stuff_b_3');
+    setTextContent(gameid,'stuff','b_4','#stuff_b_4');
+    setTextContent(gameid,'stuff','b_5','#stuff_b_5');
+    setTextContent(gameid,'stuff','b_6','#stuff_b_6');
 	setImagePath(gameid,'stuff','b_1','#stuff_b_1')
-    end_img('stuff')
-    
+    //end_img('stuff') 
     setImagePath(gameid,'stuff','c_0','#stuff_c_0')
     end_img('stuff')
     
     setTextContent(gameid,'stuff','c','#stuff_c');
+    setTextContent(gameid,'stuff','c_1','#stuff_c_1');
+    setTextContent(gameid,'stuff','c_2','#stuff_c_2');
+    setTextContent(gameid,'stuff','c_3','#stuff_c_3');
+    setTextContent(gameid,'stuff','c_4','#stuff_c_4');
+    setTextContent(gameid,'stuff','c_5','#stuff_c_5');
+    setTextContent(gameid,'stuff','c_6','#stuff_c_6');
 	setImagePath(gameid,'stuff','c_1','#stuff_c_1')
     end_img('stuff')
     
     setTextContent(gameid,'stuff','d','#stuff_d');
+    setTextContent(gameid,'stuff','d_1','#stuff_d_1');
+    setTextContent(gameid,'stuff','d_2','#stuff_d_2');
+    setTextContent(gameid,'stuff','d_3','#stuff_d_3');
+    setTextContent(gameid,'stuff','d_4','#stuff_d_4');
+    setTextContent(gameid,'stuff','d_5','#stuff_d_5');
+    setTextContent(gameid,'stuff','d_6','#stuff_d_6');
 	setImagePath(gameid,'stuff','d_1','#stuff_d_1')
     end_img('stuff')
     
     setTextContent(gameid,'stuff','e','#stuff_e');
+    setTextContent(gameid,'stuff','e_1','#stuff_e_1');
+    setTextContent(gameid,'stuff','e_2','#stuff_e_2');
+    setTextContent(gameid,'stuff','e_3','#stuff_e_3');
 	setImagePath(gameid,'stuff','e_1','#stuff_e_1')
     end_img('stuff')
     
@@ -112,10 +136,13 @@ if (current_page === 'gamecover'){
 if (current_page === 'gamerule'){
 	$('#back_arrow').attr('id',gameid);
 	
-	//add_collapse('setup');
+	setTextContent(gameid,'setup','a_0','#setup_a_0');
+	
 	setTextContent(gameid,'setup','a','#setup_a');
 	setImagePath(gameid,'setup','a_1','#setup_a_1');
 	end_img('setup')
+	
+	setTextContent(gameid,'setup','b_0','#setup_b_0');
 	
 	setTextContent(gameid,'setup','b','#setup_b');
 	setImagePath(gameid,'setup','b_1','#setup_b_1');

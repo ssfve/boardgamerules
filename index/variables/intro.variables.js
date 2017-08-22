@@ -27,10 +27,12 @@ var collapse_template = "<li class=\"mui-table-view-cell mui-collapse\">%a%"
 var no_collapse_img = "<li class=\"mui-table-view-cell\">%img%</li>%data%"
 var no_collapse_text = "<li class=\"mui-table-view-cell\">%a%</li>%data%"
 
+var a_img_template = "<a id=\"%id%\" class=\"mui-navigate-right\" href=\"#\">%value%</a>%img%"
 var a_template = "<a id=\"%id%\" class=\"mui-navigate-right\" href=\"#\">%value%</a>"
 var b_template = "<div class=\"mui-collapse-content\">%img%</div>"
 var img_template = "<img id=\"%id%\" src=\"%value%\" width=\"100%\" data-preview-src=\"\" data-preview-group=\"1\">%img%"
- 
+
+var a_img_with_value = a_img_template
 var a_with_value = a_template
 var img_with_src = img_template
 
