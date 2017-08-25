@@ -392,3 +392,25 @@ var setTextContent = function(id,type,loc,obj){
 };
 
 
+var getPageLineNum = function(id,page){
+	//$(obj).text(text)
+	var textURL = 'http://180.76.244.130:3000/games/getPageLineNum'
+	//alert(obj)
+	$.ajax({
+		url: textURL,
+		data:{
+			gameid:		id,
+			pageType: 	page
+		},
+		dataType:'json',
+		success:function(data){
+			alert(data)
+			//numLines = data.numLines
+			//alert(numLines)
+		},
+		error:function(data){
+		},
+		async:false
+	});
+};
+

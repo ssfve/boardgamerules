@@ -42,3 +42,7 @@ var html2 = data_template
 //alert('adfa'+html2)
 var html3 = data_template
 var intro_html = data_template
+
+
+var numLines = 0
+var pageType = ''

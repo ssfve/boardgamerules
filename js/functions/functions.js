@@ -322,19 +322,19 @@ var alternations = function(){
 	
 	average = average.toFixed(1);
 	averageweight = averageweight.toFixed(2);
-	designersCN = designersCN.replace('|','')
+	designersCN = designersCN.replace('|',',').replace('|',',')
 	if (designersCN === '(Uncredited)'){
 		designersCN = '匿名'
 	}
 	
 	artistsCN = artistsCN.replace('|','')
-	if (artistsCN === '(Uncredited)'){
+	if (artistsCN === '(Uncredited)' || artistsCN === 'None'){
 		artistsCN = '匿名'
 	}
 	if (artistsCN === ''){
 		designers_temp = designersCN
 	}else{ 
-		designers_temp = designersCN + ',' + artistsCN
+		designers_temp = designersCN + artistsCN
 	}
 	// best players
 	//alert(suggested_numplayers)

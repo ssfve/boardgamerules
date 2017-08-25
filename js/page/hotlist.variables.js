@@ -1,8 +1,8 @@
 var hot_arrayEN = [];
 var hot_arrayCN = [];
 var hot_arrayID = [];
-hot_arrayCN[0] = '蟹霸王';
-hot_arrayCN[1] = '危情13日:古巴导弹危机';
+hot_arrayCN[0] = '说明书列表';
+hot_arrayCN[1] = '洞穴农夫';
 hot_arrayCN[2] = '死亡寒冬:生死抉择';
 hot_arrayCN[3] = '传情画意';
 hot_arrayCN[4] = '小小世界';
@@ -13,9 +13,9 @@ hot_arrayCN[8] = '卡坦岛';
 hot_arrayCN[9] = '深海谍影';
 hot_arrayCN[10] = '阿瓦隆';
 hot_arrayCN[11] = '疯狂诡宅(第二版)';
-hot_arrayCN[12] = '说明书列表';
-hot_arrayEN[0] = 'Crabs!';
-hot_arrayEN[1] = '13 Days:The Cuban Missile Crisis';
+
+hot_arrayEN[0] = 'rulebook-list';
+hot_arrayEN[1] = 'Caverna:The Cave Farmers';
 hot_arrayEN[2] = 'Dead of Winter:A Crossroads Game';
 hot_arrayEN[3] = 'Telestrations';
 hot_arrayEN[4] = 'Small World';
@@ -26,9 +26,9 @@ hot_arrayEN[8] = 'Catan';
 hot_arrayEN[9] = 'Captain Sonar';
 hot_arrayEN[10] = 'The Resistance:Avalon';
 hot_arrayEN[11] = 'Mansions of Madness:Second Edition';
-hot_arrayEN[12] = 'rulebook-list';
-hot_arrayID[0] = '197944';
-hot_arrayID[1] = '177590';
+
+hot_arrayID[0] = 'rulebook-list';
+hot_arrayID[1] = '102794';
 hot_arrayID[2] = '150376';
 hot_arrayID[3] = '46213';
 hot_arrayID[4] = '40692';
@@ -39,4 +39,4 @@ hot_arrayID[8] = '13';
 hot_arrayID[9] = '171131';
 hot_arrayID[10] = '128882';
 hot_arrayID[11] = '205059';
-hot_arrayID[12] = 'rulebook-list';
+

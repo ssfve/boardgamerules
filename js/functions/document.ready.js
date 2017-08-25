@@ -9,6 +9,8 @@ if (current_page === 'gameintro'){
 	mui.previewImage();
     $('#back_arrow').attr('id',gameid);
     
+    pageType = 'stuff'
+    getPageLineNum(gameid, pageType)
     
     setImagePath(gameid,'stuff','a_0','#stuff_a_0')
     end_img('stuff')
@@ -19,12 +21,13 @@ if (current_page === 'gameintro'){
     setTextContent(gameid,'stuff','a_3','#stuff_a_3');
     setTextContent(gameid,'stuff','a_4','#stuff_a_4');
 	setImagePath(gameid,'stuff','a_1','#stuff_a_1')
+	setImagePath(gameid,'stuff','a_2','#stuff_a_2')
     end_img('stuff')
     
     setImagePath(gameid,'stuff','b_0','#stuff_b_0')
+    end_img('stuff')
     
     setTextContent(gameid,'stuff','b','#stuff_b');
-    //alert(intro_html)
     setTextContent(gameid,'stuff','b_1','#stuff_b_1');
     setTextContent(gameid,'stuff','b_2','#stuff_b_2');
     setTextContent(gameid,'stuff','b_3','#stuff_b_3');
@@ -32,7 +35,9 @@ if (current_page === 'gameintro'){
     setTextContent(gameid,'stuff','b_5','#stuff_b_5');
     setTextContent(gameid,'stuff','b_6','#stuff_b_6');
 	setImagePath(gameid,'stuff','b_1','#stuff_b_1')
-    //end_img('stuff') 
+    end_img('stuff')
+    
+    
     setImagePath(gameid,'stuff','c_0','#stuff_c_0')
     end_img('stuff')
     
@@ -180,6 +185,7 @@ if (current_page === 'gamerule'){
 	
 	setTextContent(gameid,'setup','g','#setup_g');
 	setImagePath(gameid,'setup','g_1','#setup_g_1');
+	setImagePath(gameid,'setup','g_2','#setup_g_2');
 	end_img('setup')
 	
 	setImagePath(gameid,'setup','h_0','#setup_h_0');
@@ -188,6 +194,8 @@ if (current_page === 'gamerule'){
 	setTextContent(gameid,'setup','h','#setup_h');
 	setImagePath(gameid,'setup','h_1','#setup_h_1');
 	end_img('setup')
+	
+	setTextContent(gameid,'setup','i_0','#setup_i_0');
 	
 	setTextContent(gameid,'setup','i','#setup_i');
 	setImagePath(gameid,'setup','i_1','#setup_i_1');
@@ -261,6 +269,7 @@ var generate_html2 = function(){
 	
 	setTextContent(gameid,'flow','d','#flow_d');
     setImagePath(gameid,'flow','d_1','#flow_d_1')
+    setImagePath(gameid,'flow','d_2','#flow_d_2')
 	end_img('flow')
 	
 	setImagePath(gameid,'flow','e_0','#flow_e_0')
@@ -270,29 +279,27 @@ var generate_html2 = function(){
     setImagePath(gameid,'flow','e_1','#flow_e_1')
 	end_img('flow')
 	
-	//add_collapse('flow');
 	setTextContent(gameid,'flow','f','#flow_f');
-        setImagePath(gameid,'flow','f_1','#flow_f_1')
+    setImagePath(gameid,'flow','f_1','#flow_f_1')
+    setImagePath(gameid,'flow','f_2','#flow_f_2')
 	end_img('flow')
 	
-	//add_collapse('flow');
 	setTextContent(gameid,'flow','g','#flow_g');
-        setImagePath(gameid,'flow','g_1','#flow_g_1')
+    setImagePath(gameid,'flow','g_1','#flow_g_1')
 	end_img('flow')
 	
-	//add_collapse('flow');
 	setTextContent(gameid,'flow','h','#flow_h');
-        setImagePath(gameid,'flow','h_1','#flow_h_1')
+    setImagePath(gameid,'flow','h_1','#flow_h_1')
 	end_img('flow')
 	
-	//alert('geeg'+html2)
-	//add_no_collapse('flow')
+	setTextContent(gameid,'flow','i_0','#flow_i_0');
 	setImagePath(gameid,'flow','i_0','#flow_i_0')
 	end_img('flow')
 	
 	//add_collapse('flow');
 	setTextContent(gameid,'flow','i','#flow_i');
 	setImagePath(gameid,'flow','i_1','#flow_i_1')
+	setImagePath(gameid,'flow','i_2','#flow_i_2')
 	end_img('flow')
 	
 	//add_collapse('flow');
@@ -340,48 +347,136 @@ var generate_html3 = function(){
     
     setTextContent(gameid,'end','a','#end_a')
     setImagePath(gameid,'end','a_1','#end_a_1')
+    setImagePath(gameid,'end','a_2','#end_a_2')
     end_img('end')
     
     setImagePath(gameid,'end','b_0','#end_b_0')
     end_img('end')
     
     setTextContent(gameid,'end','b','#end_b')
-        setImagePath(gameid,'end','b_1','#end_b_1')
+    setImagePath(gameid,'end','b_1','#end_b_1')
     end_img('end')
     
-    //add_collapse('end');
+    setTextContent(gameid,'end','c_0','#end_c_0')
+    setImagePath(gameid,'end','c_0','#end_c_0')
+    end_img('end')
+    
     setTextContent(gameid,'end','c','#end_c')
-        setImagePath(gameid,'end','c_1','#end_c_1')
+    setImagePath(gameid,'end','c_1','#end_c_1')
+    setImagePath(gameid,'end','c_2','#end_c_2')
     end_img('end')
-    
-    //add_collapse('end');
+  	
     setTextContent(gameid,'end','d','#end_d')
-        setImagePath(gameid,'end','d_1','#end_d_1')
+    setImagePath(gameid,'end','d_1','#end_d_1')
+    setImagePath(gameid,'end','d_2','#end_d_2')
+    setImagePath(gameid,'end','d_3','#end_d_3')
     end_img('end')
     
-    //add_collapse('end');
     setTextContent(gameid,'end','e','#end_e')
-		setImagePath(gameid,'end','e_1','#end_e_1')
+	setImagePath(gameid,'end','e_1','#end_e_1')
     end_img('end')
     
-    //add_collapse('end');
+    setTextContent(gameid,'end','f_0','#end_f_0')
+    setImagePath(gameid,'end','f_0','#end_f_0')
+    end_img('end')
+    
     setTextContent(gameid,'end','f','#end_f')
-		setImagePath(gameid,'end','f_1','#end_f_1')
+	setImagePath(gameid,'end','f_1','#end_f_1')
+	setImagePath(gameid,'end','f_2','#end_f_2')
     end_img('end')
     
-    //add_collapse('end');
     setTextContent(gameid,'end','g','#end_g')
-		setImagePath(gameid,'end','g_1','#end_g_1')
+	setImagePath(gameid,'end','g_1','#end_g_1')
     end_img('end')
     
-    //add_no_collapse('end')
     setImagePath(gameid,'end','h_0','#end_h_0')
     end_img('end')
     
-    //add_collapse('end');
     setTextContent(gameid,'end','h','#end_h')
 	setImagePath(gameid,'end','h_1','#end_h_1')
     end_img('end')
+    
+    setTextContent(gameid,'end','i_0','#end_i_0')
+    setImagePath(gameid,'end','i_0','#end_i_0')
+    end_img('end')
+    
+    setTextContent(gameid,'end','i','#end_i')
+	setImagePath(gameid,'end','i_1','#end_i_1')
+	setImagePath(gameid,'end','i_2','#end_i_2')
+    end_img('end')
+    
+    setTextContent(gameid,'end','j_0','#end_j_0')
+    setImagePath(gameid,'end','j_0','#end_j_0')
+    end_img('end')
+    
+    setTextContent(gameid,'end','j','#end_j')
+	setImagePath(gameid,'end','j_1','#end_j_1')
+	setImagePath(gameid,'end','j_2','#end_j_2')
+    end_img('end')
+    
+    setTextContent(gameid,'end','k','#end_k')
+	setImagePath(gameid,'end','k_1','#end_k_1')
+	setImagePath(gameid,'end','k_2','#end_k_2')
+    end_img('end')
+    
+    setTextContent(gameid,'end','l','#end_l')
+	setImagePath(gameid,'end','l_1','#end_l_1')
+	setImagePath(gameid,'end','l_2','#end_l_2')
+    end_img('end')
+    
+    setTextContent(gameid,'end','m','#end_m')
+	setImagePath(gameid,'end','m_1','#end_m_1')
+	setImagePath(gameid,'end','m_2','#end_m_2')
+    end_img('end')
+    
+    setTextContent(gameid,'end','n','#end_n')
+	setImagePath(gameid,'end','n_1','#end_n_1')
+	setImagePath(gameid,'end','n_2','#end_n_2')
+    end_img('end')
+    
+    setTextContent(gameid,'end','o_0','#end_o_0')
+    setImagePath(gameid,'end','o_0','#end_o_0')
+    end_img('end')
+    
+    setTextContent(gameid,'end','o','#end_o')
+	setImagePath(gameid,'end','o_1','#end_o_1')
+	setImagePath(gameid,'end','o_2','#end_o_2')
+    end_img('end')
+    
+    setTextContent(gameid,'end','p','#end_p')
+	setImagePath(gameid,'end','p_1','#end_p_1')
+	setImagePath(gameid,'end','p_2','#end_p_2')
+    end_img('end')
+    
+    setTextContent(gameid,'end','q','#end_q')
+	setImagePath(gameid,'end','q_1','#end_q_1')
+	setImagePath(gameid,'end','q_2','#end_q_2')
+    end_img('end')
+    
+    setTextContent(gameid,'end','r','#end_r')
+	setImagePath(gameid,'end','r_1','#end_r_1')
+	setImagePath(gameid,'end','r_2','#end_r_2')
+    end_img('end')
+    
+    setTextContent(gameid,'end','s','#end_s')
+	setImagePath(gameid,'end','s_1','#end_s_1')
+	setImagePath(gameid,'end','s_2','#end_s_2')
+    end_img('end')
+    
+    setTextContent(gameid,'end','t','#end_t')
+	setImagePath(gameid,'end','t_1','#end_t_1')
+	setImagePath(gameid,'end','t_2','#end_t_2')
+    end_img('end')
+    
+    setTextContent(gameid,'end','u_0','#end_u_0')
+    setImagePath(gameid,'end','u_0','#end_u_0')
+    end_img('end')
+    
+    setTextContent(gameid,'end','u','#end_u')
+	setImagePath(gameid,'end','u_1','#end_u_1')
+	setImagePath(gameid,'end','u_2','#end_u_2')
+    end_img('end')
+    
     
 	end_data('end');
 }
