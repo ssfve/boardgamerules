@@ -421,6 +421,7 @@ async function ajax_wait(gameid, pageType) {
   	//ajax_wait_img(gameid, pageType, 2)
 };
 
+/*
 async function ajax_wait_text(gameid, pageType, lineFlag) {
 	
 	//$.each(lineFlag, function(index, content){
@@ -445,3 +446,4 @@ async function ajax_wait_img(gameid, pageType,lineNum) {
     console.log(lineImage)
     //create_intro(lineText);
 };
+*/
