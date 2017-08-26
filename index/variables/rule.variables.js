@@ -46,3 +46,7 @@ var intro_html = data_template
 
 var numLines = 0
 var pageType = ''
+
+
+var lineNo = []
+var lineFlag = []

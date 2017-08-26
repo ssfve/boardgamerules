@@ -38,3 +38,8 @@ var img_with_src = img_template
 
 var intro_html = data_template
 //var intro_html = ''
+
+var lineNo = []
+var lineFlag = []
+var lineText = []
+var lineImage = []

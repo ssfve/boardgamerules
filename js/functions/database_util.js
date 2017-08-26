@@ -321,74 +321,61 @@ $.ajax({
 });
 
 
-var setImagePath = function(id,type,loc,obj){
+var setImagePath = function(id,type,loc){
 	var imageURL = 'http://180.76.244.130:3000/games/getImageInfo'
-	//alert(obj)
-	$.ajax({
-		url: imageURL,
-		data:{gameid:id,
-		pageType: type,
-		location: loc},
-		dataType:'json',
-		success:function(data){
-			//alert(loc.split('_')[1])
-			if (loc.split('_')[1] === '0'){
-				add_no_collapse_img(type);
-			}
-			queryImageInfo(data,obj)
-			},
-		error:function(data){
-			//end_img(obj)
-		},
-		async:false
-	});
-	
-	/*
-	$.ajax({
-			url: controlURL,
+	return new Promise(function(resolve, reject){
+		$.ajax({
+			url: imageURL,
 			data:{gameid:id,
-		pageType: type,
-		location: loc},
-			success:queryControlInfo,
-			dataType:'json'
+			pageType: type,
+			lineNum: loc},
+			dataType:'json',
+			success:function(data,loc){
+				//alert(loc.split('_')[1])
+				//if (loc.split('_')[1] === '0'){
+					//add_no_collapse_img(type);
+				//}
+				//queryImageInfo(data,obj)
+				//lineImage[loc] = []
+				$.each(data, function(index, content){ 
+   					lineImage[index] = content.image_path; 
+  				});
+  				resolve(lineImage)
+			},
+			error:function(data){
+				//end_img(obj)
+			}
 		});
-	*/
+	
+	});
 };
 
-var setTextContent = function(id,type,loc,obj){
+var setTextContent = function(id,type,loc){
 	//$(obj).text(text)
 	var textURL = 'http://180.76.244.130:3000/games/getTextInfo'
-	//alert(obj)
-	$.ajax({
-		url: textURL,
-		data:{gameid:id,
-		pageType: type,
-		location: loc},
-		dataType:'json',
-		success:function(data){
-			if (loc.split('_')[1] === '0'){
-				add_no_collapse_text(type);
-			}else if (loc.split('_')[1] === undefined){
-				add_collapse(type);
-			}
-			queryTextInfo(data,obj)
-		},
-		error:function(data){
-			end_a(obj)
-		},
-		async:false
-	});
-	
-	/*
-	$.ajax({
-			url: controlURL,
+	return new Promise(function(resolve, reject){
+		$.ajax({
+			url: textURL,
 			data:{gameid:id,
-		pageType: type,
-		location: loc},
-			success:queryControlInfo,
-			dataType:'json'
+			pageType: type,
+			lineNum: loc},
+			dataType:'json',
+			success:function(data,loc){
+				//if (loc.split('_')[1] === '0'){
+					//add_no_collapse_text(type);
+				//}else if (loc.split('_')[1] === undefined){
+					//add_collapse(type);
+				//}
+				//queryTextInfo(data,obj)
+				//alert(data.text_content)
+				lineText[loc] = data.text_content
+				resolve(lineText[loc])
+			},
+			error:function(data){
+				//end_a(obj)
+			}
 		});
-	*/
+	});
 };
 
 
@@ -396,21 +383,65 @@ var getPageLineNum = function(id,page){
 	//$(obj).text(text)
 	var textURL = 'http://180.76.244.130:3000/games/getPageLineNum'
 	//alert(obj)
-	$.ajax({
-		url: textURL,
-		data:{
-			gameid:		id,
-			pageType: 	page
-		},
-		dataType:'json',
-		success:function(data){
-			alert(data)
-			//numLines = data.numLines
-			//alert(numLines)
-		},
-		error:function(data){
-		},
-		async:false
-	});
+	return new Promise(function(resolve, reject){
+        $.ajax({
+			url: textURL,
+			data:{
+				gameid:		id,
+				pageType: 	page
+			},
+			dataType:'json',
+			success:function(data){
+				$.each(data, function(index, content){
+					//alert(index)
+					//alert(content)
+   					lineNo[index] = content.lineNum; 
+   					lineFlag[index] = content.flag; 
+  				});
+  				resolve(lineFlag)
+			},
+			error:function(data){
+			}
+		});
+   });
+	//return p
 };
 
+async function ajax_wait(gameid, pageType) {
+    lineFlag = await getPageLineNum(gameid, pageType)
+    //alert(lineFlag)
+    
+    /*
+    $.each(lineFlag, function(index, content){ 
+    	loc = index + 1
+  		ajax_wait_text(gameid, pageType, loc)
+  		//ajax_wait_img(gameid, pageType, loc)
+  	})*/
+  	ajax_wait_text(gameid, pageType, lineFlag)
+  	//ajax_wait_img(gameid, pageType, 2)
+};
+
+async function ajax_wait_text(gameid, pageType, lineFlag) {
+	
+	//$.each(lineFlag, function(index, content){
+		for (let lineNum=0; lineNum<lineFlag.length; lineNum++){
+			lineText[lineNum] = await setTextContent(gameid, pageType, lineNum+1)
+		}
+  	
+  	//})
+  	//eval('lineText[0] = await setTextContent(gameid, pageType, 1)')
+  	//eval('lineText[1] = await setTextContent(gameid, pageType, 2)')
+    //alert('the content is:--'+lineText_part)
+    if(lineText.length === lineFlag.length){
+    	console.log(lineText)
+    }
+    	
+    //create_intro(lineText);
+};
+
+async function ajax_wait_img(gameid, pageType,lineNum) {
+	
+  	lineImage = await setImagePath(gameid, pageType, lineNum)
+    console.log(lineImage)
+    //create_intro(lineText);
+};

@@ -10,11 +10,13 @@ if (current_page === 'gameintro'){
     $('#back_arrow').attr('id',gameid);
     
     pageType = 'stuff'
-    getPageLineNum(gameid, pageType)
-    
-    setImagePath(gameid,'stuff','a_0','#stuff_a_0')
+	ajax_wait(gameid, pageType);
+	
+  	
+  	//alert(lineText)
+  	//alert(lineImage)
+    /*
     end_img('stuff')
-    
     setTextContent(gameid,'stuff','a','#stuff_a');
     setTextContent(gameid,'stuff','a_1','#stuff_a_1');
     setTextContent(gameid,'stuff','a_2','#stuff_a_2');
@@ -81,15 +83,15 @@ if (current_page === 'gameintro'){
     end_img('stuff')
     
 	end_data('stuff');
-	
-	
-	
-    $(document).ready(function() {
+	*/
+	$(document).ready(function() {
 		$('#introtext').html(intro_html);
 		collapse_event_gen();
 		gotoPage(gameid)
 		$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
 	});
+	
+    
 }
 
 if (current_page === 'gamecover'){
