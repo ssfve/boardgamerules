@@ -430,13 +430,13 @@ function ajax_wait_text(gameid, pageType, lineFlag) {
 		promise_array[lineNum] = setTextContent(gameid, pageType, lineNum+1)
 		promise_array[lineNum].then(function (data1) {
 			lineText[lineNum] = data1
+			console.log(lineText)
+			if(lineText.length === lineFlag.length){
+    			console.log(lineText)
+    		}
 		});
 	}
   	
-  	//})
-  	//eval('lineText[0] = await setTextContent(gameid, pageType, 1)')
-  	//eval('lineText[1] = await setTextContent(gameid, pageType, 2)')
-    //alert('the content is:--'+lineText_part)
     if(lineText.length === lineFlag.length){
     	console.log(lineText)
     }
