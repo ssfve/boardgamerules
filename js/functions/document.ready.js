@@ -5,6 +5,7 @@ var html_ready = function(pageType){
 		$(document).ready(function() {
 			gotoPage(gameid);
 			collapse_event_gen();
+			collapse_img_show(gameid, pageType, lineFlag);
 			$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
 		});
 	}
