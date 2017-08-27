@@ -398,6 +398,7 @@ var getPageLineNum = function(id,page){
    					lineNo[index] = content.lineNum; 
    					lineFlag[index] = content.flag; 
   				});
+  				alert('dfas')
   				resolve(lineFlag)
 			},
 			error:function(data){
@@ -426,7 +427,7 @@ function ajax_wait(gameid, pageType) {
 	  	//ajax_wait_text(gameid, pageType, lineFlag)
 	  	//ajax_wait_img(gameid, pageType, 2)
   	
-	}, handleError);
+	});
 };
 
 
