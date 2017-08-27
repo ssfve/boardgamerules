@@ -424,11 +424,11 @@ function ajax_wait(gameid, pageType) {
 
 
 function ajax_wait_text(gameid, pageType, lineFlag) {
-	
+	var promise_array = []
 	//$.each(lineFlag, function(index, content){
 	for (let lineNum=0; lineNum<lineFlag.length; lineNum++){
-		promise[lineNum] = setTextContent(gameid, pageType, lineNum+1)
-		promise[lineNum].then(function (data1) {
+		promise_array[lineNum] = setTextContent(gameid, pageType, lineNum+1)
+		promise_array[lineNum].then(function (data1) {
 			lineText[lineNum] = data1
 		});
 	}
