@@ -318,6 +318,18 @@ var collapse_event_gen = function(){
 		};
 };
 
+var collapse_img_show = function(gameid, pageType, lineFlag){
+		var active_sec = document.getElementsByClassName("mui-table-view-cell");
+		//alert(active_sec.length)
+		$.each(lineFlag, function(index, content){
+			if (content === 'img'){
+				active_sec[index].addEventListener('tap', function(e) {
+					ajax_wait_img(gameid, pageType, index)
+				});
+			}
+		});
+};
+
 var alternations = function(){
 	
 	average = average.toFixed(1);
