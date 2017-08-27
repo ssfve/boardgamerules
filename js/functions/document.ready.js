@@ -96,7 +96,7 @@ function ajax_wait_img(gameid, pageType, lineNum) {
     		var img_part = document.getElementsByID(imageID);
     		img_part.attr('src',content);
     	});
-    }
+  });
 };
 
 if (current_page === 'gamepic'){
