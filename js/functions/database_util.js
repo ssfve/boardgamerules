@@ -410,17 +410,24 @@ var getPageLineNum = function(id,page){
 
 //async function ajax_wait(gameid, pageType) {
 function ajax_wait(gameid, pageType) {
-    lineFlag = await getPageLineNum(gameid, pageType)
-    //alert(lineFlag)
-    
-    $.each(lineFlag, function(index, content){ 
-    	loc = index + 1
-  		//ajax_wait_text(gameid, pageType, loc)
-  		//ajax_wait_img(gameid, pageType, loc)
-  	})
-  	//ajax_wait_text(gameid, pageType, lineFlag)
-  	//ajax_wait_img(gameid, pageType, 2)
+    Promise.when(getPageLineNum).then(function (data1) {
+		
+		lineFlag = data1
+	    alert(lineFlag)
+	    
+	    $.each(lineFlag, function(index, content){ 
+	    	loc = index + 1
+	  		//ajax_wait_text(gameid, pageType, loc)
+	  		//ajax_wait_img(gameid, pageType, loc)
+	  	})
+	  	//ajax_wait_text(gameid, pageType, lineFlag)
+	  	//ajax_wait_img(gameid, pageType, 2)
+  	
+	}, handleError);
 };
+
+
+
 /*
 async function ajax_wait_text(gameid, pageType, lineFlag) {
 	
