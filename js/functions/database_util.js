@@ -409,6 +409,25 @@ var getPageLineNum = function(id,page){
 };
 
 
+var create_html = function(pageType){
+	if (pageType === 'stuff'){
+		$.each(lineFlag, function(index, content){
+			
+			lineType = lineFlag[index]
+			if (lineType === 'txt'){
+				add_no_collapse_text(pageType);
+			}
+			if (lineType === 'img'){
+				add_collapse(pageType);
+			}
+			a_with_value = a_template.replace('%value%',lineText[index])
+    		add_a(pageType, lineType, index);
+    		
+		})
+		
+	}
+}
+
 //async function ajax_wait(gameid, pageType) {
 function ajax_wait(gameid, pageType) {
     var promise1 = getPageLineNum(gameid, pageType)
@@ -430,18 +449,12 @@ function ajax_wait_text(gameid, pageType, lineFlag) {
 		promise_array[lineNum] = setTextContent(gameid, pageType, lineNum+1)
 		promise_array[lineNum].then(function (data1) {
 			lineText[lineNum] = data1
-			console.log(lineText)
+			//console.log(lineText)
 			if(lineText.length === lineFlag.length){
     			console.log(lineText)
     		}
 		});
 	}
-  	
-    if(lineText.length === lineFlag.length){
-    	console.log(lineText)
-    }
-    	
-    //create_intro(lineText);
 };
 /*
 async function ajax_wait_img(gameid, pageType,lineNum) {

@@ -47,10 +47,10 @@ var add_no_collapse_text = function(pageType){
 	}
 }
 
-var add_a = function(obj){
+var add_a = function(pageType, lineType, index){
 	//alert(obj)
-	pageType_temp = obj.replace('#','').split('_')[0]
-	id_temp = obj.replace('#','')
+	pageType_temp = pageType
+	id_temp = pageType + '_' + lineType + '_' + index + '_' + '0'
 	a_html = a_with_value.replace('%id%',id_temp)
 	
 	if (pageType_temp === 'setup'){
