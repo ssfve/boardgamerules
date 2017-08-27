@@ -398,7 +398,7 @@ var getPageLineNum = function(id,page){
    					lineNo[index] = content.lineNum; 
    					lineFlag[index] = content.flag; 
   				});
-  				alert('dfas')
+  				//alert('dfas')
   				resolve(lineFlag)
 			},
 			error:function(data){
@@ -411,20 +411,11 @@ var getPageLineNum = function(id,page){
 
 //async function ajax_wait(gameid, pageType) {
 function ajax_wait(gameid, pageType) {
-	
     var promise1 = getPageLineNum(gameid, pageType)
-    
     promise1.then(function (data1) {
-		
 		lineFlag = data1
-	    alert(lineFlag)
-	    
-	    $.each(lineFlag, function(index, content){ 
-	    	loc = index + 1
-	  		//ajax_wait_text(gameid, pageType, loc)
-	  		//ajax_wait_img(gameid, pageType, loc)
-	  	})
-	  	//ajax_wait_text(gameid, pageType, lineFlag)
+	    //alert(lineFlag)
+	  	ajax_wait_text(gameid, pageType, lineFlag)
 	  	//ajax_wait_img(gameid, pageType, 2)
   	
 	});
@@ -432,13 +423,15 @@ function ajax_wait(gameid, pageType) {
 
 
 
-/*
-async function ajax_wait_text(gameid, pageType, lineFlag) {
+function ajax_wait_text(gameid, pageType, lineFlag) {
 	
 	//$.each(lineFlag, function(index, content){
-		for (let lineNum=0; lineNum<lineFlag.length; lineNum++){
-			lineText[lineNum] = await setTextContent(gameid, pageType, lineNum+1)
-		}
+	for (let lineNum=0; lineNum<lineFlag.length; lineNum++){
+		promise[lineNum] = setTextContent(gameid, pageType, lineNum+1)
+		promise[lineNum].then(function (data1) {
+			lineText[lineNum] = data1
+		});
+	}
   	
   	//})
   	//eval('lineText[0] = await setTextContent(gameid, pageType, 1)')
@@ -450,7 +443,7 @@ async function ajax_wait_text(gameid, pageType, lineFlag) {
     	
     //create_intro(lineText);
 };
-
+/*
 async function ajax_wait_img(gameid, pageType,lineNum) {
 	
   	lineImage = await setImagePath(gameid, pageType, lineNum)
