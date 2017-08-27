@@ -424,6 +424,12 @@ var create_html = function(pageType){
     		add_a(pageType, lineType, index);
     		
 		})
+		$(document).ready(function() {
+			$('#introtext').html(intro_html);
+			collapse_event_gen();
+			gotoPage(gameid)
+			$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
+		});
 		
 	}
 }
