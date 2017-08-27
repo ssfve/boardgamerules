@@ -410,7 +410,10 @@ var getPageLineNum = function(id,page){
 
 //async function ajax_wait(gameid, pageType) {
 function ajax_wait(gameid, pageType) {
-    Promise.when(getPageLineNum(gameid, pageType)).then(function (data1) {
+	
+    var promise1 = getPageLineNum(gameid, pageType)
+    
+    promise1.then(function (data1) {
 		
 		lineFlag = data1
 	    alert(lineFlag)
