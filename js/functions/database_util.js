@@ -407,20 +407,21 @@ var getPageLineNum = function(id,page){
 	//return p
 };
 
-/*
+
+//async function ajax_wait(gameid, pageType) {
 async function ajax_wait(gameid, pageType) {
     lineFlag = await getPageLineNum(gameid, pageType)
     //alert(lineFlag)
     
     $.each(lineFlag, function(index, content){ 
     	loc = index + 1
-  		ajax_wait_text(gameid, pageType, loc)
+  		//ajax_wait_text(gameid, pageType, loc)
   		//ajax_wait_img(gameid, pageType, loc)
   	})
-  	ajax_wait_text(gameid, pageType, lineFlag)
+  	//ajax_wait_text(gameid, pageType, lineFlag)
   	//ajax_wait_img(gameid, pageType, 2)
 };
-
+/*
 async function ajax_wait_text(gameid, pageType, lineFlag) {
 	
 	//$.each(lineFlag, function(index, content){
