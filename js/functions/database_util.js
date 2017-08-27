@@ -409,7 +409,7 @@ var getPageLineNum = function(id,page){
 
 
 //async function ajax_wait(gameid, pageType) {
-async function ajax_wait(gameid, pageType) {
+function ajax_wait(gameid, pageType) {
     lineFlag = await getPageLineNum(gameid, pageType)
     //alert(lineFlag)
     
