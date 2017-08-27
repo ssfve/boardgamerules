@@ -452,6 +452,7 @@ function ajax_wait_text(gameid, pageType, lineFlag) {
 			//console.log(lineText)
 			if(lineText.length === lineFlag.length){
     			console.log(lineText)
+    			create_html(pageType)
     		}
 		});
 	}
