@@ -10,7 +10,7 @@ if (current_page === 'gameintro'){
     $('#back_arrow').attr('id',gameid);
     
     pageType = 'stuff'
-	//ajax_wait(gameid, pageType);
+	ajax_wait(gameid, pageType);
 	
   	
   	//alert(lineText)
