@@ -359,7 +359,7 @@ var collapse_img_show = function(gameid, pageType, lineFlag){
 			    		image_path = lineImage[key+1][itemNum]
 			    		console.log(image_path)
 			    		imageID = '#' + pageType+ '_' + 'img' + '_' + (key+1) + '_' + image_index
-						console.log(imageID)
+						//console.log(imageID)
 						//console.log(image_path)
 						$(imageID).attr('src',image_path);
 					}

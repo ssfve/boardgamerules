@@ -7,7 +7,7 @@ var html_ready = function(pageType){
 		gotoPage(gameid);
 		collapse_event_gen();
 		//console.log(lineImage[2])
-		collapse_img_show(gameid, pageType, lineFlag);
+		//collapse_img_show(gameid, pageType, lineFlag);
 		$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
 		//});
 	}
