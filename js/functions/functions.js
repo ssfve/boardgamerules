@@ -275,12 +275,14 @@ var change_tab_theme = function(color,number){
 	$('.mui-table-cell.mui-active').css({'background-color': color});
 	
 	if (number === 0){
+		$('#gameSetup').css({'color': theme_color});
 		$('#gameFlow').css({'color': default_color});
 		$('#gameOther').css({'color': default_color});
 		$('#gameEnd').css({'color': default_color});
 	}
 	if (number === 1){
 		$('#gameSetup').css({'color': default_color});
+		$('#gameFlow').css({'color': theme_color});
 		$('#gameOther').css({'color': default_color});
 		$('#gameEnd').css({'color': default_color});
 	}
@@ -288,6 +290,7 @@ var change_tab_theme = function(color,number){
 		$('#gameSetup').css({'color': default_color});
 		$('#gameFlow').css({'color': default_color});
 		$('#gameOther').css({'color': default_color});
+		$('#gameEnd').css({'color': theme_color});
 	}
 	if (number === 3){
 		$('#gameSetup').css({'color': default_color});

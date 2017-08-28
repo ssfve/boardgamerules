@@ -185,11 +185,16 @@ function ajax_wait_img(gameid, pageType, lineFlag) {
 					if (pageType === 'flow'){
 						var item2 = document.getElementById('item2mobile');
 						item2.querySelector('.mui-scroll').innerHTML = html2;
+						change_tab_theme(theme_color,1);
 					}
 					if (pageType === 'end'){
 						var item3 = document.getElementById('item3mobile');
 						item3.querySelector('.mui-scroll').innerHTML = html3;
+						change_tab_theme(theme_color,2);
 					}
+					//if (pageType === 'setup'){
+						//change_tab_theme(theme_color,0);
+					//}
 					collapse_img_show(gameid, pageType, lineFlag);
 					collapse_event_gen();
 				}
@@ -273,10 +278,10 @@ if (current_page === 'gamerule'){
 }
 
 
-var generate_html2 = function(){
+var generate_html = function(pageType){
 	
-	pageType = 'flow'
-	
+	//pageType = 'flow'
+	console.log(pageType)
     // this will create flow page
 	ajax_wait(gameid, pageType);
 	//console.log(html2)
@@ -284,7 +289,7 @@ var generate_html2 = function(){
 
 var generate_html3 = function(){
 	
-    pageType = 'end'
+    //pageType = 'end'
     
     // this will create end page
 	ajax_wait(gameid, pageType);

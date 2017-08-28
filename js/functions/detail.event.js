@@ -34,25 +34,31 @@ mui.previewImage();
 	document.getElementById('slider').addEventListener('slide', function(e) {
 		if(e.detail.slideNumber === 1) {
 			if(item2.querySelector('.mui-loading')) {
-				//setTimeout(function() {
-				generate_html2();
-					
-				//}, 100);
+				generate_html(pageType);		
+			}else{
+				pageType = 'flow'
+				change_tab_theme(theme_color,e.detail.slideNumber);
 			}
+			
 		} else if(e.detail.slideNumber === 2) {
 			if(item3.querySelector('.mui-loading')) {
-				generate_html3();
+				generate_html(pageType);
+			}else{
+				pageType = 'end'
+				change_tab_theme(theme_color,e.detail.slideNumber);
 			}
 		} else if(e.detail.slideNumber === 3) {
 			if(item4.querySelector('.mui-loading')) {
 				//setTimeout(function() {
-					item4.querySelector('.mui-scroll').innerHTML = html4;
+				item4.querySelector('.mui-scroll').innerHTML = html4;
 				//}, 100);
 			}
 		} else if(e.detail.slideNumber === 0) {
+			pageType = 'setup'
+			change_tab_theme(theme_color,0);
 		}
 		//setTimeout(function() {
-		change_tab_theme(theme_color,e.detail.slideNumber);
+		//change_tab_theme(theme_color,e.detail.slideNumber);
 		//collapse_event_gen();
 		//}, 100);
 	});
@@ -60,6 +66,7 @@ mui.previewImage();
 })(mui);
 
 document.getElementById('gameSetup').addEventListener('tap', function(e) {
+	pageType = 'setup';
 	$('#gameSetup').css({'color': theme_color});
 	$('#gameFlow').css({'color': default_color});
 	$('#gameEnd').css({'color': default_color});
@@ -67,6 +74,7 @@ document.getElementById('gameSetup').addEventListener('tap', function(e) {
 });
 
 document.getElementById('gameFlow').addEventListener('tap', function(e) {
+	pageType = 'flow';
 	$('#gameSetup').css({'color': default_color});
 	$('#gameFlow').css({'color': theme_color});
 	$('#gameEnd').css({'color': default_color});
@@ -74,6 +82,7 @@ document.getElementById('gameFlow').addEventListener('tap', function(e) {
 });
 	
 document.getElementById('gameEnd').addEventListener('tap', function(e) {
+	pageType = 'end';
 	$('#gameSetup').css({'color': default_color});
 	$('#gameFlow').css({'color': default_color});
 	$('#gameEnd').css({'color': theme_color});
