@@ -109,7 +109,7 @@ var add_img = function(imageID){
 	pageType_temp = imageID.split('_')[0]
 	image_name = imageID.replace(pageType_temp,'').replace('_','')+'.jpg'
 	image_path = '../img/'+gameid+'/'+pageType+'/'+image_name
-	console.log(image_path)
+	//console.log(image_path)
 	//image_path = 'http://via.placeholder.com/450x150'
 	img_with_src = img_template.replace('%value%',image_path)
 	
