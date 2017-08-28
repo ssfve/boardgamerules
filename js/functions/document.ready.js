@@ -54,13 +54,10 @@ var html_ready = function(pageType){
 		});
 	}
 	*/
-	
-	
-	
 }
 
 var create_html_txt = function(pageType){
-	//alert('afa')
+	//console.log('fa')
 		$.each(lineFlag, function(index, content){
 			lineNum = index + 1
 			lineType = lineFlag[index]
@@ -115,29 +112,34 @@ function ajax_wait(gameid, pageType) {
 
 function ajax_wait_text(gameid, pageType, lineFlag) {
 	var promise_array = []
+	var lock = true
 	//$.each(lineFlag, function(index, content){
 	for (let lineNum=0; lineNum<lineFlag.length; lineNum++){
 		promise_array[lineNum] = setTextContent(gameid, pageType, lineNum+1)
 		promise_array[lineNum].then(function (data1) {
-			var lock = true
+			lock = true
 			lineText[lineNum] = data1
 			//console.log(lineText)
 			$.each(lineText,function(index,content){
+				//lineNum = index + 1
 				if (content === null || content === undefined){
 					lock = false
 				}
     		});
     		//console.log(lineText.length)
     		//console.log(lineFlag.length)
-			if (lock === true && lineText.length === lineFlag.length){
+			if (lock === true && lineNum === (lineFlag.length-1)){
+				//lock = false
 				console.log('in txt')
-				//console.log(lineText)
-    			create_html_txt(pageType)
-    			//console.log(lineFlag)
-    			ajax_wait_img(gameid, pageType, lineFlag)
+				create_html_txt(pageType)
+				//console.log(lineFlag)
+				ajax_wait_img(gameid, pageType, lineFlag)
+    			
 			}
 		});
 	}
+	//console.log('fdadf')
+	
 };
 /*
 async function ajax_wait_img(gameid, pageType,lineNum) {
@@ -164,11 +166,11 @@ function ajax_wait_img(gameid, pageType, lineFlag) {
 				//console.log(lineImage[1])
 				//console.log(lineImage[2])
 				//console.log(lineImage[3])
-				$.each(lineFlag,function(index,content){
-					position = index + 1
-					if (content === 'img'){
+				$.each(lineFlag,function(i,j){
+					position = i + 1
+					if (j === 'img'){
 						//console.log('we arein')
-						//console.log(lineImage[lineNum])
+						//console.log(lineImage[position])
 						//console.log(lineImage)
 						if (lineImage[position] === null || lineImage[position] === undefined){
 							lock = false
@@ -270,8 +272,11 @@ if (current_page === 'gamecover'){
 if (current_page === 'gamerule'){
 	$('#back_arrow').attr('id',gameid);
 	
+	lineText = []
+		lineImage = []
+		//var lineNo = []
+		lineFlag = []
 	pageType = 'setup'
-	
     // this will create setup page
 	ajax_wait(gameid, pageType);
 	
@@ -280,8 +285,13 @@ if (current_page === 'gamerule'){
 
 var generate_html = function(pageType){
 	
+	lineText = []
+		lineImage = []
+		//var lineNo = []
+		lineFlag = []
 	//pageType = 'flow'
-	console.log(pageType)
+	//console.log(pageType)
+	//console.log(lineFlag)
     // this will create flow page
 	ajax_wait(gameid, pageType);
 	//console.log(html2)

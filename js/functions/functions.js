@@ -348,7 +348,7 @@ var collapse_img_show = function(gameid, pageType, lineFlag){
 				//console.log(index)
 				active_sec[key].addEventListener('tap', function(e) {
 					//ajax_wait_img(gameid, pageType, index);
-					//console.log(lineImage[index+1])
+					//console.log(lineImage[key+1])
 					//console.log(lineImage[3])
 					//console.log(index)
 					
