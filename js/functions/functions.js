@@ -335,6 +335,10 @@ var collapse_img_show = function(gameid, pageType, lineFlag){
 			var item3 = document.getElementById('item3mobile');
 			var active_sec = item3.getElementsByClassName("mui-table-view-cell");
 		}
+		if (pageType === 'stuff'){
+			//var item3 = document.getElementById('item3mobile');
+			var active_sec = document.getElementsByClassName("mui-table-view-cell");
+		}
 		
 		//console.log(active_sec)
 		$.each(lineFlag, function(key, value){
