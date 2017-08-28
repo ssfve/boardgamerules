@@ -335,7 +335,7 @@ var collapse_img_show = function(gameid, pageType, lineFlag){
 		
 		//console.log(active_sec)
 		$.each(lineFlag, function(key, value){
-			console.log(lineFlag)
+			//console.log(lineFlag)
 			lineNum = key + 1
 			if (value === 'img'){
 				//console.log(index)
