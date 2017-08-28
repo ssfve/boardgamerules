@@ -104,8 +104,15 @@ var add_b = function(pageType){
 
 var add_img = function(imageID){
 	//alert(obj)
-	default_image_path = 'http://via.placeholder.com/450x150'
-	img_with_src = img_template.replace('%value%',default_image_path)
+	//default_image_path = 'http://via.placeholder.com/450x150'
+	//img_with_src = img_template.replace('%value%',default_image_path)
+	pageType_temp = imageID.split('_')[0]
+	image_name = imageID.replace(pageType_temp,'').replace('_','')+'.jpg'
+	image_path = '../img/'+gameid+'/'+pageType+'/'+image_name
+	console.log(image_path)
+	//image_path = 'http://via.placeholder.com/450x150'
+	img_with_src = img_template.replace('%value%',image_path)
+	
 	//console.log(imageID)
 	img_html = img_with_src.replace('%id%',imageID)
 	
