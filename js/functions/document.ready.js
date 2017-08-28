@@ -14,16 +14,13 @@ var html_ready = function(pageType){
 	
 	if (pageType === 'setup'){
 		$('#setup_tab').html(html1);
-		$(document).ready(function() {
-			gotoPage(gameid);		
-			//collapse_event_gen();
-			//collapse_img_show(gameid, pageType, lineFlag);
-			$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
+		gotoPage(gameid);		
+		//collapse_event_gen();
+		//collapse_img_show(gameid, pageType, lineFlag);
+		$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});	
+		change_tab_theme(theme_color,0);
+		$('#gameSetup').css({'color': theme_color});
 			
-			change_tab_theme(theme_color,0);
-			$('#gameSetup').css({'color': theme_color});
-			
-		});
 	}
 	
 	//console.log('in')

@@ -51,10 +51,10 @@ mui.previewImage();
 			}
 		} else if(e.detail.slideNumber === 0) {
 		}
-		setTimeout(function() {
-			change_tab_theme(theme_color,e.detail.slideNumber);
-			//collapse_event_gen();
-		}, 100);
+		//setTimeout(function() {
+		change_tab_theme(theme_color,e.detail.slideNumber);
+		//collapse_event_gen();
+		//}, 100);
 	});
 	
 })(mui);
