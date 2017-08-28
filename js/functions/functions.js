@@ -319,12 +319,30 @@ var collapse_event_gen = function(){
 };
 
 var collapse_img_show = function(gameid, pageType, lineFlag){
+	//alert('')
 		var active_sec = document.getElementsByClassName("mui-table-view-cell");
-		//alert(active_sec.length)
+		//console.log(active_sec)
 		$.each(lineFlag, function(index, content){
+			lineNum = index + 1
 			if (content === 'img'){
+				//console.log(index)
 				active_sec[index].addEventListener('tap', function(e) {
-					ajax_wait_img(gameid, pageType, index)
+					//ajax_wait_img(gameid, pageType, index);
+					//console.log(lineImage[index+1])
+					//console.log(lineImage[3])
+					//console.log(index)
+					
+			    	for (let itemNum=0; itemNum<lineImage[index+1].length; itemNum++){
+			    		image_index = itemNum + 1
+			    		//console.log('in')
+			    		//console.log(itemNum)
+			    		image_path = lineImage[index+1][itemNum]
+			    		//console.log(image_path)
+			    		imageID = '#' + pageType+ '_' + 'img' + '_' + (index+1) + '_' + image_index
+						//console.log(imageID)
+						//console.log(image_path)
+						$(imageID).attr('src',image_path);
+					}
 				});
 			}
 		});

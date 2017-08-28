@@ -102,11 +102,13 @@ var add_b = function(pageType){
 	}
 }
 
-var add_img = function(obj){
+var add_img = function(imageID){
 	//alert(obj)
-	pageType_temp = obj.replace('#','').split('_')[0]
-	id_temp = obj.replace('#','')
-	img_html = img_with_src.replace('%id%',id_temp)
+	default_image_path = 'http://via.placeholder.com/450x150'
+	img_with_src = img_template.replace('%value%',default_image_path)
+	//console.log(imageID)
+	img_html = img_with_src.replace('%id%',imageID)
+	
 	if (pageType_temp === 'setup'){
 		html1 = html1.replace('%img%',img_html)
 	}

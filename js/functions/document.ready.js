@@ -1,13 +1,15 @@
 var html_ready = function(pageType){
 	
 	if (pageType === 'stuff'){
+		//alert('ll')
 		$('#introtext').html(intro_html);
-		$(document).ready(function() {
-			gotoPage(gameid);
-			collapse_event_gen();
-			collapse_img_show(gameid, pageType, lineFlag);
-			$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
-		});
+		//$(document).ready(function() {
+		gotoPage(gameid);
+		collapse_event_gen();
+		//console.log(lineImage[2])
+		collapse_img_show(gameid, pageType, lineFlag);
+		$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
+		//});
 	}
 	
 	if (pageType === 'setup'){
@@ -26,8 +28,8 @@ var html_ready = function(pageType){
 	
 }
 
-var create_html = function(pageType){
-	
+var create_html_txt = function(pageType){
+	//alert('afa')
 		$.each(lineFlag, function(index, content){
 			
 			lineType = lineFlag[index]
@@ -39,11 +41,29 @@ var create_html = function(pageType){
 			}
 			a_with_value = a_template.replace('%value%',lineText[index])
     		add_a(pageType, lineType, index);
-    		
-		})
-		end_data(pageType);
+		});
 		
-		html_ready(pageType);
+		end_data(pageType);
+		//html_ready(pageType);
+}
+
+var create_html_img = function(pageType){
+	$.each(lineFlag, function(index, content){
+		lineNum = index + 1
+		if (content === 'img'){
+			//console.log(lineImage[lineNum])
+    		for (let itemNum=0; itemNum<lineImage[lineNum].length; itemNum++){
+    			image_index = itemNum + 1
+    			imageID = pageType+ '_' + 'img' + '_' + lineNum + '_' + image_index
+    			//console.log(imageID)
+    			add_img(imageID);
+    		};
+    		end_img(pageType);
+			//$(imageID).attr('src',content);
+		}
+    });
+    //console.log(lineImage[2])
+    html_ready(pageType)
 }
 
 //async function ajax_wait(gameid, pageType) {
@@ -53,8 +73,6 @@ function ajax_wait(gameid, pageType) {
 		lineFlag = data1
 	    //alert(lineFlag)
 	  	ajax_wait_text(gameid, pageType, lineFlag)
-	  	//ajax_wait_img(gameid, pageType, 2)
-  	
 	});
 };
 
@@ -66,13 +84,23 @@ function ajax_wait_text(gameid, pageType, lineFlag) {
 	for (let lineNum=0; lineNum<lineFlag.length; lineNum++){
 		promise_array[lineNum] = setTextContent(gameid, pageType, lineNum+1)
 		promise_array[lineNum].then(function (data1) {
-			//alert('afda')
-			//alert(data1)
+			var lock = true
+			lineText[lineNum] = data1
 			//console.log(lineText)
-			if(lineText.length === lineFlag.length){
-    			console.log(lineText)
-    			create_html(pageType)
-    		}
+			$.each(lineText,function(index,content){
+				if (content === null || content === undefined){
+					lock = false
+				}
+    		});
+    		//console.log(lineText.length)
+    		//console.log(lineFlag.length)
+			if (lock === true && lineText.length === lineFlag.length){
+				console.log('in txt')
+				//console.log(lineText)
+    			create_html_txt(pageType)
+    			//console.log(lineFlag)
+    			ajax_wait_img(gameid, pageType, lineFlag)
+			}
 		});
 	}
 };
@@ -84,20 +112,45 @@ async function ajax_wait_img(gameid, pageType,lineNum) {
     //create_intro(lineText);
 };
 */
-function ajax_wait_img(gameid, pageType, lineNum) {
-	//var promise_array = []
+function ajax_wait_img(gameid, pageType, lineFlag) {
+	var promise_array = []
 	//$.each(lineFlag, function(index, content){
-	var promise_img = setImagePath(gameid, pageType, lineNum+1)
-	promise_img.then(function (data1) {
-		lineImage = data1
-		console.log(lineImage)
-    	$.each(lineImage,function(index, content){
-    		imageID = pageType+ '_' + 'img' + '_' + lineNum + '_' + index
-    		console.log(imageID)
-    		var img_part = document.getElementsByID(imageID);
-    		img_part.attr('src',content);
-    	});
-  });
+	var lineNumTotal = lineFlag.length+1
+	for (let lineNum=1; lineNum<lineNumTotal; lineNum++){
+		if (lineFlag[lineNum-1] === 'img'){
+			promise_array[lineNum] = setImagePath(gameid, pageType, lineNum)
+			promise_array[lineNum].then(function (data1) {
+				var lock = true
+				//console.log(lineNum)
+				//console.log(data1)
+				//console.log(lineImage)
+				lineImage[lineNum] = data1
+				//console.log(lineImage)
+				//console.log(lineImage[1])
+				//console.log(lineImage[2])
+				//console.log(lineImage[3])
+				$.each(lineFlag,function(index,content){
+					position = index + 1
+					if (content === 'img'){
+						//console.log('we arein')
+						//console.log(lineImage[lineNum])
+						//console.log(lineImage)
+						if (lineImage[position] === null || lineImage[position] === undefined){
+							lock = false
+						}
+					}
+    			});
+    			//console.log(lock)
+				if (lock === true){
+					console.log('in img')
+					//console.log(lineImage[2])
+					//console.log(lineImage[3])
+					create_html_img(pageType)
+				}
+			});
+		}
+	}
+	//console.log('out')
 };
 
 if (current_page === 'gamepic'){

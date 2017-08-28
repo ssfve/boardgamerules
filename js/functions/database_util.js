@@ -337,10 +337,11 @@ var setImagePath = function(id,type,loc){
 				//}
 				//queryImageInfo(data,obj)
 				//lineImage[loc] = []
+				var temp = []
 				$.each(data, function(index, content){ 
-   					lineImage[index] = content.image_path; 
+   					temp[index] = content.image_path; 
   				});
-  				resolve(lineImage)
+  				resolve(temp)
 			},
 			error:function(data){
 				//end_img(obj)
@@ -368,8 +369,9 @@ var setTextContent = function(id,type,loc){
 				//}
 				//queryTextInfo(data,obj)
 				//alert(data.text_content)
-				lineText[loc] = data.text_content
-				resolve(lineText[loc])
+				var temp = []
+				temp[loc] = data.text_content
+				resolve(temp[loc])
 			},
 			error:function(data){
 				//end_a(obj)
