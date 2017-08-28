@@ -109,7 +109,7 @@ function ajax_wait(gameid, pageType) {
     var promise1 = getPageLineNum(gameid, pageType)
     promise1.then(function (data1) {
 		lineFlag = data1
-	    console.log(lineFlag)
+	    //console.log(lineFlag)
 	  	ajax_wait_text(gameid, pageType, lineFlag)
 	});
 };
@@ -184,9 +184,17 @@ function ajax_wait_img(gameid, pageType, lineFlag) {
 					//console.log(lineImage[2])
 					//console.log(lineImage[3])
 					create_html_img(pageType)
-					var item3 = document.getElementById('item3mobile');
-					item3.querySelector('.mui-scroll').innerHTML = html3;
-					//var item3 = document.getElementById('item3mobile');
+					
+					if (pageType === 'flow'){
+						var item2 = document.getElementById('item2mobile');
+						item2.querySelector('.mui-scroll').innerHTML = html2;
+					}
+					if (pageType === 'end'){
+						var item3 = document.getElementById('item3mobile');
+						item3.querySelector('.mui-scroll').innerHTML = html3;
+					}
+					collapse_img_show(gameid, pageType, lineFlag);
+					collapse_event_gen();
 				}
 			});
 		}

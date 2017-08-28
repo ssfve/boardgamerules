@@ -35,19 +35,13 @@ mui.previewImage();
 		if(e.detail.slideNumber === 1) {
 			if(item2.querySelector('.mui-loading')) {
 				//setTimeout(function() {
-					generate_html2();
-					item2.querySelector('.mui-scroll').innerHTML = html2;
+				generate_html2();
+					
 				//}, 100);
 			}
 		} else if(e.detail.slideNumber === 2) {
 			if(item3.querySelector('.mui-loading')) {
-				//setTimeout(function() {
 				generate_html3();
-				//console.log('fasd')
-				//console.log(html3)
-				//item3.querySelector('.mui-scroll').innerHTML = html3;
-				//item3.querySelector('.mui-scroll').innerHTML = html3;
-				//}, 100);
 			}
 		} else if(e.detail.slideNumber === 3) {
 			if(item4.querySelector('.mui-loading')) {
@@ -59,7 +53,7 @@ mui.previewImage();
 		}
 		setTimeout(function() {
 			change_tab_theme(theme_color,e.detail.slideNumber);
-			collapse_event_gen();
+			//collapse_event_gen();
 		}, 100);
 	});
 	
