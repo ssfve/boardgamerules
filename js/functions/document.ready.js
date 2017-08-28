@@ -26,12 +26,46 @@ var html_ready = function(pageType){
 		});
 	}
 	
+	//console.log('in')
+	//console.log(html3)
+	/*
+	if (pageType === 'setup'){
+		$('#setup_tab').html(html1);
+		$(document).ready(function() {
+			gotoPage(gameid);		
+			collapse_event_gen();
+			collapse_img_show(gameid, pageType, lineFlag);
+			$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
+			
+			change_tab_theme(theme_color,0);
+			$('#gameSetup').css({'color': theme_color});
+			
+		});
+	}
+	
+	if (pageType === 'setup'){
+		$('#setup_tab').html(html1);
+		$(document).ready(function() {
+			gotoPage(gameid);		
+			collapse_event_gen();
+			collapse_img_show(gameid, pageType, lineFlag);
+			$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
+			
+			change_tab_theme(theme_color,0);
+			$('#gameSetup').css({'color': theme_color});
+			
+		});
+	}
+	*/
+	
+	
+	
 }
 
 var create_html_txt = function(pageType){
 	//alert('afa')
 		$.each(lineFlag, function(index, content){
-			
+			lineNum = index + 1
 			lineType = lineFlag[index]
 			if (lineType === 'txt'){
 				add_no_collapse_text(pageType);
@@ -40,12 +74,13 @@ var create_html_txt = function(pageType){
 				add_collapse(pageType);
 			}
 			a_with_value = a_template.replace('%value%',lineText[index])
-    		add_a(pageType, lineType, index);
+    		add_a(pageType, lineType, lineNum);
 		});
 		
 		end_data(pageType);
+		//console.log(html2);
 		//html_ready(pageType);
-}
+};
 
 var create_html_img = function(pageType){
 	$.each(lineFlag, function(index, content){
@@ -62,8 +97,11 @@ var create_html_img = function(pageType){
 			//$(imageID).attr('src',content);
 		}
     });
+    //console.log(html3);
     //console.log(lineImage[2])
     html_ready(pageType)
+    //console.log('finish')
+    //console.log(html3)
 }
 
 //async function ajax_wait(gameid, pageType) {
@@ -71,7 +109,7 @@ function ajax_wait(gameid, pageType) {
     var promise1 = getPageLineNum(gameid, pageType)
     promise1.then(function (data1) {
 		lineFlag = data1
-	    //alert(lineFlag)
+	    console.log(lineFlag)
 	  	ajax_wait_text(gameid, pageType, lineFlag)
 	});
 };
@@ -146,6 +184,9 @@ function ajax_wait_img(gameid, pageType, lineFlag) {
 					//console.log(lineImage[2])
 					//console.log(lineImage[3])
 					create_html_img(pageType)
+					var item3 = document.getElementById('item3mobile');
+					item3.querySelector('.mui-scroll').innerHTML = html3;
+					//var item3 = document.getElementById('item3mobile');
 				}
 			});
 		}
@@ -233,6 +274,7 @@ var generate_html2 = function(){
 	
     // this will create flow page
 	ajax_wait(gameid, pageType);
+	//console.log(html2)
 }
 
 var generate_html3 = function(){
@@ -241,4 +283,6 @@ var generate_html3 = function(){
     
     // this will create end page
 	ajax_wait(gameid, pageType);
+	
+	//return html3;
 }

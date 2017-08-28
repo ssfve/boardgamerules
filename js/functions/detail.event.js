@@ -42,8 +42,11 @@ mui.previewImage();
 		} else if(e.detail.slideNumber === 2) {
 			if(item3.querySelector('.mui-loading')) {
 				//setTimeout(function() {
-					generate_html3();
-					item3.querySelector('.mui-scroll').innerHTML = html3;
+				generate_html3();
+				//console.log('fasd')
+				//console.log(html3)
+				//item3.querySelector('.mui-scroll').innerHTML = html3;
+				//item3.querySelector('.mui-scroll').innerHTML = html3;
 				//}, 100);
 			}
 		} else if(e.detail.slideNumber === 3) {

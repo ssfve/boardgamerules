@@ -50,3 +50,5 @@ var pageType = ''
 
 var lineNo = []
 var lineFlag = []
+var lineText = []
+var lineImage = []
