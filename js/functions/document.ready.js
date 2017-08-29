@@ -15,6 +15,7 @@ var html_ready = function(pageType) {
 	}
 
 	if(pageType === 'setup') {
+		console.log('in setup')
 		$('#setup_tab').html(html1);
 		gotoPage(gameid);
 		//collapse_event_gen();
@@ -29,23 +30,22 @@ var html_ready = function(pageType) {
 
 	}
 
-	//console.log('in')
-	//console.log(html3)
-	/*
-	if (pageType === 'setup'){
-		$('#setup_tab').html(html1);
-		$(document).ready(function() {
-			gotoPage(gameid);		
-			collapse_event_gen();
-			collapse_img_show(gameid, pageType, lineFlag);
-			$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
-			
-			change_tab_theme(theme_color,0);
-			$('#gameSetup').css({'color': theme_color});
-			
-		});
+	if(pageType === 'flow') {
+		var item2 = document.getElementById('item2mobile');
+		item2.querySelector('.mui-scroll').innerHTML = html2;
+		change_tab_theme(theme_color, 1);
 	}
-	
+	if(pageType === 'end') {
+		var item3 = document.getElementById('item3mobile');
+		item3.querySelector('.mui-scroll').innerHTML = html3;
+		change_tab_theme(theme_color, 2);
+	}
+	//if (pageType === 'setup'){
+	//change_tab_theme(theme_color,0);
+	//}
+	collapse_img_show(gameid, pageType, lineFlag);
+	collapse_event_gen();
+	/*
 	if (pageType === 'setup'){
 		$('#setup_tab').html(html1);
 		$(document).ready(function() {
@@ -78,7 +78,8 @@ var create_html_txt = function(pageType) {
 	});
 
 	end_data(pageType);
-	//console.log(html2);
+	//console.log(html2)
+	html_ready(pageType)
 	//html_ready(pageType);
 };
 
@@ -98,7 +99,7 @@ var create_html_img = function(pageType) {
 		}
 	});
 	//console.log(html3);
-	//console.log(lineImage[2])
+	//console.log(pageType)
 	html_ready(pageType)
 	//console.log('finish')
 	//console.log(html3)
@@ -136,7 +137,7 @@ function ajax_wait_text(gameid, pageType, lineFlag) {
 				//lock = false
 				console.log('in txt')
 				create_html_txt(pageType)
-				//console.log(lineFlag)
+				//console.log(html1)
 				ajax_wait_img(gameid, pageType, lineFlag)
 
 			}
@@ -188,21 +189,6 @@ function ajax_wait_img(gameid, pageType, lineFlag) {
 					//console.log(lineImage[3])
 					create_html_img(pageType)
 
-					if(pageType === 'flow') {
-						var item2 = document.getElementById('item2mobile');
-						item2.querySelector('.mui-scroll').innerHTML = html2;
-						change_tab_theme(theme_color, 1);
-					}
-					if(pageType === 'end') {
-						var item3 = document.getElementById('item3mobile');
-						item3.querySelector('.mui-scroll').innerHTML = html3;
-						change_tab_theme(theme_color, 2);
-					}
-					//if (pageType === 'setup'){
-					//change_tab_theme(theme_color,0);
-					//}
-					collapse_img_show(gameid, pageType, lineFlag);
-					collapse_event_gen();
 				}
 			});
 		}

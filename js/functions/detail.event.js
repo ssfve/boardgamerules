@@ -35,20 +35,21 @@ mui.previewImage();
 		//console.log('slide in')
 		if(e.detail.slideNumber === 1) {
 			pageType = 'flow'
-			if(item2.querySelector('.mui-loading')) {
-				generate_html(pageType);		
-			}else{
-				generate_html(pageType);
-				change_tab_theme(theme_color,e.detail.slideNumber);
-			}
+			//if(item2.querySelector('.mui-loading')) {
+				//console.log('in flow')
+				//generate_html(pageType);		
+			//}else{
+			generate_html(pageType);
+			change_tab_theme(theme_color,e.detail.slideNumber);
+			//}
 		} else if(e.detail.slideNumber === 2) {
 			pageType = 'end'
-			if(item3.querySelector('.mui-loading')) {
-				generate_html(pageType);
-			}else{
-				generate_html(pageType);
-				change_tab_theme(theme_color,e.detail.slideNumber);
-			}
+			//if(item3.querySelector('.mui-loading')) {
+				//generate_html(pageType);
+			//}else{
+			generate_html(pageType);
+			change_tab_theme(theme_color,e.detail.slideNumber);
+			//}
 		} else if(e.detail.slideNumber === 3) {
 			if(item4.querySelector('.mui-loading')) {
 				//setTimeout(function() {
