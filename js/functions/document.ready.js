@@ -3,20 +3,27 @@ var html_ready = function(pageType) {
 	if(pageType === 'stuff') {
 		//alert('ll')
 		$('#introtext').html(intro_html);
-		//$(document).ready(function() {
+		
+		//console.log('radt')
 		gotoPage(gameid);
-		collapse_event_gen();
+		//collapse_event_gen();
 		//console.log(lineImage[2])
 		//collapse_img_show(gameid, pageType, lineFlag);
 		$('.mui-table-view-cell.mui-collapse').css({
 			'background-color': bg_color + lowPR
 		});
-		//});
+		collapse_img_show(gameid, pageType, lineFlag);
+		collapse_event_gen();
 	}
 
 	if(pageType === 'setup') {
-		console.log('in setup')
+		
+		//console.log(document.getElementById('setup_tab').innerHTML)
+		//console.log(html1)
 		$('#setup_tab').html(html1);
+		//console.log('ready')
+		collapse_img_show(gameid, pageType, lineFlag);
+		collapse_event_gen();
 		gotoPage(gameid);
 		//collapse_event_gen();
 		//collapse_img_show(gameid, pageType, lineFlag);
@@ -27,24 +34,30 @@ var html_ready = function(pageType) {
 		$('#gameSetup').css({
 			'color': theme_color
 		});
-
+		
+		
+		//change_tab_theme(theme_color, 0);
 	}
-
 	if(pageType === 'flow') {
-		var item2 = document.getElementById('item2mobile');
-		item2.querySelector('.mui-scroll').innerHTML = html2;
+		var item2 = document.getElementById('flow_tab');
+		item2.innerHTML = html2;
 		change_tab_theme(theme_color, 1);
+		collapse_img_show(gameid, pageType, lineFlag);
+		collapse_event_gen();
 	}
 	if(pageType === 'end') {
-		var item3 = document.getElementById('item3mobile');
-		item3.querySelector('.mui-scroll').innerHTML = html3;
+		//console.log(html3)
+		var item3 = document.getElementById('end_tab');
+		item3.innerHTML = html3;
 		change_tab_theme(theme_color, 2);
+		collapse_img_show(gameid, pageType, lineFlag);
+		collapse_event_gen();
 	}
 	//if (pageType === 'setup'){
 	//change_tab_theme(theme_color,0);
 	//}
-	collapse_img_show(gameid, pageType, lineFlag);
-	collapse_event_gen();
+	//console.log('html1')
+	
 	/*
 	if (pageType === 'setup'){
 		$('#setup_tab').html(html1);
@@ -79,7 +92,7 @@ var create_html_txt = function(pageType) {
 
 	end_data(pageType);
 	//console.log(html2)
-	html_ready(pageType)
+	//html_ready(pageType)
 	//html_ready(pageType);
 };
 
@@ -133,13 +146,19 @@ function ajax_wait_text(gameid, pageType, lineFlag) {
 			});
 			//console.log(lineText.length)
 			//console.log(lineFlag.length)
-			if(lock === true && lineNum === (lineFlag.length - 1)) {
+			if(lock === true && lineText.length === lineFlag.length) {
 				//lock = false
-				console.log('in txt')
+				console.log(lineFlag)
+				var all_txt_flag = true
 				create_html_txt(pageType)
-				//console.log(html1)
-				ajax_wait_img(gameid, pageType, lineFlag)
-
+				$.each(lineFlag, function(i, j) {
+					if(j === 'img') {all_txt_flag = false}
+				});
+				if (all_txt_flag === true){
+					html_ready(pageType)
+				}else{
+					ajax_wait_img(gameid, pageType, lineFlag)
+				}
 			}
 		});
 	}
@@ -155,6 +174,7 @@ async function ajax_wait_img(gameid, pageType,lineNum) {
 };
 */
 function ajax_wait_img(gameid, pageType, lineFlag) {
+	console.log('in ajax img')
 	var promise_array = []
 	//$.each(lineFlag, function(index, content){
 	var lineNumTotal = lineFlag.length + 1
@@ -188,7 +208,6 @@ function ajax_wait_img(gameid, pageType, lineFlag) {
 					//console.log(lineImage[2])
 					//console.log(lineImage[3])
 					create_html_img(pageType)
-
 				}
 			});
 		}

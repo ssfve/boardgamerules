@@ -363,22 +363,26 @@ var collapse_event_gen = function() {
 };
 
 var collapse_img_show = function(gameid, pageType, lineFlag) {
-	//alert('')
+	//console.log(pageType)
+	var active_sec = []
 	if(pageType === 'setup') {
 		var item1 = document.getElementById('item1mobile');
-		var active_sec = item1.getElementsByClassName("mui-table-view-cell");
+		//console.log(item1.innerHTML)
+		active_sec = item1.getElementsByClassName("mui-table-view-cell");
+		//console.log(active_sec)
 	}
 	if(pageType === 'flow') {
 		var item2 = document.getElementById('item2mobile');
-		var active_sec = item2.getElementsByClassName("mui-table-view-cell");
+		active_sec = item2.getElementsByClassName("mui-table-view-cell");
 	}
 	if(pageType === 'end') {
 		var item3 = document.getElementById('item3mobile');
-		var active_sec = item3.getElementsByClassName("mui-table-view-cell");
+		active_sec = item3.getElementsByClassName("mui-table-view-cell");
 	}
 	if(pageType === 'stuff') {
-		//var item3 = document.getElementById('item3mobile');
-		var active_sec = document.getElementsByClassName("mui-table-view-cell");
+		var item4 = document.getElementById('introtext');
+		//console.log(item4.innerHTML)
+		active_sec = item4.getElementsByClassName("mui-table-view-cell");
 	}
 
 	//console.log(active_sec)
