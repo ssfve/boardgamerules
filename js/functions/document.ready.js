@@ -215,7 +215,7 @@ if(current_page === 'gameintro') {
 
 if(current_page === 'gamecover') {
 	$(document).ready(function() {
-		setTimeout(function() {
+		//setTimeout(function() {
 			valueRates_w = $('#valueRates').width();
 			valueRates_h = $('#valueRates').height();
 			//vertical align middle
@@ -296,7 +296,24 @@ if(current_page === 'gamecover') {
 			$('#clocksvg').css({
 				'height': svg_height
 			});
-		}, 50);
+		//}, 50);
+		/*
+		if(langLvl0 === langDepLvl) {
+			$('#langLvl0').addClass('color-orange');
+		}
+		if(langLvl1 === langDepLvl) {
+			$('#langLvl1').addClass('color-orange');
+		}
+		if(langLvl2 === langDepLvl) {
+			$('#langLvl2').addClass('color-orange');
+		}
+		if(langLvl2 === langDepLvl) {
+			$('#langLvl2').addClass('color-orange');
+		}
+		if(langLvl3 === langDepLvl) {
+			$('#langLvl3').addClass('color-orange');
+		}
+		*/
 	});
 
 }

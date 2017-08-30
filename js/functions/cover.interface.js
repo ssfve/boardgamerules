@@ -39,6 +39,7 @@ var cover_img_scale_factor = 0.5
 var pixels = 'px'
 
 $(document).ready(function() {
+	alert('in setting')
 	$('#numRatesMea').html(numRatesMea);
 	$('#numRates').html(numRates);
 	$('#valueRates').html(valueRates);
@@ -168,6 +169,7 @@ $(document).ready(function() {
 		'height': clocksvg_h + pixels
 	});
 
+	console.log(langDepLvl)
 	if(langLvl0 === langDepLvl) {
 		$('#langLvl0').addClass('color-orange');
 	}
