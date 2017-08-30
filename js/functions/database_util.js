@@ -156,7 +156,7 @@ var queryStyleInfo = function(json) {
         change_theme(theme_color);
         if (current_page === 'gamecover'){
         	$(document).ready(function() {
-	        	//alert(theme_color)
+	        	console.log(theme_color)
 				$('#langLvl'+language_dependence).addClass('color-orange');
 				//modify after class is added
 				$('.color-orange').css({'color': theme_color});
