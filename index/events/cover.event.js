@@ -248,3 +248,11 @@ document.getElementById("clocksvg").addEventListener('tap', function() {
 document.getElementById("svg6").addEventListener('tap', function() {
 	mui.toast(playtimeMea,3500);
 });
+
+
+/*
+mui.plusReady(function(){
+	console.log('rotate')
+	plus.screen.lockOrientation('portrait-primary');
+});
+*/
