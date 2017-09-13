@@ -128,3 +128,4 @@ index_games[98]=[28023,'Jamaica','牙买加','YMJ'];
 index_games[99]=[148949,'Istanbul','伊斯坦布尔','YSSBE'];
 index_games[100]=[147949,'One Night Ultimate Werewolf','一夜终极狼人','YYZJLR'];
 index_games[101]=['Z','Z'];
+index_games[102]=[205544,'Rescue Polar Bears','拯救北极熊','ZJBJX'];
