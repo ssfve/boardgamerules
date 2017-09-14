@@ -431,7 +431,12 @@ var alternations = function() {
 	} else {
 		designers_temp = designersCN + artistsCN
 	}
-	// best players
+	
+	//alert(categorysCN[categorysCN.length-1])
+	// remove the last pipeline
+	//alert(categorysCN)
+	categorysCN = categorysCN.substr(0,categorysCN.length-1)
+	//alert(categorysCN)
 	//alert(suggested_numplayers)
 	if(suggested_numplayers === 'None') {
 		playersBest = ''
