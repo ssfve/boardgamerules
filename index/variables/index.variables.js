@@ -137,4 +137,5 @@ index_games[107]=[28023,'Jamaica','牙买加','YMJ'];
 index_games[108]=[148949,'Istanbul','伊斯坦布尔','YSSBE'];
 index_games[109]=[147949,'One Night Ultimate Werewolf','一夜终极狼人','YYZJLR'];
 index_games[110]=['Z','Z'];
-index_games[111]=[205544,'Rescue Polar Bears','拯救北极熊','ZJBJX'];
+index_games[111]=[58281,'Summoner Wars','召唤师战争','ZHSZZ'];
+index_games[112]=[205544,'Rescue Polar Bears','拯救北极熊','ZJBJX'];
