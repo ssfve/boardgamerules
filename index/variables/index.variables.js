@@ -146,3 +146,4 @@ index_games[116]=[147949,'One Night Ultimate Werewolf','一夜终极狼人','YYZ
 index_games[117]=['Z','Z'];
 index_games[118]=[58281,'Summoner Wars','召唤师战争','ZHSZZ'];
 index_games[119]=[205544,'Rescue Polar Bears','拯救北极熊','ZJBJX'];
+index_games[120]=[54043,'Jaipur','斋普尔','ZPE'];
