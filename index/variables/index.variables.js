@@ -224,3 +224,4 @@ index_games[194]=['Z','Z'];
 index_games[195]=[58281,'Summoner Wars','召唤师战争','ZHSZZ'];
 index_games[196]=[205544,'Rescue Polar Bears','拯救北极熊','ZJBJX'];
 index_games[197]=[54043,'Jaipur','斋普尔','ZPE'];
+index_games[198]=[218129,'Décrocher la Lune','抓月亮','ZYL'];
