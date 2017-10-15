@@ -311,3 +311,4 @@ index_games[281]=[123885,'Pick-a-Dog','猪朋狗友','ZPGY'];
 index_games[282]=[54998,'Cyclades','诸神之战','ZSZZ'];
 index_games[283]=[855,'Java','爪哇岛','ZWD'];
 index_games[284]=[218129,'Décrocher la Lune','抓月亮','ZYL'];
+index_games[285]=[39856,'Dixit','只言片语','ZYPY'];
