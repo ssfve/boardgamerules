@@ -415,3 +415,4 @@ index_games[385]=[855,'Java','爪哇岛','ZWD'];
 index_games[386]=[760,'Battle Line','战线','ZX'];
 index_games[387]=[218129,'Décrocher la Lune','抓月亮','ZYL'];
 index_games[388]=[39856,'Dixit','只言片语','ZYPY'];
+index_games[389]=[146439,'BattleLore (Second Edition)','战争之道(第二版)','ZZZD(DEB)'];
