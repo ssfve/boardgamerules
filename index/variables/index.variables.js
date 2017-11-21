@@ -435,4 +435,5 @@ index_games[405]=[855,'Java','爪哇岛','ZWD'];
 index_games[406]=[760,'Battle Line','战线','ZX'];
 index_games[407]=[218129,'Décrocher la Lune','抓月亮','ZYL'];
 index_games[408]=[39856,'Dixit','只言片语','ZYPY'];
-index_games[409]=[146439,'BattleLore (Second Edition)','战争之道(第二版)','ZZZD(DEB)'];
+index_games[409]=[200646,'Bubble Tea','珍珠奶茶','ZZNC'];
+index_games[410]=[146439,'BattleLore (Second Edition)','战争之道(第二版)','ZZZD(DEB)'];
