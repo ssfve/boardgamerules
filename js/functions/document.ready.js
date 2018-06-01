@@ -99,17 +99,6 @@ var create_html_txt = function(pageType) {
 var create_html_img = function(pageType) {
 	$.each(lineFlag, function(index, content) {
 		lineNum = index + 1
-		if(content === 'img') {
-			//console.log(lineImage[lineNum])
-			for(let itemNum = 0; itemNum < lineImage[lineNum].length; itemNum++) {
-				image_index = itemNum + 1
-				imageID = pageType + '_' + 'img' + '_' + lineNum + '_' + image_index
-				//console.log(imageID)
-				add_img(imageID);
-			};
-			end_img(pageType);
-			//$(imageID).attr('src',content);
-		}
 	});
 	//console.log(html3);
 	//console.log(pageType)
@@ -132,36 +121,6 @@ function ajax_wait_text(gameid, pageType, lineFlag) {
 	var promise_array = []
 	var lock = true
 	//$.each(lineFlag, function(index, content){
-	for(let lineNum = 0; lineNum < lineFlag.length; lineNum++) {
-		promise_array[lineNum] = setTextContent(gameid, pageType, lineNum + 1)
-		promise_array[lineNum].then(function(data1) {
-			lock = true
-			lineText[lineNum] = data1
-			//console.log(lineText)
-			$.each(lineText, function(index, content) {
-				//lineNum = index + 1
-				if(content === null || content === undefined) {
-					lock = false
-				}
-			});
-			//console.log(lineText.length)
-			//console.log(lineFlag.length)
-			if(lock === true && lineText.length === lineFlag.length) {
-				//lock = false
-				console.log(lineFlag)
-				var all_txt_flag = true
-				create_html_txt(pageType)
-				$.each(lineFlag, function(i, j) {
-					if(j === 'img') {all_txt_flag = false}
-				});
-				if (all_txt_flag === true){
-					html_ready(pageType)
-				}else{
-					ajax_wait_img(gameid, pageType, lineFlag)
-				}
-			}
-		});
-	}
 	//console.log('fdadf')
 
 };
@@ -178,41 +137,6 @@ function ajax_wait_img(gameid, pageType, lineFlag) {
 	var promise_array = []
 	//$.each(lineFlag, function(index, content){
 	var lineNumTotal = lineFlag.length + 1
-	for(let lineNum = 1; lineNum < lineNumTotal; lineNum++) {
-		if(lineFlag[lineNum - 1] === 'img') {
-			promise_array[lineNum] = setImagePath(gameid, pageType, lineNum)
-			promise_array[lineNum].then(function(data1) {
-				var lock = true
-				//console.log(lineNum)
-				//console.log(data1)
-				//console.log(lineImage)
-				lineImage[lineNum] = data1
-				//console.log(lineImage)
-				//console.log(lineImage[1])
-				//console.log(lineImage[2])
-				//console.log(lineImage[3])
-				$.each(lineFlag, function(i, j) {
-					position = i + 1
-					if(j === 'img') {
-						//console.log('we arein')
-						//console.log(lineImage[position])
-						//console.log(lineImage)
-						if(lineImage[position] === null || lineImage[position] === undefined) {
-							lock = false
-						}
-					}
-				});
-				//console.log(lock)
-				if(lock === true) {
-					console.log('in img')
-					//console.log(lineImage[2])
-					//console.log(lineImage[3])
-					create_html_img(pageType)
-				}
-			});
-		}
-	}
-	//console.log('out')
 };
 
 if(current_page === 'gamepic') {

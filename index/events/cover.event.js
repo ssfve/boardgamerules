@@ -47,7 +47,23 @@ mui('#offCanvasContentScroll').scroll();
 mui.init({
 	preloadPages: [{
 			url: '../gamerule/gameRule.html',
-			id: 'rule'
+			id: 'rule',
+			styles: {
+            titleNView: {                       // 窗口的标题栏控件
+		      titleText:"标题栏",                // 标题栏文字,当不设置此属性时，默认加载当前页面的标题，并自动更新页面的标题
+		      titleColor:"#000000",             // 字体颜色,颜色值格式为"#RRGGBB",默认值为"#000000"
+		      titleSize:"17px",                 // 字体大小,默认17px
+		      backgroundColor:"#F7F7F7",        // 控件背景颜色,颜色值格式为"#RRGGBB",默认值为"#F7F7F7"
+		      progress:{                        // 标题栏控件的进度条样式
+		        color:"#00FF00",                // 进度条颜色,默认值为"#00FF00"  
+		        height:"2px"                    // 进度条高度,默认值为"2px"         
+		      },
+		      splitLine:{                       // 标题栏控件的底部分割线，类似borderBottom
+		        color:"#CCCCCC",                // 分割线颜色,默认值为"#CCCCCC"  
+		        height:"1px"                    // 分割线高度,默认值为"2px"
+		      }
+		    }
+           }
 		},
 		{
 			url: '../gameintro/gameIntro.html',
@@ -90,7 +106,9 @@ function btn1_click() {
 };
 
 function btn2_click() {
-	/*mui.openWindow({
+	console.log("rule button clicked");
+	/*
+	mui.openWindow({
 		url: "gameRule.html",
 		id: "rule",
 		createNew: false,
@@ -125,28 +143,6 @@ function btn4_click() {
 	mui.openWindow({
 		url: "../gameplay/gamePlay.html",
 		id: "play",
-		createNew: false,
-		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-		show: {
-			autoShow: true
-		},
-		waiting: {
-			autoShow: true, //自动显示等待框，默认为true
-			title: '正在加载...' //等待对话框上显示的提示内容
-		}
-	})
-};
-
-function btn5_click() {
-	//alert('hello');
-	//Page = plus.webview.getWebviewById('gameRule.html');  
-    //mui.fire(Page, 'show', {
-    	//id: gameid
-    //});
-    var url_page = "id="+gameid
-	mui.openWindow({
-		url: "gameRule.html?"+url_page,
-		id: "rule",
 		createNew: false,
 		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
 		show: {

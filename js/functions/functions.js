@@ -389,27 +389,6 @@ var collapse_img_show = function(gameid, pageType, lineFlag) {
 	$.each(lineFlag, function(key, value) {
 		//console.log(lineFlag)
 		lineNum = key + 1
-		if(value === 'img') {
-			//console.log(index)
-			active_sec[key].addEventListener('tap', function(e) {
-				//ajax_wait_img(gameid, pageType, index);
-				//console.log(lineImage[key+1])
-				//console.log(lineImage[3])
-				//console.log(index)
-
-				for(let itemNum = 0; itemNum < lineImage[key + 1].length; itemNum++) {
-					image_index = itemNum + 1
-					//console.log('in')
-					//console.log(itemNum)
-					image_path = lineImage[key + 1][itemNum]
-					console.log(image_path)
-					imageID = '#' + pageType + '_' + 'img' + '_' + (key + 1) + '_' + image_index
-					//console.log(imageID)
-					//console.log(image_path)
-					$(imageID).attr('src', image_path);
-				};
-			});
-		}
 	});
 };
 
