@@ -4,6 +4,7 @@ mui.init({
 	    id:"jingyan",
 	    styles: {
             top: '0px', //新页面顶部位置
+            bottom:'100px'
        }
     }],
 	swipeBack: false
