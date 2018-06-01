@@ -3,8 +3,7 @@ mui.init({
         url:"https://jingyan.baidu.com/album/7908e85ccc67f7af481ad2c2.html?picindex=2",
 	    id:"jingyan",
 	    styles: {
-            top: '0px', //新页面顶部位置
-            bottom:'100px'
+            top: '34.4px', //新页面顶部位置
        }
     }],
 	swipeBack: false

@@ -25,6 +25,9 @@ body {
 	background-color: #F4F4F4;
 }
 
+.mui-bar {
+	height: 0px;
+}
 .mui-bar .mui-pull-left .mui-icon {
 	padding-right: 5px;
 	font-size: 28px;
@@ -455,4 +458,24 @@ h4,
     display: block;  
     text-overflow: ellipsis;  
     cursor: pointer;  
+}
+
+.mui-segmented-control .mui-control-item {
+	line-height: 31px;
+}
+
+.mui-bar .mui-btn-nav.mui-pull-left .mui-icon-left-nav {
+	margin-right: -3px
+}
+
+.mui-bar .mui-icon {
+	padding-top: 3px;
+	padding-bottom: 5px;
+}
+
+.mui-bar-nav.mui-bar .mui-icon {
+	margin-right: -10px;
+	margin-left: -10px;
+	padding-right: 5px;
+	padding-left: 5px
 }
