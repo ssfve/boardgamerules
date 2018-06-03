@@ -158,7 +158,13 @@ if(current_page === 'gamecover') {
 	console.log("at gamecover page")
 	console.log(gameid)
 	getIfHasSubPage(gameid)
-	button5="开盒即玩"
+	console.log(hasSubPage_flag)
+	if(hasSubPage_flag){
+		button5="开盒即玩"
+	}else{
+		button5="欢迎上传规则"
+	}
+	
 	$(document).ready(function() {
 		setTimeout(function() {
 			valueRates_w = $('#valueRates').width();

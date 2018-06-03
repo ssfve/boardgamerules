@@ -481,7 +481,11 @@ var getIfHasSubPage = function(id) {
 			async: false,
 			dataType: 'json',
 			success:function(json){
-				subpage_url=json.url
+				if(json>0){
+					hasSubPage_flag=true
+				}else{
+					hasSubPage_flag=false	
+				}
 			},
 			error: function(data) {}
 		});
