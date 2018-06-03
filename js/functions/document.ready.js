@@ -155,6 +155,8 @@ if(current_page === 'gameintro') {
 }
 
 if(current_page === 'gamecover') {
+	getIfHasSubPage(gameid)
+	button5="开盒即玩"
 	$(document).ready(function() {
 		setTimeout(function() {
 			valueRates_w = $('#valueRates').width();

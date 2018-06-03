@@ -469,3 +469,19 @@ var getSubPageUrl = function(id, no) {
 			error: function(data) {}
 		});
 };
+
+var getIfHasSubPage = function(id) {
+	var hasSubPageUrl = nodejs_url + 'database/getIfHasSubPage'
+		$.ajax({
+			url: hasSubPageUrl,
+			data: {
+				gameid: id
+			},
+			async: false,
+			dataType: 'json',
+			success:function(json){
+				subpage_url=json.url
+			},
+			error: function(data) {}
+		});
+};
