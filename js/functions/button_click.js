@@ -6,7 +6,11 @@ function btn5_click() {
     //});
     var url_page = "id="+gameid
     var storage = window.localStorage;
-	storage.setItem("subpage_url","https://jingyan.baidu.com/album/7908e85ccc67f7af481ad2c2.html?picindex=2");
+    
+    var subpage_url=getSubPageUrl(gameid,1);
+    console.log(subpage_url);
+    
+	storage.setItem("subpage_url",subpage_url);
 	storage.setItem("subpage_id","jingyan1");
 	mui.openWindow({
 		url: "gameRule.html?"+url_page,
