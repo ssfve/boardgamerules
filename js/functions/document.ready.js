@@ -262,6 +262,7 @@ if(current_page === 'gamecover') {
 }
 
 if(current_page === 'gamerule') {
+	console.log("in document ready");
 	$('#back_arrow').attr('id', gameid);
 
 	lineText = []
@@ -270,7 +271,7 @@ if(current_page === 'gamerule') {
 	lineFlag = []
 	pageType = 'setup'
 	// this will create setup page
-	ajax_wait(gameid, pageType);
+	//ajax_wait(gameid, pageType);
 
 }
 

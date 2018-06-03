@@ -269,6 +269,7 @@ var change_tab_theme = function(color, number) {
 		'color': color
 	});
 	//$('.mui-segmented-control.mui-segmented-control-inverted .mui-control-item').css({'color': color + priority});
+	console.log(color+lowPR);
 	$('.mui-segmented-control.mui-segmented-control-inverted .mui-control-item').css({
 		'color': color + lowPR
 	});
@@ -295,6 +296,7 @@ var change_tab_theme = function(color, number) {
 		});
 	}
 	if(number === 1) {
+		console.log("in number 1");
 		$('#gameSetup').css({
 			'color': default_color
 		});

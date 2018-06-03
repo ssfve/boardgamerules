@@ -1,7 +1,13 @@
+var storage=window.localStorage;
+var subpage_url = storage.getItem("subpage_url");
+console.log(subpage_url);
+var subpage_id = storage.getItem("subpage_id");
+console.log(subpage_id);
+
 mui.init({
     subpages:[{
-        url:"https://jingyan.baidu.com/album/7908e85ccc67f7af481ad2c2.html?picindex=2",
-	    id:"jingyan",
+        url:subpage_url,
+	    id:subpage_id,
 	    styles: {
             top: '34.4px', //新页面顶部位置
        }
@@ -19,101 +25,104 @@ function setScrollHeader() {
 };
 setScrollHeader(); 
 mui.previewImage();
-//mui.plusReady(function() {
-	//alert('in')
+
+/*
+console.log(window.plus)
+mui.plusReady(function() {
+	console.log('in plusReady')
     //var self = plus.webview.currentWebview();  
     //alert(gameid)
-//});  
-
+});
+if(window.plus){  
+}else{  
+	document.addEventListener("plusready",plusReady,false);  
+}  
+*/
 
 //window.addEventListener('show', function(event) {
 	//alert('in')
     //gameid = event.detail.id;
     //alert(gameid)
 //});
-
-(function($) {
-	$('.mui-scroll-wrapper').scroll({
-		indicators: true //是否显示滚动条
-	});
-	
-	var item2 = document.getElementById('item2mobile');
-	var item3 = document.getElementById('item3mobile');
-	var item4 = document.getElementById('item4mobile');
-	document.getElementById('slider').addEventListener('slide', function(e) {
-		//console.log('slide in')
-		if(e.detail.slideNumber === 1) {
-			pageType = 'flow'
-			//if(item2.querySelector('.mui-loading')) {
-				//console.log('in flow')
-				//generate_html(pageType);		
-			//}else{
-			//generate_html(pageType);
-			change_tab_theme(theme_color,e.detail.slideNumber);
-			//}
-		} else if(e.detail.slideNumber === 2) {
-			pageType = 'end'
-			//if(item3.querySelector('.mui-loading')) {
-				//generate_html(pageType);
-			//}else{
-			//generate_html(pageType);
-			change_tab_theme(theme_color,e.detail.slideNumber);
-			//}
-		} else if(e.detail.slideNumber === 3) {
-			if(item4.querySelector('.mui-loading')) {
-				//setTimeout(function() {
-				item4.querySelector('.mui-scroll').innerHTML = html4;
-				//}, 100);
-			}
-		} else if(e.detail.slideNumber === 0) {
-			pageType = 'setup'
-			//generate_html(pageType);
-			change_tab_theme(theme_color,0);
-		}
-		//setTimeout(function() {
-		//change_tab_theme(theme_color,e.detail.slideNumber);
-		//collapse_event_gen();
-		//}, 100);
-	});
-	
-})(mui);
-
 document.getElementById('gameSetup').addEventListener('tap', function(e) {
-	/*
-	pageType = 'setup';
-	lineText = []
-	lineImage = []
-	//var lineNo = []
-	lineFlag = []
-	$('#gameSetup').css({'color': theme_color});
-	$('#gameFlow').css({'color': default_color});
-	$('#gameEnd').css({'color': default_color});
-	$('#gameOther').css({'color': default_color});
-	*/
-	$('#slider').trigger('slide');
+	var storage = window.localStorage;
+	storage.setItem("subpage_url","https://jingyan.baidu.com/album/7908e85ccc67f7af481ad2c2.html?picindex=2")
+	storage.setItem("subpage_id","jingyan1");
+	
+	var subpage_url = storage.getItem("subpage_url");
+	console.log(subpage_url);
+	var subpage_id = storage.getItem("subpage_id");
+	console.log(subpage_id);
+	var url_page = "id="+gameid
+	mui.openWindow({
+		url: "gameRule.html?"+url_page,
+		id: "rule",
+		createNew: false,
+		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+		show: {
+			autoShow: true
+		},
+		waiting: {
+			autoShow: true, //自动显示等待框，默认为true
+			title: '正在加载...' //等待对话框上显示的提示内容
+		}
+	})
+	
+	change_tab_theme(theme_color,0);
 });
 
 document.getElementById('gameFlow').addEventListener('tap', function(e) {
-	var subpage_url = "https://jingyan.baidu.com/album/00a07f380b5ef682d028dcc2.html?picindex=2"
-	var subpage_id = "jingyan-2"
-	var subpage_style = {
-	            top: '34.4px', //新页面顶部位置
-	       }
-	var sub = plus.webview.create(subpage_url, subpage_id, subpage_style);
+	var storage = window.localStorage;
+	storage.setItem("subpage_url","https://jingyan.baidu.com/album/00a07f380b5ef682d028dcc2.html?picindex=2")
+	storage.setItem("subpage_id","jingyan2");
+	
+	var subpage_url = storage.getItem("subpage_url");
+	console.log(subpage_url);
+	var subpage_id = storage.getItem("subpage_id");
+	console.log(subpage_id);
+	var url_page = "id="+gameid
+	mui.openWindow({
+		url: "gameRule.html?"+url_page,
+		id: "rule",
+		createNew: false,
+		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+		show: {
+			autoShow: true
+		},
+		waiting: {
+			autoShow: true, //自动显示等待框，默认为true
+			title: '正在加载...' //等待对话框上显示的提示内容
+		}
+	})
+	console.log(theme_color);
+	change_tab_theme(theme_color,1);
 });
 	
 document.getElementById('gameEnd').addEventListener('tap', function(e) {
-	/*
-	pageType = 'end';
-	generate_html(pageType);
-	var lineText = []
-	var lineImage = []
-	$('#gameSetup').css({'color': default_color});
-	$('#gameFlow').css({'color': default_color});
-	$('#gameEnd').css({'color': theme_color});
-	$('#gameOther').css({'color': default_color});
-	*/
-	$('#slider').trigger('slide');
+	var storage = window.localStorage;
+	storage.setItem("subpage_url","https://jingyan.baidu.com/album/d169e18603b587436611d8c2.html?picindex=2")
+	storage.setItem("subpage_id","jingyan3");
+	
+	var subpage_url = storage.getItem("subpage_url");
+	console.log(subpage_url);
+	var subpage_id = storage.getItem("subpage_id");
+	console.log(subpage_id);
+	var url_page = "id="+gameid
+	mui.openWindow({
+		url: "gameRule.html?"+url_page,
+		id: "rule",
+		createNew: false,
+		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+		show: {
+			autoShow: true
+		},
+		waiting: {
+			autoShow: true, //自动显示等待框，默认为true
+			title: '正在加载...' //等待对话框上显示的提示内容
+		}
+	})
+	
+	change_tab_theme(theme_color,2);
 });
 
 if (document.getElementById('gameOther') !== null){
