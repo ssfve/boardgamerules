@@ -447,3 +447,19 @@ var getPageLineNum = function(id, page) {
 	});
 	//return p
 };
+
+var getSubPageUrl = function(id, no) {
+	var subPageUrl = nodejs_url + 'database/getSubPageUrl'
+	$.ajax({
+		url: subPageUrl,
+		data: {
+			gameid: id,
+			pageno: no
+		},
+		dataType: 'json',
+		success:function(data){
+			var subpage_url=data
+			console.log("subpage_url is "+subpage_url)
+		}
+	});
+};
