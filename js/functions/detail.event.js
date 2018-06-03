@@ -94,17 +94,12 @@ document.getElementById('gameSetup').addEventListener('tap', function(e) {
 });
 
 document.getElementById('gameFlow').addEventListener('tap', function(e) {
-	/*
-	pageType = 'flow';
-	generate_html(pageType);	
-	var lineText = []
-	var lineImage = []
-	$('#gameSetup').css({'color': default_color});
-	$('#gameFlow').css({'color': theme_color});
-	$('#gameEnd').css({'color': default_color});
-	$('#gameOther').css({'color': default_color});
-	*/
-	$('#slider').trigger('slide');
+	var subpage_url = "https://jingyan.baidu.com/album/00a07f380b5ef682d028dcc2.html?picindex=2"
+	var subpage_id = "jingyan-2"
+	var subpage_style = {
+	            top: '34.4px', //新页面顶部位置
+	       }
+	var sub = plus.webview.create(subpage_url, subpage_id, subpage_style);
 });
 	
 document.getElementById('gameEnd').addEventListener('tap', function(e) {
