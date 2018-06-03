@@ -156,6 +156,7 @@ if(current_page === 'gameintro') {
 
 if(current_page === 'gamecover') {
 	console.log("at gamecover page")
+	console.log(gameid)
 	getIfHasSubPage(gameid)
 	button5="开盒即玩"
 	$(document).ready(function() {

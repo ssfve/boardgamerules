@@ -247,6 +247,7 @@ if(current_page === 'gamecover') {
 			gameid: id,
 			lang: lang_cn
 		},
+		async: false,
 		success: queryGameInfoCN,
 		dataType: 'json'
 	});
