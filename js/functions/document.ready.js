@@ -124,14 +124,12 @@ function ajax_wait_text(gameid, pageType, lineFlag) {
 	//console.log('fdadf')
 
 };
-/*
-async function ajax_wait_img(gameid, pageType,lineNum) {
-	
-  	lineImage = await setImagePath(gameid, pageType, lineNum)
-    console.log(lineImage)
-    //create_intro(lineText);
+
+async function ajax_wait_subpage(gameid, pageno) {
+	subpage_url = await getSubPageUrl(gameid, pageno)
+	//console.log(subpage_url)
 };
-*/
+	
 function ajax_wait_img(gameid, pageType, lineFlag) {
 	console.log('in ajax img')
 	var promise_array = []
@@ -262,7 +260,7 @@ if(current_page === 'gamecover') {
 }
 
 if(current_page === 'gamerule') {
-	console.log("in document ready");
+	console.log("in document ready gamerule");
 	$('#back_arrow').attr('id', gameid);
 
 	lineText = []

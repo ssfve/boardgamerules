@@ -56,7 +56,6 @@ var queryGameInfoCN = function(json) {
 		//alert(address_prefix)
 		//alert(address_prefix)
 		imgCaption = '\'../img/' + gameid + '/caption.jpg\'';
-
 		$(document).ready(function() {
 			$('#numRates').html(usersrated);
 			$('#valueRates').html(average);
@@ -102,7 +101,6 @@ var queryGameInfoCN = function(json) {
 			$('#sideHeader').html(sideHeader);
 			//$('#langLvl'+language_dependence).addClass('color-orange');
 		});
-
 	} catch(e) {
 		alert(e)
 		//document.write(e.description); 
@@ -152,6 +150,13 @@ var queryStyleInfo = function(json) {
 				$('.color-orange').css({
 					'color': theme_color
 				});
+			});
+		}
+		if(current_page === 'gamerule') {
+			$(document).ready(function() {
+				console.log(theme_color)
+				console.log(subpage_id)
+				change_tab_theme(theme_color,subpage_id-1);
 			});
 		}
 
@@ -450,18 +455,17 @@ var getPageLineNum = function(id, page) {
 
 var getSubPageUrl = function(id, no) {
 	var subPageUrl = nodejs_url + 'database/getSubPageUrl'
-	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: subPageUrl,
 			data: {
 				gameid: id,
 				pageno: no
 			},
+			async: false,
 			dataType: 'json',
-			success:function(data){
-				console.log("subpage_url is "+data)
-				resolve(data)
-			}
+			success:function(json){
+				subpage_url=json.url
+			},
+			error: function(data) {}
 		});
-	});
 };

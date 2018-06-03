@@ -1,19 +1,4 @@
-mui.init({
-	preloadPages: [{
-			url: 'ChefAlfredo_setup1.html',
-			id: 'setup1'
-		},
-		{
-			url: 'ChefAlfredo_intro.html',
-			id: 'intro'
-		},
-		{
-			url: 'ChefAlfredo_play.html',
-			id: 'play'
-		}
-	],
-	swipeBack: true //启用右滑关闭功能
-});
+mui.init();
 
 var slider = mui("#slider");
 //var btn1 = document.getElementById("button1").id;

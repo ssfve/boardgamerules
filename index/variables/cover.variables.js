@@ -55,3 +55,6 @@ var imgCaption = '';
 var current_page = 'gamecover';
 var gameid = '';
 var slide_height = '50vw'
+
+var nodejs_url = 'http://180.76.244.130:3000/';
+var subpage_url = '';
