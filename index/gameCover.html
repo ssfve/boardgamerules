@@ -27,7 +27,6 @@
     <script type="text/javascript" src="../js/page/sidepane.variables.js"></script>
     <script type="text/javascript" src="../js/page/hotlist.variables.js"></script>
 
-    <script type="text/javascript" src="../js/functions/functions.js"></script>
     <script type="text/javascript" src="../js/functions/database_util.js"></script>
     <script type="text/javascript" src="../js/functions/button_click.js"></script>
 </head>
@@ -51,128 +50,6 @@
         </div>
     </aside>
     <div class="mui-inner-wrap">
-        <header class="mui-bar mui-bar-nav set-transparent">
-            <a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
-            <a class="mui-action-back mui-btn mui-btn-link mui-pull-right"></a>
-            <h1 class="mui-title"></h1>
-        </header>
-        <div class="mui-card cover-card">
-            <div id='caption-pic' class="mui-card-header mui-card-media"></div>
-        </div>
-        <div class="mui-content" style="padding-top: 0;">
-            <div class="mui-content-padded no-margin-bottom">
-                <div id="" class="mui-row">
-                    <div class="mui-col-sm-2 mui-col-xs-2">
-                        <div id="icon1" class="mui-grid-view">
-                            <div class="stack-imgs no-margin-top">
-                                <h4 id="valueRates" align="center"
-                                    class="cover-inner-text h6-text-white text-image-font"></h4>
-                                <img id="svg1" class="cover-img" src="../img/interface/orange.svg"/>
-                            </div>
-                            <h6 align="center" class="h7"><span id="numRates" class="h6-text-orange"></span>
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="mui-col-sm-2 mui-col-xs-2">
-                        <div class="mui-grid-view">
-                            <td class="stack-imgs">
-                                <img id="yearsvg" class="cover-inner-img" src="../img/interface/year.svg"/>
-                                <img id="svg2" class="cover-img" src="../img/interface/orange.svg"/>
-                            </td>
-                            <h6 align="center" class="h7">
-                                <span id="yearPub" class="h6-text-orange"></span>
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="mui-col-sm-2 mui-col-xs-2">
-                        <div class="mui-grid-view">
-                            <td class="stack-imgs">
-                                <img id="weightsvg" class="cover-inner-img" src="../img/interface/weight.svg"/>
-                                <img id="svg3" class="cover-img" src="../img/interface/orange.svg"/>
-                            </td>
-                            <h6 align="center" class="h7">
-                                <span id="weight" class="h6-text-orange"></span><span id="weightLimit"
-                                                                                      class="h6-text-grey"></span>
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="mui-col-sm-2 mui-col-xs-2">
-                        <div class="mui-grid-view">
-                            <td class="stack-imgs">
-                                <img id="agesvg" class="cover-inner-img" src="../img/interface/age.svg"/>
-                                <img id="svg4" class="cover-img" src="../img/interface/orange.svg"/>
-                            </td>
-                            <h6 align="center" class="h7">
-                                <span id="age" class="h6-text-orange"></span><span id="ageMeaPlus"
-                                                                                   class="h6-text-orange"></span>
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="mui-col-sm-2 mui-col-xs-2">
-                        <div class="mui-grid-view">
-                            <td class="stack-imgs">
-                                <img id="playerssvg" class="cover-inner-img"
-                                     src="../img/interface/players.svg"/>
-                                <img id="svg5" class="cover-img" src="../img/interface/orange.svg"/>
-                            </td>
-                            <h6 align="center" class="h7">
-                                <span id="players" class="h6-text-orange"></span><span id="playersBest"
-                                                                                       class="h6-text-grey"></span>
-                            </h6>
-                            <div id="info" align="center"></div>
-                        </div>
-                    </div>
-                    <div class="mui-col-sm-2 mui-col-xs-2">
-                        <div class="mui-grid-view">
-                            <td class="stack-imgs">
-                                <img id="clocksvg" class="cover-inner-img" src="../img/interface/clock.svg"/>
-                                <img id="svg6" class="cover-img" src="../img/interface/orange.svg"/>
-                            </td>
-                            <h6 align="center" class="h7">
-                                <span id="playtime" class="h6-text-orange"></span>
-                            </h6>
-                            <div id="info1" align="center"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mui-content" style="padding-top: 0px;">
-            <div class="mui-content-padded">
-                <div class="mui-row">
-                    <div class="mui-col-sm-3 mui-col-xs-3">
-                        <h6 id="gameName" class="h6-text-grey"></h6>
-                    </div>
-                    <div class="mui-col-sm-9 mui-col-xs-9">
-                        <h6 id="nameCN" class="h6-text-orange my-overflow-style"></h6>
-                    </div>
-                    <div class="mui-col-sm-3 mui-col-xs-3">
-                        <h6 id="designerTitle" class="h6-text-grey"></h6>
-                    </div>
-                    <div class="mui-col-sm-9 mui-col-xs-9">
-                        <h6 id="designerName" class="h6-text-grey my-overflow-style"></h6>
-                    </div>
-                    <div class="mui-col-sm-3 mui-col-xs-3">
-                        <h6 id="langTitleLow" class="h6-text-grey"></h6>
-                    </div>
-                    <div class="mui-col-sm-9 mui-col-xs-9">
-                        <h6>
-                            <span id="langLvl0" class="h6-text-grey"></span>
-                            <span id="langLvl1" class="h6-text-grey"></span>
-                            <span id="langLvl2" class="h6-text-grey"></span>
-                            <span id="langLvl3" class="h6-text-grey"></span>
-                            <span id="langLvl4" class="h6-text-grey"></span>
-                        </h6>
-                    </div>
-                    <div class="mui-col-sm-3 mui-col-xs-3">
-                        <h6 id="categoryTitle" class="h6-text-grey"></h6>
-                    </div>
-                    <div class="mui-col-sm-9 mui-col-xs-9">
-                        <h6 id="categorys" class="h6-text-grey my-overflow-style"></h6>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div id="mainPageScroll" class="mui-scroll-wrapper">
             <div class="mui-scroll">
                 <div class="mui-content" style="padding-top: 0px;">
@@ -180,14 +57,14 @@
                         <div id="pdf-content">
                             <div class="mui-input-row">
                                 <label>pdf_name</label>
-                                <input type="text" class="mui-input-clear" placeholder="输入pdf_name">
+                                <input type="text" id="pdf_name" class="mui-input-clear" placeholder="输入pdf_name">
                             </div>
                             <button id='showCropLenPicker' class="mui-btn mui-btn-block" type='button'>选择crop_len
                             </button>
                             <div id='cropLenResult' class="ui-alert"></div>
                             <div class="mui-input-row">
                                 <label>search_name</label>
-                                <input type="text" class="mui-input-clear" placeholder="输入search_name">
+                                <input type="text" id="search_name" class="mui-input-clear" placeholder="输入search_name">
                             </div>
                             <button id='rulebookNamePicker' class="mui-btn mui-btn-block" type='button'>
                                 选择rulebook_name
@@ -200,7 +77,7 @@
                             <div id='sourceNameResult' class="ui-alert"></div>
                             <div class="mui-input-row">
                                 <label>source_detail</label>
-                                <input type="text" class="mui-input-clear" placeholder="输入source_detail">
+                                <input type="text" id="source_detail" class="mui-input-clear" placeholder="输入source_detail">
                             </div>
                             <div>
                                 <button type="button" onclick="submit_pdf_info()">pdf信息写入数据库</button>
@@ -212,19 +89,6 @@
                                 <input type="submit">
                             </form>
                         </div>
-                        <button type="button" id="button5" onclick="btn5_click()" class="mui-btn mui-btn-block bs-wo"/>
-                        <button type="button" id="button1" onclick="btn1_click()" class="mui-btn mui-btn-block bs-wo"/>
-
-                        <!--
-            作者：ssfvessfve@163.com
-            时间：2017-06-25
-            描述：
-            <button type="button" id="button2" onclick="btn2_click()" class="mui-btn mui-btn-block bs-wo" />
-
-
-            <button type="button" id="button4" onclick="btn4_click()" class="mui-btn mui-btn-block bs-wo" />
-        -->
-
                     </div>
                     <div class="mui-off-canvas-backdrop"></div>
                 </div>
@@ -236,10 +100,12 @@
     <script src="../js/mui.previewimage.js"></script>
     <script src="../js/mui.picker.js"></script>
     <script src="../js/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../js/functions/functions.js"></script>
     <script type="text/javascript" src="cover.interface.js"></script>
     <script type="text/javascript" src="events/cover.event.js"></script>
     <script src="../js/functions/document.ready.js"></script>
     <!--<script src="../js/mui.picker.min.js"></script>-->
+    <script type="text/javascript" src="../js/functions/after_ready.js"></script>
 
 </div>
 

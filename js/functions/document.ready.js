@@ -303,27 +303,3 @@ if (current_page === 'gamerule') {
     //ajax_wait(gameid, pageType);
 
 }
-
-var generate_html = function (pageType) {
-
-    lineText = []
-    lineImage = []
-    //var lineNo = []
-    lineFlag = []
-    //pageType = 'flow'
-    //console.log(pageType)
-    //console.log(lineFlag)
-    // this will create flow page
-    ajax_wait(gameid, pageType);
-    //console.log(html2)
-}
-
-var generate_html3 = function () {
-
-    //pageType = 'end'
-
-    // this will create end page
-    ajax_wait(gameid, pageType);
-
-    //return html3;
-}
