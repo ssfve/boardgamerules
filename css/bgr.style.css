@@ -1,3 +1,21 @@
+.mui-btn {
+	font-size: 16px;
+	padding: 8px;
+	margin: 3px;
+}
+h5.mui-content-padded {
+	margin-left: 3px;
+	margin-top: 20px !important;
+}
+h5.mui-content-padded:first-child {
+	margin-top: 12px !important;
+}
+.ui-alert {
+	text-align: center;
+	padding: 20px 10px;
+	font-size: 16px;
+}
+
 .description {
 	color: red;
 	max-width: 705px;

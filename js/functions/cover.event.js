@@ -17,7 +17,7 @@ function btn1_click() {
 			title: '正在加载...' //等待对话框上显示的提示内容
 		}
 	})
-};
+}
 
 function btn2_click() {
 	mui.openWindow({
@@ -33,7 +33,7 @@ function btn2_click() {
 			title: '正在加载...' //等待对话框上显示的提示内容
 		}
 	})
-};
+}
 
 function btn3_click() {
 	mui.openWindow({
@@ -49,7 +49,7 @@ function btn3_click() {
 			title: '正在加载...' //等待对话框上显示的提示内容
 		}
 	})
-};
+}
 
 function btn4_click() {
 	mui.openWindow({
@@ -65,4 +65,7 @@ function btn4_click() {
 			title: '正在加载...' //等待对话框上显示的提示内容
 		}
 	})
-};
+}
+
+mui('#mainPageScroll').scroll();
+mui('.mui-scroll-wrapper').scroll();

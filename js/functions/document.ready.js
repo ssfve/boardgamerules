@@ -1,308 +1,329 @@
-var html_ready = function(pageType) {
+var html_ready = function (pageType) {
 
-	if(pageType === 'stuff') {
-		//alert('ll')
-		$('#introtext').html(intro_html);
-		
-		//console.log('radt')
-		gotoPage(gameid);
-		//collapse_event_gen();
-		//console.log(lineImage[2])
-		//collapse_img_show(gameid, pageType, lineFlag);
-		$('.mui-table-view-cell.mui-collapse').css({
-			'background-color': bg_color + lowPR
-		});
-		collapse_img_show(gameid, pageType, lineFlag);
-		collapse_event_gen();
-	}
+    if (pageType === 'stuff') {
+        //alert('ll')
+        $('#introtext').html(intro_html);
 
-	if(pageType === 'setup') {
-		
-		//console.log(document.getElementById('setup_tab').innerHTML)
-		//console.log(html1)
-		$('#setup_tab').html(html1);
-		//console.log('ready')
-		collapse_img_show(gameid, pageType, lineFlag);
-		collapse_event_gen();
-		gotoPage(gameid);
-		//collapse_event_gen();
-		//collapse_img_show(gameid, pageType, lineFlag);
-		$('.mui-table-view-cell.mui-collapse').css({
-			'background-color': bg_color + lowPR
-		});
-		change_tab_theme(theme_color, 0);
-		$('#gameSetup').css({
-			'color': theme_color
-		});
-		
-		
-		//change_tab_theme(theme_color, 0);
-	}
-	if(pageType === 'flow') {
-		var item2 = document.getElementById('flow_tab');
-		item2.innerHTML = html2;
-		change_tab_theme(theme_color, 1);
-		collapse_img_show(gameid, pageType, lineFlag);
-		collapse_event_gen();
-	}
-	if(pageType === 'end') {
-		//console.log(html3)
-		var item3 = document.getElementById('end_tab');
-		item3.innerHTML = html3;
-		change_tab_theme(theme_color, 2);
-		collapse_img_show(gameid, pageType, lineFlag);
-		collapse_event_gen();
-	}
-	//if (pageType === 'setup'){
-	//change_tab_theme(theme_color,0);
-	//}
-	//console.log('html1')
-	
-	/*
-	if (pageType === 'setup'){
-		$('#setup_tab').html(html1);
-		$(document).ready(function() {
-			gotoPage(gameid);		
-			collapse_event_gen();
-			collapse_img_show(gameid, pageType, lineFlag);
-			$('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
-			
-			change_tab_theme(theme_color,0);
-			$('#gameSetup').css({'color': theme_color});
-			
-		});
-	}
-	*/
+        //console.log('radt')
+        gotoPage(gameid);
+        //collapse_event_gen();
+        //console.log(lineImage[2])
+        //collapse_img_show(gameid, pageType, lineFlag);
+        $('.mui-table-view-cell.mui-collapse').css({
+            'background-color': bg_color + lowPR
+        });
+        collapse_img_show(gameid, pageType, lineFlag);
+        collapse_event_gen();
+    }
+
+    if (pageType === 'setup') {
+
+        //console.log(document.getElementById('setup_tab').innerHTML)
+        //console.log(html1)
+        $('#setup_tab').html(html1);
+        //console.log('ready')
+        collapse_img_show(gameid, pageType, lineFlag);
+        collapse_event_gen();
+        gotoPage(gameid);
+        //collapse_event_gen();
+        //collapse_img_show(gameid, pageType, lineFlag);
+        $('.mui-table-view-cell.mui-collapse').css({
+            'background-color': bg_color + lowPR
+        });
+        change_tab_theme(theme_color, 0);
+        $('#gameSetup').css({
+            'color': theme_color
+        });
+
+
+        //change_tab_theme(theme_color, 0);
+    }
+    if (pageType === 'flow') {
+        var item2 = document.getElementById('flow_tab');
+        item2.innerHTML = html2;
+        change_tab_theme(theme_color, 1);
+        collapse_img_show(gameid, pageType, lineFlag);
+        collapse_event_gen();
+    }
+    if (pageType === 'end') {
+        //console.log(html3)
+        var item3 = document.getElementById('end_tab');
+        item3.innerHTML = html3;
+        change_tab_theme(theme_color, 2);
+        collapse_img_show(gameid, pageType, lineFlag);
+        collapse_event_gen();
+    }
+    //if (pageType === 'setup'){
+    //change_tab_theme(theme_color,0);
+    //}
+    //console.log('html1')
+
+    /*
+    if (pageType === 'setup'){
+        $('#setup_tab').html(html1);
+        $(document).ready(function() {
+            gotoPage(gameid);
+            collapse_event_gen();
+            collapse_img_show(gameid, pageType, lineFlag);
+            $('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
+
+            change_tab_theme(theme_color,0);
+            $('#gameSetup').css({'color': theme_color});
+
+        });
+    }
+    */
 }
 
-var create_html_txt = function(pageType) {
-	//console.log('fa')
-	$.each(lineFlag, function(index, content) {
-		lineNum = index + 1
-		lineType = lineFlag[index]
-		if(lineType === 'txt') {
-			add_no_collapse_text(pageType);
-		}
-		if(lineType === 'img') {
-			add_collapse(pageType);
-		}
-		a_with_value = a_template.replace('%value%', lineText[index])
-		add_a(pageType, lineType, lineNum);
-	});
+var create_html_txt = function (pageType) {
+    //console.log('fa')
+    $.each(lineFlag, function (index, content) {
+        lineNum = index + 1
+        lineType = lineFlag[index]
+        if (lineType === 'txt') {
+            add_no_collapse_text(pageType);
+        }
+        if (lineType === 'img') {
+            add_collapse(pageType);
+        }
+        a_with_value = a_template.replace('%value%', lineText[index])
+        add_a(pageType, lineType, lineNum);
+    });
 
-	end_data(pageType);
-	//console.log(html2)
-	//html_ready(pageType)
-	//html_ready(pageType);
+    end_data(pageType);
+    //console.log(html2)
+    //html_ready(pageType)
+    //html_ready(pageType);
 };
 
-var create_html_img = function(pageType) {
-	$.each(lineFlag, function(index, content) {
-		lineNum = index + 1
-	});
-	//console.log(html3);
-	//console.log(pageType)
-	html_ready(pageType)
-	//console.log('finish')
-	//console.log(html3)
+var create_html_img = function (pageType) {
+    $.each(lineFlag, function (index, content) {
+        lineNum = index + 1
+    });
+    //console.log(html3);
+    //console.log(pageType)
+    html_ready(pageType)
+    //console.log('finish')
+    //console.log(html3)
 }
 
 //async function ajax_wait(gameid, pageType) {
 function ajax_wait(gameid, pageType) {
-	var promise1 = getPageLineNum(gameid, pageType)
-	promise1.then(function(data1) {
-		lineFlag = data1
-		//console.log(lineFlag)
-		ajax_wait_text(gameid, pageType, lineFlag)
-	});
+    var promise1 = getPageLineNum(gameid, pageType)
+    promise1.then(function (data1) {
+        lineFlag = data1
+        //console.log(lineFlag)
+        ajax_wait_text(gameid, pageType, lineFlag)
+    });
 };
 
 function ajax_wait_text(gameid, pageType, lineFlag) {
-	var promise_array = []
-	var lock = true
-	//$.each(lineFlag, function(index, content){
-	//console.log('fdadf')
+    var promise_array = []
+    var lock = true
+    //$.each(lineFlag, function(index, content){
+    //console.log('fdadf')
 
 };
 
 async function ajax_wait_subpage(gameid, pageno) {
-	subpage_url = await getSubPageUrl(gameid, pageno)
-	//console.log(subpage_url)
+    subpage_url = await getSubPageUrl(gameid, pageno)
+    //console.log(subpage_url)
 };
-	
+
 function ajax_wait_img(gameid, pageType, lineFlag) {
-	console.log('in ajax img')
-	var promise_array = []
-	//$.each(lineFlag, function(index, content){
-	var lineNumTotal = lineFlag.length + 1
-};
-
-if(current_page === 'gamepic') {
-	$('#back_arrow').attr('id', gameid);
-	$(document).ready(function() {
-		gotoPage(gameid)
-	});
+    console.log('in ajax img')
+    var promise_array = []
+    //$.each(lineFlag, function(index, content){
+    var lineNumTotal = lineFlag.length + 1
 }
 
-if(current_page === 'gameintro') {
-	mui.previewImage();
-	$('#back_arrow').attr('id', gameid);
-
-	pageType = 'stuff'
-
-	// this will create stuff page
-	ajax_wait(gameid, pageType);
+if (current_page === 'gamepic') {
+    $('#back_arrow').attr('id', gameid);
+    $(document).ready(function () {
+        gotoPage(gameid)
+    });
 }
 
-if(current_page === 'gamecover') {
-	console.log("at gamecover page")
-	console.log(gameid)
-	getIfHasSubPage(gameid)
-	console.log(hasSubPage_flag)
-	if(hasSubPage_flag){
-		button5="开盒即玩"
-	}else{
-		button5="欢迎上传规则"
-	}
-	
-	$(document).ready(function() {
-		setTimeout(function() {
-			valueRates_w = $('#valueRates').width();
-			valueRates_h = $('#valueRates').height();
-			//vertical align middle
-			$('#valueRates').css({
-				'line-height': valueRates_h + pixels
-			});
-			svg1_w = $('#svg1').width();
-			svg1_h = $('#svg1').height();
-			//position inner image
-			yearsvg_w = $('#yearsvg').width() * cover_img_scale_factor;
-			yearsvg_h = $('#yearsvg').height() * cover_img_scale_factor;
+if (current_page === 'gameintro') {
+    mui.previewImage();
+    $('#back_arrow').attr('id', gameid);
+    pageType = 'stuff';
+    // this will create stuff page
+    ajax_wait(gameid, pageType);
+}
 
-			left_position = (svg1_w - yearsvg_w + 16) / 2 + pixels;
-			top_position = (svg1_h - yearsvg_h) / 2 + pixels;
-			svg_width = yearsvg_w;
-			svg_height = yearsvg_h;
-			$('#yearsvg').css({
-				'left': left_position
-			});
-			$('#yearsvg').css({
-				'top': top_position
-			});
-			$('#yearsvg').css({
-				'width': svg_width
-			});
-			$('#yearsvg').css({
-				'height': svg_height
-			});
+if (current_page === 'gamecover') {
+    console.log("at gamecover page");
+    console.log(gameid);
+    getIfHasSubPage(gameid);
+    console.log(hasSubPage_flag);
+    if (hasSubPage_flag) {
+        button5 = "开盒即玩"
+    } else {
+        button5 = "欢迎上传规则"
+    }
+    (function ($, doc) {
+        $.init();
+        $.ready(function () {
+            let cropLenPicker = new $.PopPicker();
+            cropLenPicker.setData([{
+                value: 0,
+                text: '0'
+            }, {
+                value: 85,
+                text: '85'
+            }, {
+                value: 120,
+                text: '120'
+            }]);
+            let showCropLenPickerButton = doc.getElementById('showCropLenPicker');
+            let cropLenResult = doc.getElementById('cropLenResult');
+            showCropLenPickerButton.addEventListener('tap', function (event) {
+                cropLenPicker.show(function (items) {
+                    cropLenResult.innerText = JSON.stringify(items[0]);
+                });
+            }, false);
 
-			$('#weightsvg').css({
-				'left': left_position
-			});
-			$('#weightsvg').css({
-				'top': top_position
-			});
-			$('#weightsvg').css({
-				'width': svg_width
-			});
-			$('#weightsvg').css({
-				'height': svg_height
-			});
+            let rulebookNamePicker = new $.PopPicker();
+            rulebookNamePicker.setData([{
+                value: 'Official Rulebook',
+                text: 'Official Rulebook'
+            }, {
+                value: 'Unofficial Rulebook',
+                text: 'Unofficial Rulebook'
+            }, {
+                value: '官方中文规则书',
+                text: '官方中文规则书'
+            },{
+                value: '非官方中文规则书',
+                    text: '非官方中文规则书'
+            }]);
+            let showRulebookNamePickerButton = doc.getElementById('rulebookNamePicker');
+            let rulebookNameResult = doc.getElementById('rulebookNameResult');
+            showRulebookNamePickerButton.addEventListener('tap', function (event) {
+                rulebookNamePicker.show(function (items) {
+                    rulebookNameResult.innerText = JSON.stringify(items[0]);
+                });
+            }, false);
 
-			$('#agesvg').css({
-				'left': left_position
-			});
-			$('#agesvg').css({
-				'top': top_position
-			});
-			$('#agesvg').css({
-				'width': svg_width
-			});
-			$('#agesvg').css({
-				'height': svg_height
-			});
+            let langNamePicker = new $.PopPicker();
+            langNamePicker.setData([{
+                value: 'ENG',
+                text: 'ENG'
+            }, {
+                value: 'SCH',
+                text: 'SCH'
+            }, {
+                value: 'TCH',
+                text: 'TCH'
+            }]);
+            let showLangNamePickerButton = doc.getElementById('langNamePicker');
+            let langNameResult = doc.getElementById('langNameResult');
+            showLangNamePickerButton.addEventListener('tap', function (event) {
+                langNamePicker.show(function (items) {
+                    langNameResult.innerText = JSON.stringify(items[0]);
+                });
+            }, false);
 
-			$('#playerssvg').css({
-				'left': left_position
-			});
-			$('#playerssvg').css({
-				'top': top_position
-			});
-			$('#playerssvg').css({
-				'width': svg_width
-			});
-			$('#playerssvg').css({
-				'height': svg_height
-			});
+            let sourceNamePicker = new $.PopPicker();
+            sourceNamePicker.setData([{
+                value: 'Publisher',
+                text: 'Publisher'
+            }, {
+                value: 'Other',
+                text: 'Other'
+            }, {
+                value: 'Designer',
+                text: 'Designer'
+            }]);
+            let showSourceNamePickerButton = doc.getElementById('sourceNamePicker');
+            let sourceNameResult = doc.getElementById('sourceNameResult');
+            showSourceNamePickerButton.addEventListener('tap', function (event) {
+                sourceNamePicker.show(function (items) {
+                    sourceNameResult.innerText = JSON.stringify(items[0]);
+                });
+            }, false);
 
-			$('#clocksvg').css({
-				'left': left_position
-			});
-			$('#clocksvg').css({
-				'top': top_position
-			});
-			$('#clocksvg').css({
-				'width': svg_width
-			});
-			$('#clocksvg').css({
-				'height': svg_height
-			});
-		}, 50);
-		/*
-		if(langLvl0 === langDepLvl) {
-			$('#langLvl0').addClass('color-orange');
-		}
-		if(langLvl1 === langDepLvl) {
-			$('#langLvl1').addClass('color-orange');
-		}
-		if(langLvl2 === langDepLvl) {
-			$('#langLvl2').addClass('color-orange');
-		}
-		if(langLvl2 === langDepLvl) {
-			$('#langLvl2').addClass('color-orange');
-		}
-		if(langLvl3 === langDepLvl) {
-			$('#langLvl3').addClass('color-orange');
-		}
-		*/
-	});
+            setTimeout(function () {
+                let value_rates = $('#valueRates');
+                let valueRates_w = value_rates.width;
+                let valueRates_h = value_rates.height;
+                //vertical align middle
+                value_rates.lineHeight = valueRates_h + pixels;
+                let svg1_w = $('#svg1').width;
+                let svg1_h = $('#svg1').height;
+                //position inner image
+                let year_svg = $('#year_svg');
+                let yearsvg_w = year_svg.width * cover_img_scale_factor;
+                let yearsvg_h = year_svg.height * cover_img_scale_factor;
+
+                let left_position = (svg1_w - yearsvg_w + 16) / 2 + pixels;
+                let top_position = (svg1_h - yearsvg_h) / 2 + pixels;
+                let svg_width = yearsvg_w;
+                let svg_height = yearsvg_h;
+                year_svg.left = left_position;
+                year_svg.top = top_position;
+                year_svg.width = svg_width;
+                year_svg.height = svg_height;
+                let weight_svg = $('#weight_svg');
+                weight_svg.left = left_position;
+                weight_svg.top = top_position;
+                weight_svg.width = svg_width;
+                weight_svg.height = svg_height;
+                let age_svg = $('#age_svg');
+                age_svg.left = left_position;
+                age_svg.top = top_position;
+                age_svg.width = svg_width;
+                age_svg.height = svg_height;
+                let players_svg = $('#players_svg');
+                players_svg.left = left_position;
+                players_svg.top = top_position;
+                players_svg.width = svg_width;
+                players_svg.height = svg_height;
+                let clock_svg = $('#clock_svg');
+                clock_svg.left = left_position;
+                clock_svg.top = top_position;
+                clock_svg.width = svg_width;
+                clock_svg.height = svg_height;
+            }, 50);
+        });
+    })(mui, document);
+}
+
+if (current_page === 'gamerule') {
+    console.log("in document ready gamerule");
+    $('#back_arrow').attr('id', gameid);
+
+    lineText = [];
+    lineImage = [];
+    //var lineNo = []
+    lineFlag = [];
+    pageType = 'setup'
+    // this will create setup page
+    //ajax_wait(gameid, pageType);
 
 }
 
-if(current_page === 'gamerule') {
-	console.log("in document ready gamerule");
-	$('#back_arrow').attr('id', gameid);
+var generate_html = function (pageType) {
 
-	lineText = []
-	lineImage = []
-	//var lineNo = []
-	lineFlag = []
-	pageType = 'setup'
-	// this will create setup page
-	//ajax_wait(gameid, pageType);
-
+    lineText = []
+    lineImage = []
+    //var lineNo = []
+    lineFlag = []
+    //pageType = 'flow'
+    //console.log(pageType)
+    //console.log(lineFlag)
+    // this will create flow page
+    ajax_wait(gameid, pageType);
+    //console.log(html2)
 }
 
-var generate_html = function(pageType) {
+var generate_html3 = function () {
 
-	lineText = []
-	lineImage = []
-	//var lineNo = []
-	lineFlag = []
-	//pageType = 'flow'
-	//console.log(pageType)
-	//console.log(lineFlag)
-	// this will create flow page
-	ajax_wait(gameid, pageType);
-	//console.log(html2)
-}
+    //pageType = 'end'
 
-var generate_html3 = function() {
+    // this will create end page
+    ajax_wait(gameid, pageType);
 
-	//pageType = 'end'
-
-	// this will create end page
-	ajax_wait(gameid, pageType);
-
-	//return html3;
+    //return html3;
 }
