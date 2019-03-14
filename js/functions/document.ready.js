@@ -180,7 +180,7 @@ if (current_page === 'gamecover') {
             let cropLenResult = doc.getElementById('cropLenResult');
             showCropLenPickerButton.addEventListener('tap', function (event) {
                 cropLenPicker.show(function (items) {
-                    cropLenResult.innerText = JSON.stringify(items[0]);
+                    cropLenResult.innerText = items[0].value;
                 });
             }, false);
 
@@ -202,7 +202,8 @@ if (current_page === 'gamecover') {
             let rulebookNameResult = doc.getElementById('rulebookNameResult');
             showRulebookNamePickerButton.addEventListener('tap', function (event) {
                 rulebookNamePicker.show(function (items) {
-                    rulebookNameResult.innerText = items[0];
+                    //console.log(items[0].value);
+                    rulebookNameResult.innerText = items[0].value;
                 });
             }, false);
 
@@ -221,7 +222,7 @@ if (current_page === 'gamecover') {
             let langNameResult = doc.getElementById('langNameResult');
             showLangNamePickerButton.addEventListener('tap', function (event) {
                 langNamePicker.show(function (items) {
-                    langNameResult.innerText = JSON.stringify(items[0]);
+                    langNameResult.innerText = items[0].value;
                 });
             }, false);
 
@@ -240,7 +241,7 @@ if (current_page === 'gamecover') {
             let sourceNameResult = doc.getElementById('sourceNameResult');
             showSourceNamePickerButton.addEventListener('tap', function (event) {
                 sourceNamePicker.show(function (items) {
-                    sourceNameResult.innerText = JSON.stringify(items[0]);
+                    sourceNameResult.innerText = items[0].value;
                 });
             }, false);
 
