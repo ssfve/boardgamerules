@@ -62,14 +62,12 @@
                             <button id='rulebookNamePicker' class="mui-btn mui-btn-block" type='button'>
                                 选择rulebook_name
                             </button>
-
                             <button id='langNamePicker' class="mui-btn mui-btn-block" type='button'>选择lang_name</button>
-
                             <button id='sourceNamePicker' class="mui-btn mui-btn-block" type='button'>选择source_name
                             </button>
-
                             <input type="text" id="source_detail" class="mui-input-clear" placeholder="输入source_detail">
                             <button type="button" onclick="submit_pdf_info()">pdf信息写入数据库</button>
+                            </br></br>
                             <form method="POST" enctype="multipart/form-data"
                                   action="http://180.76.244.130:3000/games/savePDF">
                                 <input type="file" id="pdf_file" name="pdf_file"/>

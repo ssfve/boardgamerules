@@ -16,13 +16,17 @@ h5.mui-content-padded:first-child {
 	font-size: 16px;
 }
 
+input[type=text] {
+	margin-bottom: 0;
+}
+
 .description {
 	color: red;
 	max-width: 705px;
 }
 
 .cover-card {
-	margin: 0px;
+	margin: 0;
 }
 
 .bg-content-padded {
@@ -44,7 +48,7 @@ body {
 }
 
 .mui-bar {
-	height: 0px;
+	height: 0;
 }
 .mui-bar .mui-pull-left .mui-icon {
 	padding-right: 5px;
