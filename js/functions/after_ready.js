@@ -1,10 +1,10 @@
 function submit_pdf_info() {
     pdf_name = document.getElementById("pdf_name").value;
-    crop_len = document.getElementById("cropLenResult").value;
+    crop_len = document.getElementById("cropLenResult").innerText;
     search_name = document.getElementById("search_name").value;
-    rulebook_name = document.getElementById("rulebookNameResult").value;
-    lang_name = document.getElementById("langNameResult").value;
-    source_name = document.getElementById("sourceNameResult").value;
+    rulebook_name = document.getElementById("rulebookNameResult").innerText;
+    lang_name = document.getElementById("langNameResult").innerText;
+    source_name = document.getElementById("sourceNameResult").innerText;
     source_detail = document.getElementById("source_detail").value;
     if(pdf_name === '') {
         alert('请输入pdf_name');

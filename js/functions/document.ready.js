@@ -202,7 +202,7 @@ if (current_page === 'gamecover') {
             let rulebookNameResult = doc.getElementById('rulebookNameResult');
             showRulebookNamePickerButton.addEventListener('tap', function (event) {
                 rulebookNamePicker.show(function (items) {
-                    rulebookNameResult.innerText = JSON.stringify(items[0]);
+                    rulebookNameResult.innerText = items[0];
                 });
             }, false);
 
