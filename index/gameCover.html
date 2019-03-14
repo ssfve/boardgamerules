@@ -55,39 +55,30 @@
                 <div class="mui-content" style="padding-top: 0px;">
                     <div class="mui-content-padded">
                         <div id="pdf-content">
-                            <div class="mui-input-row">
-                                <label>pdf_name</label>
-                                <input type="text" id="pdf_name" class="mui-input-clear" placeholder="输入pdf_name">
-                            </div>
+                            <input type="text" id="pdf_name" class="mui-input-clear" placeholder="输入pdf_name">
                             <button id='showCropLenPicker' class="mui-btn mui-btn-block" type='button'>选择crop_len
                             </button>
-                            <div id='cropLenResult' class="ui-alert"></div>
-                            <div class="mui-input-row">
-                                <label>search_name</label>
-                                <input type="text" id="search_name" class="mui-input-clear" placeholder="输入search_name">
-                            </div>
+                            <input type="text" id="search_name" class="mui-input-clear" placeholder="输入search_name">
                             <button id='rulebookNamePicker' class="mui-btn mui-btn-block" type='button'>
                                 选择rulebook_name
                             </button>
-                            <div id='rulebookNameResult' class="ui-alert"></div>
+
                             <button id='langNamePicker' class="mui-btn mui-btn-block" type='button'>选择lang_name</button>
-                            <div id='langNameResult' class="ui-alert"></div>
+
                             <button id='sourceNamePicker' class="mui-btn mui-btn-block" type='button'>选择source_name
                             </button>
-                            <div id='sourceNameResult' class="ui-alert"></div>
-                            <div class="mui-input-row">
-                                <label>source_detail</label>
-                                <input type="text" id="source_detail" class="mui-input-clear" placeholder="输入source_detail">
-                            </div>
-                            <div>
-                                <button type="button" onclick="submit_pdf_info()">pdf信息写入数据库</button>
-                                <br/><br/>
-                            </div>
+
+                            <input type="text" id="source_detail" class="mui-input-clear" placeholder="输入source_detail">
+                            <button type="button" onclick="submit_pdf_info()">pdf信息写入数据库</button>
                             <form method="POST" enctype="multipart/form-data"
                                   action="http://180.76.244.130:3000/games/savePDF">
-                                <input type="file" id="pdf_file" name="pdf_file"/><br/><br/>
+                                <input type="file" id="pdf_file" name="pdf_file"/>
                                 <input type="submit">
                             </form>
+                            <div id='cropLenResult' class="ui-alert"></div>
+                            <div id='rulebookNameResult' class="ui-alert"></div>
+                            <div id='langNameResult' class="ui-alert"></div>
+                            <div id='sourceNameResult' class="ui-alert"></div>
                         </div>
                     </div>
                     <div class="mui-off-canvas-backdrop"></div>

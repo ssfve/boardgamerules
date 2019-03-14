@@ -67,8 +67,6 @@ mui.init({
 
 mui.previewImage();
 
-
-
 //var btn1 = document.getElementById("button1").id;
 //监听点击事件
 function btn1_click() {
@@ -87,25 +85,7 @@ function btn1_click() {
 			title: '正在加载...' //等待对话框上显示的提示内容
 		}
 	})
-};
-
-function btn2_click() {
-	console.log("rule button clicked");
-	/*
-	mui.openWindow({
-		url: "gameRule.html",
-		id: "rule",
-		createNew: false,
-		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-		show: {
-			autoShow: true
-		},
-		waiting: {
-			autoShow: true, //自动显示等待框，默认为true
-			title: '正在加载...' //等待对话框上显示的提示内容
-		}
-	})*/
-};
+}
 
 function btn3_click() {
 	mui.openWindow({
@@ -121,119 +101,4 @@ function btn3_click() {
 			title: '正在加载...' //等待对话框上显示的提示内容
 		}
 	})
-};
-
-function btn4_click() {
-	mui.openWindow({
-		url: "../gameplay/gamePlay.html",
-		id: "play",
-		createNew: false,
-		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-		show: {
-			autoShow: true
-		},
-		waiting: {
-			autoShow: true, //自动显示等待框，默认为true
-			title: '正在加载...' //等待对话框上显示的提示内容
-		}
-	})
-};
-
-function btn6_click() {
-	var url_page = "id="+gameid
-	mui.openWindow({
-		url: "gamePic.html?"+url_page,
-		id: "pic",
-		createNew: false,
-		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-		show: {
-			autoShow: true
-		},
-		waiting: {
-			autoShow: true, //自动显示等待框，默认为true
-			title: '正在加载...' //等待对话框上显示的提示内容
-		}
-	})
-};
-
-//toast_alter();
-//var numRatesMea = '评分: '+average+'/10  数量: '+usersrated+'条'
-document.getElementById("valueRates").addEventListener('tap', function() {
-	mui.toast(numRatesMea,3500);
-});
-document.getElementById("numRates").addEventListener('tap', function() {
-	mui.toast(numRatesMea,3500);
-});
-
-//icon2
-//var yearPubMea = '出版时间: '+yearPub+'年'
-document.getElementById("yearPub").addEventListener('tap', function() {
-	mui.toast(yearMea,3500);
-});
-document.getElementById("yearsvg").addEventListener('tap', function() {
-	mui.toast(yearMea,3500);
-});
-document.getElementById("svg2").addEventListener('tap', function() {
-	mui.toast(yearMea,3500);
-});
-
-//icon3
-//var weightExp = '复杂度(重度): '+weight+'/5'
-document.getElementById("weight").addEventListener('tap', function() {
-	mui.toast(weightExp,3500);
-});
-document.getElementById("weightsvg").addEventListener('tap', function() {
-	mui.toast(weightExp,3500);
-});
-document.getElementById("svg3").addEventListener('tap', function() {
-	mui.toast(weightExp,3500);
-});
-
-//icon4
-//var ageMea = '适合年龄: '+age+'岁'+ageMeaPlus
-document.getElementById("age").addEventListener('tap', function() {
-	mui.toast(ageMea,3500);
-});
-document.getElementById("agesvg").addEventListener('tap', function() {
-	mui.toast(ageMea,3500);
-});
-document.getElementById("svg4").addEventListener('tap', function() {
-	mui.toast(ageMea,3500);
-});
-
-//icon5
-//if (playersBest === ''){
-//	var playersMea = '游戏人数: '+players+'人'
-//}else{
-//	var playersMea = '游戏人数[最佳人数]: '+players+playersBest+'人'
-//}
-document.getElementById("players").addEventListener('tap', function() {
-	mui.toast(playersMea,3500);
-});
-document.getElementById("playerssvg").addEventListener('tap', function() {
-	mui.toast(playersMea,3500);
-});
-document.getElementById("svg5").addEventListener('tap', function() {
-	mui.toast(playersMea,3500);
-});
-
-//icon6
-//var playtimeMea = '游戏时间: '+playtime.replace('’','')+'分钟'
-document.getElementById("playtime").addEventListener('tap', function() {
-	mui.toast(playtimeMea,3500);
-});
-document.getElementById("clocksvg").addEventListener('tap', function() {
-	mui.toast(playtimeMea,3500);
-});
-document.getElementById("svg6").addEventListener('tap', function() {
-	mui.toast(playtimeMea,3500);
-});
-
-
-/*
-mui.plusReady(function(){
-	console.log('rotate')
-	plus.screen.lockOrientation('portrait-primary');
-});
-*/
-//
+}
