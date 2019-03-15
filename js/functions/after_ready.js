@@ -24,11 +24,11 @@ function submit_pdf_info() {
         },
         success: function(data) {
             console.log("savePDFInfo Success");
-            alert("Well Done");
+            alert("savePDFInfo Success");
         },
         error: function(err) {
             console.log("savePDFInfo Failure");
-            alert(err);
+            alert("savePDFInfo Failure");
         }
     });
 }
