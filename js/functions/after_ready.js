@@ -25,6 +25,10 @@ function submit_pdf_info() {
         success: function(data) {
             console.log("savePDFInfo Success");
             alert("Well Done");
+        },
+        error: function(err) {
+            console.log("savePDFInfo Failure");
+            alert(err);
         }
     });
 }
