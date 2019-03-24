@@ -32,3 +32,35 @@ function submit_pdf_info() {
         }
     });
 }
+
+function submit_translate_info() {
+    let pdf_path = document.getElementById("pdf_file").value;
+    let pdf_name = pdf_path.split("\\")[2];
+    console.log(pdf_name);
+    let receiver_email = document.getElementById("receiver_email").value;
+    console.log(receiver_email);
+    if(pdf_name === '') {
+        alert('请选择pdf_file');
+        return
+    }
+    if(receiver_email === '') {
+        alert('请输入receiver_email');
+        return
+    }
+    let pdf_query_url = 'http://180.76.244.130:3000/games/saveTranslateInfo';
+    $.ajax({
+        url: pdf_query_url,
+        data: {
+            pdf_name: pdf_name,
+            receiver_email: receiver_email
+        },
+        success: function(data) {
+            console.log("savePDFInfo Success");
+            alert("savePDFInfo Success");
+        },
+        error: function(err) {
+            console.log("savePDFInfo Failure");
+            alert("savePDFInfo Failure");
+        }
+    });
+}
