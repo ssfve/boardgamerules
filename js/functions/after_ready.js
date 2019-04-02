@@ -11,7 +11,7 @@ function submit_pdf_info() {
         alert('请输入pdf_name');
         return
     }
-    let pdf_query_url = 'http://www.boardgamerule.cn:3000/games/savePDFInfo';
+    let pdf_query_url = 'http://180.76.244.130:3000/games/savePDFInfo';
     $.ajax({
         url: pdf_query_url,
         data: {
@@ -24,11 +24,11 @@ function submit_pdf_info() {
             source_name: source_name,
             source_detail: source_detail
         },
-        success: function(data) {
+        success: function() {
             console.log("savePDFInfo Success");
             alert("savePDFInfo Success");
         },
-        error: function(err) {
+        error: function() {
             console.log("savePDFInfo Failure");
             alert("savePDFInfo Failure");
         }

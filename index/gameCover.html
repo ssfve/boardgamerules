@@ -46,29 +46,29 @@
                     </div>
                 </div>
             </div>
-            <img style="width:100%;" src="../img/interface/logo.jpg" data-preview-src="" data-preview-group="1"/>
+            <img style="width:100%;" src="../img/interface/logo.jpg" data-preview-src="" data-preview-group="1" alt=""/>
         </div>
     </aside>
     <div class="mui-inner-wrap">
         <div id="mainPageScroll" class="mui-scroll-wrapper">
             <div class="mui-scroll">
-                <div class="mui-content" style="padding-top: 0px;">
+                <div class="mui-content" style="padding-top: 0;">
                     <div class="mui-content-padded">
                         <div id="pdf-content">
-                            <input type="text" id="pdf_name" class="mui-input-clear" placeholder="输入pdf_name">
+                            <label for="pdf_name"></label><input type="text" id="pdf_name" class="mui-input-clear" placeholder="输入pdf_name">
                             <button id='showCropLenPicker' class="mui-btn mui-btn-block" type='button'>选择crop_len
                             </button>
-                            <input type="text" id="search_name" class="mui-input-clear" placeholder="输入search_name">
-                            <input type="text" id="gstone_id" class="mui-input-clear" placeholder="输入gstone_id">
+                            <label for="search_name"></label><input type="text" id="search_name" class="mui-input-clear" placeholder="输入search_name"/>
+                            <label for="gstone_id"></label><input type="text" id="gstone_id" class="mui-input-clear" placeholder="输入gstone_id"/>
                             <button id='rulebookNamePicker' class="mui-btn mui-btn-block" type='button'>
                                 选择rulebook_name
                             </button>
                             <button id='langNamePicker' class="mui-btn mui-btn-block" type='button'>选择lang_name</button>
                             <button id='sourceNamePicker' class="mui-btn mui-btn-block" type='button'>选择source_name
                             </button>
-                            <input type="text" id="source_detail" class="mui-input-clear" placeholder="输入source_detail">
+                            <label for="source_detail"></label><input type="text" id="source_detail" class="mui-input-clear" placeholder="输入source_detail"/>
                             <button type="button" onclick="submit_pdf_info()">pdf信息写入数据库</button>
-                            </br></br>
+                            <br><br>
                             <form method="POST" enctype="multipart/form-data"
                                   action="http://180.76.244.130:3000/games/savePDF">
                                 <input type="file" id="pdf_file" name="pdf_file"/>

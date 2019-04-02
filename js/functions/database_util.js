@@ -426,10 +426,9 @@ var setTextContent = function(id, type, loc) {
 	});
 };
 
-var getPageLineNum = function(id, page) {
+let getPageLineNum = function(id, page) {
 	//$(obj).text(text)
-	var textURL = 'http://180.76.244.130:3000/games/getPageLineNum'
-	//alert(obj)
+	let textURL = 'http://180.76.244.130:3000/games/getPageLineNum';
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: textURL,
@@ -440,12 +439,9 @@ var getPageLineNum = function(id, page) {
 			dataType: 'json',
 			success: function(data) {
 				$.each(data, function(index, content) {
-					//alert(index)
-					//alert(content)
 					lineNo[index] = content.lineNum;
 					lineFlag[index] = content.flag;
 				});
-				//alert('dfas')
 				resolve(lineFlag)
 			},
 			error: function(data) {}
@@ -454,8 +450,8 @@ var getPageLineNum = function(id, page) {
 	//return p
 };
 
-var getSubPageUrl = function(id, no) {
-	var subPageUrl = nodejs_url + 'database/getSubPageUrl'
+let getSubPageUrl = function(id, no) {
+	let subPageUrl = nodejs_url + 'database/getSubPageUrl'
 		$.ajax({
 			url: subPageUrl,
 			data: {
@@ -471,8 +467,8 @@ var getSubPageUrl = function(id, no) {
 		});
 };
 
-var getIfHasSubPage = function(id) {
-	var hasSubPageUrl = nodejs_url + 'database/getIfHasSubPage'
+let getIfHasSubPage = function(id) {
+	let hasSubPageUrl = nodejs_url + 'database/getIfHasSubPage';
 		$.ajax({
 			url: hasSubPageUrl,
 			data: {
@@ -481,11 +477,7 @@ var getIfHasSubPage = function(id) {
 			async: false,
 			dataType: 'json',
 			success:function(json){
-				if(json>0){
-					hasSubPage_flag=true
-				}else{
-					hasSubPage_flag=false	
-				}
+				hasSubPage_flag = json > 0;
 			},
 			error: function(data) {}
 		});
