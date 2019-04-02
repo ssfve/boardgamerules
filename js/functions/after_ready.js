@@ -2,6 +2,7 @@ function submit_pdf_info() {
     let pdf_name = document.getElementById("pdf_name").value;
     let crop_len = document.getElementById("cropLenResult").innerText;
     let search_name = document.getElementById("search_name").value;
+    let gstone_id = document.getElementById("gstone_id").value;
     let rulebook_name = document.getElementById("rulebookNameResult").innerText;
     let lang_name = document.getElementById("langNameResult").innerText;
     let source_name = document.getElementById("sourceNameResult").innerText;
@@ -17,6 +18,7 @@ function submit_pdf_info() {
             pdf_name: pdf_name,
             crop_len: crop_len,
             search_name: search_name,
+            gstone_id: gstone_id,
             rulebook_name: rulebook_name,
             lang_name: lang_name,
             source_name: source_name,
