@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>gameCover</title>
     <meta name="description" content="">
-    <meta name="keywords" content="桌游规则，桌游说明书">
+    <meta name="keywords" content="fishpole-boardgamerule">
     <meta name="author" content="boardgamerules">
     <meta name="version" content="boardgamerules 2.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,36 +32,26 @@
 </head>
 
 <body>
-<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
-    <!--侧滑菜单部分-->
-    <aside id="offCanvasSide" class="mui-off-canvas-left background-color-orange">
-        <div id="offCanvasSideScroll" class="mui-scroll-wrapper">
-            <div id="sideHeader" class="title" style="margin-bottom: 5px;margin-top: 5px;"></div>
-            <ul id="sideContent"
-                class="mui-table-view mui-table-view-chevron mui-table-view-inverted background-color-orange"></ul>
-            <div class="mui-grid_view" style="background-color:#FFFFFF;">
-                <div class="mui-media">
-                    <div class="mui-table-view-cell mui-media-body">
-                        <span id="subText" class="h6-text-grey"></span><span id="subName" class="h6-text-orange"></span>
-                    </div>
-                </div>
-            </div>
-            <img style="width:100%;" src="../img/interface/logo.jpg" data-preview-src="" data-preview-group="1"/>
-        </div>
-    </aside>
+<div id="canvasWrapper" class="fishpole-background">
     <div class="mui-inner-wrap">
         <div id="mainPageScroll" class="mui-scroll-wrapper">
             <div class="mui-scroll">
                 <div class="mui-content" style="padding-top: 0px;">
                     <div class="mui-content-padded">
                         <div id="pdf-content">
-                            <input type="text" id="receiver_email" class="mui-input-clear" placeholder="输入receiver_email">
-                            <button type="button" onclick="submit_translate_info()">pdf信息写入数据库</button>
-                            </br></br>
                             <form method="POST" enctype="multipart/form-data"
                                   action="http://180.76.244.130:3000/games/savePDF">
+                                <label for="pdf_file" class="btn">你的鱼饵（英文pdf）</label>
+                                <br><br>
                                 <input type="file" id="pdf_file" name="pdf_file"/>
-                                <input type="submit">
+                                <br><br>
+                                <input type="submit" value="挂上鱼饵">
+                            </form>
+                            <br><br>
+                            <form>
+                                <input type="text" id="receiver_email" class="mui-input-clear" placeholder="你的水桶（邮箱地址）">
+                                <br><br>
+                                <button type="button" onclick="submit_translate_info()">准备水桶</button>
                             </form>
                             <div id='cropLenResult' class="ui-alert"></div>
                             <div id='rulebookNameResult' class="ui-alert"></div>

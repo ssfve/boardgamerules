@@ -42,11 +42,11 @@ function submit_translate_info() {
     let receiver_email = document.getElementById("receiver_email").value;
     console.log(receiver_email);
     if(pdf_name === '') {
-        alert('请选择pdf_file');
+        alert('请上传英文pdf文件');
         return
     }
     if(receiver_email === '') {
-        alert('请输入receiver_email');
+        alert('请输入邮箱地址');
         return
     }
     let pdf_query_url = 'http://180.76.244.130:3000/games/saveTranslateInfo';
