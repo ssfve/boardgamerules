@@ -2,3 +2,7 @@
 *.tar
 .git.rar
 .idea/workspace.xml
+.idea/boardgamerules.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
