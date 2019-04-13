@@ -79,10 +79,10 @@ function submit_translate_info() {
         async: false,
         crossDomain : true,
         beforeSend: function(){
-            $("#loading").dialog('open').html("<p>上传中。。。</p>");
+            $('#upload_button').innerHTML="上传中。。。";
         },
         complete: function(){
-            $("#loading").dialog('close');
+            $('#upload_button').innerHTML="开始钓鱼";
         },
         success: function(data) {
             console.log("文件上传成功");
@@ -104,6 +104,7 @@ function submit_translate_info() {
         },
         success: function(data) {
             console.log("savePDFInfo Success");
+            //$('#upload_button').innerHTML="开始钓鱼";
             alert("钓鱼中。。。请耐心等待邮件(约30分钟)");
         },
         error: function(err) {
