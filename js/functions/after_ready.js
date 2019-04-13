@@ -71,6 +71,7 @@ function submit_translate_info() {
         processData: false,
         data: pdf_data,
         async: false,
+        crossDomain : true,
         success: function(data) {
             console.log("文件上传成功");
             //alert("savePDFInfo Success");
