@@ -50,12 +50,12 @@ function submit_translate_info() {
     }
     console.log(pdf_name);
     let receiver_email = document.getElementById("receiver_email").value;
-    if(!receiver_email.includes('@')){
-        alert('请确保邮箱地址正确');
-        return
-    }
     if(receiver_email === '') {
         alert('请输入邮箱地址');
+        return
+    }
+    if(!receiver_email.includes('@')){
+        alert('邮箱格式有误，请重新输入');
         return
     }
     console.log(receiver_email);
