@@ -37,24 +37,37 @@ function submit_pdf_info() {
 
 function submit_translate_info() {
     let pdf_path = document.getElementById("pdf_file").value;
-    let pdf_name = pdf_path.split("\\")[2];
+    let pdf_name_suffix = pdf_path.split("\\")[2];
+    let pdf_name = pdf_name_suffix.search(".")[0];
+    let file_suffix = pdf_name_suffix.search(".")[1];
+    if(file_suffix !== 'pdf') {
+        alert('请上传pdf格式文件');
+        return
+    }
+    if(pdf_name === '') {
+        alert('请选择上传文件');
+        return
+    }
     console.log(pdf_name);
     let receiver_email = document.getElementById("receiver_email").value;
-    console.log(receiver_email);
-    if(pdf_name === '') {
-        alert('请上传英文pdf文件');
+    if(!receiver_email.contains('@')){
+        alert('请确保邮箱地址正确');
         return
     }
     if(receiver_email === '') {
         alert('请输入邮箱地址');
         return
     }
+    console.log(receiver_email);
     let pdf_query_url = 'http://180.76.244.130:3000/games/saveTranslateInfo';
+    let d = new Date();
     $.ajax({
         url: pdf_query_url,
         data: {
             pdf_name: pdf_name,
-            receiver_email: receiver_email
+            receiver_email: receiver_email,
+            upload_time: d.getTime()
+
         },
         success: function(data) {
             console.log("savePDFInfo Success");

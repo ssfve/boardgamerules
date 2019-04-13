@@ -36,12 +36,12 @@
     <div class="mui-inner-wrap">
         <div id="mainPageScroll" class="mui-scroll-wrapper">
             <div class="mui-scroll">
-                <div class="mui-content" style="padding-top: 0px;">
+                <div class="mui-content" style="padding-top: 0;background-color: transparent;">
                     <div class="mui-content-padded">
                         <div id="pdf-content">
                             <form method="POST" enctype="multipart/form-data"
                                   action="http://180.76.244.130:3000/games/savePDF">
-                                <label for="pdf_file" class="btn">你的鱼饵（英文pdf）</label>
+                                <label for="pdf_file" class="btn">上传桌游英文规则（选择鱼饵）:</label>
                                 <br><br>
                                 <input type="file" id="pdf_file" name="pdf_file"/>
                                 <br><br>
@@ -49,9 +49,9 @@
                             </form>
                             <br><br>
                             <form>
-                                <input type="text" id="receiver_email" class="mui-input-clear" placeholder="你的水桶（邮箱地址）">
+                                <input type="text" id="receiver_email" class="mui-input-clear" placeholder="输入中文规则接收邮箱（准备水桶）">
                                 <br><br>
-                                <button type="button" onclick="submit_translate_info()">准备水桶</button>
+                                <button type="button" onclick="submit_translate_info()">开始钓鱼</button>
                             </form>
                             <div id='cropLenResult' class="ui-alert"></div>
                             <div id='rulebookNameResult' class="ui-alert"></div>

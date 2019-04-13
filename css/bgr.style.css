@@ -5,9 +5,8 @@
 }
 
 body{
-	background:url('../img/interface/background.jpg') no-repeat;
 	background-size:cover;
-	background-position:center center;
+	background: url('../img/interface/background.jpg') no-repeat top center;
 }
 
 h5.mui-content-padded {
@@ -25,6 +24,7 @@ h5.mui-content-padded:first-child {
 
 input[type=text] {
 	margin: auto;
+
 }
 input[type=file] {
 	margin: auto;
@@ -162,8 +162,8 @@ input {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	margin-top: 0px;
-	margin-bottom: 0px;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 .corner-inner-text {
@@ -200,11 +200,11 @@ input {
 }
 
 .no-margin-top {
-	margin-top: 0px;
+	margin-top: 0;
 }
 
 .no-margin-bottom {
-	margin-bottom: 0px;
+	margin-bottom: 0;
 }
 
 .text_vertical_middle {
