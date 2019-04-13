@@ -50,7 +50,7 @@ function submit_translate_info() {
     }
     console.log(pdf_name);
     let receiver_email = document.getElementById("receiver_email").value;
-    if(!receiver_email.contains('@')){
+    if(!receiver_email.includes('@')){
         alert('请确保邮箱地址正确');
         return
     }
