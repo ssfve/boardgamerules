@@ -70,12 +70,13 @@ function submit_translate_info() {
         contentType: false,
         processData: false,
         data: pdf_data,
+        async: false,
         success: function(data) {
             console.log("文件上传成功");
             //alert("savePDFInfo Success");
         },
         error: function(err) {
-            console.log("savePDFInfo Failure");
+            console.log("uploadPDF Failure");
             alert("ERROR:开始钓鱼失败，请重试");
         }
     });
@@ -87,7 +88,6 @@ function submit_translate_info() {
             pdf_name: pdf_name,
             receiver_email: receiver_email,
             upload_time: d.getTime()
-
         },
         success: function(data) {
             console.log("savePDFInfo Success");
