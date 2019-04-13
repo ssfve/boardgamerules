@@ -35,6 +35,12 @@ function submit_pdf_info() {
     });
 }
 
+$("#loading").dialog({
+    hide: 'slide',
+    show: 'slide',
+    autoOpen: false
+});
+
 function submit_translate_info() {
     let pdf_path = document.getElementById("pdf_file").value;
     let pdf_name_suffix = pdf_path.split("\\")[2];
@@ -72,6 +78,9 @@ function submit_translate_info() {
         data: pdf_data,
         async: false,
         crossDomain : true,
+        beforeSend: function(){
+            $("#loading").dialog('open').html("<p>Please Wait...</p>");
+        },
         success: function(data) {
             console.log("文件上传成功");
             //alert("savePDFInfo Success");
