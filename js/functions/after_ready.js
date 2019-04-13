@@ -60,10 +60,15 @@ function submit_translate_info() {
     }
     console.log(receiver_email);
     let pdf_upload_url = 'http://180.76.244.130:3000/games/savePDF';
-    let pdf_data = document.getElementById('pdf_file').result;
+    let pdf_data = new FormData();
+    let pdf_file = document.getElementById("pdf_file").files[0];
+    pdf_data.append('file-0', pdf_file);
+    //let pdf_data = document.getElementById('pdf_file').result;
     $.ajax({
         url: pdf_upload_url,
-        type: 'multipart/form-data',
+        method: 'POST',
+        contentType: false,
+        processData: false,
         data: pdf_data,
         success: function(data) {
             console.log("文件上传成功");
