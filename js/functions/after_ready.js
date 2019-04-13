@@ -76,9 +76,8 @@ function submit_translate_info() {
         contentType: false,
         processData: false,
         data: pdf_data,
-        async: false,
         crossDomain : true,
-        beforeSend: function(){
+        send: function(){
             $('#upload_button').innerHTML="上传中。。。";
         },
         complete: function(){
