@@ -79,7 +79,10 @@ function submit_translate_info() {
         async: false,
         crossDomain : true,
         beforeSend: function(){
-            $("#loading").dialog('open').html("<p>Please Wait...</p>");
+            $("#loading").dialog('open').html("<p>上传中。。。</p>");
+        },
+        complete: function(){
+            $("#loading").dialog('close');
         },
         success: function(data) {
             console.log("文件上传成功");
