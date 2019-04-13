@@ -38,14 +38,14 @@ function submit_pdf_info() {
 function submit_translate_info() {
     let pdf_path = document.getElementById("pdf_file").value;
     let pdf_name_suffix = pdf_path.split("\\")[2];
+    if(pdf_name_suffix === '') {
+        alert('请选择上传文件');
+        return
+    }
     let pdf_name = pdf_name_suffix.split(".")[0];
     let file_suffix = pdf_name_suffix.split(".")[1];
     if(file_suffix !== 'pdf') {
         alert('请上传pdf格式文件');
-        return
-    }
-    if(pdf_name === '') {
-        alert('请选择上传文件');
         return
     }
     console.log(pdf_name);
