@@ -38,7 +38,7 @@ function submit_pdf_info() {
 function submit_translate_info() {
     let pdf_path = document.getElementById("pdf_file").value;
     let pdf_name_suffix = pdf_path.split("\\")[2];
-    if(pdf_name_suffix === '') {
+    if(pdf_name_suffix === undefined) {
         alert('请选择上传文件');
         return
     }
