@@ -69,7 +69,7 @@ function submit_translate_info() {
     let pdf_data = new FormData();
     let pdf_file = document.getElementById("pdf_file").files[0];
     pdf_data.append('file-0', pdf_file);
-    //let pdf_data = document.getElementById('pdf_file').result;
+    let button = $('#upload_button');
     $.ajax({
         url: pdf_upload_url,
         method: 'POST',
@@ -78,10 +78,12 @@ function submit_translate_info() {
         data: pdf_data,
         crossDomain : true,
         beforeSend: function(){
-            $('#upload_button').html("文件上传中。。。请勿关闭窗口");
+            button.disable();
+            button.html("文件上传中。。。请勿关闭窗口");
         },
         complete: function(){
-            $('#upload_button').html("开始钓鱼");
+            button.enable();
+            button.html("重新抛竿");
         },
         success: function(data) {
             $('#upload_button').html("文件上传成功");
@@ -105,7 +107,7 @@ function submit_translate_info() {
         success: function(data) {
             console.log("savePDFInfo Success");
             //$('#upload_button').innerHTML="开始钓鱼";
-            alert("钓鱼中。。。请耐心等待邮件(约30分钟)");
+            //alert("钓鱼中。。。请耐心等待邮件(约30分钟)");
         },
         error: function(err) {
             console.log("savePDFInfo Failure");
