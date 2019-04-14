@@ -78,11 +78,11 @@ function submit_translate_info() {
         data: pdf_data,
         crossDomain : true,
         beforeSend: function(){
-            button.disable();
+            button.attr("disabled", true);
             button.html("文件上传中。。。请勿关闭窗口");
         },
         complete: function(){
-            button.enable();
+            button.attr("disabled", false);
             button.html("重新抛竿");
         },
         success: function(data) {
