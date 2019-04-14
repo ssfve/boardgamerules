@@ -78,13 +78,13 @@ function submit_translate_info() {
         data: pdf_data,
         crossDomain : true,
         beforeSend: function(){
-            $('#upload_button').innerHTML="文件上传中。。。请勿关闭窗口";
+            $('#upload_button').html("文件上传中。。。请勿关闭窗口");
         },
         complete: function(){
-            $('#upload_button').innerHTML="开始钓鱼";
+            $('#upload_button').html("开始钓鱼");
         },
         success: function(data) {
-            $('#upload_button').innerHTML="文件上传成功";
+            $('#upload_button').html("文件上传成功");
             console.log("文件上传成功");
             //alert("savePDFInfo Success");
         },
