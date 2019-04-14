@@ -107,7 +107,7 @@ function submit_translate_info() {
         success: function(data) {
             console.log("savePDFInfo Success");
             //$('#upload_button').innerHTML="开始钓鱼";
-            //alert("钓鱼中。。。请耐心等待邮件(约30分钟)");
+            alert("钓鱼中。。。请耐心等待邮件(约30分钟)");
         },
         error: function(err) {
             console.log("savePDFInfo Failure");
