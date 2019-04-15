@@ -79,15 +79,16 @@ function submit_translate_info() {
         crossDomain : true,
         beforeSend: function(){
             button.attr("disabled", true);
-            button.html("文件上传中。。。请勿关闭窗口");
+            button.html("悬挂鱼饵中（文件上传中）。。。请勿关闭窗口");
         },
         complete: function(){
             button.attr("disabled", false);
-            button.html("重新抛竿");
+            button.html("重新抛竿钓鱼");
         },
         success: function(data) {
             $('#upload_button').html("文件上传成功");
             console.log("文件上传成功");
+            alert("钓鱼开始了，请耐心等待邮件送达(约30分钟)");
             //alert("savePDFInfo Success");
         },
         error: function(err) {
@@ -107,7 +108,7 @@ function submit_translate_info() {
         success: function(data) {
             console.log("savePDFInfo Success");
             //$('#upload_button').innerHTML="开始钓鱼";
-            alert("钓鱼中。。。请耐心等待邮件(约30分钟)");
+            //alert("钓鱼中。。。请耐心等待邮件(约30分钟)");
         },
         error: function(err) {
             console.log("savePDFInfo Failure");
