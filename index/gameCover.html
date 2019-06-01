@@ -55,16 +55,8 @@
                 <div class="mui-content" style="padding-top: 0;">
                     <div class="mui-content-padded">
                         <div id="pdf-content">
-                            <label for="pdf_name"></label><input type="text" id="pdf_name" class="mui-input-clear" placeholder="输入pdf_name">
-                            <button id='showCropLenPicker' class="mui-btn mui-btn-block" type='button'>选择crop_len
-                            </button>
-                            <label for="search_name"></label><input type="text" id="search_name" class="mui-input-clear" placeholder="输入search_name"/>
                             <label for="gstone_id"></label><input type="text" id="gstone_id" class="mui-input-clear" placeholder="输入gstone_id"/>
-                            <button id='rulebookNamePicker' class="mui-btn mui-btn-block" type='button'>
-                                选择rulebook_name
-                            </button>
-                            <button id='langNamePicker' class="mui-btn mui-btn-block" type='button'>选择lang_name</button>
-                            <button id='sourceNamePicker' class="mui-btn mui-btn-block" type='button'>选择source_name
+                            <button id='modNamePicker' class="mui-btn mui-btn-block" type='button'>选择mode_name
                             </button>
                             <label for="source_detail"></label><input type="text" id="source_detail" class="mui-input-clear" placeholder="输入source_detail"/>
                             <button type="button" onclick="submit_pdf_info()">pdf信息写入数据库</button>
@@ -74,10 +66,7 @@
                                 <input type="file" id="pdf_file" name="pdf_file"/>
                                 <input type="submit">
                             </form>
-                            <div id='cropLenResult' class="ui-alert"></div>
-                            <div id='rulebookNameResult' class="ui-alert"></div>
-                            <div id='langNameResult' class="ui-alert"></div>
-                            <div id='sourceNameResult' class="ui-alert"></div>
+                            <div id='modNameResult' class="ui-alert"></div>
                         </div>
                     </div>
                     <div class="mui-off-canvas-backdrop"></div>

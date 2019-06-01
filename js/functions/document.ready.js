@@ -131,10 +131,10 @@ async function ajax_wait_subpage(gameid, pageno) {
 };
 
 function ajax_wait_img(gameid, pageType, lineFlag) {
-    console.log('in ajax img')
-    var promise_array = []
+    console.log('in ajax img');
+    let promise_array = [];
     //$.each(lineFlag, function(index, content){
-    var lineNumTotal = lineFlag.length + 1
+    let lineNumTotal = lineFlag.length + 1
 }
 
 if (current_page === 'gamepic') {
@@ -165,83 +165,34 @@ if (current_page === 'gamecover') {
     (function ($, doc) {
         $.init();
         $.ready(function () {
-            let cropLenPicker = new $.PopPicker();
-            cropLenPicker.setData([{
-                value: 0,
-                text: '0'
+            let modNamePicker = new $.PopPicker();
+            modNamePicker.setData([{
+                value: '0',
+                text: '0-EN-Publisher'
             }, {
-                value: 85,
-                text: '85'
+                value: '1',
+                text: '85-EN-Publisher'
             }, {
-                value: 120,
-                text: '120'
-            }]);
-            let showCropLenPickerButton = doc.getElementById('showCropLenPicker');
-            let cropLenResult = doc.getElementById('cropLenResult');
-            showCropLenPickerButton.addEventListener('tap', function (event) {
-                cropLenPicker.show(function (items) {
-                    cropLenResult.innerText = items[0].value;
-                });
-            }, false);
-
-            let rulebookNamePicker = new $.PopPicker();
-            rulebookNamePicker.setData([{
-                value: 'Official Rulebook',
-                text: 'Official Rulebook'
-            }, {
-                value: 'Unofficial Rulebook',
-                text: 'Unofficial Rulebook'
-            }, {
-                value: '官方中文规则书',
-                text: '官方中文规则书'
+                value: '2',
+                text: '120-EN-Publisher'
             },{
-                value: '非官方中文规则书',
-                    text: '非官方中文规则书'
+                value: '3',
+                text: '0-CN-Other'
+            },{
+                value: '4',
+                text: '0-CN-Publisher'
+            },{
+                value: '5',
+                text: '0-EN-BGG'
+            },{
+                value: '6',
+                text: '0-EN-Other'
             }]);
-            let showRulebookNamePickerButton = doc.getElementById('rulebookNamePicker');
-            let rulebookNameResult = doc.getElementById('rulebookNameResult');
-            showRulebookNamePickerButton.addEventListener('tap', function (event) {
-                rulebookNamePicker.show(function (items) {
-                    //console.log(items[0].value);
-                    rulebookNameResult.innerText = items[0].value;
-                });
-            }, false);
-
-            let langNamePicker = new $.PopPicker();
-            langNamePicker.setData([{
-                value: 'ENG',
-                text: 'ENG'
-            }, {
-                value: 'SCH',
-                text: 'SCH'
-            }, {
-                value: 'TCH',
-                text: 'TCH'
-            }]);
-            let showLangNamePickerButton = doc.getElementById('langNamePicker');
-            let langNameResult = doc.getElementById('langNameResult');
-            showLangNamePickerButton.addEventListener('tap', function (event) {
-                langNamePicker.show(function (items) {
-                    langNameResult.innerText = items[0].value;
-                });
-            }, false);
-
-            let sourceNamePicker = new $.PopPicker();
-            sourceNamePicker.setData([{
-                value: 'Publisher',
-                text: 'Publisher'
-            }, {
-                value: 'Other',
-                text: 'Other'
-            }, {
-                value: 'Designer',
-                text: 'Designer'
-            }]);
-            let showSourceNamePickerButton = doc.getElementById('sourceNamePicker');
-            let sourceNameResult = doc.getElementById('sourceNameResult');
-            showSourceNamePickerButton.addEventListener('tap', function (event) {
-                sourceNamePicker.show(function (items) {
-                    sourceNameResult.innerText = items[0].value;
+            let showModNamePickerButton = doc.getElementById('modNamePicker');
+            let modNameResult = doc.getElementById('modNameResult');
+            showModNamePickerButton.addEventListener('tap', function (event) {
+                modNamePicker.show(function (items) {
+                    modNameResult.innerText = items[0].value;
                 });
             }, false);
 
