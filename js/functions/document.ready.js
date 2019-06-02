@@ -177,15 +177,21 @@ if (current_page === 'gamecover') {
                 text: '120-EN-Publisher'
             },{
                 value: '3',
-                text: '0-CN-Other'
+                text: '0-CN-SCH-Other'
             },{
                 value: '4',
-                text: '0-CN-Publisher'
+                text: '0-CN-TCH-Other'
             },{
                 value: '5',
-                text: '0-EN-BGG'
+                text: '0-CN-SCH-Publisher'
             },{
                 value: '6',
+                text: '0-CN-TCH-Publisher'
+            },{
+                value: '7',
+                text: '0-EN-BGG'
+            },{
+                value: '8',
                 text: '0-EN-Other'
             }]);
             let showModNamePickerButton = doc.getElementById('modNamePicker');
