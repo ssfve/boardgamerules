@@ -199,6 +199,9 @@ if (current_page === 'gamecover') {
             },{
                 value: '10',
                 text: '120-CN-TCH-Other'
+            },{
+                value: '11',
+                text: '120-CN-SCH-Other'
             }]);
             let showModNamePickerButton = doc.getElementById('modNamePicker');
             let modNameResult = doc.getElementById('modNameResult');
