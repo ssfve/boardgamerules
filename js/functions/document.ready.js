@@ -202,6 +202,9 @@ if (current_page === 'gamecover') {
             },{
                 value: '11',
                 text: '120-CN-SCH-Other'
+            },{
+                value: '12',
+                text: '0-EN-ENG-Publisher-RulesReference'
             }]);
             let showModNamePickerButton = doc.getElementById('modNamePicker');
             let modNameResult = doc.getElementById('modNameResult');
