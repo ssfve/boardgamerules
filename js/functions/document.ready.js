@@ -205,6 +205,9 @@ if (current_page === 'gamecover') {
             },{
                 value: '12',
                 text: '0-EN-ENG-Publisher-RulesReference'
+            },{
+                value: '13',
+                text: '85-CN-SCH-Other-非官方中文规则书'
             }]);
             let showModNamePickerButton = doc.getElementById('modNamePicker');
             let modNameResult = doc.getElementById('modNameResult');
