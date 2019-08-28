@@ -1,5 +1,4 @@
-var html_ready = function (pageType) {
-
+let html_ready = function (pageType) {
     if (pageType === 'stuff') {
         //alert('ll')
         $('#introtext').html(intro_html);
@@ -53,18 +52,6 @@ var html_ready = function (pageType) {
         collapse_img_show(gameid, pageType, lineFlag);
         collapse_event_gen();
     }
-
-    let entry_query_url = 'http://180.76.244.130:3000/database/getEntryInProgress';
-    $.ajax({
-        url: entry_query_url,
-        success: function(data) {
-            $('#ProgressResult').innerHTML=data;
-        },
-        error: function(err) {
-            console.log('there is error')
-        }
-    });
-
 };
 
 let create_html_txt = function (pageType) {
@@ -87,7 +74,7 @@ let create_html_txt = function (pageType) {
     //html_ready(pageType);
 };
 
-var create_html_img = function (pageType) {
+let create_html_img = function (pageType) {
     $.each(lineFlag, function (index, content) {
         lineNum = index + 1
     });
@@ -96,30 +83,30 @@ var create_html_img = function (pageType) {
     html_ready(pageType)
     //console.log('finish')
     //console.log(html3)
-}
+};
 
 //async function ajax_wait(gameid, pageType) {
 function ajax_wait(gameid, pageType) {
-    var promise1 = getPageLineNum(gameid, pageType)
+    let promise1 = getPageLineNum(gameid, pageType);
     promise1.then(function (data1) {
-        lineFlag = data1
+        lineFlag = data1;
         //console.log(lineFlag)
         ajax_wait_text(gameid, pageType, lineFlag)
     });
-};
+}
 
 function ajax_wait_text(gameid, pageType, lineFlag) {
-    var promise_array = []
+    var promise_array = [];
     var lock = true
     //$.each(lineFlag, function(index, content){
     //console.log('fdadf')
 
-};
+}
 
 async function ajax_wait_subpage(gameid, pageno) {
     subpage_url = await getSubPageUrl(gameid, pageno)
     //console.log(subpage_url)
-};
+}
 
 function ajax_wait_img(gameid, pageType, lineFlag) {
     console.log('in ajax img');
@@ -252,6 +239,18 @@ if (current_page === 'gamecover') {
             }, 50);
         });
     })(mui, document);
+
+    console.log('get Unfinished Entries');
+    let entry_query_url = 'http://180.76.244.130:3000/database/getEntryInProgress';
+    $.ajax({
+        url: entry_query_url,
+        success: function(data) {
+            $('#ProgressResult').innerHTML=data;
+        },
+        error: function(err) {
+            console.log('there is error')
+        }
+    });
 }
 
 if (current_page === 'gamerule') {
