@@ -28,7 +28,6 @@
     <script type="text/javascript" src="../../js/page/hotlist.variables.js"></script>
 
     <script type="text/javascript" src="../../js/functions/database_util.js"></script>
-    <script type="text/javascript" src="../../js/functions/button_click.js"></script>
 </head>
 
 <body>
@@ -53,7 +52,11 @@
             <div class="mui-content" style="padding-top: 0;">
                 <div class="mui-content-padded">
                     <button class="upload_background" id="upload_background_button"></button>
-                    <input type="file" id="bg_img_file" name="bg_img_file"/>
+                    <form method="POST" id="background_submit_form" enctype="multipart/form-data"
+                          action="http://180.76.244.130:3000/games/saveBackgroundImage">
+                        <input type="file" id="bg_img_file" name="bg_img_file"/>
+                        <input type="submit">
+                    </form>
                 </div>
                 <div class="mui-off-canvas-backdrop"></div>
             </div>
@@ -70,6 +73,7 @@
     <script src="../../js/functions/document.ready.js"></script>
     <!--<script src="../js/mui.picker.min.js"></script>-->
     <script type="text/javascript" src="../../js/functions/after_ready.js"></script>
+    <script type="text/javascript" src="../../js/functions/button_click.js"></script>
 </div>
 
 </body>
