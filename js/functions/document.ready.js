@@ -246,7 +246,7 @@ if (current_page === 'gamecover') {
         url: entry_query_url,
         success: function(data) {
             let mod_result = '';
-            console.log(type(data));
+            console.log(typeof data);
             for(i in data){
                 console.log(data[i]);
                 mod_result += data[i].gstone_id + "\n"
