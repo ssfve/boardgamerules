@@ -244,6 +244,7 @@ if (current_page === 'gamecover') {
     let entry_query_url = 'http://180.76.244.130:3000/database/getEntryInProgress';
     $.ajax({
         url: entry_query_url,
+        dataType: "json",
         success: function(data) {
             let mod_result = '';
             console.log(typeof data);
