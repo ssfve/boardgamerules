@@ -246,7 +246,10 @@ if (current_page === 'gamecover') {
         url: entry_query_url,
         success: function(data) {
             let mod_result = '';
+            console.log(data);
             for(data_part in data){
+                console.log(data_part);
+                console.log(data_part.gstone_id);
                 mod_result += data_part.gstone_id + "\n"
             }
             $('#ProgressResult').html(mod_result);
