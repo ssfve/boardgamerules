@@ -4,8 +4,8 @@ function btn5_click() {
     //mui.fire(Page, 'show', {
     	//id: gameid
     //});
-    var url_page = "id="+gameid
-    var storage = window.localStorage;
+    let url_page = "id="+gameid;
+    let storage = window.localStorage;
     
     getSubPageUrl(gameid,1);
     console.log(subpage_url);
@@ -24,4 +24,8 @@ function btn5_click() {
 			title: '正在加载...' //等待对话框上显示的提示内容
 		}
 	})
-};
+}
+
+$('#upload_background_button').click(function(){
+	$('#bg_img_file').click();
+});

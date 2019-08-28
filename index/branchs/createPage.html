@@ -22,7 +22,6 @@
     <link rel="stylesheet" type="text/css" href="../../css/bgr.imageviewer.css"/>
 
     <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../../js/page/si.files.js"></script>
     <script type="text/javascript" src="../variables/cover.variables.js"></script>
 
     <script type="text/javascript" src="../../js/page/sidepane.variables.js"></script>
@@ -51,15 +50,12 @@
     </aside>
     <div class="mui-inner-wrap">
         <div id="mainPageScroll" class="mui-scroll-wrapper">
-            <div class="mui-scroll">
-                <div class="mui-content" style="padding-top: 0;">
-                    <div class="mui-content-padded">
-                        <label class="cabinet">
-                            <input type="file" id="bg_img_file" name="bg_img_file"/>
-                        </label>
-                    </div>
-                    <div class="mui-off-canvas-backdrop"></div>
+            <div class="mui-content" style="padding-top: 0;">
+                <div class="mui-content-padded">
+                    <button class="upload_background" id="upload_background_button"></button>
+                    <input type="file" id="bg_img_file" name="bg_img_file"/>
                 </div>
+                <div class="mui-off-canvas-backdrop"></div>
             </div>
         </div>
     </div>
@@ -74,7 +70,6 @@
     <script src="../../js/functions/document.ready.js"></script>
     <!--<script src="../js/mui.picker.min.js"></script>-->
     <script type="text/javascript" src="../../js/functions/after_ready.js"></script>
-
 </div>
 
 </body>

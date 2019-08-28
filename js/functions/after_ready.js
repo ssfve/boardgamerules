@@ -1,5 +1,3 @@
-SI.Files.stylizeById('bg_img_file');
-
 function submit_pdf_info() {
     let gstone_id = document.getElementById("gstone_id").value;
     let mod_name = document.getElementById("modNameResult").innerText;
