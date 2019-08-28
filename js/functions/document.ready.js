@@ -245,6 +245,7 @@ if (current_page === 'gamecover') {
     $.ajax({
         url: entry_query_url,
         success: function(data) {
+            let mod_result = '';
             for(data_part in data){
                 mod_result += data_part.gstone_id + "\n"
             }
