@@ -247,6 +247,7 @@ if (current_page === 'gamecover') {
         success: function(data) {
             let mod_result = '';
             for(i in data){
+                console.log(data[i]);
                 mod_result += data[i].gstone_id + "\n"
             }
             $('#ProgressResult').html(mod_result);
