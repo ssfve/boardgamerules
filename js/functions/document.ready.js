@@ -53,40 +53,31 @@ var html_ready = function (pageType) {
         collapse_img_show(gameid, pageType, lineFlag);
         collapse_event_gen();
     }
-    //if (pageType === 'setup'){
-    //change_tab_theme(theme_color,0);
-    //}
-    //console.log('html1')
 
-    /*
-    if (pageType === 'setup'){
-        $('#setup_tab').html(html1);
-        $(document).ready(function() {
-            gotoPage(gameid);
-            collapse_event_gen();
-            collapse_img_show(gameid, pageType, lineFlag);
-            $('.mui-table-view-cell.mui-collapse').css({'background-color': bg_color + lowPR});
+    let entry_query_url = 'http://180.76.244.130:3000/database/getEntryInProgress';
+    $.ajax({
+        url: entry_query_url,
+        success: function(data) {
+            $('#ProgressResult').innerHTML=data;
+        },
+        error: function(err) {
+            console.log('there is error')
+        }
+    });
 
-            change_tab_theme(theme_color,0);
-            $('#gameSetup').css({'color': theme_color});
+};
 
-        });
-    }
-    */
-}
-
-var create_html_txt = function (pageType) {
-    //console.log('fa')
+let create_html_txt = function (pageType) {
     $.each(lineFlag, function (index, content) {
-        lineNum = index + 1
-        lineType = lineFlag[index]
+        lineNum = index + 1;
+        lineType = lineFlag[index];
         if (lineType === 'txt') {
             add_no_collapse_text(pageType);
         }
         if (lineType === 'img') {
             add_collapse(pageType);
         }
-        a_with_value = a_template.replace('%value%', lineText[index])
+        a_with_value = a_template.replace('%value%', lineText[index]);
         add_a(pageType, lineType, lineNum);
     });
 
