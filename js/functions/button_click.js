@@ -69,7 +69,7 @@ $("#create_guide_button").on('click', function() {
     });
 });
 
-let page_address_seg = "createPage.html/?pageid=%data%";
+let page_address_seg = "createPage.html?pageid=%data%";
 
 let switchPage = function(page_id) {
         let index = window.location.href.lastIndexOf("\/");
