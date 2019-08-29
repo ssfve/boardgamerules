@@ -25,6 +25,18 @@ button.upload_background{
 	border: none;
 }
 
+button.create_guide{
+	background-image: url('../img/interface/btn-create-guide.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	/* put the height and width of your image here */
+	background-size: contain;
+	width: 100%;
+	height: 100%;
+	opacity: 0.1;
+	border: none;
+}
+
 h5.mui-content-padded {
 	margin-left: 3px;
 	margin-top: 20px !important;
@@ -40,8 +52,8 @@ h5.mui-content-padded:first-child {
 
 input[type=text] {
 	margin: auto;
-
 }
+
 input[type=file] {
 	margin: auto;
 	background-color: transparent;
@@ -56,6 +68,7 @@ input[type=file] {
 }
 input[type=submit] {
 	margin: auto;
+	opacity: 0;
 }
 
 .description {
@@ -148,7 +161,7 @@ input {
 
 .mui-content-padded {
 	margin: 16px;
-	height: 500px;
+	height: 300px;
 }
 
 .mui-content {

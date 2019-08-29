@@ -154,20 +154,20 @@ var generate = function(array) {
 	return list_line;
 };
 
-var gotoPage = function(Id) {
+let gotoPage = function(Id) {
 	//alert(document.getElementById(Id))
 	document.getElementById(Id).addEventListener('tap', function() {
-		gameid = document.getElementById(Id).id
+		gameid = document.getElementById(Id).id;
 		//alert(window.location.href)
 		//alert(window.location.href.replace('gameRule','gameCover'))
 		var index = window.location.href.lastIndexOf("\/");
-		var address_prefix = window.location.href.substring(0, index + 1)
+		var address_prefix = window.location.href.substring(0, index + 1);
 		//alert(address_prefix)
 
-		var address_postfix = new_address_seg.replace('%data%', Id)
+		var address_postfix = new_address_seg.replace('%data%', Id);
 		//alert(address_postfix)
 
-		var new_address = address_prefix + address_postfix
+		var new_address = address_prefix + address_postfix;
 		//alert(new_address)
 
 		location.href = new_address;
