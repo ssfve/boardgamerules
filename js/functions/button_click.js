@@ -50,7 +50,19 @@ $("#create_guide_button").on('click', function() {
     $(`#guide_${guide_id}_inner_content`).append(`<div>Posted on ${time}<div style="color: #333;">你的第一个流</div></div>`);
 
     // add click response to picture
-    $(`#guide_${guide_id}_pic`).on('click', function(){
+    // use mui event management here
+    //$(`#guide_${guide_id}_pic`).on('click', function(){
+    // on cellphone it is tap
+    guide_name = `#guide_${guide_id}_pic`;
+    let guide_id_pic_element = $(`#guide_${guide_id}_pic`);
+    guide_id_pic_element.on('tap',function(){
+        // get page_id from ajax
+        console.log(`${guide_name} tapped`);
+        let page_id = 0;
+        switchPage(page_id)
+    });
+    guide_id_pic_element.on('click',function(){
+        console.log(`${guide_name} clicked`);
         // get page_id from ajax
         let page_id = 0;
         switchPage(page_id)
