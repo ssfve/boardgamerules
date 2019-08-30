@@ -23,7 +23,7 @@ $('#background_submit_form').submit(function(e) {
 	$.ajax({
 		type: form.attr('method'),
 		url: form.attr('action'),
-		data: form.serialize()
+		data: form_data
 	}).done(function(data) {
 		$('body').css('background', `url('http://180.76.244.130:18000/${fileName}')no-repeat`);
 	}).fail(function(data) {
