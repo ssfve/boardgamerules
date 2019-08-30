@@ -17,10 +17,13 @@ $("#bg_img_file").on('change', function(e) {
 $('#background_submit_form').submit(function(e) {
 	e.preventDefault(); // Prevent the form from submitting via the browser
 	let form = $(this);
+	let file_data = $('#bg_img_file').prop('files')[0];
+	let form_data = new FormData();
+	form_data.append('file', file_data);
 	$.ajax({
 		type: form.attr('method'),
 		url: form.attr('action'),
-		data: form.serialize()
+		data: form_data
 	}).done(function(data) {
 		$('body').css('background', `url('http://180.76.244.130:18000/${fileName}')no-repeat`);
 	}).fail(function(data) {
