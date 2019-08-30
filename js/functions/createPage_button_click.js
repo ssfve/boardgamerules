@@ -9,8 +9,8 @@ $("#bg_img_file").on('change', function(e) {
 	$("#background_submit_form").submit();
 
 	let fileName = e.target.files[0].name;
-	$('body').css('background', `url('/var/tmp/img/${fileName}')no-repeat`);
-	
+	$('body').css('background', `url('http://180.76.244.130:18000/${fileName}')no-repeat`);
+
 });
 
 // intervene submit
