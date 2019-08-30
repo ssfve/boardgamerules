@@ -6,7 +6,7 @@
 
 body{
 	/* this is shorthand one line setting*/
-	background: url('../img/interface/background-blur.jpg') no-repeat center center fixed;
+	background: url('../img/interface/background-blur.jpg') no-repeat top center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
