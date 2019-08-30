@@ -10,15 +10,15 @@ $("#bg_img_file").on('change', function(e) {
 	console.log('bg_img_file changed');
 	fileName = e.target.files[0].name;
 	console.log(fileName);
-	let file_data = $('#bg_img_file').prop('files')[0];
-	let form_data = new FormData();
-	form_data.append('file', file_data);
 	$("#background_submit_form").submit();
 });
 
 // intervene submit
 $('#background_submit_form').submit(function(e) {
 	e.preventDefault(); // Prevent the form from submitting via the browser
+	let file_data = $('#bg_img_file').prop('files')[0];
+	let form_data = new FormData();
+	form_data.append('file', file_data);
 	let form = $(this);
 	$.ajax({
 		type: form.attr('method'),
