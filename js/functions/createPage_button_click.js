@@ -14,19 +14,22 @@ $("#bg_img_file").on('change', function(e) {
 });
 
 // intervene submit
-$('#background_submit_form').submit(function(e) {
+$('#background_submit_form').on('submit', function(e) {
 	e.preventDefault(); // Prevent the form from submitting via the browser
-	let file_data = $('#bg_img_file').prop('files')[0];
-	let form_data = new FormData();
-	form_data.append('file', file_data);
 	let form = $(this);
+	let form_data = new FormData();
+	let file_data = $('#bg_img_file').prop('files')[0];
+	form_data.append('file', file_data);
 	$.ajax({
-		type: form.attr('method'),
 		url: form.attr('action'),
-		data: form_data
-	}).done(function(data) {
-		$('body').css('background', `url('http://180.76.244.130:18000/${fileName}')no-repeat`);
-	}).fail(function(data) {
-		// Optionally alert the user of an error here...
+		type: form.attr('method'),
+		data: form_data,
+		processData: false,
+		contentType: false,
+	}).done(function(data){
+		console.log('Going to change background');
+		$('body').css('background-image',`url(http://180.76.244.130:18000/${fileName})`);
+		$('body').css('background-size',`contain`);
 	});
+
 });
