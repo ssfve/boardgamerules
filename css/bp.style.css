@@ -5,9 +5,12 @@
 }
 
 body{
-	background-size:contain;
 	/* this is shorthand one line setting*/
-	background: url('../img/interface/background-blur.jpg')no-repeat;
+	background: url('../img/interface/background-blur.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 .mui-content-padded.button {

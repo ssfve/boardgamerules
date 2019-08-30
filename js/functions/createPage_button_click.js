@@ -28,8 +28,8 @@ $('#background_submit_form').on('submit', function(e) {
 		contentType: false,
 	}).done(function(data){
 		console.log('Going to change background');
-		$('body').css('background-image',`url(http://180.76.244.130:18000/${fileName})`);
 		$('body').css('background-size',`contain`);
+		$('body').css('background-image',`url(http://180.76.244.130:18000/${fileName})`);
 	});
 
 });
