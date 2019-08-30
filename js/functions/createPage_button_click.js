@@ -18,7 +18,6 @@ $('#background_submit_form').submit(function(e) {
 	e.preventDefault(); // Prevent the form from submitting via the browser
 	let form = $(this);
 	$.ajax({
-		async: false,
 		type: form.attr('method'),
 		url: form.attr('action'),
 		data: form.serialize()
