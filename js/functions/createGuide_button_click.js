@@ -4,7 +4,6 @@ $("#create_guide_button").on('click', function() {
     // get guide_id from ajax
     //let guide_id = 0;
     callGetGuideId();
-
 });
 
 let addButtonFunction= function(guide_id){
@@ -23,16 +22,12 @@ let addButtonFunction= function(guide_id){
     guide_name = `#guide_${guide_id}_pic`;
     let guide_id_pic_element = $(`#guide_${guide_id}_pic`);
     guide_id_pic_element.on('tap',function(){
-        // get page_id from ajax
         console.log(`${guide_name} tapped`);
-        let page_id = 0;
-        switchPage(page_id)
+        callGetPageId(guide_id);
     });
     guide_id_pic_element.on('click',function(){
-        console.log(`${guide_name} clicked`);
-        // get page_id from ajax
-        let page_id = 0;
-        switchPage(page_id)
+        console.log(`${guide_name} tapped`);
+        callGetPageId(guide_id);
     });
 };
 
@@ -44,6 +39,18 @@ let callGetGuideId = function(){
         console.log('Going to get GuideId');
         console.log('guide id is '+guideId);
         addButtonFunction(guideId)
+    });
+};
+
+let callGetPageId = function(guide_id){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/writePageDB',
+        type: 'GET',
+        data: {guide_id: guide_id}
+    }).done(function(page_id){
+        console.log('Going to get PageId');
+        console.log('guide id is '+page_id);
+        switchPage(page_id);
     });
 };
 
