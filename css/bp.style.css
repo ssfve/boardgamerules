@@ -27,18 +27,18 @@ body{
 	position:absolute;
 	bottom:16px;
 	right:16px;
-	width:70%
+	width:90%
 }
 #default-button-4{
 	opacity: 1;
 	width:100%;
 }
 #default-button-3{
-	opacity: 0;
+	opacity: 1;
 	width:100%;
 }
 #default-button-2{
-	opacity: 0;
+	opacity: 1;
 	width:100%;
 }
 #default-button-1{

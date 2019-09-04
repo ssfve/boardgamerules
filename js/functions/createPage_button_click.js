@@ -47,12 +47,14 @@ $('#default-add-button').on('tap', function() {
 	let db2 = $('#default-button-2');
 	if (db2.css('opacity') === '0'){
 		db2.css('opacity',100);
+		$('#default-sub-button').css('opacity',100);
 		return;
 	}
 	let db1 = $('#default-button-1');
 	if (db1.css('opacity') === '0'){
 		db1.css('opacity',100);
 		$('#default-add-button').css('opacity',0);
+		$('#default-sub-button').css('opacity',100);
 		return;
 	}
 });
