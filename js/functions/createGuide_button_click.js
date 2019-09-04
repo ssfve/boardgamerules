@@ -1,4 +1,7 @@
 // create guide
+
+// TODO: get guide list
+
 $("#create_guide_button").on('click', function() {
     console.log('create_guide_button clicked');
     // get guide_id from ajax
@@ -25,10 +28,12 @@ let addButtonFunction= function(guide_id){
         console.log(`${guide_name} tapped`);
         callGetPageId(guide_id);
     });
+    /*
     guide_id_pic_element.on('click',function(){
         console.log(`${guide_name} tapped`);
         callGetPageId(guide_id);
     });
+    */
 };
 
 let callGetGuideId = function(){
@@ -44,12 +49,40 @@ let callGetGuideId = function(){
 
 let callGetPageId = function(guide_id){
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/writePageDB',
+        url: 'http://180.76.244.130:3000/database/checkRootPage',
         type: 'GET',
         data: {guide_id: guide_id}
     }).done(function(page_id){
         console.log('Going to get PageId');
-        console.log('guide id is '+page_id);
+        console.log('page_id is '+page_id);
+        saveRootPageId(guide_id, page_id);
+    });
+};
+
+let saveRootPageId = function(guide_id, page_id){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/saveRootPageId',
+        type: 'GET',
+        data: {
+            guide_id: guide_id,
+            page_id: page_id
+        }
+    }).done(function(data){
+        console.log('saveRootPageId result is '+data);
+        savePageId(guide_id, page_id);
+    });
+};
+
+let savePageId = function(guide_id, page_id){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/savePageId',
+        type: 'GET',
+        data: {
+            guide_id: guide_id,
+            page_id: page_id
+        }
+    }).done(function(data){
+        console.log('savePageId result is '+data);
         switchPage(page_id);
     });
 };

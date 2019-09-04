@@ -1,3 +1,13 @@
+/*
+mui(document.body).on('tap', '.mui-btn', function(e) {
+    // set button status to loading
+    mui(this).button('loading');
+    setTimeout(function() {
+        mui(this).button('reset');
+    }.bind(this), 2000);
+});
+ */
+
 let html_ready = function (pageType) {
     if (pageType === 'stuff') {
         //alert('ll')

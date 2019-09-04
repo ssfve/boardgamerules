@@ -36,3 +36,48 @@ let callChangeBackground=function(form, form_data){
 		$('body').css('background-image',`url(http://180.76.244.130:18000/${fileName})`);
 	});
 };
+
+$('#default-add-button').on('tap', function() {
+	let db3 = $('#default-button-3');
+	if (db3.css('opacity') === '0'){
+		db3.css('opacity',100);
+		$('#default-sub-button').css('opacity',100);
+		return;
+	}
+	let db2 = $('#default-button-2');
+	if (db2.css('opacity') === '0'){
+		db2.css('opacity',100);
+		return;
+	}
+	let db1 = $('#default-button-1');
+	if (db1.css('opacity') === '0'){
+		db1.css('opacity',100);
+		$('#default-add-button').css('opacity',0);
+		return;
+	}
+});
+
+$('#default-sub-button').on('tap', function() {
+	let db1 = $('#default-button-1');
+	if (db1.css('opacity') === '1'){
+		db1.css('opacity',0);
+		$('#default-add-button').css('opacity',100);
+		return;
+	}
+	let db2 = $('#default-button-2');
+	if (db2.css('opacity') === '1'){
+		db2.css('opacity',0);
+		return;
+	}
+	let db3 = $('#default-button-3');
+	if (db3.css('opacity')=== '1'){
+		db3.css('opacity',0);
+		$('#default-sub-button').css('opacity',0);
+		return;
+	}
+});
+
+$('#default-add-button-2').on('click', function(e) {
+	$('#default-button-1').css('opacity',100);
+	$('#default-add-button-3').css('opacity',100);
+});

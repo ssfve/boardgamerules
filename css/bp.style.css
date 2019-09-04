@@ -17,6 +17,57 @@ body{
 	height: inherit;
 }
 
+.flex-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+}
+
+#bottom-area{
+	position:absolute;
+	bottom:16px;
+	right:16px;
+	width:70%
+}
+#default-button-4{
+	opacity: 1;
+	width:100%;
+}
+#default-button-3{
+	opacity: 0;
+	width:100%;
+}
+#default-button-2{
+	opacity: 0;
+	width:100%;
+}
+#default-button-1{
+	opacity: 0;
+	width:100%;
+}
+#dummy-button-1{
+	opacity: 0;
+	width:90%;
+}
+#dummy-button-2{
+	opacity: 0;
+	width:90%;
+}
+#default-add-button{
+	opacity: 100;
+	width:90%;
+}
+#default-sub-button{
+	opacity: 0;
+	width:90%;
+}
+/*
+#default-button{
+	position:absolute;
+	bottom:0;
+}
+ */
+
 button.upload_background{
 	background-image: url('../img/interface/btn-choose-file.svg');
 	background-repeat: no-repeat;
