@@ -20,6 +20,11 @@ $('#background_submit_form').on('submit', function(e) {
 	let form_data = new FormData();
 	let file_data = $('#bg_img_file').prop('files')[0];
 	form_data.append('file', file_data);
+	callChangeBackground(form, form_data);
+});
+
+
+let callChangeBackground=function(form, form_data){
 	$.ajax({
 		url: form.attr('action'),
 		type: form.attr('method'),
@@ -30,5 +35,4 @@ $('#background_submit_form').on('submit', function(e) {
 		console.log('Going to change background');
 		$('body').css('background-image',`url(http://180.76.244.130:18000/${fileName})`);
 	});
-
-});
+};

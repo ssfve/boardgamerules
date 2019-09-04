@@ -2,7 +2,8 @@
 $("#create_guide_button").on('click', function() {
     console.log('create_guide_button clicked');
     // get guide_id from ajax
-    let guide_id = 0;
+    //let guide_id = 0;
+    let guide_id = callGetGuideId();
     let time = "20190816";
     $('#mui_content_area').prepend(`<div class="mui-card" id="guide_${guide_id}"></div>`);
     let guide_id_element = $(`#guide_${guide_id}`);
@@ -30,6 +31,17 @@ $("#create_guide_button").on('click', function() {
         switchPage(page_id)
     });
 });
+
+
+let callGetGuideId = function(){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/writeGuideDB',
+        type: 'GET',
+    }).done(function(data){
+        console.log('Going to get GuideId');
+        return data;
+    });
+};
 
 let page_address_seg = "createPage.html?pageid=%data%";
 

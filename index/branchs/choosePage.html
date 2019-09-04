@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://avvbxt.epub360.cn/v2/manage/book/2qrzue/ -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>createPage</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="桌游规则，桌游说明书">
+    <meta name="author" content="boardgamerules">
+    <meta name="version" content="boardgamerules 2.0">
+    <meta name="pageid" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="../../css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/mui.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/mui.picker.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/mui.poppicker.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/app.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/bp.style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/bgr.imageviewer.css"/>
+
+    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../variables/cover.variables.js"></script>
+    <script type="text/javascript" src="../../js/page/sidepane.variables.js"></script>
+    <script type="text/javascript" src="../../js/page/hotlist.variables.js"></script>
+    <script type="text/javascript" src="../../js/functions/database_util.js"></script>
+</head>
+
+<body>
+<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+    <aside id="offCanvasSide" class="mui-off-canvas-left background-color-orange">
+        <div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+            <div id="sideHeader" class="title" style="margin-bottom: 5px;margin-top: 5px;"></div>
+            <ul id="sideContent"
+                class="mui-table-view mui-table-view-chevron mui-table-view-inverted background-color-orange"></ul>
+            <div class="mui-grid_view" style="background-color:#FFFFFF;">
+                <div class="mui-media">
+                    <div class="mui-table-view-cell mui-media-body">
+                        <span id="subText" class="h6-text-grey"></span><span id="subName" class="h6-text-orange"></span>
+                    </div>
+                </div>
+            </div>
+            <img style="width:100%;" src="../img/interface/logo.jpg" data-preview-src="" data-preview-group="1" alt=""/>
+        </div>
+    </aside>
+    <div class="mui-inner-wrap">
+        <div id="mainPageScroll" class="mui-scroll-wrapper">
+            <div class="mui-content" style="padding-top: 0;">
+                <div class="mui-content-padded">
+                    <form class="mui-input-group">
+                        <div class="mui-input-row">
+                            <input type="text" class="mui-input-clear" id="desc_input" placeholder="请输入描述">
+                        </div>
+                    </form>
+                    <button class="upload_background" id="upload_background_button"></button>
+                    <form method="POST" id="background_submit_form" enctype="multipart/form-data"
+                          action="http://180.76.244.130:3000/games/saveBackgroundImage">
+                        <input type="file" id="bg_img_file" name="bg_img_file"/>
+                        <input type="submit">
+                    </form>
+                </div>
+                <div class="mui-off-canvas-backdrop"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../js/mui.min.js"></script>
+    <script type="text/javascript" src="../../js/mui.zoom.js"></script>
+    <script type="text/javascript" src="../../js/mui.previewimage.js"></script>
+    <script type="text/javascript" src="../../js/mui.picker.js"></script>
+    <script type="text/javascript" src="../../js/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../js/functions/functions.js"></script>
+    <script type="text/javascript" src="../cover.interface.js"></script>
+    <script type="text/javascript" src="../events/cover.event.js"></script>
+    <script type="text/javascript" src="../../js/functions/document.ready.js"></script>
+    <script type="text/javascript" src="../../js/functions/after_ready.js"></script>
+    <script type="text/javascript" src="../../js/functions/createPage_button_click.js"></script>
+</div>
+
+</body>
+
+</html>
