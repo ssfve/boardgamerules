@@ -3,8 +3,12 @@ $("#create_guide_button").on('click', function() {
     console.log('create_guide_button clicked');
     // get guide_id from ajax
     //let guide_id = 0;
-    let guide_id = callGetGuideId();
-    let time = "20190816";
+    callGetGuideId();
+
+});
+
+let addButtonFunction= function(guide_id){
+    let time = Date.now();
     $('#mui_content_area').prepend(`<div class="mui-card" id="guide_${guide_id}"></div>`);
     let guide_id_element = $(`#guide_${guide_id}`);
     guide_id_element.prepend(`<div class="mui-card-header mui-card-media" id="guide_${guide_id}_pic" style="height:40vw;background-image:url(../../img/interface/guide-default.png)"></div>`);
@@ -30,16 +34,16 @@ $("#create_guide_button").on('click', function() {
         let page_id = 0;
         switchPage(page_id)
     });
-});
-
+};
 
 let callGetGuideId = function(){
     $.ajax({
         url: 'http://180.76.244.130:3000/database/writeGuideDB',
         type: 'GET',
-    }).done(function(data){
+    }).done(function(guideId){
         console.log('Going to get GuideId');
-        return data;
+        console.log('guide id is '+guideId);
+        addButtonFunction(guideId)
     });
 };
 
