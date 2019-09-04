@@ -54,6 +54,10 @@ h5.mui-content-padded:first-child {
 	font-size: 16px;
 }
 
+.mui-input-group{
+	opacity: 0.5;
+}
+
 input[type=text] {
 	margin: auto;
 }
