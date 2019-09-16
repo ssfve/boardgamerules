@@ -1,6 +1,7 @@
 // create guide
 
 // TODO: get guide list
+let page_address_seg = "createPage.html?pageid=%data%";
 
 $("#create_guide_button").on('click', function() {
     console.log('create_guide_button clicked');
@@ -49,7 +50,7 @@ let callGetGuideId = function(){
 
 let callGetPageId = function(guide_id){
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/checkRootPage',
+        url: 'http://180.76.244.130:3000/guide/checkRootPage',
         type: 'GET',
         data: {guide_id: guide_id}
     }).done(function(page_id){
@@ -83,24 +84,6 @@ let savePageId = function(guide_id, page_id){
         }
     }).done(function(data){
         console.log('savePageId result is '+data);
-        switchPage(page_id);
+        switchPage(page_address_seg, page_id);
     });
-};
-
-let page_address_seg = "createPage.html?pageid=%data%";
-
-let switchPage = function(page_id) {
-        let index = window.location.href.lastIndexOf("\/");
-        let address_prefix = window.location.href.substring(0, index + 1);
-        console.log(address_prefix);
-
-        let address_postfix = page_address_seg.replace("%data%", page_id);
-        console.log(address_postfix);
-
-        let new_address = address_prefix + address_postfix;
-        console.log(new_address);
-
-        location.href = new_address;
-        //window.location.reload();
-        //$("meta[property='pageid']").attr("content", page_id);
 };

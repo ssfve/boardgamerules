@@ -71,6 +71,22 @@ var change_nameEN = function(name) {
 	return name;
 };
 
+let switchPage = function (address_seg, seg_replacement) {
+	let index = window.location.href.lastIndexOf("\/");
+	let address_prefix = window.location.href.substring(0, index + 1);
+	console.log(address_prefix);
+
+	let address_postfix = address_seg.replace("%data%", seg_replacement);
+	console.log(address_postfix);
+
+	let new_address = address_prefix + address_postfix;
+	console.log(new_address);
+
+	location.href = new_address;
+	//window.location.reload();
+	//$("meta[property='pageid']").attr("content", page_id);
+};
+
 var generate = function(array) {
 	list_seg = list_seg_disabled
 	array.forEach(function(val, index) {
