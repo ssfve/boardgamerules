@@ -8,7 +8,7 @@ let url_length = window.location.href.length;
 let page_id = window.location.href.substring(index + 1, url_length);
 console.log('page_id='+page_id);
 
-let callGetGuideId = function () {
+let callGetGuideId = function (button_db_name) {
 	$.ajax({
 		url: 'http://180.76.244.130:3000/page/getGuideId',
 		type: 'GET',
@@ -18,11 +18,9 @@ let callGetGuideId = function () {
 		dataType: "json"
 	}).done(function (guide_id) {
 		console.log('Returning guide_id='+guide_id);
-		return guide_id
+        callCreateButton(guide_id, button_db_name);
 	});
 };
-// get guide_id globally
-let guide_id = callGetGuideId();
 
 $('#upload_background_button').on('click', function () {
     console.log('upload_background_button clicked');
@@ -105,8 +103,8 @@ $('#default-add-button-2').on('click', function (e) {
     $('#default-add-button-3').css('opacity', 100);
 });
 
-let callCreateButton = function (button_db_name) {
-	console.log('guide_id is '+guide_id);
+let callCreateButton = function (guide_id, button_db_name) {
+
     $.ajax({
         url: 'http://180.76.244.130:3000/button/writeButtonDB',
         type: 'GET',
@@ -117,7 +115,7 @@ let callCreateButton = function (button_db_name) {
 		}
     }).done(function (button_id) {
         console.log('Returning button_id='+button_id);
-		//switchPage(button_address_seg, button_id);
+		switchPage(button_address_seg, button_id);
     });
 };
 
@@ -154,8 +152,9 @@ let callButtonCheck = function (button_list, button_default_name) {
 	let button_id = button_list[button_db_name];
     console.log(button_id);
     if (button_id === null) {
-        callCreateButton(button_db_name);
+        // get guide_id first then callCreateButton
+        callGetGuideId(button_db_name);
     } else {
-		//switchPage(button_address_seg, button_id);
+		switchPage(button_address_seg, button_id);
     }
 };
