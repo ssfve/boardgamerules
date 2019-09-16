@@ -250,24 +250,6 @@ if (current_page === 'gamecover') {
         });
     })(mui, document);
 
-    console.log('get Unfinished Entries');
-    let entry_query_url = 'http://180.76.244.130:3000/database/getEntryInProgress';
-    $.ajax({
-        url: entry_query_url,
-        dataType: "json",
-        success: function(data) {
-            let mod_result = '';
-            console.log(typeof data);
-            for(i in data){
-                console.log(data[i]);
-                mod_result += data[i].gstone_id + "\n"
-            }
-            $('#ProgressResult').html(mod_result);
-        },
-        error: function(err) {
-            console.log('there is error')
-        }
-    });
 }
 
 if (current_page === 'gamerule') {
