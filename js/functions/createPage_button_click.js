@@ -106,6 +106,7 @@ $('#default-add-button-2').on('click', function (e) {
 });
 
 let callCreateButton = function (button_db_name) {
+	console.log('guide_id is '+guide_id);
     $.ajax({
         url: 'http://180.76.244.130:3000/button/writeButtonDB',
         type: 'GET',
