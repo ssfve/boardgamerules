@@ -56,19 +56,18 @@ let saveUploadInfo=function(gstone_id, mod_name, source_detail){
 };
 
 function upload_pdf() {
-    uploadPdf();
+    let pdf_upload = {
+        url : 'http://180.76.244.130:3000/games/savePDF',
+        text_area : $('#uploadNotice'),
+        file_element_name : "pdf_file",
+        before_send_msg: "文件上传中。。。请勿关闭浏览器",
+        success_msg:"文件已上传，可继续上传其他pdf",
+        success_alert_msg:"文件上传成功",
+        error_msg:"文件上传失败，请重试",
+        error_alert_msg:"文件上传失败"
+    };
+    uploadPdf(pdf_upload);
 }
-
-let pdf_upload = {
-    url : 'http://180.76.244.130:3000/games/savePDF',
-    text_area : $('#uploadNotice'),
-    file_element_name : "pdf_file",
-    before_send_msg: "文件上传中。。。请勿关闭浏览器",
-    success_msg:"文件已上传，可继续上传其他pdf",
-    success_alert_msg:"文件上传成功",
-    error_msg:"文件上传失败，请重试",
-    error_alert_msg:"文件上传失败"
-};
 
 let uploadPdf=function(pdf_upload){
     let pdf_data = new FormData();

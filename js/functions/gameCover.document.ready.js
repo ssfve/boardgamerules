@@ -224,7 +224,7 @@ if (current_page === 'gamecover') {
             showModNamePickerButton.addEventListener('tap', function (event) {
                 modNamePicker.show(function (items) {
                     modNameResult.innerText = items[0].value;
-                    modNotice.innerText = '已选pdf样式：'+items[0].text;
+                    modNotice.innerText = '已选择pdf样式：'+items[0].text;
                 });
             }, false);
         });
