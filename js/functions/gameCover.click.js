@@ -11,7 +11,7 @@ $.ajax({
             console.log(element);
             mod_result += element.gstone_id + "\n"
         });
-        $('#ProgressResult').html('以下规则正在上传中(号码重复不影响):'+mod_result);
+        $('#ProgressResult').html('以下规则正在上传集石中(号码重复不影响)：'+mod_result);
     },
     error: function(err) {
         console.log('there is error getting progress')

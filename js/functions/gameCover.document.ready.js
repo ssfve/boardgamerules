@@ -140,11 +140,32 @@ if (current_page === 'gameintro') {
     ajax_wait(gameid, pageType);
 }
 
+let queryFolderInfo=function(folder_query_url, folder_path){
+    console.log('going to query folder file list');
+    $.ajax({
+        url: folder_query_url,
+        data:{
+            uploadFolder: folder_path
+        },
+        dataType: "json",
+        success: function(data) {
+            let file_result = '';
+            console.log(typeof data);
+            console.log(data);
+            data.forEach(function (element) {
+                console.log(element);
+                file_result += element + "\n"
+            });
+            $('#folderList').html('以下规则pdf文件已上传(包含即可)：'+file_result);
+        },
+        error: function(err) {
+            console.log('there is error getting progress')
+        }
+    });
+};
+
 if (current_page === 'gamecover') {
     console.log("at gamecover page");
-    console.log(gameid);
-    getIfHasSubPage(gameid);
-    console.log(hasSubPage_flag);
     if (hasSubPage_flag) {
         button5 = "开盒即玩"
     } else {
@@ -208,30 +229,13 @@ if (current_page === 'gamecover') {
             }, false);
         });
     })(mui, document);
-    queryFolderInfo();
+
+    let folder_query_url = 'http://180.76.244.130:3000/folder/getFolderFileList';
+    let folder_path = '/var/tmp/pdf-upload';
+    queryFolderInfo(folder_query_url, folder_path);
 }
 
-let folder_query_url = 'http://180.76.244.130:3000/folder/getFolderFileList';
 
-let queryFolderInfo=function(folder_query_url){
-    $.ajax({
-        url: folder_query_url,
-        dataType: "json",
-        success: function(data) {
-            let file_result = '';
-            console.log(typeof data);
-            console.log(data);
-            data.forEach(function (element) {
-                console.log(element);
-                file_result += element.gstone_id + "\n"
-            });
-            $('#folderList').html('已上传pdf文件列表:'+file_result);
-        },
-        error: function(err) {
-            console.log('there is error getting progress')
-        }
-    });
-}
 
 if (current_page === 'gamerule') {
     console.log("in document ready gamerule");
