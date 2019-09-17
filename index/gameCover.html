@@ -18,7 +18,7 @@
     <link href="../css/mui.picker.css" rel="stylesheet"/>
     <link href="../css/mui.poppicker.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="../css/app.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/bgr.style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/gameCover.style.css"/>
     <link rel="stylesheet" type="text/css" href="../css/bgr.imageviewer.css"/>
 
     <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
@@ -28,7 +28,6 @@
     <script type="text/javascript" src="../js/page/hotlist.variables.js"></script>
 
     <script type="text/javascript" src="../js/functions/database_util.js"></script>
-    <script type="text/javascript" src="../js/functions/createPage_button_click.js"></script>
 </head>
 
 <body>
@@ -55,19 +54,21 @@
                 <div class="mui-content" style="padding-top: 0;">
                     <div class="mui-content-padded">
                         <div id="pdf-content">
-                            <label for="gstone_id"></label><input type="text" id="gstone_id" class="mui-input-clear" placeholder="输入gstone_id"/>
-                            <button id='modNamePicker' class="mui-btn mui-btn-block" type='button'>选择pdf样式和来源source
+                            <label for="gstone_id"></label><input type="text" id="gstone_id" class="mui-input-clear" placeholder="请输入gstone_id(必填)"/>
+                            <button id='modNamePicker' class="mui-btn mui-btn-block" type='button'>选择pdf样式(白边-语言-来源)
                             </button>
-                            <label for="source_detail"></label><input type="text" id="source_detail" class="mui-input-clear" placeholder="如果source是other，可输入译者姓名"/>
-                            <button type="button" onclick="submit_pdf_info()">pdf信息写入数据库</button>
+                            <label for="source_detail"></label><input type="text" id="source_detail" class="mui-input-clear" placeholder="如果来源是other,可输入译者姓名(选填)"/>
+                            <button class="mui-btn button" type="button" onclick="submit_pdf_info()">提交pdf信息</button>
                             <br><br>
                             <form method="POST" enctype="multipart/form-data"
                                   action="http://180.76.244.130:3000/games/savePDF">
                                 <input type="file" id="pdf_file" name="pdf_file"/>
-                                <button type="button" id="upload_button" onclick="submit_pdf_info()">点击上传</button>
+                                <button class="mui-btn" type="button" id="upload_button" onclick="upload_pdf()">点击上传</button>
                             </form>
-                            <div id='modNameResult' class="ui-alert"></div>
+                            <div id='modNameResult' style="opacity:0;" class="ui-alert"></div>
+                            <div id='modNotice' class="ui-alert"></div>
                             <div id='uploadNotice' class="ui-alert"></div>
+                            <div id='folderList' class="ui-alert"></div>
                             <div id='ProgressResult' class="ui-alert"></div>
                         </div>
                     </div>
@@ -84,9 +85,9 @@
     <script type="text/javascript" src="../js/functions/functions.js"></script>
     <script type="text/javascript" src="cover.interface.js"></script>
     <script type="text/javascript" src="events/cover.event.js"></script>
-    <script src="../js/functions/document.ready.js"></script>
+    <script type="text/javascript" src="../js/functions/gameCover.document.ready.js"></script>
     <!--<script src="../js/mui.picker.min.js"></script>-->
-    <script type="text/javascript" src="../js/functions/gameCover_click.js"></script>
+    <script type="text/javascript" src="../js/functions/gameCover.click.js"></script>
 
 </div>
 
