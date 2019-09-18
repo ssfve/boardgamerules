@@ -142,7 +142,6 @@ if (current_page === 'gameintro') {
 
 if (current_page === 'gamecover') {
     console.log("at gamecover page");
-    console.log(gameid);
     getIfHasSubPage(gameid);
     console.log(hasSubPage_flag);
     if (hasSubPage_flag) {
@@ -150,106 +149,6 @@ if (current_page === 'gamecover') {
     } else {
         button5 = "欢迎上传规则"
     }
-    (function ($, doc) {
-        $.init();
-        $.ready(function () {
-            let modNamePicker = new $.PopPicker();
-            modNamePicker.setData([{
-                value: '0',
-                text: '0-EN-Publisher'
-            }, {
-                value: '1',
-                text: '85-EN-Publisher'
-            }, {
-                value: '2',
-                text: '120-EN-Publisher'
-            },{
-                value: '3',
-                text: '0-CN-SCH-Other'
-            },{
-                value: '4',
-                text: '0-CN-TCH-Other'
-            },{
-                value: '5',
-                text: '0-CN-SCH-Publisher'
-            },{
-                value: '6',
-                text: '0-CN-TCH-Publisher'
-            },{
-                value: '7',
-                text: '0-EN-BGG'
-            },{
-                value: '8',
-                text: '0-EN-Other'
-            },{
-                value: '9',
-                text: '120-CN-SCH-Publisher'
-            },{
-                value: '10',
-                text: '120-CN-TCH-Other'
-            },{
-                value: '11',
-                text: '120-CN-SCH-Other'
-            },{
-                value: '12',
-                text: '0-EN-ENG-Publisher-RulesReference'
-            },{
-                value: '13',
-                text: '85-CN-SCH-Other-非官方中文规则书'
-            }]);
-            let showModNamePickerButton = doc.getElementById('modNamePicker');
-            let modNameResult = doc.getElementById('modNameResult');
-            showModNamePickerButton.addEventListener('tap', function (event) {
-                modNamePicker.show(function (items) {
-                    modNameResult.innerText = items[0].value;
-                });
-            }, false);
-
-            setTimeout(function () {
-                let value_rates = $('#valueRates');
-                let valueRates_w = value_rates.width;
-                let valueRates_h = value_rates.height;
-                //vertical align middle
-                value_rates.lineHeight = valueRates_h + pixels;
-                let svg1_w = $('#svg1').width;
-                let svg1_h = $('#svg1').height;
-                //position inner image
-                let year_svg = $('#year_svg');
-                let yearsvg_w = year_svg.width * cover_img_scale_factor;
-                let yearsvg_h = year_svg.height * cover_img_scale_factor;
-
-                let left_position = (svg1_w - yearsvg_w + 16) / 2 + pixels;
-                let top_position = (svg1_h - yearsvg_h) / 2 + pixels;
-                let svg_width = yearsvg_w;
-                let svg_height = yearsvg_h;
-                year_svg.left = left_position;
-                year_svg.top = top_position;
-                year_svg.width = svg_width;
-                year_svg.height = svg_height;
-                let weight_svg = $('#weight_svg');
-                weight_svg.left = left_position;
-                weight_svg.top = top_position;
-                weight_svg.width = svg_width;
-                weight_svg.height = svg_height;
-                let age_svg = $('#age_svg');
-                age_svg.left = left_position;
-                age_svg.top = top_position;
-                age_svg.width = svg_width;
-                age_svg.height = svg_height;
-                let players_svg = $('#players_svg');
-                players_svg.left = left_position;
-                players_svg.top = top_position;
-                players_svg.width = svg_width;
-                players_svg.height = svg_height;
-                let clock_svg = $('#clock_svg');
-                clock_svg.left = left_position;
-                clock_svg.top = top_position;
-                clock_svg.width = svg_width;
-                clock_svg.height = svg_height;
-            }, 50);
-        });
-    })(mui, document);
-
 }
 
 if (current_page === 'gamerule') {

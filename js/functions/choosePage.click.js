@@ -9,7 +9,7 @@ let url_length = window.location.href.length;
 let button_id = window.location.href.substring(index + 1, url_length);
 console.log('button_id='+button_id);
 
-let callGetGuideId = function (button_id) {
+let callGetGuideId=function(button_id) {
 	$.ajax({
 		url: 'http://180.76.244.130:3000/button/getGuideId',
 		type: 'GET',
@@ -150,5 +150,6 @@ let addListElement= function(guide_id, page_list){
     */
 };
 
+callGetGuideId();
 
 
