@@ -94,6 +94,22 @@ let saveButtonAttribute=function(attribute_name, attribute_value, button_id){
     });
 };
 
+let saveAttribute=function(table_name, attribute_name, attribute_value, key_name, key_value){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/saveAttribute',
+        type: 'GET',
+        data: {
+            table: table_name,
+            attribute_name: attribute_name,
+            attribute_value : attribute_value,
+            key_name: key_name,
+            key_value: key_value
+        }
+    }).done(function(data){
+        console.log('returning result is '+data);
+    });
+};
+
 let createBranchPage=function(guide_id){
     $.ajax({
         url: 'http://180.76.244.130:3000/page/createBranchPage',
@@ -108,26 +124,57 @@ let createBranchPage=function(guide_id){
     });
 };
 
+let getTextContent=function(text_id){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/text/getTextAttribute',
+        type: 'GET',
+        data: {
+            attribute_name: 'textContent',
+            text_id: text_id
+        }
+    }).done(function(text_content){
+        console.log('returning text content is '+text_content);
+        return text_content;
+    });
+};
+
+let getTextInfo=function(page_id){
+    // get text id from specific page id
+    $.ajax({
+        url: 'http://180.76.244.130:3000/page/getPageAttribute',
+        type: 'GET',
+        data: {
+            attribute_name: 'text1_id',
+            page_id: page_id
+        }
+    }).done(function(text_id){
+        console.log('returning text_id='+text_id);
+        getTextContent(text_id);
+    });
+};
+
 let addListElement= function(guide_id, page_list){
     let list_element = $("#guide_page_list");
-    console.log(typeof data);
-    console.log(data);
-    page_list.forEach(function (element) {
+    let page_array = page_list.split(",");
+    console.log(page_array);
+    page_array.forEach(function (element) {
         console.log(element);
-        list_element.append(`<li class="mui-table-view-cell" id="page_${element}">跳转页面编号${element}</li>`);
+
+        // get text Content from text id
+        let textContent = getTextInfo();
+        list_element.append(`<li class="mui-table-view-cell" id="page_${element}"><a class="mui-navigate-right">跳转页面编号${element}-${textContent}</a></li>`);
 
         // add tap listener for list element
         $(`#page_${element}`).on('tap',function(){
-            console.log(`${guide_name} tapped`);
             //first to do is to save button info
             let button_text = $('#desc_input').value;
-            saveButtonAttribute('button_text', button_text, button_id);
+            saveAttribute('raw_button_table', 'button_text', button_text, 'button_id', button_id);
             saveButtonAttribute('button_to_page_id', page_id, button_id);
             addSwitchCheck(page_id);
         });
     });
     // add last create new page
-    list_element.append(`<li class="mui-table-view-cell" id="default_new_page">创建新页面</li>`);
+    list_element.append(`<li class="mui-table-view-cell" id="default_new_page"><a class="mui-navigate-right">创建新页面</a></li>`);
     $("#default_new_page").on('tap',function(){
         console.log("default_new_page tapped");
         let button_text = $('#desc_input').value;
@@ -150,6 +197,6 @@ let addListElement= function(guide_id, page_list){
     */
 };
 
-callGetGuideId();
+callGetGuideId(button_id);
 
 

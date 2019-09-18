@@ -6,20 +6,21 @@ let button_address_seg = "choosePage.html?buttonid=%data%";
 let index = window.location.href.lastIndexOf("=");
 let url_length = window.location.href.length;
 let page_id = window.location.href.substring(index + 1, url_length);
-console.log('page_id='+page_id);
+console.log('page_id=' + page_id);
 
 let callGetGuideId = function (button_db_name) {
-	$.ajax({
-		url: 'http://180.76.244.130:3000/page/getGuideId',
-		type: 'GET',
-		data: {
-			page_id: page_id
-		},
-		dataType: "json"
-	}).done(function (guide_id) {
-		console.log('Returning guide_id='+guide_id);
+    $.ajax({
+        url: 'http://180.76.244.130:3000/page/getPageAttribute',
+        type: 'GET',
+        data: {
+            attribute_name: 'guide_id',
+            page_id: page_id
+        },
+        dataType: "json"
+    }).done(function (guide_id) {
+        console.log('Returning guide_id=' + guide_id);
         callCreateButton(guide_id, button_db_name);
-	});
+    });
 };
 
 $('#upload_background_button').on('click', function () {
@@ -103,19 +104,38 @@ $('#default-add-button-2').on('click', function (e) {
     $('#default-add-button-3').css('opacity', 100);
 });
 
+let callCreateText = function (button_default_name) {
+    let text_value = $('#desc_input').value;
+    console.log(text_value);
+    if (text_value === '') {
+        text_value = 'BTN-DFT-TXT'
+    }
+    $.ajax({
+        url: 'http://180.76.244.130:3000/text/writeTextDB',
+        type: 'GET',
+        data: {
+            text_value: text_value,
+            page_id: page_id,
+        }
+    }).done(function (result) {
+        console.log('Returning result is ' + result);
+        callGetButtonInfo(button_default_name);
+    });
+};
+
 let callCreateButton = function (guide_id, button_db_name) {
 
     $.ajax({
         url: 'http://180.76.244.130:3000/button/writeButtonDB',
         type: 'GET',
-		data: {
-			page_id: page_id,
-			guide_id: guide_id,
-			button_db_name: button_db_name
-		}
+        data: {
+            page_id: page_id,
+            guide_id: guide_id,
+            button_db_name: button_db_name
+        }
     }).done(function (button_id) {
-        console.log('Returning button_id='+button_id);
-		switchPage(button_address_seg, button_id);
+        console.log('Returning button_id=' + button_id);
+        switchPage(button_address_seg, button_id);
     });
 };
 
@@ -133,14 +153,6 @@ let callGetButtonInfo = function (button_default_name) {
     });
 };
 
-$('#default-button-4').on('tap', function () {
-    callGetButtonInfo('default-button-4');
-});
-
-$('#default-button-3').on('tap', function () {
-	callGetButtonInfo('default-button-3');
-});
-
 let callButtonCheck = function (button_list, button_default_name) {
     console.log(button_list);
     console.log(typeof button_list);
@@ -149,12 +161,22 @@ let callButtonCheck = function (button_list, button_default_name) {
     let button_number = button_default_name.substring(index + 1, button_text_length);
     console.log(button_number);
     let button_db_name = 'button' + button_number + '_id';
-	let button_id = button_list[button_db_name];
+    let button_id = button_list[button_db_name];
     console.log(button_id);
     if (button_id === null) {
         // get guide_id first then callCreateButton
         callGetGuideId(button_db_name);
     } else {
-		switchPage(button_address_seg, button_id);
+        switchPage(button_address_seg, button_id);
     }
 };
+
+// if any button click, save text first
+$('#default-button-4').on('tap', function () {
+    // save textArea here first
+    callCreateText(page_id, 'default-button-4');
+});
+
+$('#default-button-3').on('tap', function () {
+    callCreateText(page_id, 'default-button-3');
+});
