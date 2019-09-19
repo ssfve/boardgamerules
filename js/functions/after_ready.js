@@ -25,12 +25,6 @@ function submit_pdf_info() {
     });
 }
 
-$("#loading").dialog({
-    hide: 'slide',
-    show: 'slide',
-    autoOpen: false
-});
-
 function submit_translate_info() {
     let pdf_path = document.getElementById("pdf_file").value;
     let pdf_name_suffix = pdf_path.split("\\")[2];
