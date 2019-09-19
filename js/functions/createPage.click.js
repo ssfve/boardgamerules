@@ -8,6 +8,55 @@ let url_length = window.location.href.length;
 let page_id = window.location.href.substring(index + 1, url_length);
 console.log('page_id=' + page_id);
 
+let callGetButtonText = function () {
+    $.ajax({
+        url: 'http://180.76.244.130:3000/page/getButtonInfo',
+        type: 'GET',
+        data: {
+            page_id: page_id
+        },
+        dataType: "json"
+    }).done(function (button_list) {
+        console.log('Returning button list');
+        getButtonText(button_list)
+    });
+};
+
+callGetButtonText();
+
+let getButtonText = function (button_list) {
+    console.log(button_list);
+    for (let element in button_list) {
+        //element.hasOwnProperty()
+        console.log(element);
+        let button_id = button_list[element];
+        if (button_id === '' || button_id === null || button_id === undefined) {
+            console.log('button is not set');
+        } else {
+            let index = element.lastIndexOf("_");
+            let button_number = element.substring(index - 1, index);
+            console.log(button_number);
+            let button_old_id = 'default-button-' + button_number;
+            let button_new_id = 'button-' + button_id;
+            let old_button_element = $(`#${button_old_id}`);
+            $.ajax({
+                url: 'http://180.76.244.130:3000/database/getAttribute',
+                type: 'GET',
+                data: {
+                    table_name: 'raw_button_table',
+                    attribute_name: 'button_text',
+                    key_name: 'button_id',
+                    key_value: button_id
+                }
+            }).done(function (button_text) {
+                console.log('Returning button text is ' + button_text);
+                old_button_element.html(button_text);
+                old_button_element.attr("id", button_new_id);
+            });
+        }
+    }
+};
+
 let callGetGuideId = function (button_db_name) {
     $.ajax({
         url: 'http://180.76.244.130:3000/page/getPageAttribute',
@@ -108,7 +157,7 @@ let callCreateText = function (button_default_name) {
     let text_value = $('#desc_input').val();
     console.log(text_value);
     if (text_value === '' || text_value === undefined) {
-        text_value = 'BTN-DFT-TXT'
+        text_value = 'PG-DFLT-TXT'
     }
     $.ajax({
         url: 'http://180.76.244.130:3000/text/writeTextDB',
@@ -157,27 +206,27 @@ let callButtonCheck = function (button_list, button_default_name) {
     console.log(button_list);
     console.log(typeof button_list);
     console.log(button_default_name);
-    let index = button_default_name.lastIndexOf("-");
-    let button_text_length = button_default_name.length;
-    let button_number = button_default_name.substring(index + 1, button_text_length);
-    console.log(button_number);
-    let button_db_name = 'button' + button_number + '_id';
-    let button_id = button_list[button_db_name];
-    console.log(button_id);
-    if (button_id === null) {
-        // get guide_id first then callCreateButton
-        callGetGuideId(button_db_name);
-    } else {
+    if (!button_default_name.includes('default')) {
+        let index = button_default_name.lastIndexOf("-");
+        let button_text_length = button_default_name.length;
+        let button_id = button_default_name.substring(index + 1, button_text_length);
         switchPage(button_address_seg, button_id);
+    } else {
+        let index = button_default_name.lastIndexOf("-");
+        let button_text_length = button_default_name.length;
+        let button_number = button_default_name.substring(index + 1, button_text_length);
+        console.log(button_number);
+        let button_db_name = 'button' + button_number + '_id';
+        callGetGuideId(button_db_name);
     }
 };
 
 // if any button click, save text first
 $('#default-button-4').on('tap', function () {
     // save textArea here first
-    callCreateText('default-button-4');
+    callCreateText(this.id);
 });
 
 $('#default-button-3').on('tap', function () {
-    callCreateText('default-button-3');
+    callCreateText(this.id);
 });
