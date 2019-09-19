@@ -27,37 +27,22 @@ function submit_translate_info() {
 }
 
 let saveTranslatePdf=function(){
-    let pdf_upload_url = 'http://180.76.244.130:3000/games/saveTranslatePDF';
-    let pdf_data = new FormData();
-    let pdf_file = document.getElementById("pdf_file").files[0];
-    pdf_data.append('file-0', pdf_file);
-    let button = $('#upload_button');
-    $.ajax({
-        url: pdf_upload_url,
-        method: 'POST',
-        contentType: false,
-        processData: false,
-        data: pdf_data,
-        crossDomain : true,
-        beforeSend: function(){
-            button.attr("disabled", true);
-            button.html("悬挂鱼饵中（文件上传中）。。。请勿关闭窗口");
-        },
-        complete: function(){
-            button.attr("disabled", false);
-            button.html("重新抛竿钓鱼");
-        },
-        success: function(data) {
-            $('#upload_button').html("文件上传成功");
-            console.log("文件上传成功");
-            alert("钓鱼开始了，请耐心等待邮件送达(最快5分钟，慢的话可能1周)");
-            //alert("savePDFInfo Success");
-        },
-        error: function(err) {
-            console.log("uploadPDF Failure");
-            alert("ERROR:开始钓鱼失败，请重试");
-        }
-    });
+    let pdf_upload = {
+        url : 'http://180.76.244.130:3000/games/saveTranslatePDF',
+        text_area : $('#uploadNotice'),
+        file_element_name : $('#pdf_file'),
+        file_not_found_msg: "请选择鱼饵（pdf规则文件）",
+        button_inprogress_text: "抛竿中",
+        button_text: "点击抛竿",
+        before_send_msg: "抛竿中（文件上传中）。。。请勿关闭窗口",
+        success_msg:"钓鱼（英译中）开始了，可继续抛竿钓鱼",
+        success_alert_msg:"钓鱼（英译中）开始了，请耐心等待邮件送达(最快5分钟，慢的话可能1周)",
+        error_msg:"抛竿失败，请重试",
+        error_alert_msg:"抛竿钓鱼失败，请重试",
+        button: $('#upload_button'),
+        progressbar: $('#progress')
+    };
+    uploadFile(pdf_upload);
 };
 
 let saveTranslateInfo=function(pdf_name, receiver_email) {

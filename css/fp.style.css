@@ -13,6 +13,11 @@ body{
 	background-size: cover;
 }
 
+#progress{
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
 h5.mui-content-padded {
 	margin-left: 3px;
 	margin-top: 20px !important;

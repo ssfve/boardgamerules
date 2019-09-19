@@ -482,7 +482,7 @@ var toast_alter = function () {
 let uploadFile = function (file_object) {
 	console.log(file_object.file_element_name.val());
     if (file_object.file_element_name.val() === "") {
-        file_object.text_area.html("!请选择pdf文件!");
+        file_object.text_area.html(file_object.file_not_found_msg);
         //console.log('hello');
     } else {
         let xhr = new XMLHttpRequest();
@@ -494,7 +494,7 @@ let uploadFile = function (file_object) {
         let inner_button = file_object.button;
 
 		inner_button.attr("disabled", true);
-		inner_button.html('文件上传中');
+		inner_button.html(file_object.button_inprogress_text);
 		inner_text_area.html(file_object.before_send_msg);
 
         xhr.open("POST", file_object.url, true);
@@ -509,7 +509,7 @@ let uploadFile = function (file_object) {
 		};
 		let uploadComplete = function (evt) {
 			inner_button.attr("disabled", false);
-			inner_button.html('点击上传');
+			inner_button.html(file_object.button_text);
 			file_object.progressbar.val(0);
 			inner_text_area.html(file_object.success_msg);
 			alert(file_object.success_alert_msg);
@@ -517,7 +517,7 @@ let uploadFile = function (file_object) {
 
 		let uploadFailed = function (evt) {
 			inner_button.attr("disabled", false);
-			inner_button.html('点击上传');
+			inner_button.html(file_object.button_text);
 			file_object.progressbar.val(0);
 			inner_text_area.html(file_object.error_msg);
 			alert(file_object.error_alert_msg);
@@ -527,30 +527,5 @@ let uploadFile = function (file_object) {
 		xhr.addEventListener("load", uploadComplete, false);
 		xhr.addEventListener("error", uploadFailed, false);
 		xhr.send(form_data);
-
-        /*
-        $.ajax({
-            url: file_object.url,
-            method: 'POST',
-            contentType: false,
-            processData: false,
-            data: form_data,
-            crossDomain : true,
-            beforeSend: function(){
-                inner_button.attr("disabled", true);
-                inner_text_area.html(file_object.before_send_msg);
-            },
-            success: function(data) {
-                inner_button.attr("disabled", false);
-                inner_text_area.html(file_object.success_msg);
-                alert(pdf_upload.success_alert_msg);
-            },
-            error: function(err) {
-                inner_button.attr("disabled", false);
-                inner_text_area.html(file_object.error_msg);
-                alert(file_object.error_alert_msg);
-            }
-        });
-        */
     }
 };
