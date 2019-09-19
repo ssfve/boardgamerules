@@ -105,9 +105,9 @@ $('#default-add-button-2').on('click', function (e) {
 });
 
 let callCreateText = function (button_default_name) {
-    let text_value = $('#desc_input').value;
+    let text_value = $('#desc_input').val();
     console.log(text_value);
-    if (text_value === '') {
+    if (text_value === '' || text_value === undefined) {
         text_value = 'BTN-DFT-TXT'
     }
     $.ajax({
@@ -141,7 +141,7 @@ let callCreateButton = function (guide_id, button_db_name) {
 
 let callGetButtonInfo = function (button_default_name) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getButtonInfo',
+        url: 'http://180.76.244.130:3000/page/getButtonInfo',
         type: 'GET',
         data: {
             page_id: page_id
@@ -156,6 +156,7 @@ let callGetButtonInfo = function (button_default_name) {
 let callButtonCheck = function (button_list, button_default_name) {
     console.log(button_list);
     console.log(typeof button_list);
+    console.log(button_default_name);
     let index = button_default_name.lastIndexOf("-");
     let button_text_length = button_default_name.length;
     let button_number = button_default_name.substring(index + 1, button_text_length);
@@ -174,9 +175,9 @@ let callButtonCheck = function (button_list, button_default_name) {
 // if any button click, save text first
 $('#default-button-4').on('tap', function () {
     // save textArea here first
-    callCreateText(page_id, 'default-button-4');
+    callCreateText('default-button-4');
 });
 
 $('#default-button-3').on('tap', function () {
-    callCreateText(page_id, 'default-button-3');
+    callCreateText('default-button-3');
 });
