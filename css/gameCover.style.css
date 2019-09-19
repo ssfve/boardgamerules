@@ -12,6 +12,11 @@ button.mui-btn.mui-btn-blue.mui-poppicker-btn-ok {
 	color: #ffffff !important;
 }
 
+#progress{
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
 body{
 	/* this is shorthand one line setting*/
 	background: url('../img/interface/background-blur.jpg') no-repeat top center fixed;

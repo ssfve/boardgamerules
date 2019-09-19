@@ -480,48 +480,54 @@ var toast_alter = function () {
 };
 
 let uploadFile = function (file_object) {
-    if (file_object.file_element_name.value === "") {
-        file_object.text_area.innerHTML = "请选择文件";
+	console.log(file_object.file_element_name.val());
+    if (file_object.file_element_name.val() === "") {
+        file_object.text_area.html("!请选择pdf文件!");
+        //console.log('hello');
     } else {
         let xhr = new XMLHttpRequest();
         let form_data = new FormData();
-        let file = file_object.file_element_name.files[0];
+        let file = file_object.file_element_name.prop('files')[0];
         form_data.append('file-0', file);
 
         let inner_text_area = file_object.text_area;
         let inner_button = file_object.button;
 
+		inner_button.attr("disabled", true);
+		inner_button.html('文件上传中');
+		inner_text_area.html(file_object.before_send_msg);
+
         xhr.open("POST", file_object.url, true);
-        xhr.send(form_data);
-        /*
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var result = xhr.responseText;
-                document.getElementById("result").innerHTML = result;
-            }
-        };*/
-        // progress bar
-        xhr.upload.onprogress = function (evt) {
-            if (evt.lengthComputable) {
-                var percentComplete = Math.round(evt.loaded * 100 / evt.total);
-                document.getElementById('progress').value = percentComplete;
-                document.getElementById('progressNumber').style.width = percentComplete + "%";
-            }
-        };
-        xhr.upload.onloadstart = function () {
-            inner_button.attr("disabled", true);
-            inner_text_area.html(file_object.before_send_msg);
-        };
-        xhr.upload.onloadend = function (data) {
-            inner_button.attr("disabled", false);
-            inner_text_area.html(file_object.success_msg);
-            alert(pdf_upload.success_alert_msg);
-        };
-        xhr.upload.onerror = function (err) {
-            inner_button.attr("disabled", false);
-            inner_text_area.html(file_object.error_msg);
-            alert(file_object.error_alert_msg);
-        };
+        xhr.withCredentials = true;
+
+		let uploadProgress=function(evt) {
+			//console.log(evt);
+			if (evt.lengthComputable) {
+				let percentComplete = Math.round(evt.loaded * 100 / evt.total);
+				file_object.progressbar.val(percentComplete-1);
+			}
+		};
+		let uploadComplete = function (evt) {
+			inner_button.attr("disabled", false);
+			inner_button.html('点击上传');
+			file_object.progressbar.val(0);
+			inner_text_area.html(file_object.success_msg);
+			alert(file_object.success_alert_msg);
+		};
+
+		let uploadFailed = function (evt) {
+			inner_button.attr("disabled", false);
+			inner_button.html('点击上传');
+			file_object.progressbar.val(0);
+			inner_text_area.html(file_object.error_msg);
+			alert(file_object.error_alert_msg);
+		};
+
+		xhr.upload.addEventListener("progress", uploadProgress, false);
+		xhr.addEventListener("load", uploadComplete, false);
+		xhr.addEventListener("error", uploadFailed, false);
+		xhr.send(form_data);
+
         /*
         $.ajax({
             url: file_object.url,
