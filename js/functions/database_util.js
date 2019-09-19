@@ -326,18 +326,6 @@ function ajax_wait_name(id) {
 	});
 };
 
-if(current_page === 'gamerule') {
-	ajax_wait_name(id)
-};
-
-if(current_page === 'gamepic') {
-	ajax_wait_name(id)
-};
-
-if(current_page === 'gameintro') {
-	ajax_wait_name(id)
-};
-
 /*
 var queryGameInfoSimpleCN = function(id, lang_cn){
 	if (current_page === 'gamerule'){
@@ -352,16 +340,6 @@ var queryGameInfoSimpleCN = function(id, lang_cn){
 	
 };
 */
-
-//if (cuurent_page === 'gamecover' or )
-$.ajax({
-	url: styleURL,
-	data: {
-		gameid: id
-	},
-	success: queryStyleInfo,
-	dataType: 'json'
-});
 
 var setImagePath = function(id, type, loc) {
 	var imageURL = 'http://180.76.244.130:3000/games/getImageInfo'
