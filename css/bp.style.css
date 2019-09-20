@@ -13,6 +13,13 @@ body{
 	background-size: cover;
 }
 
+#canvas{
+	position:fixed;
+	top:0;
+	left:0;
+
+}
+
 .mui-content-padded.button {
 	height: inherit;
 }

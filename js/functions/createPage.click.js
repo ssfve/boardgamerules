@@ -22,8 +22,6 @@ let callGetButtonText = function () {
     });
 };
 
-callGetButtonText();
-
 let getButtonText = function (button_list) {
     console.log(button_list);
     for (let element in button_list) {
@@ -96,16 +94,72 @@ $('#background_submit_form').on('submit', function (e) {
 
 
 let callChangeBackground = function (form, form_data) {
-    $.ajax({
-        url: form.attr('action'),
-        type: form.attr('method'),
-        data: form_data,
-        processData: false,
-        contentType: false,
-    }).done(function (data) {
+    let xhr = new XMLHttpRequest();
+    xhr.open(form.attr('method'), form.attr('action'), true);
+    xhr.withCredentials = true;
+    let progress_element = $('#progress');
+    let uploadProgress = function (evt) {
+        //console.log(evt);
+        if (evt.lengthComputable) {
+            let percentComplete = Math.round(evt.loaded * 100 / evt.total);
+            progress_element.val(percentComplete - 1);
+        }
+    };
+    let uploadComplete = function (evt) {
+        progress_element.val(0);
         console.log('Going to change background');
-        $('body').css('background-image', `url(http://180.76.244.130:18000/${fileName})`);
-    });
+        // wait for blurred image
+        // show blurred minimized image here first
+        // todo: play blurring magic first wait 2 seconds after upload response is received
+        /*
+        const canvas = $('#canvas');
+        canvas.css("opacity", "1");
+        let canvasWidth = document.body.clientWidth; //document.width is obsolete
+        let canvasHeight = document.body.clientHeight; //document.height is obsolete
+        canvas.css('width', canvasWidth);
+        canvas.css('height', canvasHeight);
+
+        const context = document.getElementById('canvas').getContext('2d');
+        let img_blur = new Image();
+        img_blur.src = `http://180.76.244.130:18002/${fileName}`;
+        img_blur.onload = () => {
+            context.drawImage(img_blur, 0, 0, canvasWidth, canvasHeight);
+        };
+        */
+        //$('#background-image-cache').attr('src', `url(http://180.76.244.130:18000/${fileName})`).on('load', function() {
+        //const context = document.getElementById('canvas').getContext('2d');
+        /*
+        let img = new Image();
+        img.src = `http://180.76.244.130:18000/${fileName}`;
+        img.onload = () => {
+            context.drawImage(img, 0, 0);
+        };
+         */
+        $('<img/>').attr('src', `http://180.76.244.130:18002/${fileName}`).on('load', function() {
+            console.log('original img is downloaded');
+            $(this).remove(); // prevent memory leaks as @benweet suggested
+            // hide canvas here
+            //$('#canvas').css("opacity","0");
+            //$('body').css('background-image', $(this).attr("src"));
+            $('body').css('background', `url(http://180.76.244.130:18002/${fileName}) no-repeat top center fixed`);
+        });
+        $('<img/>').attr('src', `http://180.76.244.130:18000/${fileName}`).on('load', function() {
+            console.log('original img is downloaded');
+            $(this).remove(); // prevent memory leaks as @benweet suggested
+            // hide canvas here
+            //$('#canvas').css("opacity","0");
+            $('body').css('background', `url(http://180.76.244.130:18000/${fileName}) no-repeat top center fixed`);
+        });
+    };
+
+    let uploadFailed = function (evt) {
+        progress_element.val(0);
+    };
+    xhr.upload.addEventListener("progress", uploadProgress, false);
+    xhr.addEventListener("load", uploadComplete, false);
+    xhr.addEventListener("error", uploadFailed, false);
+    xhr.send(form_data);
+
 };
 
 $('#default-add-button').on('tap', function () {
@@ -230,3 +284,36 @@ $('#default-button-4').on('tap', function () {
 $('#default-button-3').on('tap', function () {
     callCreateText(this.id);
 });
+
+let callGetPageText = function () {
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/getAttribute',
+        type: 'GET',
+        data: {
+            table_name: 'raw_control_table',
+            attribute_name: 'text1_id',
+            key_name: 'page_id',
+            key_value: page_id
+        }
+    }).done(function (text1_id) {
+        console.log('Returning page_text is ' + text1_id);
+        getTextContent(text1_id)
+    });
+};
+
+let getTextContent = function (text_id) {
+    $.ajax({
+        url: 'http://180.76.244.130:3000/text/getTextAttribute',
+        type: 'GET',
+        data: {
+            attribute_name: 'textContent',
+            text_id: text_id
+        }
+    }).done(function (text_content) {
+        console.log('returning text content is ' + text_content);
+        $('#desc_input').val(text_content)
+    });
+};
+
+callGetButtonText();
+callGetPageText();

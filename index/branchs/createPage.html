@@ -30,6 +30,8 @@
 </head>
 
 <body>
+<canvas id="canvas"></canvas>
+<img style="position:fixed;top:0;left:0;opacity:0;" id="background-image-cache"></img>
 <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
     <div class="mui-inner-wrap">
         <div id="mainPageScroll" class="mui-scroll-wrapper">
@@ -46,7 +48,7 @@
                         <input type="file" id="bg_img_file" name="bg_img_file"/>
                         <input type="submit">
                     </form>
-
+                    <progress value="0" max="100" id="progress" style="height: 20px; width: 100%"></progress>
                 </div>
                 <div class="container" id="bottom-area">
                     <div class="mui-row" id="bottom-row-1">

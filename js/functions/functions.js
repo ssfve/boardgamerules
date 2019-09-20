@@ -262,81 +262,36 @@ var change_theme = function (color) {
     $("#svg6").attr('src', '../img/interface/' + color.substr(1, 6) + '.svg');
 };
 
-var change_tab_theme = function (color, number) {
-    $('.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar').css({
-        'background-color': color
-    });
-    $('.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active').css({
-        'color': color
-    });
-    //$('.mui-segmented-control.mui-segmented-control-inverted .mui-control-item').css({'color': color + priority});
-    console.log(color + lowPR);
-    $('.mui-segmented-control.mui-segmented-control-inverted .mui-control-item').css({
-        'color': color + lowPR
-    });
-    $('.mui-table-view-cell.mui-active').css({
-        'background-color': color
-    });
-    //$('.mui-table-view-cell.mui-active').css({'background-color': color});
-    $('.mui-table-cell.mui-active').css({
-        'background-color': color
-    });
+let updateAttribute = function (table_name, attribute_name, attribute_value, key_name, key_value) {
+	$.ajax({
+		url: 'http://180.76.244.130:3000/database/updateAttribute',
+		type: 'GET',
+		data: {
+			table_name: table_name,
+			attribute_name: attribute_name,
+			attribute_value: attribute_value,
+			key_name: key_name,
+			key_value: key_value
+		}
+	}).done(function (data) {
+		console.log('returning result is ' + data);
+	});
+};
 
-    if (number === 0) {
-        $('#gameSetup').css({
-            'color': theme_color
-        });
-        $('#gameFlow').css({
-            'color': default_color
-        });
-        $('#gameOther').css({
-            'color': default_color
-        });
-        $('#gameEnd').css({
-            'color': default_color
-        });
-    }
-    if (number === 1) {
-        console.log("in number 1");
-        $('#gameSetup').css({
-            'color': default_color
-        });
-        $('#gameFlow').css({
-            'color': theme_color
-        });
-        $('#gameOther').css({
-            'color': default_color
-        });
-        $('#gameEnd').css({
-            'color': default_color
-        });
-    }
-    if (number === 2) {
-        $('#gameSetup').css({
-            'color': default_color
-        });
-        $('#gameFlow').css({
-            'color': default_color
-        });
-        $('#gameOther').css({
-            'color': default_color
-        });
-        $('#gameEnd').css({
-            'color': theme_color
-        });
-    }
-    if (number === 3) {
-        $('#gameSetup').css({
-            'color': default_color
-        });
-        $('#gameFlow').css({
-            'color': default_color
-        });
-        $('#gameEnd').css({
-            'color': default_color
-        });
-    }
-
+let saveAttribute = function (table_name, attribute_name, attribute_value, key_name, key_value) {
+	$.ajax({
+		url: 'http://180.76.244.130:3000/database/updateAttribute',
+		type: 'GET',
+		data: {
+			table_name: table_name,
+			attribute_name: attribute_name,
+			attribute_value: attribute_value,
+			key_name: key_name,
+			key_value: key_value
+		}
+	}).done(function (data) {
+		console.log('returning result is ' + data);
+	});
 };
 
 var collapse_event_gen = function () {
