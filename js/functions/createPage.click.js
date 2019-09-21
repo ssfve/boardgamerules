@@ -135,20 +135,20 @@ let callChangeBackground = function (form, form_data) {
             context.drawImage(img, 0, 0);
         };
          */
-        $('<img/>').attr('src', `http://180.76.244.130:18002/${fileName}`).on('load', function() {
+        $('<img/>').attr('src', `http://180.76.244.130:18001/${fileName}`).on('load', function() {
             console.log('original img is downloaded');
             $(this).remove(); // prevent memory leaks as @benweet suggested
             // hide canvas here
             //$('#canvas').css("opacity","0");
             //$('body').css('background-image', $(this).attr("src"));
-            $('body').css('background', `url(http://180.76.244.130:18002/${fileName}) no-repeat top center fixed`);
+            $('body').css('background-image', `url(http://180.76.244.130:18001/${fileName})`);
         });
         $('<img/>').attr('src', `http://180.76.244.130:18000/${fileName}`).on('load', function() {
             console.log('original img is downloaded');
             $(this).remove(); // prevent memory leaks as @benweet suggested
             // hide canvas here
             //$('#canvas').css("opacity","0");
-            $('body').css('background', `url(http://180.76.244.130:18000/${fileName}) no-repeat top center fixed`);
+            $('body').css('background-image', `url(http://180.76.244.130:18000/${fileName})`);
         });
     };
 
