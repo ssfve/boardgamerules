@@ -34,15 +34,14 @@
     <div class="mui-inner-wrap">
         <div id="mainPageScroll" class="mui-scroll-wrapper">
             <div class="mui-content" id="mui_content_area" style="padding-top: 0;">
-                <div class="mui-content-padded">
-                    <button class="create_guide" id="create_guide_button"></button>
-                    <form method="POST" id="background_submit_form" enctype="multipart/form-data"
-                          action="http://180.76.244.130:3000/games/saveBackgroundImage">
-                        <input type="file" id="bg_img_file" name="bg_img_file"/>
-                        <input type="submit">
-                    </form>
-                </div>
-                <div class="mui-off-canvas-backdrop"></div>
+                    <div class="mui-row" id="guide-row-1">
+                        <div class="mui-col-sm-6" id="slot-1"></div>
+                        <div class="mui-col-sm-6" id="slot-2"></div>
+                    </div>
+                    <div class="mui-row" id="guide-row-2">
+                        <div class="mui-col-sm-6" id="slot-3"></div>
+                        <div class="mui-col-sm-6" id="slot-4"></div>
+                    </div>
             </div>
         </div>
     </div>
@@ -55,7 +54,7 @@
     <script type="text/javascript" src="../cover.interface.js"></script>
     <script type="text/javascript" src="../events/cover.event.js"></script>
     <script type="text/javascript" src="../../js/functions/document.ready.js"></script>
-    <script type="text/javascript" src="../../js/functions/createGuide.click.js"></script>
+    <script type="text/javascript" src="../../js/functions/showGuide.click.js"></script>
 </div>
 
 </body>

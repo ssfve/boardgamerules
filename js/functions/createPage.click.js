@@ -85,17 +85,65 @@ $("#bg_img_file").on('change', function (e) {
 // intervene submit
 $('#background_submit_form').on('submit', function (e) {
     e.preventDefault(); // Prevent the form from submitting via the browser
-    let form = $(this);
-    let form_data = new FormData();
-    let file_data = $('#bg_img_file').prop('files')[0];
-    form_data.append('file', file_data);
-    callChangeBackground(form, form_data);
+    // when submit create new image id
+    // automatically save image id to page
+    createImageId();
 });
 
+let createImageId=function(){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/image/writeImageDB',
+        type: 'GET',
+        data:{
+            page_id: page_id
+        }
+    }).done(function (image_id) {
+        console.log('Returning image_id is ' + image_id);
+        fileName = image_id + '.jpg';
+        let form = $('#background_submit_form');
+        let form_data = new FormData();
+        let file_data = $('#bg_img_file').prop('files')[0];
+        form_data.append('file', file_data);
+        //form_data.append('filename', fileName);
+        callChangeBackground(form, form_data);
+    });
+};
+
+let getImageId=function(){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/getAttribute',
+        type: 'GET',
+        data:{
+            table_name: 'raw_control_table',
+            attribute_name: 'image1_id',
+            key_name: 'page_id',
+            key_value: page_id
+        }
+    }).done(function (image_id) {
+        console.log('Returning image_id is ' + image_id);
+        fileName = image_id + '.jpg';
+        showBackground(fileName);
+    });
+};
+
+let showBackground=function(file_name){
+    $('<img/>').attr('src', `http://180.76.244.130:18001/${file_name}`).on('load', function() {
+        console.log('blurred and compressed img is downloaded');
+        $(this).remove(); // prevent memory leaks as @benweet suggested
+        $('body').css('background-image', `url(http://180.76.244.130:18001/${file_name})`);
+    });
+    $('<img/>').attr('src', `http://180.76.244.130:18000/${file_name}`).on('load', function() {
+        console.log('original img is downloaded');
+        $(this).remove(); // prevent memory leaks as @benweet suggested
+        $('body').css('background-image', `url(http://180.76.244.130:18000/${file_name})`);
+    });
+};
 
 let callChangeBackground = function (form, form_data) {
     let xhr = new XMLHttpRequest();
-    xhr.open(form.attr('method'), form.attr('action'), true);
+    let url_action =  form.attr('action') + "/?file_name="+fileName;
+    console.log(url_action);
+    xhr.open(form.attr('method'), url_action, true);
     xhr.withCredentials = true;
     let progress_element = $('#progress');
     let uploadProgress = function (evt) {
@@ -135,16 +183,7 @@ let callChangeBackground = function (form, form_data) {
             context.drawImage(img, 0, 0);
         };
          */
-        $('<img/>').attr('src', `http://180.76.244.130:18001/${fileName}`).on('load', function() {
-            console.log('blurred and compressed img is downloaded');
-            $(this).remove(); // prevent memory leaks as @benweet suggested
-            $('body').css('background-image', `url(http://180.76.244.130:18001/${fileName})`);
-        });
-        $('<img/>').attr('src', `http://180.76.244.130:18000/${fileName}`).on('load', function() {
-            console.log('original img is downloaded');
-            $(this).remove(); // prevent memory leaks as @benweet suggested
-            $('body').css('background-image', `url(http://180.76.244.130:18000/${fileName})`);
-        });
+        showBackground(fileName);
     };
 
     let uploadFailed = function (evt) {
@@ -312,3 +351,4 @@ let getTextContent = function (text_id) {
 
 callGetButtonText();
 callGetPageText();
+getImageId();

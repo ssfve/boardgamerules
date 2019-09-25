@@ -30,6 +30,12 @@ let getButtonText = function (button_list) {
         let button_id = button_list[element];
         if (button_id === '' || button_id === null || button_id === undefined) {
             console.log('button is not set');
+            let index = element.indexOf('_');
+            let button_number = element.substring(index-1, index);
+            console.log('null button id is '+button_number);
+            let null_button_element = $(`#default-button-${button_number}`);
+            null_button_element.css('opacity','0');
+            null_button_element.css('disabled',true);
         } else {
             let index = element.lastIndexOf("_");
             let button_number = element.substring(index - 1, index);
@@ -315,5 +321,45 @@ let getTextContent = function (text_id) {
     });
 };
 
+let getImageId=function(){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/getAttribute',
+        type: 'GET',
+        data:{
+            table_name: 'raw_control_table',
+            attribute_name: 'image1_id',
+            key_name: 'page_id',
+            key_value: page_id
+        }
+    }).done(function (image_id) {
+        console.log('Returning image_id is ' + image_id);
+        fileName = image_id + '.jpg';
+        showBackground(fileName);
+    });
+};
+
+let showBackground=function(file_name){
+    $('<img/>').attr('src', `http://180.76.244.130:18001/${file_name}`).on('load', function() {
+        console.log('blurred and compressed img is downloaded');
+        $(this).remove(); // prevent memory leaks as @benweet suggested
+        $('body').css('background-image', `url(http://180.76.244.130:18001/${file_name})`);
+    });
+    $('<img/>').attr('src', `http://180.76.244.130:18000/${file_name}`).on('load', function() {
+        console.log('original img is downloaded');
+        $(this).remove(); // prevent memory leaks as @benweet suggested
+        $('body').css('background-image', `url(http://180.76.244.130:18000/${file_name})`);
+    });
+};
+
+let changeStyle=function(){
+    console.log('start to change style');
+    $('#dummy-button-1').css('opacity','0');
+    $('#dummy-button-2').css('opacity','0');
+    $('#default-add-button').css('opacity','0');
+    $('#default-sub-button').css('opacity','0');
+};
+
+changeStyle();
 callGetButtonText();
 callGetPageText();
+getImageId();
