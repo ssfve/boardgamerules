@@ -168,51 +168,6 @@ let callChangeBackground = function (form, form_data) {
 
 };
 
-$('#default-add-button').on('tap', function () {
-    let db3 = $('#default-button-3');
-    if (db3.css('opacity') === '0') {
-        db3.css('opacity', 100);
-        $('#default-sub-button').css('opacity', 100);
-        return;
-    }
-    let db2 = $('#default-button-2');
-    if (db2.css('opacity') === '0') {
-        db2.css('opacity', 100);
-        $('#default-sub-button').css('opacity', 100);
-        return;
-    }
-    let db1 = $('#default-button-1');
-    if (db1.css('opacity') === '0') {
-        db1.css('opacity', 100);
-        $('#default-add-button').css('opacity', 0);
-        $('#default-sub-button').css('opacity', 100);
-    }
-});
-
-$('#default-sub-button').on('tap', function () {
-    let db1 = $('#default-button-1');
-    if (db1.css('opacity') === '1') {
-        db1.css('opacity', 0);
-        $('#default-add-button').css('opacity', 100);
-        return;
-    }
-    let db2 = $('#default-button-2');
-    if (db2.css('opacity') === '1') {
-        db2.css('opacity', 0);
-        return;
-    }
-    let db3 = $('#default-button-3');
-    if (db3.css('opacity') === '1') {
-        db3.css('opacity', 0);
-        $('#default-sub-button').css('opacity', 0);
-    }
-});
-
-$('#default-add-button-2').on('click', function (e) {
-    $('#default-button-1').css('opacity', 100);
-    $('#default-add-button-3').css('opacity', 100);
-});
-
 let callCreateText = function (button_default_name) {
     let text_value = $('#desc_input').val();
     console.log(text_value);
@@ -281,16 +236,6 @@ let callButtonCheck = function (button_list, button_default_name) {
     }
 };
 
-// if any button click, save text first
-$('#default-button-4').on('tap', function () {
-    // save textArea here first
-    callCreateText(this.id);
-});
-
-$('#default-button-3').on('tap', function () {
-    callCreateText(this.id);
-});
-
 let callGetPageText = function () {
     $.ajax({
         url: 'http://180.76.244.130:3000/database/getAttribute',
@@ -357,7 +302,15 @@ let changeStyle=function(){
     $('#dummy-button-2').css('opacity','0');
     $('#default-add-button').css('opacity','0');
     $('#default-sub-button').css('opacity','0');
+    $('#dummy-button-1').css('disabled',true);
+    $('#dummy-button-2').css('disabled',true);
+    $('#default-add-button').css('disabled',true);
+    $('#default-sub-button').css('disabled',true);
 };
+
+$('#back-button').on('tap',function(){
+    history.back()
+});
 
 changeStyle();
 callGetButtonText();

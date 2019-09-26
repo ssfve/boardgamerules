@@ -118,27 +118,40 @@ let getRootPageId=function(guide_id){
     });
 };
 
-let addGuide = function (guide_ids) {
+let getUserGuides = function (search_word) {
+    // recommendation should be location focused
+    // recommendation should be user focused
+    // recommendation rely on good content
+    $.ajax({
+        url: 'http://180.76.244.130:3000/guide/getGuideList',
+        type: 'GET',
+        data:{
+            search_word: search_word
+        },
+        dataType: 'json'
+    }).done(function (guide_id_list) {
+        console.log(guide_id_list);
+        addGuide(guide_id_list)
+    });
+};
+
+let addGuide = function (guide_id_list) {
     let time = Date.now();
     let slot_count = 1;
-    for (let i in guide_ids) {
-        let guide_id = guide_ids[i]['guide_id'];
+    for (let i in guide_id_list) {
+        let guide_id = guide_id_list[i]['guide_id'];
+        let guide_name = guide_id_list[i]['guide_name'];
         console.log(guide_id);
         console.log(slot_count);
-        $(`#slot-${slot_count}`).prepend(`<div class="mui-card" id="guide_${guide_id}"></div>`);
-        let guide_id_element = $(`#guide_${guide_id}`);
-        guide_id_element.prepend(`<div class="mui-card-header mui-card-media" id="guide_${guide_id}_pic" style="height:40vw;background-image:url(../../img/interface/vertical-flow.png)"></div>`);
-        guide_id_element.append(`<div class="mui-card-content" id="guide_${guide_id}_content"></div>`);
-        $(`#guide_${guide_id}_content`).prepend(`<div class="mui-card-content-inner" id="guide_${guide_id}_inner_content"></div>`);
-        $(`#guide_${guide_id}_inner_content`).append(`<div>Posted on ${time}<div style="color: #333;">你的第一个推荐流</div></div>`);
+        addGuideToSlot(slot_count, guide_id, guide_name);
+
         // add click response to picture
         // use mui event management here
         //$(`#guide_${guide_id}_pic`).on('click', function(){
         // on cellphone it is tap
-        guide_name = `#guide_${guide_id}_pic`;
         let guide_id_pic_element = $(`#guide_${guide_id}_pic`);
         guide_id_pic_element.on('tap', function () {
-            console.log(`${guide_name} tapped`);
+            console.log(`#guide_${guide_id}_pic tapped`);
             getRootPageId(guide_id);
         });
         slot_count = slot_count + 1;
@@ -151,5 +164,14 @@ let addGuide = function (guide_ids) {
     });
     */
 };
+
+$('#user_search_button').on('tap',function () {
+    let search_word = $('#user_search_input').val();
+    $(`#slot-1`).empty();
+    $(`#slot-2`).empty();
+    $(`#slot-3`).empty();
+    $(`#slot-4`).empty();
+    getUserGuides(search_word);
+});
 
 getRecommendedGuides();

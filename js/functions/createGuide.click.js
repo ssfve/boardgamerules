@@ -14,6 +14,10 @@ $("#create_guide_button").on('click', function() {
     console.log('create_guide_button clicked');
     // get guide_id from ajax
     //let guide_id = 0;
+    $(`#slot-1`).empty();
+    $(`#slot-2`).empty();
+    $(`#slot-3`).empty();
+    $(`#slot-4`).empty();
     callGetGuideId();
 });
 
@@ -123,6 +127,22 @@ let savePageId = function(guide_id, page_id){
     });
 };
 
+let getRootPageId=function(guide_id){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/getAttribute',
+        type: 'GET',
+        data:{
+            table_name: 'guide_table',
+            attribute_name: 'root_page_id',
+            key_name: 'guide_id',
+            key_value: guide_id
+        }
+    }).done(function (root_page_id) {
+        console.log(root_page_id);
+        switchPage(page_address_seg, root_page_id);
+    });
+};
+
 let getUserGuides = function (search_word) {
     // recommendation should be location focused
     // recommendation should be user focused
@@ -141,22 +161,6 @@ let getUserGuides = function (search_word) {
     });
 };
 
-let getRootPageId=function(guide_id){
-    $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
-        type: 'GET',
-        data:{
-            table_name: 'guide_table',
-            attribute_name: 'root_page_id',
-            key_name: 'guide_id',
-            key_value: guide_id
-        }
-    }).done(function (root_page_id) {
-        console.log(root_page_id);
-        switchPage(page_address_seg, root_page_id);
-    });
-};
-
 let addGuide = function (guide_id_list) {
     let time = Date.now();
     let slot_count = 1;
@@ -165,13 +169,7 @@ let addGuide = function (guide_id_list) {
         let guide_name = guide_id_list[i]['guide_name'];
         console.log(guide_id);
         console.log(slot_count);
-        $(`#slot-${slot_count}`).empty();
-        $(`#slot-${slot_count}`).prepend(`<div class="mui-card" id="guide_${guide_id}"></div>`);
-        let guide_id_element = $(`#guide_${guide_id}`);
-        guide_id_element.prepend(`<div class="mui-card-header mui-card-media" id="guide_${guide_id}_pic" style="height:40vw;background-image:url(../../img/interface/vertical-flow.png)"></div>`);
-        guide_id_element.append(`<div class="mui-card-content" id="guide_${guide_id}_content"></div>`);
-        $(`#guide_${guide_id}_content`).prepend(`<div class="mui-card-content-inner" id="guide_${guide_id}_inner_content"></div>`);
-        $(`#guide_${guide_id}_inner_content`).append(`<div>Posted on ${time}<div style="color: #333;" id="guide_${guide_id}_text">${guide_name}</div></div>`);
+        addGuideToSlot(slot_count, guide_id, guide_name);
 
         // add click response to picture
         // use mui event management here
