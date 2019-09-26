@@ -23,7 +23,7 @@ $("#create_guide_button").on('click', function() {
 
 let addButtonFunction= function(guide_id){
     let time = Date.now();
-    addGuideToSlot(5, guide_id, '');
+    addEditGuideToSlot(5, guide_id, '');
     // add click response to picture
     // use mui event management here
     //$(`#guide_${guide_id}_pic`).on('click', function(){
@@ -166,7 +166,7 @@ let addGuide = function (guide_id_list) {
         let guide_name = guide_id_list[i]['guide_name'];
         console.log('guide_id='+guide_id);
         console.log(slot_count);
-        addGuideToSlot(slot_count, guide_id, guide_name);
+        addEditGuideToSlot(slot_count, guide_id, guide_name);
 
         // add click response to picture
         // use mui event management here

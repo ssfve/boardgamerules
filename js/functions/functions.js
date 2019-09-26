@@ -83,6 +83,19 @@ let addGuideToSlot=function(slot_number, guide_id, guide_name){
     $(`#guide_${guide_id}_inner_content`).append(`<div>${time}<div style="color: #333;" id="guide_${guide_id}_text">${guide_name}</div></div>`);
 };
 
+let addEditGuideToSlot=function(slot_number, guide_id, guide_name){
+    let time = Date.now();
+    let slot_element = $(`#slot-${slot_number}`);
+    slot_element.empty();
+    slot_element.prepend(`<div class="mui-card" id="guide_${guide_id}"></div>`);
+    let guide_id_element = $(`#guide_${guide_id}`);
+    guide_id_element.prepend(`<div class="mui-card-header mui-card-media" id="guide_${guide_id}_pic" style="height:40vw;background-image:url(../../img/interface/vertical-flow.png)"></div>`);
+    guide_id_element.append(`<div class="mui-card-content" id="guide_${guide_id}_content"></div>`);
+    $(`#guide_${guide_id}_content`).prepend(`<div class="mui-card-content-inner" id="guide_${guide_id}_inner_content"></div>`);
+    $(`#guide_${guide_id}_inner_content`).append(`<input type="text" class="mui-input-clear" placeholder="请输入流名称" id="guide_${guide_id}_text">`);
+    $(`#guide_${guide_id}_text`).val(guide_name);
+};
+
 let switchPage = function (address_seg, seg_replacement) {
     let index = window.location.href.lastIndexOf("\/");
     let address_prefix = window.location.href.substring(0, index + 1);

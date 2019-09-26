@@ -390,9 +390,6 @@ $('#home-button').on('tap',function(){
     console.log('page_id='+page_id);
     callReturnHome()
 });
-$('#home-button').on('click',function(){
-    callReturnHome()
-});
 
 callGetButtonText();
 callGetPageText();
