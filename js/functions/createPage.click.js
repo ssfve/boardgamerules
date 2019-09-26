@@ -1,6 +1,7 @@
 // create Page
 let fileName = '';
 let button_address_seg = "choosePage.html?buttonid=%data%";
+let guide_address_seg= "createGuide.html?userid=%data%";
 
 // get page_id globally
 let index = window.location.href.lastIndexOf("=");
@@ -57,11 +58,13 @@ let getButtonText = function (button_list) {
 
 let callGetGuideId = function (button_db_name) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/page/getPageAttribute',
+        url: 'http://180.76.244.130:3000/database/getAttribute',
         type: 'GET',
         data: {
+            table_name: 'raw_control_table',
             attribute_name: 'guide_id',
-            page_id: page_id
+            key_name: 'page_id',
+            key_value: page_id
         },
         dataType: "json"
     }).done(function (guide_id) {
@@ -348,6 +351,44 @@ let getTextContent = function (text_id) {
         $('#desc_input').val(text_content)
     });
 };
+
+let callReturnHome = function () {
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/getAttribute',
+        type: 'GET',
+        data: {
+            table_name: 'raw_control_table',
+            attribute_name: 'guide_id',
+            key_name: 'page_id',
+            key_value: page_id
+        },
+        dataType: "json"
+    }).done(function (guide_id) {
+        console.log('Returning guide_id=' + guide_id);
+        callGetUser(guide_id);
+    });
+};
+
+let callGetUser = function (guide_id) {
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/getAttribute',
+        type: 'GET',
+        data: {
+            table_name: 'guide_table',
+            attribute_name: 'creator',
+            key_name: 'guide_id',
+            key_value: guide_id
+        },
+        dataType: "json"
+    }).done(function (user_id) {
+        console.log('Returning user_id=' + user_id);
+        switchPage(guide_address_seg, user_id);
+    });
+};
+
+$('#home-button').on('tap',function(){
+    callReturnHome()
+});
 
 callGetButtonText();
 callGetPageText();
