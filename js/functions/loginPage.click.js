@@ -253,7 +253,7 @@ let checkUserInfo = function(input_name){
 };
 
 $('#create-button').on('tap', function(){
-   let input_name = $('user_name_input').val();
+   let input_name = $('#user_name_input').val();
    if(input_name === ''|| input_name === undefined || input_name === null){
        alert('请输入用户名')
    } else{
