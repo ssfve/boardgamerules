@@ -3,6 +3,13 @@
 // TODO: get guide list
 let page_address_seg = "createPage.html?pageid=%data%";
 
+// get user_id globally
+let index = window.location.href.lastIndexOf("=");
+let url_length = window.location.href.length;
+let user_id = window.location.href.substring(index + 1, url_length);
+console.log('user_id=' + user_id);
+
+
 $("#create_guide_button").on('click', function() {
     console.log('create_guide_button clicked');
     // get guide_id from ajax
