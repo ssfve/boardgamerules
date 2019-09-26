@@ -112,7 +112,7 @@ let createImageId=function(){
     });
 };
 
-let getImageId=function(){
+let getImageForBackground=function(){
     $.ajax({
         url: 'http://180.76.244.130:3000/database/getAttribute',
         type: 'GET',
@@ -395,4 +395,4 @@ $('#home-button').on('tap',function(){
 
 callGetButtonText();
 callGetPageText();
-getImageId();
+getImageForBackground();

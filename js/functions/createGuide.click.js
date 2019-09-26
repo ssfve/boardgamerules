@@ -23,7 +23,13 @@ $("#create_guide_button").on('click', function() {
 
 let addButtonFunction= function(guide_id){
     let time = Date.now();
-    addEditGuideToSlot(5, guide_id, '');
+    let o ={
+        slot_count: 5,
+        guide_id: guide_id,
+        guide_name: '我的又一个流',
+        image_id: ''
+    };
+    addEditGuideToSlot(o);
     // add click response to picture
     // use mui event management here
     //$(`#guide_${guide_id}_pic`).on('click', function(){
@@ -72,10 +78,10 @@ let callGetGuideId = function(){
         data:{
             user_id: user_id
         }
-    }).done(function(guideId){
-        console.log('Going to get GuideId');
-        console.log('guide id is '+guideId);
-        addButtonFunction(guideId)
+    }).done(function(guide_id){
+        //console.log('Going to get GuideId');
+        console.log('guide_id='+guide_id);
+        addButtonFunction(guide_id)
     });
 };
 
