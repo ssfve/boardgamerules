@@ -1,6 +1,7 @@
 // create Page
 let fileName = '';
 let button_address_seg = "choosePage.html?buttonid=%data%";
+let page_address_seg = "showPage.html?pageid=%data%";
 
 // get page_id globally
 let index = window.location.href.lastIndexOf("=");
@@ -22,6 +23,48 @@ let callGetButtonText = function () {
     });
 };
 
+
+let changeButtonText=function(button_id, button_number){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/getAttribute',
+        type: 'GET',
+        data: {
+            table_name: 'raw_button_table',
+            attribute_name: 'button_text',
+            key_name: 'button_id',
+            key_value: button_id
+        }
+    }).done(function (button_text) {
+        console.log('Returning button text is ' + button_text);
+        let button_old_id = 'default-button-' + button_number;
+        let button_new_id = 'button-' + button_id;
+        let old_button_element = $(`#${button_old_id}`);
+        old_button_element.html(button_text);
+        old_button_element.attr("id", button_new_id);
+        addButtonEvent(button_id);
+    });
+};
+
+let addButtonEvent=function(button_id){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/getAttribute',
+        type: 'GET',
+        data: {
+            table_name: 'raw_button_table',
+            attribute_name: 'button_to_page_id',
+            key_name: 'button_id',
+            key_value: button_id
+        }
+    }).done(function (button_to_page_id) {
+        console.log('button_to_page_id=' + button_to_page_id);
+        let button_new_id = 'button-' + button_id;
+        let button_element = $(`#${button_new_id}`);
+        button_element.on('tap',function () {
+            switchPage(page_address_seg, button_to_page_id);
+        });
+    });
+};
+
 let getButtonText = function (button_list) {
     console.log(button_list);
     for (let element in button_list) {
@@ -39,24 +82,7 @@ let getButtonText = function (button_list) {
         } else {
             let index = element.lastIndexOf("_");
             let button_number = element.substring(index - 1, index);
-            console.log(button_number);
-            let button_old_id = 'default-button-' + button_number;
-            let button_new_id = 'button-' + button_id;
-            let old_button_element = $(`#${button_old_id}`);
-            $.ajax({
-                url: 'http://180.76.244.130:3000/database/getAttribute',
-                type: 'GET',
-                data: {
-                    table_name: 'raw_button_table',
-                    attribute_name: 'button_text',
-                    key_name: 'button_id',
-                    key_value: button_id
-                }
-            }).done(function (button_text) {
-                console.log('Returning button text is ' + button_text);
-                old_button_element.html(button_text);
-                old_button_element.attr("id", button_new_id);
-            });
+            changeButtonText(button_id, button_number);
         }
     }
 };
@@ -266,7 +292,7 @@ let getTextContent = function (text_id) {
     });
 };
 
-let getImageId=function(){
+let getImageForPage=function(){
     $.ajax({
         url: 'http://180.76.244.130:3000/database/getAttribute',
         type: 'GET',
@@ -315,4 +341,4 @@ $('#back-button').on('tap',function(){
 changeStyle();
 callGetButtonText();
 callGetPageText();
-getImageId();
+getImageForPage();

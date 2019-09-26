@@ -191,43 +191,6 @@ let addGuide = function (guide_id_list) {
     */
 };
 
-let getPageIdOnLoad = function(o){
-    $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
-        type: 'GET',
-        data: {
-            table_name: 'guide_table',
-            attribute_name: 'root_page_id',
-            key_name: 'guide_id',
-            key_value: o.guide_id
-        }
-    }).done(function(page_id){
-        console.log('page_id is '+page_id);
-        if(page_id === ''){
-            addEditGuideToSlot(o);
-        }else{
-            o.page_id = page_id;
-            getImageId(o);
-        }
-    });
-};
-
-let getImageId=function(o){
-    $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
-        type: 'GET',
-        data:{
-            table_name: 'raw_control_table',
-            attribute_name: 'image1_id',
-            key_name: 'page_id',
-            key_value: o.page_id
-        }
-    }).done(function (image_id) {
-        console.log('Returning image_id is ' + image_id);
-        o.image_id = image_id;
-        addEditGuideToSlot(o);
-    });
-};
 
 getUserGuides('');
 

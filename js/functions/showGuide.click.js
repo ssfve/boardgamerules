@@ -96,9 +96,9 @@ let getRecommendedGuides = function () {
         url: 'http://180.76.244.130:3000/page/getValidGuides',
         type: 'GET',
         dataType: 'json'
-    }).done(function (guide_ids) {
-        console.log(guide_ids);
-        addGuide(guide_ids)
+    }).done(function (guide_id_list) {
+        console.log(guide_id_list);
+        addGuide(guide_id_list)
     });
 };
 
@@ -143,17 +143,19 @@ let addGuide = function (guide_id_list) {
         let guide_name = guide_id_list[i]['guide_name'];
         console.log(guide_id);
         console.log(slot_count);
-        addGuideToSlot(slot_count, guide_id, guide_name);
+        let o = {
+            slot_count: slot_count,
+            guide_id: guide_id,
+            guide_name: guide_name,
+            page_id: '',
+            image_id: ''
+        };
+        getPageIdOnLoad(o);
 
         // add click response to picture
         // use mui event management here
         //$(`#guide_${guide_id}_pic`).on('click', function(){
         // on cellphone it is tap
-        let guide_id_pic_element = $(`#guide_${guide_id}_pic`);
-        guide_id_pic_element.on('tap', function () {
-            console.log(`#guide_${guide_id}_pic tapped`);
-            getRootPageId(guide_id);
-        });
         slot_count = slot_count + 1;
     }
 

@@ -68,7 +68,7 @@ let getPreviousPageId = function (page_address_seg, button_id) {
 
 let addSwitchCheck = function (page_id) {
     let btnArray = ['返回', '编辑'];
-    mui.confirm('按钮跳转已指定，是否编辑新页面？(不编辑则将返回按钮所在页)', '你好，指客！', btnArray, function (e) {
+    mui.confirm('按钮跳转已指定，是否编辑跳转页面？(不编辑则将返回按钮所在页)', '你好，指客！', btnArray, function (e) {
         if (e.index === 1) {
             console.log('你刚确认跳转');
             switchPage(page_address_seg, page_id);
