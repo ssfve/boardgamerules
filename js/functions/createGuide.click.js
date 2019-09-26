@@ -23,15 +23,7 @@ $("#create_guide_button").on('click', function() {
 
 let addButtonFunction= function(guide_id){
     let time = Date.now();
-    $('#slot-5').empty();
-    $('#slot-5').prepend(`<div class="mui-card" id="guide_${guide_id}"></div>`);
-    let guide_id_element = $(`#guide_${guide_id}`);
-    guide_id_element.prepend(`<div class="mui-card-header mui-card-media" id="guide_${guide_id}_pic" style="height:40vw;background-image:url(../../img/interface/guide-default.png)"></div>`);
-    guide_id_element.append(`<div class="mui-card-content" id="guide_${guide_id}_content"></div>`);
-    $(`#guide_${guide_id}_content`).prepend(`<div class="mui-card-content-inner" id="guide_${guide_id}_inner_content"></div>`);
-    $(`#guide_${guide_id}_inner_content`).append(`<div class="mui-col-sm-12"><div>Posted on ${time}</div></div>`);
-    $(`#guide_${guide_id}_inner_content`).append(`<div class="mui-col-sm-12"><input type="text" class="mui-input-clear" id="guide_${guide_id}_name" placeholder="请输入流名称"></div>`);
-
+    addGuideToSlot(5, guide_id, '');
     // add click response to picture
     // use mui event management here
     //$(`#guide_${guide_id}_pic`).on('click', function(){
