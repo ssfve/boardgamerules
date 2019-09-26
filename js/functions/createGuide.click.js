@@ -166,17 +166,20 @@ let addGuide = function (guide_id_list) {
         let guide_name = guide_id_list[i]['guide_name'];
         console.log('guide_id='+guide_id);
         console.log(slot_count);
-        addEditGuideToSlot(slot_count, guide_id, guide_name);
+        let o = {
+            slot_count: slot_count,
+            guide_id: guide_id,
+            guide_name: guide_name,
+            page_id: '',
+            image_id: ''
+        };
+        getPageIdOnLoad(o);
 
         // add click response to picture
         // use mui event management here
         //$(`#guide_${guide_id}_pic`).on('click', function(){
         // on cellphone it is tap
-        let guide_id_pic_element = $(`#guide_${guide_id}_pic`);
-        guide_id_pic_element.on('tap', function () {
-            console.log(`#guide_${guide_id}_pic tapped`);
-            getRootPageId(guide_id);
-        });
+
         slot_count = slot_count + 1;
     }
 
@@ -186,6 +189,44 @@ let addGuide = function (guide_id_list) {
         callGetPageId(guide_id);
     });
     */
+};
+
+let getPageIdOnLoad = function(o){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/getAttribute',
+        type: 'GET',
+        data: {
+            table_name: 'guide_table',
+            attribute_name: 'root_page_id',
+            key_name: 'guide_id',
+            key_value: o.guide_id
+        }
+    }).done(function(page_id){
+        console.log('page_id is '+page_id);
+        if(page_id === ''){
+            addEditGuideToSlot(o);
+        }else{
+            o.page_id = page_id;
+            getImageId(o);
+        }
+    });
+};
+
+let getImageId=function(o){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/getAttribute',
+        type: 'GET',
+        data:{
+            table_name: 'raw_control_table',
+            attribute_name: 'image1_id',
+            key_name: 'page_id',
+            key_value: o.page_id
+        }
+    }).done(function (image_id) {
+        console.log('Returning image_id is ' + image_id);
+        o.image_id = image_id;
+        addEditGuideToSlot(o);
+    });
 };
 
 getUserGuides('');

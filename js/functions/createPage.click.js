@@ -125,7 +125,9 @@ let getImageId=function(){
     }).done(function (image_id) {
         console.log('Returning image_id is ' + image_id);
         fileName = image_id + '.jpg';
-        showBackground(fileName);
+        if(fileName !== '0.jpg'){
+            showBackground(fileName);
+        }
     });
 };
 
