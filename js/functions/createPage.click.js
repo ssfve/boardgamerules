@@ -387,6 +387,10 @@ let callGetUser = function (guide_id) {
 };
 
 $('#home-button').on('tap',function(){
+    console.log('page_id='+page_id);
+    callReturnHome()
+});
+$('#home-button').on('click',function(){
     callReturnHome()
 });
 

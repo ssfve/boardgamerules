@@ -138,8 +138,13 @@ let getRootPageId=function(guide_id){
             key_value: guide_id
         }
     }).done(function (root_page_id) {
-        console.log(root_page_id);
-        switchPage(page_address_seg, root_page_id);
+        console.log('root_page_id='+root_page_id);
+        if( root_page_id === ''){
+            console.log('flow is not previously created');
+            callGetPageId(guide_id);
+        }else{
+            switchPage(page_address_seg, root_page_id);
+        }
     });
 };
 
@@ -167,7 +172,7 @@ let addGuide = function (guide_id_list) {
     for (let i in guide_id_list) {
         let guide_id = guide_id_list[i]['guide_id'];
         let guide_name = guide_id_list[i]['guide_name'];
-        console.log(guide_id);
+        console.log('guide_id='+guide_id);
         console.log(slot_count);
         addGuideToSlot(slot_count, guide_id, guide_name);
 
