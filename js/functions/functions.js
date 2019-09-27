@@ -110,7 +110,33 @@ let addEditGuideToSlot=function(o){
     let guide_id_pic_element = $(`#guide_${guide_id}_pic`);
     guide_id_pic_element.on('tap', function () {
         console.log(`#guide_${guide_id}_pic tapped`);
+        let guide_name = $(`#guide_${guide_id}_text`).val();
+        console.log(guide_name);
+        let o = {
+            table_name: 'guide_table',
+            attribute_name: 'guide_name',
+            attribute_value: guide_name,
+            key_name: 'guide_id',
+            key_value: guide_id
+        };
+        callSaveAttribute(o);
         getRootPageId(guide_id);
+    });
+};
+
+let callSaveAttribute= function(o){
+    $.ajax({
+        url: 'http://180.76.244.130:3000/database/updateAttribute',
+        type: 'GET',
+        data:{
+            table_name: o.table_name,
+            attribute_name: o.attribute_name,
+            attribute_value: o.attribute_value,
+            key_name: o.key_name,
+            key_value: o.key_value
+        }
+    }).done(function(data){
+        console.log(data);
     });
 };
 

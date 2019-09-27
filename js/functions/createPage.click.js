@@ -218,61 +218,101 @@ let callChangeBackground = function (form, form_data) {
 
 };
 
-$('#default-add-button').on('tap', function () {
+let createTextHandler=function(){
+    callCreateText(this.id)
+};
+
+let default_add_button_event=function () {
+    let db4 = $(`#${button_map.button4}`);
+    if (db4.css('opacity') === '0') {
+        db4.css('opacity', 100);
+        db4.on('tap', createTextHandler);
+        $('#default-sub-button').css('opacity', 100);
+        $('#default-sub-button').on('tap', default_sub_button_event);
+        return;
+    }
     let db3 = $(`#${button_map.button3}`);
     if (db3.css('opacity') === '0') {
         db3.css('opacity', 100);
-        db3.on('tap');
-        // $('#default-sub-button').css('opacity', 100);
+        db3.on('tap', createTextHandler);
         return;
     }
     let db2 = $(`#${button_map.button2}`);
     if (db2.css('opacity') === '0') {
         db2.css('opacity', 100);
-        db2.on('tap');
-        // $('#default-sub-button').css('opacity', 100);
+        db2.on('tap', createTextHandler);
         return;
     }
     let db1 = $(`#${button_map.button1}`);
     if (db1.css('opacity') === '0') {
         db1.css('opacity', 100);
-        db1.on('tap');
+        db1.on('tap', createTextHandler);
         $('#default-add-button').css('opacity', 0);
         $('#default-add-button').off('tap');
-        $('#default-sub-button').css('opacity', 100);
-        $('#default-sub-button').on('tap');
     }
-});
+};
 
-$('#default-sub-button').on('tap', function () {
+let performDelete=function(element, button_number){
+    if(!element.includes('default')){
+        // remove to page id
+        let button_id = element.split('-')[1];
+        let o = {
+            table_name: 'raw_button_table',
+            attribute_name: 'button_to_page_id',
+            attribute_value: '',
+            key_name: 'button_id',
+            key_value: button_id
+        };
+        callSaveAttribute(o);
+        let p = {
+            table_name: 'raw_control_table',
+            attribute_name: 'button'+button_number+'_id',
+            attribute_value: '',
+            key_name: 'page_id',
+            key_value: page_id
+        };
+        callSaveAttribute(p);
+        button_map['button'+button_number] = 'default-button-'+button_number;
+        console.log(button_map);
+    }
+};
+
+let default_sub_button_event=function () {
     let db1 = $(`#${button_map.button1}`);
     if (db1.css('opacity') === '1') {
         db1.css('opacity', 0);
         db1.off('tap');
+        performDelete(button_map.button1, 1);
         $('#default-add-button').css('opacity', 100);
-        $('#default-add-button').on('tap');
+        $('#default-add-button').on('tap', default_add_button_event);
         return;
     }
     let db2 = $(`#${button_map.button2}`);
     if (db2.css('opacity') === '1') {
         db2.css('opacity', 0);
         db2.off('tap');
+        performDelete(button_map.button2, 2);
         return;
     }
     let db3 = $(`#${button_map.button3}`);
     if (db3.css('opacity') === '1') {
         db3.css('opacity', 0);
         db3.off('tap');
+        performDelete(button_map.button3, 3);
         return;
     }
     let db4 = $(`#${button_map.button4}`);
     if (db4.css('opacity') === '1') {
         db4.css('opacity', 0);
         db4.off('tap');
+        performDelete(button_map.button4, 4);
         $('#default-sub-button').css('opacity', 0);
         $('#default-sub-button').off('tap');
     }
-});
+};
+
+$('#default-sub-button').on('tap', default_sub_button_event);
+$('#default-add-button').on('tap', default_add_button_event);
 
 $('#default-add-button-2').on('click', function (e) {
     $('#default-button-1').css('opacity', 100);
@@ -348,22 +388,19 @@ let callButtonCheck = function (button_list, button_default_name) {
 };
 
 // if any button click, save text first
-$('#default-button-4').on('tap', function () {
-    // save textArea here first
+$('#default-button-4').on('tap', function(){
+    callCreateText(this.id);
+});
+$('#default-button-3').on('tap', function(){
+    callCreateText(this.id);
+});
+$('#default-button-2').on('tap', function(){
+    callCreateText(this.id);
+});
+$('#default-button-1').on('tap', function(){
     callCreateText(this.id);
 });
 
-$('#default-button-3').on('tap', function () {
-    callCreateText(this.id);
-});
-
-$('#default-button-2').on('tap', function () {
-    callCreateText(this.id);
-});
-
-$('#default-button-1').on('tap', function () {
-    callCreateText(this.id);
-});
 
 let callGetPageText = function () {
     $.ajax({
