@@ -248,6 +248,9 @@ let default_add_button_event=function () {
         db1.on('tap', createTextHandler);
         $('#default-add-button').css('opacity', 0);
         $('#default-add-button').off('tap');
+    }else{
+        $('#default-add-button').css('opacity', 0);
+        $('#default-add-button').off('tap');
     }
 };
 
