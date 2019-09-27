@@ -2,7 +2,7 @@
 let fileName = '';
 let button_address_seg = "choosePage.html?buttonid=%data%";
 let page_address_seg = "createPage.html?pageid=%data%";
-let guide_address_seg= "createGuide.html?userid=%data%";
+let guide_address_seg = "createGuide.html?userid=%data%";
 
 // get button_id globally
 let index = window.location.href.lastIndexOf("=");
@@ -239,12 +239,12 @@ let callGetButtonText = function () {
     });
 };
 
-let checkUserInfo = function(input_name){
+let checkUserInfo = function (input_name) {
     $.ajax({
         url: 'http://180.76.244.130:3000/user/checkUserInfo',
         type: 'GET',
         data: {
-           user_name: input_name
+            user_name: input_name
         }
     }).done(function (user_id) {
         console.log('Returning button text is ' + user_id);
@@ -252,13 +252,26 @@ let checkUserInfo = function(input_name){
     });
 };
 
-$('#create-button').on('tap', function(){
-   let input_name = $('#user_name_input').val();
-   if(input_name === ''|| input_name === undefined || input_name === null){
-       alert('请输入用户名')
-   } else{
+$('#create-button').on('tap', function () {
+    let input_name = $('#user_name_input').val();
+    if (input_name === '' || input_name === undefined || input_name === null) {
+        alert('请输入用户名')
+    } else {
         checkUserInfo(input_name);
-   }
+    }
+});
+
+$('#user_name_input').on('keypress',function(){
+    let input_name = $('#user_name_input').val();
+    console.log(event.keyCode);
+    event.preventDefault(); //禁止默认事件（默认是换行）
+    if (event.keyCode === 13) { //如果按的是enter键 13是enter
+        if (input_name === '' || input_name === undefined || input_name === null) {
+            alert('请输入用户名');
+        } else {
+            checkUserInfo(input_name);
+        }
+    }
 });
 
 
