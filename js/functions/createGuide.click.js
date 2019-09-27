@@ -200,11 +200,14 @@ let addGuide = function (guide_id_list) {
 
 getUserGuides('');
 
-$('#user_search_button').on('tap',function () {
-   let search_word = $('#user_search_input').val();
-    $(`#slot-1`).empty();
-    $(`#slot-2`).empty();
-    $(`#slot-3`).empty();
-    $(`#slot-4`).empty();
-   getUserGuides(search_word);
+$('#user_search_input').on('keypress',function (e) {
+    console.log(e.keyCode);
+    if (e.keyCode === 13) { //如果按的是enter键 13是enter
+        let search_word = $('#user_search_input').val();
+        $(`#slot-1`).empty();
+        $(`#slot-2`).empty();
+        $(`#slot-3`).empty();
+        $(`#slot-4`).empty();
+        getUserGuides(search_word);
+    }
 });

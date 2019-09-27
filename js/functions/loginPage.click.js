@@ -261,11 +261,11 @@ $('#create-button').on('tap', function () {
     }
 });
 
-$('#user_name_input').on('keypress',function(){
+$('#user_name_input').on('keypress',function(e){
     let input_name = $('#user_name_input').val();
-    console.log(event.keyCode);
-    event.preventDefault(); //禁止默认事件（默认是换行）
-    if (event.keyCode === 13) { //如果按的是enter键 13是enter
+    console.log(e.keyCode);
+    e.preventDefault(); //禁止默认事件（默认是换行）
+    if (e.keyCode === 13) { //如果按的是enter键 13是enter
         if (input_name === '' || input_name === undefined || input_name === null) {
             alert('请输入用户名');
         } else {
