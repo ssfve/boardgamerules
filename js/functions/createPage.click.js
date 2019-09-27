@@ -41,7 +41,7 @@ let getButtonText = function (button_list) {
         let button_id = button_list[element];
         if (button_id === '' || button_id === null || button_id === undefined) {
             console.log('button is not set switch event off');
-            $(`#default-button-${button_number}`).off('tap');
+            // $(`#default-button-${button_number}`).off('tap');
         } else {
             let button_old_id = 'default-button-' + button_number;
             let button_new_id = 'button-' + button_id;
@@ -60,10 +60,9 @@ let getButtonText = function (button_list) {
                 console.log('Returning button text is ' + button_text);
                 old_button_element.html(button_text);
                 old_button_element.attr("id", button_new_id);
-                console.log(button_map);
                 console.log(button_map[button_map_key]);
                 button_map[button_map_key] = button_new_id;
-
+                console.log(button_map);
                 // add event for new button
                 $(`#${button_new_id}`).on('tap', function () {
                     callCreateText(this.id);
