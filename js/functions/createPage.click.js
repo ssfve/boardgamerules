@@ -1,13 +1,20 @@
 // create Page
 let fileName = '';
 let button_address_seg = "choosePage.html?buttonid=%data%";
-let guide_address_seg= "createGuide.html?userid=%data%";
+let guide_address_seg = "createGuide.html?userid=%data%";
 
 // get page_id globally
 let index = window.location.href.lastIndexOf("=");
 let url_length = window.location.href.length;
 let page_id = window.location.href.substring(index + 1, url_length);
 console.log('page_id=' + page_id);
+
+let button_map = {
+    button1: 'default-button-1',
+    button2: 'default-button-2',
+    button3: 'default-button-3',
+    button4: 'default-button-4',
+};
 
 let callGetButtonText = function () {
     $.ajax({
@@ -28,15 +35,17 @@ let getButtonText = function (button_list) {
     for (let element in button_list) {
         //element.hasOwnProperty()
         console.log(element);
+        let index = element.lastIndexOf("_");
+        let button_number = element.substring(index - 1, index);
+        console.log(button_number);
         let button_id = button_list[element];
         if (button_id === '' || button_id === null || button_id === undefined) {
-            console.log('button is not set');
+            console.log('button is not set switch event off');
+            $(`#default-button-${button_number}`).off('tap');
         } else {
-            let index = element.lastIndexOf("_");
-            let button_number = element.substring(index - 1, index);
-            console.log(button_number);
             let button_old_id = 'default-button-' + button_number;
             let button_new_id = 'button-' + button_id;
+            let button_map_key = 'button' + button_number;
             let old_button_element = $(`#${button_old_id}`);
             $.ajax({
                 url: 'http://180.76.244.130:3000/database/getAttribute',
@@ -51,6 +60,14 @@ let getButtonText = function (button_list) {
                 console.log('Returning button text is ' + button_text);
                 old_button_element.html(button_text);
                 old_button_element.attr("id", button_new_id);
+                console.log(button_map);
+                console.log(button_map[button_map_key]);
+                button_map[button_map_key] = button_new_id;
+
+                // add event for new button
+                $(`#${button_new_id}`).on('tap', function () {
+                    callCreateText(this.id);
+                });
             });
         }
     }
@@ -93,11 +110,11 @@ $('#background_submit_form').on('submit', function (e) {
     createImageId();
 });
 
-let createImageId=function(){
+let createImageId = function () {
     $.ajax({
         url: 'http://180.76.244.130:3000/image/writeImageDB',
         type: 'GET',
-        data:{
+        data: {
             page_id: page_id
         }
     }).done(function (image_id) {
@@ -112,11 +129,11 @@ let createImageId=function(){
     });
 };
 
-let getImageForBackground=function(){
+let getImageForBackground = function () {
     $.ajax({
         url: 'http://180.76.244.130:3000/database/getAttribute',
         type: 'GET',
-        data:{
+        data: {
             table_name: 'raw_control_table',
             attribute_name: 'image1_id',
             key_name: 'page_id',
@@ -125,19 +142,19 @@ let getImageForBackground=function(){
     }).done(function (image_id) {
         console.log('Returning image_id is ' + image_id);
         fileName = image_id + '.jpg';
-        if(fileName !== '0.jpg'){
+        if (fileName !== '0.jpg') {
             showBackground(fileName);
         }
     });
 };
 
-let showBackground=function(file_name){
-    $('<img/>').attr('src', `http://180.76.244.130:18001/${file_name}`).on('load', function() {
+let showBackground = function (file_name) {
+    $('<img/>').attr('src', `http://180.76.244.130:18001/${file_name}`).on('load', function () {
         console.log('blurred and compressed img is downloaded');
         $(this).remove(); // prevent memory leaks as @benweet suggested
         $('body').css('background-image', `url(http://180.76.244.130:18001/${file_name})`);
     });
-    $('<img/>').attr('src', `http://180.76.244.130:18000/${file_name}`).on('load', function() {
+    $('<img/>').attr('src', `http://180.76.244.130:18000/${file_name}`).on('load', function () {
         console.log('original img is downloaded');
         $(this).remove(); // prevent memory leaks as @benweet suggested
         $('body').css('background-image', `url(http://180.76.244.130:18000/${file_name})`);
@@ -146,7 +163,7 @@ let showBackground=function(file_name){
 
 let callChangeBackground = function (form, form_data) {
     let xhr = new XMLHttpRequest();
-    let url_action =  form.attr('action') + "/?file_name="+fileName;
+    let url_action = form.attr('action') + "/?file_name=" + fileName;
     console.log(url_action);
     xhr.open(form.attr('method'), url_action, true);
     xhr.withCredentials = true;
@@ -202,42 +219,58 @@ let callChangeBackground = function (form, form_data) {
 };
 
 $('#default-add-button').on('tap', function () {
-    let db3 = $('#default-button-3');
+    let db3 = $(`#${button_map.button3}`);
     if (db3.css('opacity') === '0') {
         db3.css('opacity', 100);
-        $('#default-sub-button').css('opacity', 100);
+        db3.on('tap');
+        // $('#default-sub-button').css('opacity', 100);
         return;
     }
-    let db2 = $('#default-button-2');
+    let db2 = $(`#${button_map.button2}`);
     if (db2.css('opacity') === '0') {
         db2.css('opacity', 100);
-        $('#default-sub-button').css('opacity', 100);
+        db2.on('tap');
+        // $('#default-sub-button').css('opacity', 100);
         return;
     }
-    let db1 = $('#default-button-1');
+    let db1 = $(`#${button_map.button1}`);
     if (db1.css('opacity') === '0') {
         db1.css('opacity', 100);
+        db1.on('tap');
         $('#default-add-button').css('opacity', 0);
+        $('#default-add-button').off('tap');
         $('#default-sub-button').css('opacity', 100);
+        $('#default-sub-button').on('tap');
     }
 });
 
 $('#default-sub-button').on('tap', function () {
-    let db1 = $('#default-button-1');
+    let db1 = $(`#${button_map.button1}`);
     if (db1.css('opacity') === '1') {
         db1.css('opacity', 0);
+        db1.off('tap');
         $('#default-add-button').css('opacity', 100);
+        $('#default-add-button').on('tap');
         return;
     }
-    let db2 = $('#default-button-2');
+    let db2 = $(`#${button_map.button2}`);
     if (db2.css('opacity') === '1') {
         db2.css('opacity', 0);
+        db2.off('tap');
         return;
     }
-    let db3 = $('#default-button-3');
+    let db3 = $(`#${button_map.button3}`);
     if (db3.css('opacity') === '1') {
         db3.css('opacity', 0);
+        db3.off('tap');
+        return;
+    }
+    let db4 = $(`#${button_map.button4}`);
+    if (db4.css('opacity') === '1') {
+        db4.css('opacity', 0);
+        db4.off('tap');
         $('#default-sub-button').css('opacity', 0);
+        $('#default-sub-button').off('tap');
     }
 });
 
@@ -324,6 +357,14 @@ $('#default-button-3').on('tap', function () {
     callCreateText(this.id);
 });
 
+$('#default-button-2').on('tap', function () {
+    callCreateText(this.id);
+});
+
+$('#default-button-1').on('tap', function () {
+    callCreateText(this.id);
+});
+
 let callGetPageText = function () {
     $.ajax({
         url: 'http://180.76.244.130:3000/database/getAttribute',
@@ -388,10 +429,11 @@ let callGetUser = function (guide_id) {
     });
 };
 
-$('#home-button').on('tap',function(){
-    console.log('page_id='+page_id);
+$('#home-button').on('tap', function () {
+    console.log('page_id=' + page_id);
     callReturnHome()
 });
+
 
 callGetButtonText();
 callGetPageText();
