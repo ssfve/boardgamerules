@@ -338,6 +338,8 @@ $('#back-button').on('tap',function(){
     history.back()
 });
 
+$('#fullscreen-button').on('tap', goToFullScreen);
+
 changeStyle();
 callGetButtonText();
 callGetPageText();

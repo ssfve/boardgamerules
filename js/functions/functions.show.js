@@ -561,3 +561,38 @@ let uploadFile = function (file_object) {
 		xhr.send(form_data);
     }
 };
+
+let goToFullScreen=function(){
+    let element = document.documentElement;
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    }
+    let fullscreenElement = $('#fullscreen-button');
+    fullscreenElement.off('tap');
+    fullscreenElement.on('tap', escFullScreen);
+    fullscreenElement.html('半屏');
+};
+
+let escFullScreen=function(){
+    let element = document.documentElement;
+    if(document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
+    } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    }
+    let fullscreenElement = $('#fullscreen-button');
+    fullscreenElement.off('tap');
+    fullscreenElement.on('tap', goToFullScreen);
+    fullscreenElement.html('全屏');
+};
+
