@@ -10,7 +10,7 @@ var theme_color = '';
 var content_color = '';
 var default_color = '';
 var bg_color = '';
-var nodejs_url = 'http://180.76.244.130:3000/';
+var nodejs_url = `http://${serverDomain}:${serverPort}/';
 //page
 var current_page = 'gamerule';
 var href = location.href;

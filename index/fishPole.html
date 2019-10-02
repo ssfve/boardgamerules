@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://avvbxt.epub360.cn/v2/manage/book/2qrzue/ -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>gameCover</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="fishpole-boardgamerule">
+    <meta name="author" content="boardgamerules">
+    <meta name="version" content="boardgamerules 2.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/mui.min.css">
+    <link href="../css/mui.picker.css" rel="stylesheet"/>
+    <link href="../css/mui.poppicker.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="../css/app.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/fp.style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/bgr.imageviewer.css"/>
+
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="../js/fishPole/fishpole.variables.js"></script>
+    <script type="text/javascript" src="../js/global.variables.js"></script>
+    <script type="text/javascript" src="../js/page/hotlist.variables.js"></script>
+
+    <script type="text/javascript" src="../js/functions/database_util.js"></script>
+</head>
+
+<body>
+<div id="canvasWrapper" class="fishpole-background">
+    <div class="mui-inner-wrap">
+        <div id="mainPageScroll" class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <div class="mui-content" style="padding-top: 0;background-color: transparent;">
+                    <div class="mui-content-padded">
+                        <div id="pdf-content">
+                            <form method="POST" enctype="multipart/form-data"
+                                  action="http://${serverDomain}:${serverPort}/games/savePDF">
+                                <label for="pdf_file" class="btn">上传桌游英文规则（选择鱼饵）:</label>
+                                <br><br>
+                                <input type="file" id="pdf_file" name="pdf_file"/>
+                                <br><br>
+                                <label for="receiver_email" class="btn">输入中文规则接收邮箱（准备水桶）:</label>
+                                <br><br>
+                                <input type="text" id="receiver_email" class="mui-input-clear" placeholder="1234567@qq.com">
+                                <br><br>
+                                <button type="button" id="upload_button" onclick="submit_translate_info()">开始钓鱼</button>
+                                <div id="loading"></div>
+                            </form>
+                            <progress value="0" max="100" id="progress" style="height: 20px; width: 100%"></progress>
+                            <div id='uploadNotice' class="ui-alert"></div>
+                            <div id='cropLenResult' class="ui-alert"></div>
+                            <div id='rulebookNameResult' class="ui-alert"></div>
+                            <div id='langNameResult' class="ui-alert"></div>
+                            <div id='sourceNameResult' class="ui-alert"></div>
+                        </div>
+                    </div>
+                    <div class="mui-off-canvas-backdrop"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/mui.min.js"></script>
+    <script src="../js/mui.zoom.js"></script>
+    <script src="../js/mui.previewimage.js"></script>
+    <script src="../js/mui.picker.js"></script>
+    <script src="../js/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../js/functions/functions.js"></script>
+    <script type="text/javascript" src="../js/fishPole/cover.interface.js"></script>
+    <script type="text/javascript" src="../js/fishPole/cover.event.js"></script>
+    <script src="../js/functions/document.ready.js"></script>
+    <!--<script src="../js/mui.picker.min.js"></script>-->
+    <script type="text/javascript" src="../js/functions/after_ready.js"></script>
+    <script type="text/javascript" src="../js/functions/fishPole.click.js"></script>
+</div>
+
+</body>
+
+</html>

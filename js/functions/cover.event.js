@@ -1,68 +1,13 @@
 mui.init();
-
-var slider = mui("#slider");
-//var btn1 = document.getElementById("button1").id;
-//监听点击事件
-function btn1_click() {
-	mui.openWindow({
-		url: "gameIntro.html",
-		id: "intro",
-		createNew: false,
-		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-		show: {
-			autoShow: true
-		},
-		waiting: {
-			autoShow: true, //自动显示等待框，默认为true
-			title: '正在加载...' //等待对话框上显示的提示内容
-		}
-	})
+options = {
+    scrollY: true, //是否竖向滚动
+    scrollX: false, //是否横向滚动
+    startX: 0, //初始化时滚动至x
+    startY: 0, //初始化时滚动至y
+    indicators: true, //是否显示滚动条
+    deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+    bounce: true //是否启用回弹
 };
-
-function btn2_click() {
-	mui.openWindow({
-		url: "gameSetup.html",
-		id: "setup1",
-		createNew: false,
-		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-		show: {
-			autoShow: true
-		},
-		waiting: {
-			autoShow: true, //自动显示等待框，默认为true
-			title: '正在加载...' //等待对话框上显示的提示内容
-		}
-	})
-};
-
-function btn3_click() {
-	mui.openWindow({
-		url: "gameFlow.html",
-		id: "play",
-		createNew: false,
-		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-		show: {
-			autoShow: true
-		},
-		waiting: {
-			autoShow: true, //自动显示等待框，默认为true
-			title: '正在加载...' //等待对话框上显示的提示内容
-		}
-	})
-};
-
-function btn4_click() {
-	mui.openWindow({
-		url: "gameEnd.html",
-		id: "play",
-		createNew: false,
-		//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-		show: {
-			autoShow: true
-		},
-		waiting: {
-			autoShow: true, //自动显示等待框，默认为true
-			title: '正在加载...' //等待对话框上显示的提示内容
-		}
-	})
-};
+mui('.mui-scroll-wrapper').scroll(options);
+console.log('height='+document.documentElement.clientHeight);
+$('.mui-scroll-wrapper').css('height', 2 * document.documentElement.clientHeight);
