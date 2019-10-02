@@ -224,8 +224,7 @@ let addListElement = function (guide_id, page_list, to_page_id) {
 };
 
 let checkUserInfo = function (input_name) {
-    console.log(`${serverDomain}`);
-    console.log(`${serverPort}`);
+    //console.log(`${serverDomain}`);
     $.ajax({
         url: `https://${serverDomain}/node/user/checkUserInfo`,
         type: 'GET',
