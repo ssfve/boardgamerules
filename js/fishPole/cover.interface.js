@@ -17,7 +17,3 @@ let generateside = function (arrayEN, arrayCN, arrayID) {
     });
     return list_line;
 };
-
-let sideContent = generateside(hot_arrayEN, hot_arrayCN, hot_arrayID);
-$('#sideContent').html(sideContent);
-//generateSidelink(hot_arrayID);
