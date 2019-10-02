@@ -11,7 +11,7 @@ console.log('page_id=' + page_id);
 
 let callGetButtonText = function () {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/page/getButtonInfo',
+        url: `https://${serverDomain}/node/page/getButtonInfo',
         type: 'GET',
         data: {
             page_id: page_id
@@ -26,7 +26,7 @@ let callGetButtonText = function () {
 
 let changeButtonText=function(button_id, button_number){
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/database/getAttribute',
+        url: `https://${serverDomain}/node/database/getAttribute',
         type: 'GET',
         data: {
             table_name: 'raw_button_table',
@@ -47,7 +47,7 @@ let changeButtonText=function(button_id, button_number){
 
 let addButtonEvent=function(button_id){
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/database/getAttribute',
+        url: `https://${serverDomain}/node/database/getAttribute',
         type: 'GET',
         data: {
             table_name: 'raw_button_table',
@@ -89,7 +89,7 @@ let getButtonText = function (button_list) {
 
 let callGetGuideId = function (button_db_name) {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/page/getPageAttribute',
+        url: `https://${serverDomain}/node/page/getPageAttribute',
         type: 'GET',
         data: {
             attribute_name: 'guide_id',
@@ -201,7 +201,7 @@ let callCreateText = function (button_default_name) {
         text_value = 'PG-DFLT-TXT'
     }
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/text/writeTextDB',
+        url: `https://${serverDomain}/node/text/writeTextDB',
         type: 'GET',
         data: {
             text_value: text_value,
@@ -216,7 +216,7 @@ let callCreateText = function (button_default_name) {
 let callCreateButton = function (guide_id, button_db_name) {
 
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/button/writeButtonDB',
+        url: `https://${serverDomain}/node/button/writeButtonDB',
         type: 'GET',
         data: {
             page_id: page_id,
@@ -231,7 +231,7 @@ let callCreateButton = function (guide_id, button_db_name) {
 
 let callGetButtonInfo = function (button_default_name) {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/page/getButtonInfo',
+        url: `https://${serverDomain}/node/page/getButtonInfo',
         type: 'GET',
         data: {
             page_id: page_id
@@ -264,7 +264,7 @@ let callButtonCheck = function (button_list, button_default_name) {
 
 let callGetPageText = function () {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/database/getAttribute',
+        url: `https://${serverDomain}/node/database/getAttribute',
         type: 'GET',
         data: {
             table_name: 'raw_control_table',
@@ -280,7 +280,7 @@ let callGetPageText = function () {
 
 let getTextContent = function (text_id) {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/text/getTextAttribute',
+        url: `https://${serverDomain}/node/text/getTextAttribute',
         type: 'GET',
         data: {
             attribute_name: 'textContent',
@@ -294,7 +294,7 @@ let getTextContent = function (text_id) {
 
 let getImageForPage=function(){
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/database/getAttribute',
+        url: `https://${serverDomain}/node/database/getAttribute',
         type: 'GET',
         data:{
             table_name: 'raw_control_table',

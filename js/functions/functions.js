@@ -125,7 +125,7 @@ let addEditGuideToSlot=function(o){
 
 let callSaveAttribute= function(o){
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/database/updateAttribute`,
+        url: `https://${serverDomain}/node/database/updateAttribute`,
         type: 'GET',
         data:{
             table_name: o.table_name,
@@ -141,7 +141,7 @@ let callSaveAttribute= function(o){
 
 let getPageIdOnLoad = function(o){
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
+        url: `https://${serverDomain}/node/database/getAttribute`,
         type: 'GET',
         data: {
             table_name: 'guide_table',
@@ -162,7 +162,7 @@ let getPageIdOnLoad = function(o){
 
 let getImageId=function(o){
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
+        url: `https://${serverDomain}/node/database/getAttribute`,
         type: 'GET',
         data:{
             table_name: 'raw_control_table',
@@ -282,7 +282,7 @@ var change_theme = function (color) {
 
 let updateAttribute = function (table_name, attribute_name, attribute_value, key_name, key_value) {
 	$.ajax({
-		url: `http://${serverDomain}:${serverPort}/database/updateAttribute`,
+		url: `https://${serverDomain}/node/database/updateAttribute`,
 		type: 'GET',
 		data: {
 			table_name: table_name,
@@ -298,7 +298,7 @@ let updateAttribute = function (table_name, attribute_name, attribute_value, key
 
 let saveAttribute = function (table_name, attribute_name, attribute_value, key_name, key_value) {
 	$.ajax({
-		url: `http://${serverDomain}:${serverPort}/database/updateAttribute`,
+		url: `https://${serverDomain}/node/database/updateAttribute`,
 		type: 'GET',
 		data: {
 			table_name: table_name,

@@ -107,17 +107,8 @@ let queryGameInfoCN = function(json) {
 
 let queryGameInfoEN = function(json) {
 	try {
-		//alert('hello')
 		data = json.name;
 		resolve(data)
-		//imgCaption = '../img/'+nameEN+'/caption.jpg';
-		//alert(imgCaption)
-		//$('#caption-pic').css({'background-image': imgCaption})
-		//alert(averageweight)
-		//alert(suggested_numplayers)
-		//data = list(records[0])
-		//alert(current_page)
-
 	} catch(e) {
 		alert(e)
 		//document.write(e.description); 
@@ -199,11 +190,11 @@ function getQueryString(name) {
 	return null;
 }
 
-id = getQueryString('id')
+id = getQueryString('id');
 //alert(gameid)
-let gameURL = `http://${serverDomain}:${serverPort}/games/getGameInfo`;
-const styleURL = `http://${serverDomain}:${serverPort}/games/getStyleInfo`;
-const controlURL = `http://${serverDomain}:${serverPort}/games/getControlInfo`;
+let gameURL = `https://${serverDomain}/node/games/getGameInfo`;
+const styleURL = `https://${serverDomain}/node/games/getStyleInfo`;
+const controlURL = `https://${serverDomain}/node/games/getControlInfo`;
 //alert(age)
 
 //alert(URL)
@@ -211,7 +202,7 @@ const controlURL = `http://${serverDomain}:${serverPort}/games/getControlInfo`;
 const lang_cn = 'cn';
 const lang_en = 'en';
 
-const imageURL = `http://${serverDomain}:${serverPort}/games/getImageInfo`;
+const imageURL = `https://${serverDomain}/node/games/getImageInfo`;
 
 var getSimpleCN = function(id) {
 	return new Promise(function(resolve, reject) {
@@ -232,7 +223,7 @@ var getSimpleCN = function(id) {
 };
 
 var getSimpleEN = function(id) {
-	//var imageURL = `http://${serverDomain}:${serverPort}/games/getImageInfo`
+	//var imageURL = `https://${serverDomain}/node/games/getImageInfo`
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: gameURL,
@@ -285,7 +276,7 @@ function ajax_wait_name(id) {
 };
 
 var setImagePath = function(id, type, loc) {
-	var imageURL = `http://${serverDomain}:${serverPort}/games/getImageInfo`;
+	var imageURL = `https://${serverDomain}/node/games/getImageInfo`;
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: imageURL,
@@ -318,7 +309,7 @@ var setImagePath = function(id, type, loc) {
 
 var setTextContent = function(id, type, loc) {
 	//$(obj).text(text)
-	let textURL = `http://${serverDomain}:${serverPort}/games/getTextInfo`;
+	let textURL = `https://${serverDomain}/node/games/getTextInfo`;
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: textURL,
@@ -349,7 +340,7 @@ var setTextContent = function(id, type, loc) {
 
 let getPageLineNum = function(id, page) {
 	//$(obj).text(text)
-	let textURL = `http://${serverDomain}:${serverPort}/games/getPageLineNum`;
+	let textURL = `https://${serverDomain}/node/games/getPageLineNum`;
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: textURL,

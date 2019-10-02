@@ -12,7 +12,7 @@ console.log('button_id=' + button_id);
 
 let callGetGuideId = function () {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/button/getGuideId`,
+        url: `https://${serverDomain}/node/button/getGuideId`,
         type: 'GET',
         data: {
             button_id: button_id
@@ -26,7 +26,7 @@ let callGetGuideId = function () {
 
 let getButtonToPageId = function (button_id, guide_id) {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
+        url: `https://${serverDomain}/node/database/getAttribute`,
         type: 'GET',
         data: {
             table_name: 'raw_button_table',
@@ -42,7 +42,7 @@ let getButtonToPageId = function (button_id, guide_id) {
 
 let getPageList = function (to_page_id, guide_id) {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/guide/getPageList`,
+        url: `https://${serverDomain}/node/guide/getPageList`,
         type: 'GET',
         dataType: "json",
         data: {
@@ -56,7 +56,7 @@ let getPageList = function (to_page_id, guide_id) {
 
 let getPreviousPageId = function (page_address_seg, button_id) {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/button/getPreviousPageId`,
+        url: `https://${serverDomain}/node/button/getPreviousPageId`,
         type: 'GET',
         data: {
             button_id: button_id
@@ -83,7 +83,7 @@ let addSwitchCheck = function (page_id) {
 
 let saveBranchPageId = function (guide_id, page_id) {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/guide/savePageId`,
+        url: `https://${serverDomain}/node/guide/savePageId`,
         type: 'GET',
         data: {
             guide_id: guide_id,
@@ -97,7 +97,7 @@ let saveBranchPageId = function (guide_id, page_id) {
 
 let createBranchPage = function (guide_id) {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/page/createBranchPage`,
+        url: `https://${serverDomain}/node/page/createBranchPage`,
         type: 'GET',
         data: {
             guide_id: guide_id
@@ -139,7 +139,7 @@ let addListElementCheck = function (page_id, to_page_id, text_content) {
 
 let getTextContent = function (text_id, page_id, to_page_id) {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/text/getTextAttribute`,
+        url: `https://${serverDomain}/node/text/getTextAttribute`,
         type: 'GET',
         data: {
             attribute_name: 'textContent',
@@ -162,7 +162,7 @@ let getTextContentCheck = function (page_id, text_id, to_page_id) {
 let getTextInfo = function (page_id, to_page_id) {
     // get text id from specific page id
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/page/getPageAttribute`,
+        url: `https://${serverDomain}/node/page/getPageAttribute`,
         type: 'GET',
         data: {
             attribute_name: 'text1_id',

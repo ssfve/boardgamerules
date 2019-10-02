@@ -18,7 +18,7 @@ let button_map = {
 
 let callGetButtonText = function () {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/page/getButtonInfo`,
+        url: `https://${serverDomain}/node/page/getButtonInfo`,
         type: 'GET',
         data: {
             page_id: page_id
@@ -48,7 +48,7 @@ let getButtonText = function (button_list) {
             let button_map_key = 'button' + button_number;
             let old_button_element = $(`#${button_old_id}`);
             $.ajax({
-                url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
+                url: `https://${serverDomain}/node/database/getAttribute`,
                 type: 'GET',
                 data: {
                     table_name: 'raw_button_table',
@@ -74,7 +74,7 @@ let getButtonText = function (button_list) {
 
 let callGetGuideId = function (button_db_name) {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
+        url: `https://${serverDomain}/node/database/getAttribute`,
         type: 'GET',
         data: {
             table_name: 'raw_control_table',
@@ -111,7 +111,7 @@ $('#background_submit_form').on('submit', function (e) {
 
 let createImageId = function () {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/image/writeImageDB`,
+        url: `https://${serverDomain}/node/image/writeImageDB`,
         type: 'GET',
         data: {
             page_id: page_id
@@ -130,7 +130,7 @@ let createImageId = function () {
 
 let getImageForBackground = function () {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
+        url: `https://${serverDomain}/node/database/getAttribute`,
         type: 'GET',
         data: {
             table_name: 'raw_control_table',
@@ -310,7 +310,7 @@ let callCreateText = function (button_default_name) {
         text_value = 'PG-DFLT-TXT'
     }
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/text/writeTextDB`,
+        url: `https://${serverDomain}/node/text/writeTextDB`,
         type: 'GET',
         data: {
             text_value: text_value,
@@ -325,7 +325,7 @@ let callCreateText = function (button_default_name) {
 let callCreateButton = function (guide_id, button_db_name) {
 
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/button/writeButtonDB`,
+        url: `https://${serverDomain}/node/button/writeButtonDB`,
         type: 'GET',
         data: {
             page_id: page_id,
@@ -340,7 +340,7 @@ let callCreateButton = function (guide_id, button_db_name) {
 
 let callGetButtonInfo = function (button_default_name) {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/page/getButtonInfo`,
+        url: `https://${serverDomain}/node/page/getButtonInfo`,
         type: 'GET',
         data: {
             page_id: page_id
@@ -388,7 +388,7 @@ $('#default-button-1').on('tap', function () {
 
 let callGetPageText = function () {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
+        url: `https://${serverDomain}/node/database/getAttribute`,
         type: 'GET',
         data: {
             table_name: 'raw_control_table',
@@ -404,7 +404,7 @@ let callGetPageText = function () {
 
 let getTextContent = function (text_id) {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/text/getTextAttribute`,
+        url: `https://${serverDomain}/node/text/getTextAttribute`,
         type: 'GET',
         data: {
             attribute_name: 'textContent',
@@ -418,7 +418,7 @@ let getTextContent = function (text_id) {
 
 let callReturnHome = function () {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
+        url: `https://${serverDomain}/node/database/getAttribute`,
         type: 'GET',
         data: {
             table_name: 'raw_control_table',
@@ -435,7 +435,7 @@ let callReturnHome = function () {
 
 let callGetUser = function (guide_id) {
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
+        url: `https://${serverDomain}/node/database/getAttribute`,
         type: 'GET',
         data: {
             table_name: 'guide_table',
