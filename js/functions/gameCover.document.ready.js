@@ -125,21 +125,6 @@ function ajax_wait_img(gameid, pageType, lineFlag) {
     let lineNumTotal = lineFlag.length + 1
 }
 
-if (current_page === 'gamepic') {
-    $('#back_arrow').attr('id', gameid);
-    $(document).ready(function () {
-        gotoPage(gameid)
-    });
-}
-
-if (current_page === 'gameintro') {
-    mui.previewImage();
-    $('#back_arrow').attr('id', gameid);
-    pageType = 'stuff';
-    // this will create stuff page
-    ajax_wait(gameid, pageType);
-}
-
 let queryFolderInfo=function(folder_query_url, folder_path){
     console.log('going to query folder file list');
     $.ajax({
@@ -164,13 +149,9 @@ let queryFolderInfo=function(folder_query_url, folder_path){
     });
 };
 
-if (current_page === 'gamecover') {
-    console.log("at gamecover page");
-    if (hasSubPage_flag) {
-        button5 = "开盒即玩"
-    } else {
-        button5 = "欢迎上传规则"
-    }
+let currentPage = 'gameCover';
+if (currentPage === 'gameCover') {
+    console.log("at gameCover page");
     (function ($, doc) {
         $.init();
         $.ready(function () {
@@ -235,18 +216,3 @@ if (current_page === 'gamecover') {
     queryFolderInfo(folder_query_url, folder_path);
 }
 
-
-
-if (current_page === 'gamerule') {
-    console.log("in document ready gamerule");
-    $('#back_arrow').attr('id', gameid);
-
-    lineText = [];
-    lineImage = [];
-    //var lineNo = []
-    lineFlag = [];
-    pageType = 'setup'
-    // this will create setup page
-    //ajax_wait(gameid, pageType);
-
-}

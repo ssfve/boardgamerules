@@ -125,13 +125,6 @@ function ajax_wait_img(gameid, pageType, lineFlag) {
     let lineNumTotal = lineFlag.length + 1
 }
 
-if (current_page === 'gamepic') {
-    $('#back_arrow').attr('id', gameid);
-    $(document).ready(function () {
-        gotoPage(gameid)
-    });
-}
-
 if (current_page === 'gameintro') {
     mui.previewImage();
     $('#back_arrow').attr('id', gameid);

@@ -237,21 +237,8 @@ var controlURL = 'http://180.76.244.130:3000/games/getControlInfo'
 
 //alert(URL)
 
-var lang_cn = 'cn'
-var lang_en = 'en'
-
-if(current_page === 'gamecover') {
-	$.ajax({
-		url: gameURL,
-		data: {
-			gameid: id,
-			lang: lang_cn
-		},
-		async: false,
-		success: queryGameInfoCN,
-		dataType: 'json'
-	});
-}
+var lang_cn = 'cn';
+var lang_en = 'en';
 
 var imageURL = 'http://180.76.244.130:3000/games/getImageInfo'
 
