@@ -2,7 +2,7 @@ var queryGameInfoSimpleCN = function(json) {
 	try {
 		//alert('hello')
 		//gameid = json.gameid
-		data = json.nameCN
+		data = json.nameCN;
 		resolve(data)
 	} catch(e) {
 		alert(e)
@@ -12,7 +12,7 @@ var queryGameInfoSimpleCN = function(json) {
 	}
 };
 
-var queryGameInfoCN = function(json) {
+let queryGameInfoCN = function(json) {
 	try {
 		//alert('hello')
 		gameid = json.gameid
@@ -88,12 +88,8 @@ var queryGameInfoCN = function(json) {
 			$('#button4').html(button4);
 			$('#button5').html(button5);
 			$('#button6').html(button6);
-			$('#caption-pic').css({
-				'background-image': 'url(' + imgCaption + ')'
-			})
-			$('#caption-pic').css({
-				'height': slide_height
-			})
+			$('#caption-pic').css({'background-image': 'url(' + imgCaption + ')'});
+			$('#caption-pic').css({'height': slide_height});
 			$('#gameName').html(gameName);
 			$('#nameCN').html(nameCN);
 			$('#subText').html(subText);
@@ -109,10 +105,10 @@ var queryGameInfoCN = function(json) {
 	}
 };
 
-var queryGameInfoEN = function(json) {
+let queryGameInfoEN = function(json) {
 	try {
 		//alert('hello')
-		data = json.name
+		data = json.name;
 		resolve(data)
 		//imgCaption = '../img/'+nameEN+'/caption.jpg';
 		//alert(imgCaption)
@@ -130,36 +126,13 @@ var queryGameInfoEN = function(json) {
 	}
 };
 
-var queryStyleInfo = function(json) {
+let queryStyleInfo = function(json) {
 	try {
-		//alert(json.theme_color)
-		theme_color = json.theme_color
-		content_color = json.content_color
-		default_color = json.default_color
-		bg_color = json.bg_color
-		//alert(averageweight)
-		//alert(suggested_numplayers)
-		//data = list(records[0])
-		//alert(theme_color)
+		theme_color = json.theme_color;
+		content_color = json.content_color;
+		default_color = json.default_color;
+		bg_color = json.bg_color;
 		change_theme(theme_color);
-		if(current_page === 'gamecover') {
-			$(document).ready(function() {
-				console.log(theme_color)
-				$('#langLvl' + language_dependence).addClass('color-orange');
-				//modify after class is added
-				$('.color-orange').css({
-					'color': theme_color
-				});
-			});
-		}
-		if(current_page === 'gamerule') {
-			$(document).ready(function() {
-				console.log(theme_color)
-				console.log(subpage_id)
-				change_tab_theme(theme_color,subpage_id-1);
-			});
-		}
-
 	} catch(e) {
 		alert(e)
 		//document.write(e.description); 
@@ -168,10 +141,10 @@ var queryStyleInfo = function(json) {
 	}
 };
 
-var queryImageInfo = function(json, obj) {
+let queryImageInfo = function(json, obj) {
 	try {
 		if(json.image_path !== null) {
-			img_with_src = img_template.replace('%value%', json.image_path)
+			img_with_src = img_template.replace('%value%', json.image_path);
 			add_img(obj);
 		} else {
 			//$(obj).attr('height',0); 
@@ -183,24 +156,22 @@ var queryImageInfo = function(json, obj) {
 	}
 };
 
-var queryTextInfo = function(json, obj) {
+let queryTextInfo = function(json, obj) {
 	try {
 		if(json.text_content !== null) {
 			//alert(obj.split('_')[2])
 			if(obj.split('_')[2] === '0') {
-				a_with_value = a_template.replace('%value%', json.text_content)
+				a_with_value = a_template.replace('%value%', json.text_content);
 				add_a(obj);
 			} else if(obj.split('_')[2] !== undefined) {
-				a_img_with_value = a_img_template.replace('%value%', json.text_content)
+				a_img_with_value = a_img_template.replace('%value%', json.text_content);
 				add_a_where_img(obj);
 			} else {
-				a_with_value = a_template.replace('%value%', json.text_content)
+				a_with_value = a_template.replace('%value%', json.text_content);
 				add_a(obj);
 			}
 		}
 	} catch(e) {
-		//alert('error')
-		alert(e)
 	} finally {
 
 	}
@@ -230,17 +201,17 @@ function getQueryString(name) {
 
 id = getQueryString('id')
 //alert(gameid)
-var gameURL = 'http://180.76.244.130:3000/games/getGameInfo'
-var styleURL = 'http://180.76.244.130:3000/games/getStyleInfo'
-var controlURL = 'http://180.76.244.130:3000/games/getControlInfo'
+let gameURL = `http://${serverDomain}:${serverPort}/games/getGameInfo`;
+const styleURL = `http://${serverDomain}:${serverPort}/games/getStyleInfo`;
+const controlURL = `http://${serverDomain}:${serverPort}/games/getControlInfo`;
 //alert(age)
 
 //alert(URL)
 
-var lang_cn = 'cn';
-var lang_en = 'en';
+const lang_cn = 'cn';
+const lang_en = 'en';
 
-var imageURL = 'http://180.76.244.130:3000/games/getImageInfo'
+const imageURL = `http://${serverDomain}:${serverPort}/games/getImageInfo`;
 
 var getSimpleCN = function(id) {
 	return new Promise(function(resolve, reject) {
@@ -261,7 +232,7 @@ var getSimpleCN = function(id) {
 };
 
 var getSimpleEN = function(id) {
-	//var imageURL = 'http://180.76.244.130:3000/games/getImageInfo'
+	//var imageURL = `http://${serverDomain}:${serverPort}/games/getImageInfo`
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: gameURL,
@@ -271,7 +242,7 @@ var getSimpleEN = function(id) {
 			},
 			dataType: 'json',
 			success: function(data){
-				temp_name = data.name
+				temp_name = data.name;
 				resolve(temp_name)
 			},
 			error: function(data) {}
@@ -296,40 +267,25 @@ var change_names = function(nameEN, nameCN) {
 		$("#headerTitle").html(headerTitle);
 		//alert(headerTitle)
 	}
-}
+};
 
 function ajax_wait_name(id) {
-	var promise1 = getSimpleCN(id)
-	var promise2 = getSimpleEN(id)
+	let promise1 = getSimpleCN(id);
+	let promise2 = getSimpleEN(id);
 	promise1.then(function(data1) {
-		nameCN = data1
+		nameCN = data1;
 		//console.log(lineFlag)
 		change_names(nameEN, nameCN)
 	});
 	promise2.then(function(data1) {
-		nameEN = data1
+		nameEN = data1;
 		//console.log(lineFlag)
 		change_names(nameEN, nameCN)
 	});
 };
 
-/*
-var queryGameInfoSimpleCN = function(id, lang_cn){
-	if (current_page === 'gamerule'){
-		$.ajax({
-			url: gameURL,
-			data:{gameid:id,
-			lang:lang_cn},
-			success:queryGameInfoSimpleCN,
-			dataType:'json'
-			});
-	}
-	
-};
-*/
-
 var setImagePath = function(id, type, loc) {
-	var imageURL = 'http://180.76.244.130:3000/games/getImageInfo'
+	var imageURL = `http://${serverDomain}:${serverPort}/games/getImageInfo`;
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: imageURL,
@@ -362,7 +318,7 @@ var setImagePath = function(id, type, loc) {
 
 var setTextContent = function(id, type, loc) {
 	//$(obj).text(text)
-	var textURL = 'http://180.76.244.130:3000/games/getTextInfo'
+	let textURL = `http://${serverDomain}:${serverPort}/games/getTextInfo`;
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: textURL,
@@ -393,7 +349,7 @@ var setTextContent = function(id, type, loc) {
 
 let getPageLineNum = function(id, page) {
 	//$(obj).text(text)
-	let textURL = 'http://180.76.244.130:3000/games/getPageLineNum';
+	let textURL = `http://${serverDomain}:${serverPort}/games/getPageLineNum`;
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: textURL,

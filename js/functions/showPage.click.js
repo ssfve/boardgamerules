@@ -11,7 +11,7 @@ console.log('page_id=' + page_id);
 
 let callGetButtonText = function () {
     $.ajax({
-        url: 'http://180.76.244.130:3000/page/getButtonInfo',
+        url: `http://${serverDomain}:${serverPort}/page/getButtonInfo',
         type: 'GET',
         data: {
             page_id: page_id
@@ -26,7 +26,7 @@ let callGetButtonText = function () {
 
 let changeButtonText=function(button_id, button_number){
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute',
         type: 'GET',
         data: {
             table_name: 'raw_button_table',
@@ -47,7 +47,7 @@ let changeButtonText=function(button_id, button_number){
 
 let addButtonEvent=function(button_id){
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute',
         type: 'GET',
         data: {
             table_name: 'raw_button_table',
@@ -89,7 +89,7 @@ let getButtonText = function (button_list) {
 
 let callGetGuideId = function (button_db_name) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/page/getPageAttribute',
+        url: `http://${serverDomain}:${serverPort}/page/getPageAttribute',
         type: 'GET',
         data: {
             attribute_name: 'guide_id',
@@ -153,34 +153,34 @@ let callChangeBackground = function (form, form_data) {
 
         const context = document.getElementById('canvas').getContext('2d');
         let img_blur = new Image();
-        img_blur.src = `http://180.76.244.130:18002/${fileName}`;
+        img_blur.src = `http://serverDomain:18002/${fileName}`;
         img_blur.onload = () => {
             context.drawImage(img_blur, 0, 0, canvasWidth, canvasHeight);
         };
         */
-        //$('#background-image-cache').attr('src', `url(http://180.76.244.130:18000/${fileName})`).on('load', function() {
+        //$('#background-image-cache').attr('src', `url(http://serverDomain:18000/${fileName})`).on('load', function() {
         //const context = document.getElementById('canvas').getContext('2d');
         /*
         let img = new Image();
-        img.src = `http://180.76.244.130:18000/${fileName}`;
+        img.src = `http://serverDomain:18000/${fileName}`;
         img.onload = () => {
             context.drawImage(img, 0, 0);
         };
          */
-        $('<img/>').attr('src', `http://180.76.244.130:18001/${fileName}`).on('load', function() {
+        $('<img/>').attr('src', `http://serverDomain:18001/${fileName}`).on('load', function() {
             console.log('original img is downloaded');
             $(this).remove(); // prevent memory leaks as @benweet suggested
             // hide canvas here
             //$('#canvas').css("opacity","0");
             //$('body').css('background-image', $(this).attr("src"));
-            $('body').css('background-image', `url(http://180.76.244.130:18001/${fileName})`);
+            $('body').css('background-image', `url(http://serverDomain:18001/${fileName})`);
         });
-        $('<img/>').attr('src', `http://180.76.244.130:18000/${fileName}`).on('load', function() {
+        $('<img/>').attr('src', `http://serverDomain:18000/${fileName}`).on('load', function() {
             console.log('original img is downloaded');
             $(this).remove(); // prevent memory leaks as @benweet suggested
             // hide canvas here
             //$('#canvas').css("opacity","0");
-            $('body').css('background-image', `url(http://180.76.244.130:18000/${fileName})`);
+            $('body').css('background-image', `url(http://serverDomain:18000/${fileName})`);
         });
     };
 
@@ -201,7 +201,7 @@ let callCreateText = function (button_default_name) {
         text_value = 'PG-DFLT-TXT'
     }
     $.ajax({
-        url: 'http://180.76.244.130:3000/text/writeTextDB',
+        url: `http://${serverDomain}:${serverPort}/text/writeTextDB',
         type: 'GET',
         data: {
             text_value: text_value,
@@ -216,7 +216,7 @@ let callCreateText = function (button_default_name) {
 let callCreateButton = function (guide_id, button_db_name) {
 
     $.ajax({
-        url: 'http://180.76.244.130:3000/button/writeButtonDB',
+        url: `http://${serverDomain}:${serverPort}/button/writeButtonDB',
         type: 'GET',
         data: {
             page_id: page_id,
@@ -231,7 +231,7 @@ let callCreateButton = function (guide_id, button_db_name) {
 
 let callGetButtonInfo = function (button_default_name) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/page/getButtonInfo',
+        url: `http://${serverDomain}:${serverPort}/page/getButtonInfo',
         type: 'GET',
         data: {
             page_id: page_id
@@ -264,7 +264,7 @@ let callButtonCheck = function (button_list, button_default_name) {
 
 let callGetPageText = function () {
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute',
         type: 'GET',
         data: {
             table_name: 'raw_control_table',
@@ -280,7 +280,7 @@ let callGetPageText = function () {
 
 let getTextContent = function (text_id) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/text/getTextAttribute',
+        url: `http://${serverDomain}:${serverPort}/text/getTextAttribute',
         type: 'GET',
         data: {
             attribute_name: 'textContent',
@@ -294,7 +294,7 @@ let getTextContent = function (text_id) {
 
 let getImageForPage=function(){
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute',
         type: 'GET',
         data:{
             table_name: 'raw_control_table',
@@ -310,15 +310,15 @@ let getImageForPage=function(){
 };
 
 let showBackground=function(file_name){
-    $('<img/>').attr('src', `http://180.76.244.130:18001/${file_name}`).on('load', function() {
+    $('<img/>').attr('src', `http://serverDomain:18001/${file_name}`).on('load', function() {
         console.log('blurred and compressed img is downloaded');
         $(this).remove(); // prevent memory leaks as @benweet suggested
-        $('body').css('background-image', `url(http://180.76.244.130:18001/${file_name})`);
+        $('body').css('background-image', `url(http://serverDomain:18001/${file_name})`);
     });
-    $('<img/>').attr('src', `http://180.76.244.130:18000/${file_name}`).on('load', function() {
+    $('<img/>').attr('src', `http://serverDomain:18000/${file_name}`).on('load', function() {
         console.log('original img is downloaded');
         $(this).remove(); // prevent memory leaks as @benweet suggested
-        $('body').css('background-image', `url(http://180.76.244.130:18000/${file_name})`);
+        $('body').css('background-image', `url(http://serverDomain:18000/${file_name})`);
     });
 };
 

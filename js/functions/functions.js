@@ -49,8 +49,8 @@ var index_line = '';
 var stack_line = '';
 var final_html = '';
 var list_seg = '';
-highPR = 'important'
-lowPR = '!important'
+highPR = 'important';
+lowPR = '!important';
 
 var change_nameEN = function (name) {
     name_copy = name;
@@ -84,7 +84,6 @@ let addGuideToSlot=function(slot_number, guide_id, guide_name){
 };
 
 let addEditGuideToSlot=function(o){
-    let time = Date.now();
     let slot_number = o.slot_count;
     let guide_id = o.guide_id;
     let guide_name = o.guide_name;
@@ -100,10 +99,10 @@ let addEditGuideToSlot=function(o){
     $(`#guide_${guide_id}_inner_content`).append(`<input type="text" class="mui-input-clear" placeholder="请输入流名称" id="guide_${guide_id}_text">`);
 
     if( image_id !== '0' && image_id !== ''){
-        $('<img/>').attr('src', `http://180.76.244.130:18001/${image_id}.jpg`).on('load', function() {
+        $('<img/>').attr('src', `http://${serverDomain}:18001/${image_id}.jpg`).on('load', function() {
             console.log('blurred and compressed img is downloaded');
-            $(this).remove(); // prevent memory leaks as @benweet suggested
-            $(`#guide_${guide_id}_pic`).css('background-image', `url(http://180.76.244.130:18001/${image_id}.jpg)`);
+            $(this).remove(); // prevent memory leaks as @between suggested
+            $(`#guide_${guide_id}_pic`).css('background-image', `url(http://${serverDomain}:18001/${image_id}.jpg)`);
         });
     }
     $(`#guide_${guide_id}_text`).val(guide_name);
@@ -126,7 +125,7 @@ let addEditGuideToSlot=function(o){
 
 let callSaveAttribute= function(o){
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/updateAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/updateAttribute`,
         type: 'GET',
         data:{
             table_name: o.table_name,
@@ -142,7 +141,7 @@ let callSaveAttribute= function(o){
 
 let getPageIdOnLoad = function(o){
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
         type: 'GET',
         data: {
             table_name: 'guide_table',
@@ -163,7 +162,7 @@ let getPageIdOnLoad = function(o){
 
 let getImageId=function(o){
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
         type: 'GET',
         data:{
             table_name: 'raw_control_table',
@@ -194,104 +193,16 @@ let switchPage = function (address_seg, seg_replacement) {
     //$("meta[property='pageid']").attr("content", page_id);
 };
 
-var generate = function (array) {
-    list_seg = list_seg_disabled
-    array.forEach(function (val, index) {
-        //alert(array[index]);
-        if (val.substr(0, 1) === 'O') {
-            if (val.substr(1, 1) === 'E') {
-                var text = val.substr(2, val.length);
-                text_line += orange_text_seg.replace('%data%', text)
-                list_line += list_seg.replace('%data%', text_line)
-                text_line = ''
-            } else if (val.substr(1, 1) === '%') {
-                var text = val.substr(2, val.length);
-                text_line += orange_text_seg.replace('%data%', text)
-            } else {
-                var text = val.substr(1, val.length);
-                text_line += orange_text_seg.replace('%data%', text)
-            }
-        }
-        if (val.substr(0, 1) === 'G') {
-            if (val.substr(1, 1) === 'E') {
-                var text = val.substr(2, val.length);
-                text_line += grey_text_seg.replace('%data%', text)
-                list_line += list_seg.replace('%data%', text_line)
-                text_line = ''
-            } else {
-                var text = val.substr(1, val.length);
-                text_line += grey_text_seg.replace('%data%', text)
-                //list_line += list_seg.replace('%data%',text_line)
-            }
-        }
-        if (val.substr(0, 1) === 'I') {
-            //alert('asdf')
-            var text = val.substr(1, val.length);
-            text_line = img_text_seg.replace('%data%', text)
-            list_line += list_seg.replace('%data%', text_line)
-            text_line = ''
-        }
-        if (val.substr(0, 1) === 'D') {
-            //alert('asdf')
-            if (val.substr(1, val.length) === 'A') {
-                text_line += seg_list[10];
-            } else if (val.substr(1, val.length) === 'B') {
-                text_line += seg_list[11];
-            } else if (val.substr(1, val.length) === 'E') {
-                //alert(val)
-                //alert('in')
-                text_line += '</div>';
-                text_line = row_seg.replace('%data%', text_line)
-                list_line += list_seg.replace('%data%', text_line)
-                text_line = ''
-            } else {
-                text_line += '</div>';
-                text_line += seg_list[val.substr(1, val.length)];
-            }
-        }
-        if (val.substr(0, 1) === 'M') {
-            //alert('asdf')
-            text_line += mic_seg;
-        }
-        if (val.substr(0, 1) === 'S') {
-            if (val.length === 2 && val.substr(0, 2) === 'SE') {
-                list_seg = list_seg_disabled
-                //alert(list_line);
-                re = new RegExp(list_seg_pre, "g");
-                list_line = list_line.replace(re, '<p class="add-margin-top add-margin-bottom">');
-                re = new RegExp(list_seg_post, "g");
-                list_line = list_line.replace(re, '</p>');
-                //alert(list_line);
-                //alert(stack_seg_content.replace('%data%',list_line))
-                stack_line += stack_seg_content.replace('%data%', list_line);
-
-                list_line = stack_seg.replace('%data%', stack_line);
-                stack_line = '';
-            } else {
-                list_seg = list_seg_enabled
-                var text = val.substr(1, val.length);
-                stack_line += stack_seg_header.replace('%data%', text)
-            }
-        }
-    });
-    return list_line;
-};
-
 let gotoPage = function (Id) {
     //alert(document.getElementById(Id))
     document.getElementById(Id).addEventListener('tap', function () {
         gameid = document.getElementById(Id).id;
         //alert(window.location.href)
         //alert(window.location.href.replace('gameRule','gameCover'))
-        var index = window.location.href.lastIndexOf("\/");
-        var address_prefix = window.location.href.substring(0, index + 1);
-        //alert(address_prefix)
-
-        var address_postfix = new_address_seg.replace('%data%', Id);
-        //alert(address_postfix)
-
-        var new_address = address_prefix + address_postfix;
-        //alert(new_address)
+        let index = window.location.href.lastIndexOf("\/");
+        let address_prefix = window.location.href.substring(0, index + 1);
+        let address_postfix = new_address_seg.replace('%data%', Id);
+        let new_address = address_prefix + address_postfix;
 
         location.href = new_address;
         //window.location.reload();
@@ -348,7 +259,7 @@ var generateIndexlink = function (array) {
         }
 
     });
-}
+};
 
 var change_theme = function (color) {
     $('.h6-text-orange').css({
@@ -371,7 +282,7 @@ var change_theme = function (color) {
 
 let updateAttribute = function (table_name, attribute_name, attribute_value, key_name, key_value) {
 	$.ajax({
-		url: 'http://180.76.244.130:3000/database/updateAttribute',
+		url: `http://${serverDomain}:${serverPort}/database/updateAttribute`,
 		type: 'GET',
 		data: {
 			table_name: table_name,
@@ -387,7 +298,7 @@ let updateAttribute = function (table_name, attribute_name, attribute_value, key
 
 let saveAttribute = function (table_name, attribute_name, attribute_value, key_name, key_value) {
 	$.ajax({
-		url: 'http://180.76.244.130:3000/database/updateAttribute',
+		url: `http://${serverDomain}:${serverPort}/database/updateAttribute`,
 		type: 'GET',
 		data: {
 			table_name: table_name,

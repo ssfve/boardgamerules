@@ -18,7 +18,7 @@ let button_map = {
 
 let callGetButtonText = function () {
     $.ajax({
-        url: 'http://180.76.244.130:3000/page/getButtonInfo',
+        url: `http://${serverDomain}:${serverPort}/page/getButtonInfo`,
         type: 'GET',
         data: {
             page_id: page_id
@@ -34,7 +34,7 @@ let getButtonText = function (button_list) {
     console.log(button_list);
     for (let element in button_list) {
         //element.hasOwnProperty()
-        console.log(element);
+        //console.log(element);
         let index = element.lastIndexOf("_");
         let button_number = element.substring(index - 1, index);
         console.log(button_number);
@@ -48,7 +48,7 @@ let getButtonText = function (button_list) {
             let button_map_key = 'button' + button_number;
             let old_button_element = $(`#${button_old_id}`);
             $.ajax({
-                url: 'http://180.76.244.130:3000/database/getAttribute',
+                url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
                 type: 'GET',
                 data: {
                     table_name: 'raw_button_table',
@@ -74,7 +74,7 @@ let getButtonText = function (button_list) {
 
 let callGetGuideId = function (button_db_name) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
         type: 'GET',
         data: {
             table_name: 'raw_control_table',
@@ -111,7 +111,7 @@ $('#background_submit_form').on('submit', function (e) {
 
 let createImageId = function () {
     $.ajax({
-        url: 'http://180.76.244.130:3000/image/writeImageDB',
+        url: `http://${serverDomain}:${serverPort}/image/writeImageDB`,
         type: 'GET',
         data: {
             page_id: page_id
@@ -130,7 +130,7 @@ let createImageId = function () {
 
 let getImageForBackground = function () {
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
         type: 'GET',
         data: {
             table_name: 'raw_control_table',
@@ -148,15 +148,17 @@ let getImageForBackground = function () {
 };
 
 let showBackground = function (file_name) {
-    $('<img/>').attr('src', `http://180.76.244.130:18001/${file_name}`).on('load', function () {
+    $('<img src="" alt=""/>').attr('src', `http://${serverDomain}:18001/${file_name}`).on('load', function () {
         console.log('blurred and compressed img is downloaded');
-        $(this).remove(); // prevent memory leaks as @benweet suggested
-        $('body').css('background-image', `url(http://180.76.244.130:18001/${file_name})`);
+        $(this).remove();
+        // prevent memory leaks as @between suggested
+        $('body').css('background-image', `url(http://${serverDomain}:18001/${file_name})`);
     });
-    $('<img/>').attr('src', `http://180.76.244.130:18000/${file_name}`).on('load', function () {
+    $('<img src="" alt=""/>').attr('src', `http://${serverDomain}:18000/${file_name}`).on('load', function () {
         console.log('original img is downloaded');
-        $(this).remove(); // prevent memory leaks as @benweet suggested
-        $('body').css('background-image', `url(http://180.76.244.130:18000/${file_name})`);
+        $(this).remove();
+        // prevent memory leaks as @between suggested
+        $('body').css('background-image', `url(http://${serverDomain}:18000/${file_name})`);
     });
 };
 
@@ -174,40 +176,16 @@ let callChangeBackground = function (form, form_data) {
             progress_element.val(percentComplete - 1);
         }
     };
-    let uploadComplete = function (evt) {
+    let uploadComplete = function () {
         progress_element.val(0);
         console.log('Going to change background');
         // wait for blurred image
         // show blurred minimized image here first
         // todo: play blurring magic first wait 2 seconds after upload response is received
-        /*
-        const canvas = $('#canvas');
-        canvas.css("opacity", "1");
-        let canvasWidth = document.body.clientWidth; //document.width is obsolete
-        let canvasHeight = document.body.clientHeight; //document.height is obsolete
-        canvas.css('width', canvasWidth);
-        canvas.css('height', canvasHeight);
-
-        const context = document.getElementById('canvas').getContext('2d');
-        let img_blur = new Image();
-        img_blur.src = `http://180.76.244.130:18002/${fileName}`;
-        img_blur.onload = () => {
-            context.drawImage(img_blur, 0, 0, canvasWidth, canvasHeight);
-        };
-        */
-        //$('#background-image-cache').attr('src', `url(http://180.76.244.130:18000/${fileName})`).on('load', function() {
-        //const context = document.getElementById('canvas').getContext('2d');
-        /*
-        let img = new Image();
-        img.src = `http://180.76.244.130:18000/${fileName}`;
-        img.onload = () => {
-            context.drawImage(img, 0, 0);
-        };
-         */
         showBackground(fileName);
     };
 
-    let uploadFailed = function (evt) {
+    let uploadFailed = function () {
         progress_element.val(0);
     };
     xhr.upload.addEventListener("progress", uploadProgress, false);
@@ -223,11 +201,13 @@ let createTextHandler = function () {
 
 let default_add_button_event = function () {
     let db4 = $(`#${button_map.button4}`);
+    let sub_btn_ele = $('#default-sub-button');
+    let add_btn_ele = $('#default-add-button');
     if (db4.css('opacity') === '0') {
         db4.css('opacity', 100);
         db4.on('tap', createTextHandler);
-        $('#default-sub-button').css('opacity', 100);
-        $('#default-sub-button').on('tap', default_sub_button_event);
+        sub_btn_ele.css('opacity', 100);
+        sub_btn_ele.on('tap', default_sub_button_event);
         return;
     }
     let db3 = $(`#${button_map.button3}`);
@@ -246,11 +226,11 @@ let default_add_button_event = function () {
     if (db1.css('opacity') === '0') {
         db1.css('opacity', 100);
         db1.on('tap', createTextHandler);
-        $('#default-add-button').css('opacity', 0);
-        $('#default-add-button').off('tap');
+        add_btn_ele.css('opacity', 0);
+        add_btn_ele.off('tap');
     } else {
-        $('#default-add-button').css('opacity', 0);
-        $('#default-add-button').off('tap');
+        add_btn_ele.css('opacity', 0);
+        add_btn_ele.off('tap');
     }
 };
 
@@ -281,12 +261,14 @@ let performDelete = function (element, button_number) {
 
 let default_sub_button_event = function () {
     let db1 = $(`#${button_map.button1}`);
+    let add_btn_ele = $('#default-add-button');
+    let sub_btn_ele = $('#default-sub-button');
     if (db1.css('opacity') === '1') {
         db1.css('opacity', 0);
         db1.off('tap');
         performDelete(button_map.button1, 1);
-        $('#default-add-button').css('opacity', 100);
-        $('#default-add-button').on('tap', default_add_button_event);
+        add_btn_ele.css('opacity', 100);
+        add_btn_ele.on('tap', default_add_button_event);
         return;
     }
     let db2 = $(`#${button_map.button2}`);
@@ -308,15 +290,15 @@ let default_sub_button_event = function () {
         db4.css('opacity', 0);
         db4.off('tap');
         performDelete(button_map.button4, 4);
-        $('#default-sub-button').css('opacity', 0);
-        $('#default-sub-button').off('tap');
+        sub_btn_ele.css('opacity', 0);
+        sub_btn_ele.off('tap');
     }
 };
 
 $('#default-sub-button').on('tap', default_sub_button_event);
 $('#default-add-button').on('tap', default_add_button_event);
 
-$('#default-add-button-2').on('click', function (e) {
+$('#default-add-button-2').on('click', function () {
     $('#default-button-1').css('opacity', 100);
     $('#default-add-button-3').css('opacity', 100);
 });
@@ -328,7 +310,7 @@ let callCreateText = function (button_default_name) {
         text_value = 'PG-DFLT-TXT'
     }
     $.ajax({
-        url: 'http://180.76.244.130:3000/text/writeTextDB',
+        url: `http://${serverDomain}:${serverPort}/text/writeTextDB`,
         type: 'GET',
         data: {
             text_value: text_value,
@@ -343,7 +325,7 @@ let callCreateText = function (button_default_name) {
 let callCreateButton = function (guide_id, button_db_name) {
 
     $.ajax({
-        url: 'http://180.76.244.130:3000/button/writeButtonDB',
+        url: `http://${serverDomain}:${serverPort}/button/writeButtonDB`,
         type: 'GET',
         data: {
             page_id: page_id,
@@ -358,7 +340,7 @@ let callCreateButton = function (guide_id, button_db_name) {
 
 let callGetButtonInfo = function (button_default_name) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/page/getButtonInfo',
+        url: `http://${serverDomain}:${serverPort}/page/getButtonInfo`,
         type: 'GET',
         data: {
             page_id: page_id
@@ -406,7 +388,7 @@ $('#default-button-1').on('tap', function () {
 
 let callGetPageText = function () {
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
         type: 'GET',
         data: {
             table_name: 'raw_control_table',
@@ -422,7 +404,7 @@ let callGetPageText = function () {
 
 let getTextContent = function (text_id) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/text/getTextAttribute',
+        url: `http://${serverDomain}:${serverPort}/text/getTextAttribute`,
         type: 'GET',
         data: {
             attribute_name: 'textContent',
@@ -436,7 +418,7 @@ let getTextContent = function (text_id) {
 
 let callReturnHome = function () {
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
         type: 'GET',
         data: {
             table_name: 'raw_control_table',
@@ -453,7 +435,7 @@ let callReturnHome = function () {
 
 let callGetUser = function (guide_id) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
         type: 'GET',
         data: {
             table_name: 'guide_table',

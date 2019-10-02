@@ -22,9 +22,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/bgr.imageviewer.css"/>
 
     <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../variables/cover.variables.js"></script>
-
-    <script type="text/javascript" src="../../js/page/sidepane.variables.js"></script>
+    <script type="text/javascript" src="../../js/global.variables.js"></script>
     <script type="text/javascript" src="../../js/page/hotlist.variables.js"></script>
 
     <script type="text/javascript" src="../../js/functions/database_util.js"></script>
@@ -62,7 +60,7 @@
                 </div>
                 <button class="create_guide" id="create_guide_button"></button>
                 <form method="POST" id="background_submit_form" enctype="multipart/form-data"
-                      action="http://180.76.244.130:3000/games/saveBackgroundImage">
+                      action="http://${serverDomain}:${serverPort}/games/saveBackgroundImage">
                     <input type="file" id="bg_img_file" name="bg_img_file"/>
                     <input type="submit">
                 </form>
@@ -76,7 +74,7 @@
 <script src="../../js/mui.picker.js"></script>
 <script src="../../js/mui.poppicker.js"></script>
 <script type="text/javascript" src="../../js/functions/functions.js"></script>
-<script type="text/javascript" src="../../js/fishPole/cover.interface.js"></script>
+<script type="text/javascript" src="../../js/createRule/cover.interface.js"></script>
 <script type="text/javascript" src="../../js/functions/cover.event.js"></script>
 <script type="text/javascript" src="../../js/functions/document.ready.js"></script>
 <script type="text/javascript" src="../../js/functions/createGuide.click.js"></script>

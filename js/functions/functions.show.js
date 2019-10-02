@@ -97,7 +97,7 @@ let addEditGuideToSlot=function(o){
     if( image_id === '0' || image_id === ''){
         guide_id_element.prepend(`<div class="mui-card-header mui-card-media" id="guide_${guide_id}_pic" style="height:40vw;background-image:url(../../img/interface/vertical-flow.png)"></div>`);
     }else{
-        guide_id_element.prepend(`<div class="mui-card-header mui-card-media" id="guide_${guide_id}_pic" style="height:40vw;background-image:url(http://180.76.244.130:18000/${image_id}.jpg)"></div>`);
+        guide_id_element.prepend(`<div class="mui-card-header mui-card-media" id="guide_${guide_id}_pic" style="height:40vw;background-image:url(http://serverDomain:18000/${image_id}.jpg)"></div>`);
     }
     guide_id_element.append(`<div class="mui-card-content" id="guide_${guide_id}_content"></div>`);
     $(`#guide_${guide_id}_content`).prepend(`<div class="mui-card-content-inner" id="guide_${guide_id}_inner_content"></div>`);
@@ -112,7 +112,7 @@ let addEditGuideToSlot=function(o){
 
 let getPageIdOnLoad = function(o){
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute',
         type: 'GET',
         data: {
             table_name: 'guide_table',
@@ -133,7 +133,7 @@ let getPageIdOnLoad = function(o){
 
 let getImageId=function(o){
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute',
         type: 'GET',
         data:{
             table_name: 'raw_control_table',
@@ -341,7 +341,7 @@ var change_theme = function (color) {
 
 let updateAttribute = function (table_name, attribute_name, attribute_value, key_name, key_value) {
 	$.ajax({
-		url: 'http://180.76.244.130:3000/database/updateAttribute',
+		url: `http://${serverDomain}:${serverPort}/database/updateAttribute',
 		type: 'GET',
 		data: {
 			table_name: table_name,
@@ -357,7 +357,7 @@ let updateAttribute = function (table_name, attribute_name, attribute_value, key
 
 let saveAttribute = function (table_name, attribute_name, attribute_value, key_name, key_value) {
 	$.ajax({
-		url: 'http://180.76.244.130:3000/database/updateAttribute',
+		url: `http://${serverDomain}:${serverPort}/database/updateAttribute',
 		type: 'GET',
 		data: {
 			table_name: table_name,

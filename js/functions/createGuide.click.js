@@ -22,7 +22,6 @@ $("#create_guide_button").on('click', function() {
 });
 
 let addButtonFunction= function(guide_id){
-    let time = Date.now();
     let o ={
         slot_count: 5,
         guide_id: guide_id,
@@ -56,7 +55,7 @@ let addButtonFunction= function(guide_id){
 
 let callSaveGuideName= function(guide_id, guide_name){
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/updateAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/updateAttribute`,
         type: 'GET',
         data:{
             table_name: 'guide_table',
@@ -73,7 +72,7 @@ let callSaveGuideName= function(guide_id, guide_name){
 
 let callGetGuideId = function(){
     $.ajax({
-        url: 'http://180.76.244.130:3000/guide/writeGuideDB',
+        url: `http://${serverDomain}:${serverPort}/guide/writeGuideDB`,
         type: 'GET',
         data:{
             user_id: user_id
@@ -87,7 +86,7 @@ let callGetGuideId = function(){
 
 let callGetPageId = function(guide_id){
     $.ajax({
-        url: 'http://180.76.244.130:3000/guide/checkRootPage',
+        url: `http://${serverDomain}:${serverPort}/guide/checkRootPage`,
         type: 'GET',
         data: {guide_id: guide_id}
     }).done(function(page_id){
@@ -99,7 +98,7 @@ let callGetPageId = function(guide_id){
 
 let saveRootPageId = function(guide_id, page_id){
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/saveRootPageId',
+        url: `http://${serverDomain}:${serverPort}/database/saveRootPageId`,
         type: 'GET',
         data: {
             guide_id: guide_id,
@@ -113,7 +112,7 @@ let saveRootPageId = function(guide_id, page_id){
 
 let savePageId = function(guide_id, page_id){
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/savePageId',
+        url: `http://${serverDomain}:${serverPort}/database/savePageId`,
         type: 'GET',
         data: {
             guide_id: guide_id,
@@ -127,7 +126,7 @@ let savePageId = function(guide_id, page_id){
 
 let getRootPageId=function(guide_id){
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute`,
         type: 'GET',
         data:{
             table_name: 'guide_table',
@@ -151,7 +150,7 @@ let getUserGuides = function (search_word) {
     // recommendation should be user focused
     // recommendation rely on good content
     $.ajax({
-        url: 'http://180.76.244.130:3000/guide/getUserGuideList',
+        url: `http://${serverDomain}:${serverPort}/guide/getUserGuideList`,
         type: 'GET',
         data:{
             user_id: user_id,
@@ -165,7 +164,6 @@ let getUserGuides = function (search_word) {
 };
 
 let addGuide = function (guide_id_list) {
-    let time = Date.now();
     let slot_count = 1;
     for (let i in guide_id_list) {
         let guide_id = guide_id_list[i]['guide_id'];
@@ -185,7 +183,6 @@ let addGuide = function (guide_id_list) {
         // use mui event management here
         //$(`#guide_${guide_id}_pic`).on('click', function(){
         // on cellphone it is tap
-
         slot_count = slot_count + 1;
     }
 

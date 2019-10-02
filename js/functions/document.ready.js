@@ -110,7 +110,6 @@ function ajax_wait_text(gameid, pageType, lineFlag) {
     var lock = true
     //$.each(lineFlag, function(index, content){
     //console.log('fdadf')
-
 }
 
 async function ajax_wait_subpage(gameid, pageno) {
@@ -123,37 +122,4 @@ function ajax_wait_img(gameid, pageType, lineFlag) {
     let promise_array = [];
     //$.each(lineFlag, function(index, content){
     let lineNumTotal = lineFlag.length + 1
-}
-
-if (current_page === 'gameintro') {
-    mui.previewImage();
-    $('#back_arrow').attr('id', gameid);
-    pageType = 'stuff';
-    // this will create stuff page
-    ajax_wait(gameid, pageType);
-}
-
-if (current_page === 'gamecover') {
-    console.log("at gamecover page");
-    getIfHasSubPage(gameid);
-    console.log(hasSubPage_flag);
-    if (hasSubPage_flag) {
-        button5 = "开盒即玩"
-    } else {
-        button5 = "欢迎上传规则"
-    }
-}
-
-if (current_page === 'gamerule') {
-    console.log("in document ready gamerule");
-    $('#back_arrow').attr('id', gameid);
-
-    lineText = [];
-    lineImage = [];
-    //var lineNo = []
-    lineFlag = [];
-    pageType = 'setup'
-    // this will create setup page
-    //ajax_wait(gameid, pageType);
-
 }

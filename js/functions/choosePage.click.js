@@ -11,7 +11,7 @@ console.log('button_id=' + button_id);
 
 let callGetGuideId = function () {
     $.ajax({
-        url: 'http://180.76.244.130:3000/button/getGuideId',
+        url: `http://${serverDomain}:${serverPort}/button/getGuideId',
         type: 'GET',
         data: {
             button_id: button_id
@@ -25,7 +25,7 @@ let callGetGuideId = function () {
 
 let getButtonToPageId = function (button_id, guide_id) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute',
         type: 'GET',
         data: {
             table_name: 'raw_button_table',
@@ -41,7 +41,7 @@ let getButtonToPageId = function (button_id, guide_id) {
 
 let getPageList = function (to_page_id, guide_id) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/guide/getPageList',
+        url: `http://${serverDomain}:${serverPort}/guide/getPageList',
         type: 'GET',
         dataType: "json",
         data: {
@@ -55,7 +55,7 @@ let getPageList = function (to_page_id, guide_id) {
 
 let getPreviousPageId = function (page_address_seg, button_id) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/button/getPreviousPageId',
+        url: `http://${serverDomain}:${serverPort}/button/getPreviousPageId',
         type: 'GET',
         data: {
             button_id: button_id
@@ -82,7 +82,7 @@ let addSwitchCheck = function (page_id) {
 
 let saveBranchPageId = function (guide_id, page_id) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/guide/savePageId',
+        url: `http://${serverDomain}:${serverPort}/guide/savePageId',
         type: 'GET',
         data: {
             guide_id: guide_id,
@@ -96,7 +96,7 @@ let saveBranchPageId = function (guide_id, page_id) {
 
 let createBranchPage = function (guide_id) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/page/createBranchPage',
+        url: `http://${serverDomain}:${serverPort}/page/createBranchPage',
         type: 'GET',
         data: {
             guide_id: guide_id
@@ -138,7 +138,7 @@ let addListElementCheck = function (page_id, to_page_id, text_content) {
 
 let getTextContent = function (text_id, page_id, to_page_id) {
     $.ajax({
-        url: 'http://180.76.244.130:3000/text/getTextAttribute',
+        url: `http://${serverDomain}:${serverPort}/text/getTextAttribute',
         type: 'GET',
         data: {
             attribute_name: 'textContent',
@@ -161,7 +161,7 @@ let getTextContentCheck = function (page_id, text_id, to_page_id) {
 let getTextInfo = function (page_id, to_page_id) {
     // get text id from specific page id
     $.ajax({
-        url: 'http://180.76.244.130:3000/page/getPageAttribute',
+        url: `http://${serverDomain}:${serverPort}/page/getPageAttribute',
         type: 'GET',
         data: {
             attribute_name: 'text1_id',
@@ -224,7 +224,7 @@ let addListElement = function (guide_id, page_list, to_page_id) {
 
 let callGetButtonText = function () {
     $.ajax({
-        url: 'http://180.76.244.130:3000/database/getAttribute',
+        url: `http://${serverDomain}:${serverPort}/database/getAttribute',
         type: 'GET',
         data: {
             table_name: 'raw_button_table',

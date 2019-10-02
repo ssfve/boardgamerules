@@ -22,3 +22,5 @@ var weightExp = ''
 var ageMea = ''
 var playersMea = '';
 var playtimeMea = '';
+let serverDomain = 'www.boardgamerules.cn';
+let serverPort = '3000';

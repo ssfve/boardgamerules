@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 
     <script type="text/javascript" src="../js/fishPole/fishpole.variables.js"></script>
-    <script type="text/javascript" src="../js/page/sidepane.variables.js"></script>
+    <script type="text/javascript" src="../js/global.variables.js"></script>
     <script type="text/javascript" src="../js/page/hotlist.variables.js"></script>
 
     <script type="text/javascript" src="../js/functions/database_util.js"></script>
@@ -40,7 +40,7 @@
                     <div class="mui-content-padded">
                         <div id="pdf-content">
                             <form method="POST" enctype="multipart/form-data"
-                                  action="http://180.76.244.130:3000/games/savePDF">
+                                  action="http://${serverDomain}:${serverPort}/games/savePDF">
                                 <label for="pdf_file" class="btn">上传桌游英文规则（选择鱼饵）:</label>
                                 <br><br>
                                 <input type="file" id="pdf_file" name="pdf_file"/>

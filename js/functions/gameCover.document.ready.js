@@ -211,7 +211,7 @@ if (currentPage === 'gameCover') {
         });
     })(mui, document);
 
-    let folder_query_url = 'http://180.76.244.130:3000/folder/getFolderFileList';
+    let folder_query_url = `http://${serverDomain}:${serverPort}/folder/getFolderFileList';
     let folder_path = '/var/tmp/pdf-upload';
     queryFolderInfo(folder_query_url, folder_path);
 }

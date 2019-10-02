@@ -6,7 +6,7 @@ function submit_pdf_info() {
         alert('请输入gstone_id');
         return
     }
-    let pdf_query_url = 'http://180.76.244.130:3000/games/savePDFInfo';
+    let pdf_query_url = `http://${serverDomain}:${serverPort}/games/savePDFInfo`;
     $.ajax({
         url: pdf_query_url,
         data: {
@@ -49,7 +49,7 @@ function submit_translate_info() {
         return
     }
     console.log(receiver_email);
-    let pdf_upload_url = 'http://180.76.244.130:3000/games/savePDF';
+    let pdf_upload_url = `http://${serverDomain}:${serverPort}/games/savePDF`;
     let pdf_data = new FormData();
     let pdf_file = document.getElementById("pdf_file").files[0];
     pdf_data.append('file-0', pdf_file);
@@ -80,7 +80,7 @@ function submit_translate_info() {
             alert("ERROR:开始钓鱼失败，请重试");
         }
     });
-    let pdf_query_url = 'http://180.76.244.130:3000/games/saveTranslateInfo';
+    let pdf_query_url = `http://${serverDomain}:${serverPort}/games/saveTranslateInfo`;
     let d = new Date();
     $.ajax({
         url: pdf_query_url,
