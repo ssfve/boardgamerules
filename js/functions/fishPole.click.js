@@ -28,7 +28,7 @@ function submit_translate_info() {
 
 let saveTranslatePdf=function(){
     let pdf_upload = {
-        url : `http://${serverDomain}:${serverPort}/node/games/saveTranslatePDF`,
+        url : `https://${serverDomain}/node/games/saveTranslatePDF`,
         text_area : $('#uploadNotice'),
         file_element_name : $('#pdf_file'),
         file_not_found_msg: "请选择鱼饵（pdf规则文件）",
@@ -46,7 +46,7 @@ let saveTranslatePdf=function(){
 };
 
 let saveTranslateInfo=function(pdf_name, receiver_email) {
-    let pdf_query_url = `http://${serverDomain}:${serverPort}/node/games/saveTranslateInfo`;
+    let pdf_query_url = `https://${serverDomain}/node/games/saveTranslateInfo`;
     let d = new Date();
     $.ajax({
         url: pdf_query_url,

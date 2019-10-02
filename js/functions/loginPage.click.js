@@ -227,7 +227,7 @@ let checkUserInfo = function (input_name) {
     console.log(`${serverDomain}`);
     console.log(`${serverPort}`);
     $.ajax({
-        url: `http://${serverDomain}:${serverPort}/node/user/checkUserInfo`,
+        url: `https://${serverDomain}/node/user/checkUserInfo`,
         type: 'GET',
         data: {
             user_name: input_name

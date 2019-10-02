@@ -16,7 +16,6 @@ var pixels = 'px'
 var subText = '关注我们 : ';
 var subName = '桌游怎么玩';
 var sideHeader = '最新说明书';
-var numRastesMea = ''
 var yearMea = ''
 var weightExp = ''
 var ageMea = ''
@@ -24,6 +23,5 @@ var playersMea = '';
 var playtimeMea = '';
 let serverDomain = 'www.boardgamerules.cn';
 // 3001 is the port nginx listening for nodejs
-let serverPort = '3001';
 // http will automatically changed to https
-let nodejs_url = `http://${serverDomain}:${serverPort}/node`;
+let nodejs_url = `https://${serverDomain}/node`;

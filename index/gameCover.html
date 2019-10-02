@@ -59,7 +59,7 @@
                             <button class="mui-btn button" type="button" onclick="submit_pdf_info()">提交pdf信息</button>
                             <br><br>
                             <form method="POST" enctype="multipart/form-data"
-                                  action="http://${serverDomain}:${serverPort}/node/games/savePDF">
+                                  action="https://${serverDomain}/node/games/savePDF">
                                 <input type="file" id="pdf_file" name="pdf_file"/>
                                 <button class="mui-btn button" type="button" id="upload_button" onclick="upload_pdf()">点击上传</button>
                             </form>
