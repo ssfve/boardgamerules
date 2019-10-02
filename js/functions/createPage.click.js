@@ -473,7 +473,7 @@ $('#home-button').on('tap', function () {
     callReturnHome()
 });
 
-$('#alarm-fullscreen-toggler').on('tap', goToFullScreen());
+$('#fullscreen-button').on('tap', goToFullScreen());
 
 callGetButtonText();
 callGetPageText();
