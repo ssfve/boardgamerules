@@ -1,5 +1,6 @@
 //alternations();
 //toast_alter();
+let pageTitle= '桌游规则英译中';
 $("title").html(pageTitle);
 
 let generateside = function (arrayEN, arrayCN, arrayID) {
