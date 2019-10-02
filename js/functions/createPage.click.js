@@ -148,17 +148,20 @@ let getImageForBackground = function () {
 };
 
 let showBackground = function (file_name) {
-    $('<img src="" alt=""/>').attr('src', `http://${serverDomain}:18001/${file_name}`).on('load', function () {
+    // show blurred or compressed version first
+    $('<img src="" alt=""/>').attr('src', `https://${serverDomain}/img-compressed/${file_name}`).on('load', function () {
         console.log('blurred and compressed img is downloaded');
-        $(this).remove();
-        // prevent memory leaks as @between suggested
-        $('body').css('background-image', `url(http://${serverDomain}:18001/${file_name})`);
+        $(this).remove();// prevent memory leaks
+        $('body').css('background-image', `url(https://${serverDomain}/img-compressed/${file_name})`);
+        showTrueBackground(file_name);
     });
-    $('<img src="" alt=""/>').attr('src', `http://${serverDomain}:18000/${file_name}`).on('load', function () {
+};
+
+let showTrueBackground = function(file_name){
+    $('<img src="" alt=""/>').attr('src', `https://${serverDomain}/img/${file_name}`).on('load', function () {
         console.log('original img is downloaded');
-        $(this).remove();
-        // prevent memory leaks as @between suggested
-        $('body').css('background-image', `url(http://${serverDomain}:18000/${file_name})`);
+        $(this).remove();// prevent memory leaks
+        $('body').css('background-image', `url(https://${serverDomain}/img/${file_name})`);
     });
 };
 
