@@ -46,8 +46,6 @@ var players = '';
 var list_line = '';
 var designers_temp = '';
 var playersBest = '';
-var pageTitle = '';
-
 //image
 var imgCaption = '';
 
