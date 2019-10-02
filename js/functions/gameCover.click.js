@@ -1,6 +1,6 @@
 
 console.log('get Unfinished Entries');
-let entry_query_url = `http://${serverDomain}:${serverPort}/database/getEntryInProgress`;
+let entry_query_url = `https://${serverDomain}:${serverPort}/database/getEntryInProgress`;
 $.ajax({
     url: entry_query_url,
     dataType: "json",
@@ -36,7 +36,7 @@ function submit_pdf_info() {
 }
 
 let saveUploadInfo=function(gstone_id, mod_name, source_detail){
-    let pdf_query_url = `http://${serverDomain}:${serverPort}/games/savePDFInfo`;
+    let pdf_query_url = `https://${serverDomain}:${serverPort}/games/savePDFInfo`;
     $.ajax({
         url: pdf_query_url,
         data: {
@@ -57,7 +57,7 @@ let saveUploadInfo=function(gstone_id, mod_name, source_detail){
 
 function upload_pdf() {
     let pdf_upload = {
-        url : `http://${serverDomain}:${serverPort}/games/savePDF`,
+        url : `https://${serverDomain}:${serverPort}/games/savePDF`,
         text_area : $('#uploadNotice'),
         file_element_name : $('#pdf_file'),
         file_not_found_msg: "请选择文件",
