@@ -2704,7 +2704,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 				//					err.appendChild(span);
 				//					var a = document.createElement('a');
 				//					a.innerHTML = '"mui框架适用场景"';
-				//					a.href = 'http://ask.dcloud.net.cn/article/113';
+				//					a.href = `http://ask.dcloud.net.cn/article/113';
 				//					err.appendChild(a);
 				//					document.body.appendChild(err);
 				//					console.log('在该浏览器下，不支持创建子页面');

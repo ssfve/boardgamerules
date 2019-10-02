@@ -1,202 +1,95 @@
 <!DOCTYPE html>
 <!-- saved from url=(0047)http://avvbxt.epub360.cn/v2/manage/book/2qrzue/ -->
-<html>
+<html lang="en">
 
-	<head>
-		<meta charset="utf-8">
-		<title>gameCover</title>
-		<meta name="description" content="">
-		<meta name="keywords" content="桌游规则，桌游说明书">
-		<meta name="author" content="boardgamerules">
-		<meta name="version" content="boardgamerules 2.0">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<head>
+    <meta charset="utf-8">
+    <title>gameCover</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="桌游规则，桌游说明书">
+    <meta name="author" content="boardgamerules">
+    <meta name="version" content="boardgamerules 2.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 
-		<link rel="stylesheet" type="text/css" href="../css/normalize.css" />
-		<link rel="stylesheet" href="../css/mui.min.css">
-		<link rel="stylesheet" type="text/css" href="../css/app.css" />
-		<link rel="stylesheet" type="text/css" href="../css/bgr.style.css" />
-		<link rel="stylesheet" type="text/css" href="../css/bgr.imageviewer.css" />
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/mui.min.css">
+    <link href="../css/mui.picker.css" rel="stylesheet"/>
+    <link href="../css/mui.poppicker.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="../css/app.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/gameCover.style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/bgr.imageviewer.css"/>
 
-		
-		<script type="text/javascript" src="../js/mui.min.js"></script>
-		<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-		
-		<script type="text/javascript" src="variables/cover.variables.js"></script>
-		<script type="text/javascript" src="../js/page/sidepane.variables.js"></script>
-		<script type="text/javascript" src="../js/page/hotlist.variables.js"></script>
-		
-		<script type="text/javascript" src="../js/functions/functions.js"></script>
-		<script type="text/javascript" src="../js/functions/database_util.js"></script>
-		<script type="text/javascript" src="../js/functions/button_click.js"></script>
-	</head>
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/global.variables.js"></script>
+    <script type="text/javascript" src="../js/page/hotlist.variables.js"></script>
 
-	<body>
-		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
-			<!--侧滑菜单部分-->
-			<aside id="offCanvasSide" class="mui-off-canvas-left background-color-orange">
-				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
-					<div id="sideHeader" class="title" style="margin-bottom: 5px;margin-top: 5px;"></div>
-					<ul id="sideContent" class="mui-table-view mui-table-view-chevron mui-table-view-inverted background-color-orange"></ul>
-					<div class="mui-grid_view" style="background-color:#FFFFFF;">
-						<div class="mui-media">
-							<div class="mui-table-view-cell mui-media-body">
-								<span id="subText" class="h6-text-grey"></span><span id="subName" class="h6-text-orange"></span>
-							</div>
-						</div>
-					</div>
-					<img style="width:100%;" src="../img/interface/logo.jpg" data-preview-src="" data-preview-group="1"/>
-				</div>
-			</aside>
-			<div class="mui-inner-wrap">
-				<header class="mui-bar mui-bar-nav set-transparent">
-					<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
-					<a class="mui-action-back mui-btn mui-btn-link mui-pull-right"></a>
-					<h1 class="mui-title"></h1>
-				</header>
-				<div class="mui-card cover-card">
-					<div id='caption-pic' class="mui-card-header mui-card-media"></div>
-				</div>
-				<div class="mui-content" style="padding-top: 0px;">
-					<div class="mui-content-padded no-margin-bottom">
-						<div id="" class="mui-row">
-							<div class="mui-col-sm-2 mui-col-xs-2">
-								<div id="icon1" class="mui-grid-view">
-									<div class="stack-imgs no-margin-top">
+    <script type="text/javascript" src="../js/functions/database_util.js"></script>
+</head>
 
-										<h4 id="valueRates" align="center" class="cover-inner-text h6-text-white text-image-font"></h4>
-										<img id="svg1" class="cover-img" src="../img/interface/orange.svg" />
-									</div>
-									<h6 align="center" class="h7">
-										<span id="numRates" class="h6-text-orange"></span></div>
-								</h6>
-								</div>
-								<div class="mui-col-sm-2 mui-col-xs-2">
-									<div class="mui-grid-view">
-										<td class="stack-imgs">
-											<img id="yearsvg" class="cover-inner-img" src="../img/interface/year.svg" />
-											<img id="svg2" class="cover-img" src="../img/interface/orange.svg" />
+<body>
+<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+    <!--侧滑菜单部分-->
+    <aside id="offCanvasSide" class="mui-off-canvas-left background-color-orange">
+        <div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+            <div id="sideHeader" class="title" style="margin-bottom: 5px;margin-top: 5px;"></div>
+            <ul id="sideContent"
+                class="mui-table-view mui-table-view-chevron mui-table-view-inverted background-color-orange"></ul>
+            <div class="mui-grid_view" style="background-color:#FFFFFF;">
+                <div class="mui-media">
+                    <div class="mui-table-view-cell mui-media-body">
+                        <span id="subText" class="h6-text-grey"></span><span id="subName" class="h6-text-orange"></span>
+                    </div>
+                </div>
+            </div>
+            <img style="width:100%;" src="../img/interface/logo.jpg" data-preview-src="" data-preview-group="1" alt=""/>
+        </div>
+    </aside>
+    <div class="mui-inner-wrap">
+        <div id="mainPageScroll" class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <div class="mui-content" style="padding-top: 0;">
+                    <div class="mui-content-padded">
+                        <div id="pdf-content">
+                            <label for="gstone_id"></label><input type="text" id="gstone_id" class="mui-input-clear" placeholder="请输入gstone_id(必填)"/>
+                            <button id='modNamePicker' class="mui-btn mui-btn-block" type='button'>选择pdf样式(白边-语言-来源)
+                            </button>
+                            <label for="source_detail"></label><input type="text" id="source_detail" class="mui-input-clear" placeholder="如果来源是other,可输入译者姓名(选填)"/>
+                            <button class="mui-btn button" type="button" onclick="submit_pdf_info()">提交pdf信息</button>
+                            <br><br>
+                            <form method="POST" enctype="multipart/form-data"
+                                  action="https://${serverDomain}:${serverPort}/games/savePDF">
+                                <input type="file" id="pdf_file" name="pdf_file"/>
+                                <button class="mui-btn button" type="button" id="upload_button" onclick="upload_pdf()">点击上传</button>
+                            </form>
+                            <progress value="0" max="100" id="progress" style="height: 20px; width: 100%"></progress>
+                            <div id='modNameResult' style="opacity:0;" class="ui-alert"></div>
+                            <div id='modNotice' class="ui-alert"></div>
+                            <div id='uploadNotice' class="ui-alert"></div>
+                            <div id='folderList' class="ui-alert"></div>
+                            <div id='ProgressResult' class="ui-alert"></div>
+                        </div>
+                    </div>
+                    <div class="mui-off-canvas-backdrop"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/mui.min.js"></script>
+    <script src="../js/mui.zoom.js"></script>
+    <script src="../js/mui.previewimage.js"></script>
+    <script src="../js/mui.picker.js"></script>
+    <script src="../js/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../js/functions/functions.js"></script>
+    <script type="text/javascript" src="../js/gameCover/cover.interface.js"></script>
+    <script type="text/javascript" src="../js/gameCover/cover.event.js"></script>
+    <script type="text/javascript" src="../js/functions/gameCover.document.ready.js"></script>
+    <!--<script src="../js/mui.picker.min.js"></script>-->
+    <script type="text/javascript" src="../js/functions/gameCover.click.js"></script>
 
-										</td>
-										<h6 align="center" class="h7">
-									<span id="yearPub" class="h6-text-orange"></span>
-									</h6>
-									</div>
-								</div>
-								<div class="mui-col-sm-2 mui-col-xs-2">
-									<div class="mui-grid-view">
-										<td class="stack-imgs">
-											<img id="weightsvg" class="cover-inner-img" src="../img/interface/weight.svg" />
-											<img id="svg3" class="cover-img" src="../img/interface/orange.svg" />
-										</td>
-										<h6 align="center" class="h7">
-										<span id="weight" class="h6-text-orange"></span><span id="weightLimit" class="h6-text-grey"></span>
-									</h6>
-									</div>
-								</div>
-								<div class="mui-col-sm-2 mui-col-xs-2">
-									<div class="mui-grid-view">
-										<td class="stack-imgs">
-											<img id="agesvg" class="cover-inner-img" src="../img/interface/age.svg" />
-											<img id="svg4" class="cover-img" src="../img/interface/orange.svg" />
-										</td>
-										<h6 align="center" class="h7">
-									<span id="age" class="h6-text-orange"></span><span id="ageMeaPlus" class="h6-text-orange"></span>
-									</h6>
-									</div>
-								</div>
-								<div class="mui-col-sm-2 mui-col-xs-2">
-									<div class="mui-grid-view">
-										<td class="stack-imgs">
-											<img id="playerssvg" class="cover-inner-img" src="../img/interface/players.svg" />
-											<img id="svg5" class="cover-img" src="../img/interface/orange.svg" />
-										</td>
-										<h6 align="center" class="h7">
-										<span id="players" class="h6-text-orange"></span><span id="playersBest" class="h6-text-grey"></span>
-									</h6>
-										<div id="info" align="center"></div>
-									</div>
-								</div>
-								<div class="mui-col-sm-2 mui-col-xs-2">
-									<div class="mui-grid-view">
-										<td class="stack-imgs">
-											<img id="clocksvg" class="cover-inner-img" src="../img/interface/clock.svg" />
-											<img id="svg6" class="cover-img" src="../img/interface/orange.svg" />
-										</td>
-										<h6 align="center" class="h7">
-										<span id="playtime" class="h6-text-orange"></span>
-									</h6>
-										<div id="info" align="center"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				<div class="mui-content" style="padding-top: 0px;">
-					<div class="mui-content-padded">
-						<div class="mui-row">
-							<div class="mui-col-sm-3 mui-col-xs-3">
-								<h6 id="gameName" class="h6-text-grey"></h6>
-							</div>
-							<div class="mui-col-sm-9 mui-col-xs-9">
-								<h6 id="nameCN" class="h6-text-orange my-overflow-style"></h6>
-							</div>
-							<div class="mui-col-sm-3 mui-col-xs-3">
-								<h6 id="designerTitle" class="h6-text-grey"></h6>
-							</div>
-							<div class="mui-col-sm-9 mui-col-xs-9">
-								<h6 id="designerName" class="h6-text-grey my-overflow-style"></h6>
-							</div>
-							<div class="mui-col-sm-3 mui-col-xs-3">
-								<h6 id="langTitleLow" class="h6-text-grey"></h6>
-							</div>
-							<div class="mui-col-sm-9 mui-col-xs-9">
-								<h6>
-									<span id="langLvl0" class="h6-text-grey"></span>
-									<span id="langLvl1" class="h6-text-grey"></span>
-									<span id="langLvl2" class="h6-text-grey"></span>
-									<span id="langLvl3" class="h6-text-grey"></span>
-									<span id="langLvl4" class="h6-text-grey"></span>
-								</h6>
-							</div>
-							<div class="mui-col-sm-3 mui-col-xs-3">
-									<h6 id="categoryTitle" class="h6-text-grey"></h6>
-								</div>
-								<div class="mui-col-sm-9 mui-col-xs-9">
-									<h6 id="categorys" class="h6-text-grey my-overflow-style"></h6>
-								</div>
-							</div>
-					</div>
-				</div>
-				<div class="mui-content" style="padding-top: 0px;">
-					<div class="mui-content-padded">
-						<button type="button" id="button6" onclick="btn6_click()" class="mui-btn mui-btn-block bs-wo" />
-						<button type="button" id="button5" onclick="btn5_click()" class="mui-btn mui-btn-block bs-wo" />
-						<button type="button" id="button1" onclick="btn1_click()" class="mui-btn mui-btn-block bs-wo" />
-                				
-								
-								<!--
-                	作者：ssfvessfve@163.com
-                	时间：2017-06-25
-                	描述：
-                	<button type="button" id="button2" onclick="btn2_click()" class="mui-btn mui-btn-block bs-wo" />
-                	
-					
-					<button type="button" id="button4" onclick="btn4_click()" class="mui-btn mui-btn-block bs-wo" />
-                -->
+</div>
 
-							</div>
-							<div class="mui-off-canvas-backdrop"></div>
-				</div>
-			</div>
-			<script src="../js/mui.zoom.js"></script>
-			<script src="../js/mui.previewimage.js"></script>
-			<script type="text/javascript" src="cover.interface.js"></script>
-			<script type="text/javascript" src="events/cover.event.js"></script>
-			<script src="../js/functions/document.ready.js"></script>
-		</div>
-		
-	</body>
-	
+</body>
+
 </html>

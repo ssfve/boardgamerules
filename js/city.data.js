@@ -124,7 +124,7 @@ var cityData = [{
 		text: "其它区"
 	}]
 }, {
-	value: '130000',
+	value: '1serverPort0',
 	text: '河北省',
 	children: [{
 		value: "130100",
@@ -315,7 +315,7 @@ var cityData = [{
 		text: "延边朝鲜族自治州"
 	}]
 }, {
-	value: '230000',
+	value: '2serverPort0',
 	text: '黑龙江省',
 	children: [{
 		value: "230100",
@@ -468,7 +468,7 @@ var cityData = [{
 		text: "宿迁市"
 	}]
 }, {
-	value: '330000',
+	value: '3serverPort0',
 	text: '浙江省',
 	children: [{
 		value: "330100",
@@ -793,7 +793,7 @@ var cityData = [{
 		text: "神农架林区"
 	}]
 }, {
-	value: '430000',
+	value: '4serverPort0',
 	text: '湖南省',
 	children: [{
 		value: "430100",
@@ -1244,7 +1244,7 @@ var cityData = [{
 		text: "黔南布依族苗族自治州"
 	}]
 }, {
-	value: '530000',
+	value: '5serverPort0',
 	text: '云南省',
 	children: [{
 		value: "530100",
@@ -1397,11 +1397,11 @@ var cityData = [{
 		value: "622900",
 		text: "临夏回族自治州"
 	}, {
-		value: "623000",
+		value: "62serverPort",
 		text: "甘南藏族自治州"
 	}]
 }, {
-	value: '630000',
+	value: '6serverPort0',
 	text: '青海省',
 	children: [{
 		value: "630100",
@@ -1475,7 +1475,7 @@ var cityData = [{
 		value: "652900",
 		text: "阿克苏地区"
 	}, {
-		value: "653000",
+		value: "65serverPort",
 		text: "克孜勒苏柯尔克孜自治州"
 	}, {
 		value: "653100",

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://avvbxt.epub360.cn/v2/manage/book/2qrzue/ -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>createPage</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="桌游规则，桌游说明书">
+    <meta name="author" content="boardgamerules">
+    <meta name="version" content="boardgamerules 2.0">
+    <meta name="pageid" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="../../css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/mui.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/mui.picker.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/mui.poppicker.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/app.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/bp.style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/bgr.imageviewer.css"/>
+
+    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../js/global.variables.js"></script>
+    <script type="text/javascript" src="../../js/functions/database_util.js"></script>
+</head>
+
+<body>
+<canvas id="canvas"></canvas>
+<img style="position:fixed;top:0;left:0;opacity:0;" id="background-image-cache"></img>
+<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+    <div class="mui-inner-wrap">
+        <div id="mainPageScroll" class="mui-scroll-wrapper">
+            <div class="mui-content" style="padding-top: 0;">
+                <div class="mui-content-padded">
+                    <div class="mui-row" id="mui-row-0">
+                        <div class="mui-col-sm-3">
+                            <button type="button" class="mui-btn mui-btn-outlined" id="home-button">回家</button>
+                        </div>
+                        <div class="mui-col-sm-3">
+                            <button type="button" class="mui-btn mui-btn-outlined" id="fullscreen-button">全屏</button>
+                        </div>
+                    </div>
+                    <form class="mui-input-group">
+                        <div class="mui-input-row">
+                            <input type="text" class="mui-input-clear" id="desc_input" placeholder="请输入描述">
+                        </div>
+                    </form>
+                    <button class="upload_background" id="upload_background_button"></button>
+                    <form method="POST" id="background_submit_form" enctype="multipart/form-data"
+                          action="http://${serverDomain}:${serverPort}/games/saveBackgroundImage">
+                        <input type="file" id="bg_img_file" name="bg_img_file"/>
+                        <input type="submit">
+                    </form>
+                    <progress value="0" max="100" id="progress" style="height: 20px; width: 100%"></progress>
+                </div>
+                <div class="container" id="bottom-area">
+                    <div class="mui-row" id="bottom-row-1">
+                        <div class="mui-col-sm-3"></div>
+                        <div class="mui-col-sm-3">
+                            <button type="button" class="mui-btn" id="dummy-button-1" data-loading-text="添加中">添加分支</button>
+                        </div>
+                        <div class="mui-col-sm-6">
+                            <button type="button" class="mui-btn mui-btn-royal" id="default-button-1" data-loading-text="跳转中">如果不设置跳转,按钮会隐藏</button>
+                        </div>
+                    </div>
+                    <div class="mui-row" id="bottom-row-2">
+                        <div class="mui-col-sm-3"></div>
+                        <div class="mui-col-sm-3">
+                            <button type="button" class="mui-btn" id="dummy-button-2" data-loading-text="添加中">添加分支</button>
+                        </div>
+                        <div class="mui-col-sm-6">
+                            <button type="button" class="mui-btn mui-btn-royal" id="default-button-2" data-loading-text="跳转中">点击按钮,设置跳转页面</button>
+                        </div>
+                    </div>
+                    <div class="mui-row" id="bottom-row-3">
+                        <div class="mui-col-sm-3">
+                        </div>
+                        <div class="mui-col-sm-3">
+                            <button type="button" class="mui-btn" id="default-add-button">添加分支</button>
+                        </div>
+                        <div class="mui-col-sm-6">
+                            <button type="button" class="mui-btn mui-btn-royal" id="default-button-3" data-loading-text="跳转中">在跳转页面,可设置按钮文字</button>
+                        </div>
+                    </div>
+                    <div class="mui-row" id="bottom-row-4">
+                        <div class="mui-col-sm-3">
+                        </div>
+                        <div class="mui-col-sm-3">
+                            <button type="button" class="mui-btn" id="default-sub-button">删除分支</button>
+                        </div>
+                        <div class="mui-col-sm-6">
+                            <button type="button" class="mui-btn mui-btn-royal" id="default-button-4" data-loading-text="跳转中">下一步</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mui-off-canvas-backdrop"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../js/mui.min.js"></script>
+    <script type="text/javascript" src="../../js/mui.zoom.js"></script>
+    <script type="text/javascript" src="../../js/mui.previewimage.js"></script>
+    <script type="text/javascript" src="../../js/mui.picker.js"></script>
+    <script type="text/javascript" src="../../js/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../js/functions/functions.js"></script>
+    <script type="text/javascript" src="../../js/createRule/cover.interface.js"></script>
+    <script type="text/javascript" src="../../js/createRule/cover.event.js"></script>
+    <script type="text/javascript" src="../../js/functions/document.ready.js"></script>
+    <script type="text/javascript" src="../../js/functions/after_ready.js"></script>
+    <script type="text/javascript" src="../../js/functions/createPage.click.js"></script>
+</div>
+
+</body>
+
+</html>
