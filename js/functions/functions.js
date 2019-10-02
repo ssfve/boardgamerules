@@ -99,10 +99,10 @@ let addEditGuideToSlot=function(o){
     $(`#guide_${guide_id}_inner_content`).append(`<input type="text" class="mui-input-clear" placeholder="请输入流名称" id="guide_${guide_id}_text">`);
 
     if( image_id !== '0' && image_id !== ''){
-        $('<img/>').attr('src', `http://${serverDomain}:18001/${image_id}.jpg`).on('load', function() {
+        $('<img/>').attr('src', `https://${serverDomain}/img-compressed/${image_id}.jpg`).on('load', function() {
             console.log('blurred and compressed img is downloaded');
             $(this).remove(); // prevent memory leaks as @between suggested
-            $(`#guide_${guide_id}_pic`).css('background-image', `url(http://${serverDomain}:18001/${image_id}.jpg)`);
+            $(`#guide_${guide_id}_pic`).css('background-image', `url(https://${serverDomain}/img-compressed/${image_id}.jpg)`);
         });
     }
     $(`#guide_${guide_id}_text`).val(guide_name);
