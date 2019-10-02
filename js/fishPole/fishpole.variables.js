@@ -54,7 +54,7 @@ var imgCaption = '';
 //page
 var current_page = 'fishpole';
 var gameid = '';
-var slide_height = '50vw'
+var slide_height = '50vw';
 
 var nodejs_url = `http://${serverDomain}:${serverPort}/`;
 var subpage_url = '';
