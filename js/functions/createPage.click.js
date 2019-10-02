@@ -217,11 +217,11 @@ let callChangeBackground = function (form, form_data) {
 
 };
 
-let createTextHandler=function(){
+let createTextHandler = function () {
     callCreateText(this.id)
 };
 
-let default_add_button_event=function () {
+let default_add_button_event = function () {
     let db4 = $(`#${button_map.button4}`);
     if (db4.css('opacity') === '0') {
         db4.css('opacity', 100);
@@ -248,14 +248,14 @@ let default_add_button_event=function () {
         db1.on('tap', createTextHandler);
         $('#default-add-button').css('opacity', 0);
         $('#default-add-button').off('tap');
-    }else{
+    } else {
         $('#default-add-button').css('opacity', 0);
         $('#default-add-button').off('tap');
     }
 };
 
-let performDelete=function(element, button_number){
-    if(!element.includes('default')){
+let performDelete = function (element, button_number) {
+    if (!element.includes('default')) {
         // remove to page id
         let button_id = element.split('-')[1];
         let o = {
@@ -268,18 +268,18 @@ let performDelete=function(element, button_number){
         callSaveAttribute(o);
         let p = {
             table_name: 'raw_control_table',
-            attribute_name: 'button'+button_number+'_id',
+            attribute_name: 'button' + button_number + '_id',
             attribute_value: '',
             key_name: 'page_id',
             key_value: page_id
         };
         callSaveAttribute(p);
-        button_map['button'+button_number] = 'default-button-'+button_number;
+        button_map['button' + button_number] = 'default-button-' + button_number;
         console.log(button_map);
     }
 };
 
-let default_sub_button_event=function () {
+let default_sub_button_event = function () {
     let db1 = $(`#${button_map.button1}`);
     if (db1.css('opacity') === '1') {
         db1.css('opacity', 0);
@@ -390,16 +390,16 @@ let callButtonCheck = function (button_list, button_default_name) {
 };
 
 // if any button click, save text first
-$('#default-button-4').on('tap', function(){
+$('#default-button-4').on('tap', function () {
     callCreateText(this.id);
 });
-$('#default-button-3').on('tap', function(){
+$('#default-button-3').on('tap', function () {
     callCreateText(this.id);
 });
-$('#default-button-2').on('tap', function(){
+$('#default-button-2').on('tap', function () {
     callCreateText(this.id);
 });
-$('#default-button-1').on('tap', function(){
+$('#default-button-1').on('tap', function () {
     callCreateText(this.id);
 });
 
@@ -473,6 +473,7 @@ $('#home-button').on('tap', function () {
     callReturnHome()
 });
 
+$('#alarm-fullscreen-toggler').on('tap', goToFullScreen());
 
 callGetButtonText();
 callGetPageText();
