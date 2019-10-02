@@ -23,4 +23,7 @@ var ageMea = ''
 var playersMea = '';
 var playtimeMea = '';
 let serverDomain = 'www.boardgamerules.cn';
-let serverPort = '3000';
+// 3001 is the port nginx listening for nodejs
+let serverPort = '3001';
+// http will automatically changed to https
+let nodejs_url = `http://${serverDomain}:${serverPort}/node`;
