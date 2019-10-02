@@ -592,7 +592,7 @@ let uploadFile = function (file_object) {
     }
 };
 
-let goToFullScreen = function (e) {
+let goToFullScreen=function(){
     let element = document.documentElement;
     if (element.requestFullscreen) {
         element.requestFullscreen();
@@ -603,12 +603,13 @@ let goToFullScreen = function (e) {
     } else if (element.msRequestFullscreen) {
         element.msRequestFullscreen();
     }
-    element.off('tap');
-    element.on('tap', escFullScreen());
-    element.html('半屏');
+    let fullscreenElement = $('#fullscreen-button');
+    fullscreenElement.off('tap');
+    fullscreenElement.on('tap', escFullScreen());
+    fullscreenElement.html('半屏');
 };
 
-let escFullScreen = function (e) {
+let escFullScreen=function(){
     let element = document.documentElement;
     if(document.exitFullscreen) {
         document.exitFullscreen();
@@ -619,7 +620,8 @@ let escFullScreen = function (e) {
     } else if (document.msExitFullscreen) {
         document.msExitFullscreen();
     }
-    element.off('tap');
-    element.on('tap', goToFullScreen());
-    element.html('全屏');
+    let fullscreenElement = $('#fullscreen-button');
+    fullscreenElement.off('tap');
+    fullscreenElement.on('tap', goToFullScreen());
+    fullscreenElement.html('全屏');
 };

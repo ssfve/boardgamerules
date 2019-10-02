@@ -473,7 +473,7 @@ $('#home-button').on('tap', function () {
     callReturnHome()
 });
 
-$('#fullscreen-button').on('tap', goToFullScreen());
+$('#fullscreen-button').on('tap', goToFullScreen);
 
 callGetButtonText();
 callGetPageText();
