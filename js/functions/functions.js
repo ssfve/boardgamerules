@@ -605,7 +605,7 @@ let goToFullScreen=function(){
     }
     let fullscreenElement = $('#fullscreen-button');
     fullscreenElement.off('tap');
-    fullscreenElement.on('tap', escFullScreen());
+    fullscreenElement.on('tap', escFullScreen);
     fullscreenElement.html('半屏');
 };
 
@@ -622,6 +622,6 @@ let escFullScreen=function(){
     }
     let fullscreenElement = $('#fullscreen-button');
     fullscreenElement.off('tap');
-    fullscreenElement.on('tap', goToFullScreen());
+    fullscreenElement.on('tap', goToFullScreen);
     fullscreenElement.html('全屏');
 };
