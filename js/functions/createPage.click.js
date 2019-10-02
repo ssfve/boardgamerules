@@ -153,6 +153,15 @@ let showBackground = function (file_name) {
         console.log('blurred and compressed img is downloaded');
         $(this).remove();// prevent memory leaks
         $('body').css('background-image', `url(https://${serverDomain}/img-compressed/${file_name})`);
+        showBlurBackground(file_name);
+    });
+};
+
+let showBlurBackground = function(file_name){
+    $('<img src="" alt=""/>').attr('src', `https://${serverDomain}/img-blurred/${file_name}`).on('load', function () {
+        console.log('original img is downloaded');
+        $(this).remove();// prevent memory leaks
+        $('body').css('background-image', `url(https://${serverDomain}/img-blurred/${file_name})`);
         showTrueBackground(file_name);
     });
 };
