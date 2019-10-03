@@ -214,20 +214,32 @@ let gotoPage = function (Id) {
 
 };
 
-var generateSidelink = function (array) {
-    array.forEach(function (val, index) {
-        //alert(array[index]);
-        gotoPage(array[index]);
+let showBackground = function (file_name) {
+    // show blurred or compressed version first
+    $('<img src="" alt=""/>').attr('src', `https://${serverDomain}/img-compressed/${file_name}`).on('load', function () {
+        console.log('blurred and compressed img is downloaded');
+        $(this).remove();// prevent memory leaks
+        $('body').css('background-image', `url(https://${serverDomain}/img-compressed/${file_name})`);
+        showBlurBackground(file_name);
     });
-}
+};
 
-var index_gen = function (array) {
-    var html_line = ''
-    array.forEach(function (val, index) {
-        html_line += a_seg.replace('%data%', val)
+let showBlurBackground = function(file_name){
+    $('<img src="" alt=""/>').attr('src', `https://${serverDomain}/img-blurred/${file_name}`).on('load', function () {
+        console.log('original img is downloaded');
+        $(this).remove();// prevent memory leaks
+        $('body').css('background-image', `url(https://${serverDomain}/img-blurred/${file_name})`);
+        showTrueBackground(file_name);
     });
-    return html_line
-}
+};
+
+let showTrueBackground = function(file_name){
+    $('<img src="" alt=""/>').attr('src', `https://${serverDomain}/img/${file_name}`).on('load', function () {
+        console.log('original img is downloaded');
+        $(this).remove();// prevent memory leaks
+        $('body').css('background-image', `url(https://${serverDomain}/img/${file_name})`);
+    });
+};
 
 var index_games_gen = function (array) {
     var html_line = ''

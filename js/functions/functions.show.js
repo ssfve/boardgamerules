@@ -41,7 +41,7 @@ seg_list[10] = '<div class="mui-col-sm-10 mui-col-xs-10">'
 seg_list[11] = '<div class="mui-col-sm-11 mui-col-xs-11">'
 seg_list[12] = '<div class="mui-col-sm-12 mui-col-xs-12">'
 
-var mic_seg = '<div class="flex-container"><a id="icon-mic" class="active"><span class="mui-icon mui-icon-mic-filled"></span></a></div>'
+var mic_seg = '<div class="flex-container"><a id="icon-mic" class="active"><span class="mui-icon mui-icon-mic-filled"></span></a></div>';
 
 var list_line = '';
 var text_line = '';
@@ -83,6 +83,33 @@ let addGuideToSlot=function(slot_number, guide_id, guide_name){
     $(`#guide_${guide_id}_inner_content`).append(`<div>${time}<div style="color: #333;" id="guide_${guide_id}_text">${guide_name}</div></div>`);
 };
 
+let showBackground = function (file_name) {
+    // show blurred or compressed version first
+    $('<img src="" alt=""/>').attr('src', `https://${serverDomain}/img-compressed/${file_name}`).on('load', function () {
+        console.log('blurred and compressed img is downloaded');
+        $(this).remove();// prevent memory leaks
+        $('body').css('background-image', `url(https://${serverDomain}/img-compressed/${file_name})`);
+        showBlurBackground(file_name);
+    });
+};
+
+let showBlurBackground = function(file_name){
+    $('<img src="" alt=""/>').attr('src', `https://${serverDomain}/img-blurred/${file_name}`).on('load', function () {
+        console.log('original img is downloaded');
+        $(this).remove();// prevent memory leaks
+        $('body').css('background-image', `url(https://${serverDomain}/img-blurred/${file_name})`);
+        showTrueBackground(file_name);
+    });
+};
+
+let showTrueBackground = function(file_name){
+    $('<img src="" alt=""/>').attr('src', `https://${serverDomain}/img/${file_name}`).on('load', function () {
+        console.log('original img is downloaded');
+        $(this).remove();// prevent memory leaks
+        $('body').css('background-image', `url(https://${serverDomain}/img/${file_name})`);
+    });
+};
+
 let addEditGuideToSlot=function(o){
     let time = Date.now();
     let slot_number = o.slot_count;
@@ -97,7 +124,7 @@ let addEditGuideToSlot=function(o){
     if( image_id === '0' || image_id === ''){
         guide_id_element.prepend(`<div class="mui-card-header mui-card-media" id="guide_${guide_id}_pic" style="height:40vw;background-image:url(../../img/interface/vertical-flow.png)"></div>`);
     }else{
-        guide_id_element.prepend(`<div class="mui-card-header mui-card-media" id="guide_${guide_id}_pic" style="height:40vw;background-image:url(http://serverDomain:18000/${image_id}.jpg)"></div>`);
+        guide_id_element.prepend(`<div class="mui-card-header mui-card-media" id="guide_${guide_id}_pic" style="height:40vw;background-image:url(https://${serverDomain}/img-compressed/${image_id}.jpg)"></div>`);
     }
     guide_id_element.append(`<div class="mui-card-content" id="guide_${guide_id}_content"></div>`);
     $(`#guide_${guide_id}_content`).prepend(`<div class="mui-card-content-inner" id="guide_${guide_id}_inner_content"></div>`);
@@ -273,13 +300,6 @@ let gotoPage = function (Id) {
 
 };
 
-var generateSidelink = function (array) {
-    array.forEach(function (val, index) {
-        //alert(array[index]);
-        gotoPage(array[index]);
-    });
-}
-
 var index_gen = function (array) {
     var html_line = ''
     array.forEach(function (val, index) {
@@ -289,7 +309,7 @@ var index_gen = function (array) {
 }
 
 var index_games_gen = function (array) {
-    var html_line = ''
+    var html_line = '';
     array.forEach(function (val, index) {
         //alert(type(val))
         if (val.length === 2) {
@@ -429,7 +449,6 @@ var collapse_img_show = function (gameid, pageType, lineFlag) {
 };
 
 var alternations = function () {
-
     average = average.toFixed(1);
     averageweight = averageweight.toFixed(2);
     designersCN = designersCN.replace('|', ',').replace('|', ',')
@@ -547,7 +566,7 @@ let uploadFile = function (file_object) {
 			alert(file_object.success_alert_msg);
 		};
 
-		let uploadFailed = function (evt) {
+		let uploadFailed = function () {
 			inner_button.attr("disabled", false);
 			inner_button.html(file_object.button_text);
 			file_object.progressbar.val(0);
