@@ -18,7 +18,7 @@ var link_seg = '<a id="%link%" class="mui-navigate-right" style="color:#FFFFFF;"
 var address_seg = '../%data%/gamecover/gameCover.html';
 var new_address_seg = 'gameCover.html?id=%data%';
 var local_address_seg = '../%data%/gamecover/gameCover.html';
-var local_hotlist_seg = 'hotlist.html';
+var local_hotlist_seg = 'index.html';
 var a_seg = '<a>%data%</a>';
 
 var index_seg = '<div class="mui-indexed-list-bar">%data%</div>';
