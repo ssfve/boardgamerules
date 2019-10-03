@@ -190,6 +190,28 @@ let changeStyle=function(){
     $('#default-sub-button').css('opacity','0').css('disabled',true);
 };
 
+let returnQRUrl=function() {
+    let size = 100;
+    let QRPrefix = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=`;
+    let QRSuffix = window.location.href;
+    return QRPrefix+QRSuffix;
+};
+
+let toggleQRCode=function(){
+    let share_btn_ele = $('#share-button');
+    let text = share_btn_ele.val();
+    console.log(text);
+    if (text === '取消') {
+        $('#qr-image').attr('src', '');
+        share_btn_ele.val('分享');
+    }else{
+        $('#qr-image').attr('src', returnQRUrl());
+        share_btn_ele.val('取消');
+        mui.toast('截屏后分享图片||让小伙伴扫码',{ duration:'long', type:'div' })
+    }
+};
+
+
 let htmlBody = $('body');
 let startX, startY, moveEndX, moveEndY, X, Y;
 let headerFlag = false;
@@ -210,11 +232,12 @@ htmlBody.on('touchmove', function(e) {
     let header_bar_ele = $('#mui-row-0');
     if ( Y > 0 && !headerFlag) {
         console.log('touch pull down');
-        header_bar_ele.append(`<div class="mui-col-sm-3"><button type="button" class="mui-btn mui-btn-outlined" id="back-button">返回</button></div>`);
-        header_bar_ele.append(`<div class = "mui-col-sm-3"><button type = "button" class="mui-btn mui-btn-outlined" id = "fullscreen-button">全屏</button></div>`);
-        header_bar_ele.append(`<div class="mui-col-sm-3"><button type="button" class="mui-btn mui-btn-outlined" id="share-button">分享</button></div>`);
+        header_bar_ele.append(`<div class="mui-col-sm-2"><button type="button" class="mui-btn mui-btn-royal" id="back-button">返回</button></div>`);
+        header_bar_ele.append(`<div class = "mui-col-sm-2"><button type = "button" class="mui-btn mui-btn-royal" id = "fullscreen-button">全屏</button></div>`);
+        header_bar_ele.append(`<div class="mui-col-sm-2"><button type="button" class="mui-btn mui-btn-royal" id="share-button">分享</button></div>`);
         $('#back-button').on('tap',function(){history.back()});
         $('#fullscreen-button').on('tap', goToFullScreen);
+        $('#share-button').on('tap', toggleQRCode);
         headerFlag = true;
     } else if ( Y < 0 && headerFlag) {
         console.log('touch pull up');
