@@ -105,12 +105,15 @@ let addEditGuideToSlot=function(o){
             $(`#guide_${guide_id}_pic`).css('background-image', `url(https://${serverDomain}/img-compressed/${image_id}.jpg)`);
         });
     }
-    $(`#guide_${guide_id}_text`).val(guide_name);
+
+    let guide_text_ele = $(`#guide_${guide_id}_text`);
     let guide_id_pic_element = $(`#guide_${guide_id}_pic`);
-    guide_id_pic_element.on('tap', function () {
-        console.log(`#guide_${guide_id}_pic tapped`);
+    // set guide name
+    guide_text_ele.val(guide_name);
+    console.log('the text is set to '+guide_name);
+    guide_text_ele.on('oninput', function (){
         let guide_name = $(`#guide_${guide_id}_text`).val();
-        console.log(guide_name);
+        console.log('text changed to '+guide_name);
         let o = {
             table_name: 'guide_table',
             attribute_name: 'guide_name',
@@ -119,6 +122,10 @@ let addEditGuideToSlot=function(o){
             key_value: guide_id
         };
         callSaveAttribute(o);
+    });
+
+    guide_id_pic_element.on('tap', function () {
+        console.log(`#guide_${guide_id}_pic tapped`);
         getRootPageId(guide_id);
     });
 };

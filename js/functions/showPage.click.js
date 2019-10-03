@@ -199,15 +199,20 @@ let returnQRUrl=function() {
 
 let toggleQRCode=function(){
     let share_btn_ele = $('#share-button');
-    let text = share_btn_ele.val();
+    let text = share_btn_ele.html();
     console.log(text);
+    let qr_image_ele = $('#qr-image');
     if (text === '取消') {
-        $('#qr-image').attr('src', '');
-        share_btn_ele.val('分享');
+        qr_image_ele.attr('src', '');
+        share_btn_ele.html('分享');
     }else{
-        $('#qr-image').attr('src', returnQRUrl());
-        share_btn_ele.val('取消');
-        mui.toast('截屏后分享图片||让小伙伴扫码',{ duration:'long', type:'div' })
+        let qr_image = new Image();
+        qr_image.src = returnQRUrl();
+        qr_image.onload=function(){
+            qr_image_ele.attr('src', qr_image.src);
+            mui.toast('截屏后分享图片||让小伙伴扫码',{ duration:'long', type:'div' });
+            share_btn_ele.html('取消');
+        };
     }
 };
 
