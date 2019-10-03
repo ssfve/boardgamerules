@@ -72,7 +72,6 @@ var change_nameEN = function (name) {
 };
 
 let addGuideToSlot=function(slot_number, guide_id, guide_name){
-    let time = Date.now();
     let slot_element = $(`#slot-${slot_number}`);
     slot_element.empty();
     slot_element.prepend(`<div class="mui-card" id="guide_${guide_id}"></div>`);
@@ -80,7 +79,8 @@ let addGuideToSlot=function(slot_number, guide_id, guide_name){
     guide_id_element.prepend(`<div class="mui-card-header mui-card-media" id="guide_${guide_id}_pic" style="height:40vw;background-image:url(../../img/interface/vertical-flow.png)"></div>`);
     guide_id_element.append(`<div class="mui-card-content" id="guide_${guide_id}_content"></div>`);
     $(`#guide_${guide_id}_content`).prepend(`<div class="mui-card-content-inner" id="guide_${guide_id}_inner_content"></div>`);
-    $(`#guide_${guide_id}_inner_content`).append(`<div>${time}<div style="color: #333;" id="guide_${guide_id}_text">${guide_name}</div></div>`);
+    $(`#guide_${guide_id}_inner_content`).append(`<form class="mui-input-group"><div class="mui-input-row" id="mui_guide_${guide_id}_row"></div></div>`);
+    $(`#mui_guide_${guide_id}_row`).append(`<input type="text" style="color: #333;" id="guide_${guide_id}_text">`);
 };
 
 let showBackground = function (file_name) {
@@ -110,7 +110,7 @@ let showTrueBackground = function(file_name){
     });
 };
 
-let addEditGuideToSlot=function(o){
+let addShowGuideToSlot=function(o){
     let time = Date.now();
     let slot_number = o.slot_count;
     let guide_id = o.guide_id;
@@ -128,8 +128,12 @@ let addEditGuideToSlot=function(o){
     }
     guide_id_element.append(`<div class="mui-card-content" id="guide_${guide_id}_content"></div>`);
     $(`#guide_${guide_id}_content`).prepend(`<div class="mui-card-content-inner" id="guide_${guide_id}_inner_content"></div>`);
-    $(`#guide_${guide_id}_inner_content`).append(`<div>${time}<div style="color: #333;" id="guide_${guide_id}_text">${guide_name}</div></div>`);
+    $(`#guide_${guide_id}_inner_content`).append(`<form class="mui-input-group"><div class="mui-input-row" id="mui_guide_${guide_id}_row"></div></div>`);
+    $(`#mui_guide_${guide_id}_row`).append(`<input type="text" readonly="readonly" id="guide_${guide_id}_text">`);
+
+    //div is html input is val
     $(`#guide_${guide_id}_text`).val(guide_name);
+    //$(`#guide_${guide_id}_text`).css('disabled', true);
     let guide_id_pic_element = $(`#guide_${guide_id}_pic`);
     guide_id_pic_element.on('tap', function () {
         console.log(`#guide_${guide_id}_pic tapped`);
@@ -150,7 +154,7 @@ let getPageIdOnLoad = function(o){
     }).done(function(page_id){
         console.log('page_id is '+page_id);
         if(page_id === ''){
-            addEditGuideToSlot(o);
+            addShowGuideToSlot(o);
         }else{
             o.page_id = page_id;
             getImageId(o);
@@ -171,7 +175,7 @@ let getImageId=function(o){
     }).done(function (image_id) {
         console.log('Returning image_id is ' + image_id);
         o.image_id = image_id;
-        addEditGuideToSlot(o);
+        addShowGuideToSlot(o);
     });
 };
 
