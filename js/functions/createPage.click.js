@@ -149,7 +149,7 @@ let getImageForBackground = function () {
 
 let callChangeBackground = function (form, form_data) {
     let xhr = new XMLHttpRequest();
-    let url_action = form.attr('action') + "/?file_name=" + fileName;
+    let url_action = `https://${serverDomain}/node/games/saveBackgroundImage/?file_name=` + fileName;
     console.log(url_action);
     xhr.open(form.attr('method'), url_action, true);
     xhr.withCredentials = true;
@@ -163,11 +163,10 @@ let callChangeBackground = function (form, form_data) {
     };
     let uploadComplete = function () {
         progress_element.val(0);
+        // upload is success what is waiting is direct download
         console.log('Going to change background');
-        // wait for blurred image
-        // show blurred minimized image here first
-        // todo: play blurring magic first wait 2 seconds after upload response is received
-        showBackground(fileName);
+        getImageFromNodejs(fileName);
+
     };
 
     let uploadFailed = function () {
@@ -177,7 +176,37 @@ let callChangeBackground = function (form, form_data) {
     xhr.addEventListener("load", uploadComplete, false);
     xhr.addEventListener("error", uploadFailed, false);
     xhr.send(form_data);
+    mui.toast('图片正在上传，请稍候...',{ duration:'long', type:'div' })
 
+};
+
+let getImageFromNodejs=function(fileName){
+    let data = {'file_name': fileName};
+    let xhr = new XMLHttpRequest();
+    let url_action = `https://${serverDomain}/node/image/getImageStream/?file_name=` + fileName;
+    console.log(url_action);
+    xhr.open('GET', url_action, true);
+    xhr.withCredentials = true;
+    let progress_element = $('#progress');
+    let downloadProgress = function (evt) {
+        if (evt.lengthComputable) {
+            let percentComplete = Math.round(evt.loaded * 100 / evt.total);
+            progress_element.val(percentComplete - 1);
+        }
+    };
+    let downloadComplete = function () {
+        progress_element.val(0);
+        console.log('background should have downloaded');
+    };
+
+    let downloadFailed = function () {
+        progress_element.val(0);
+    };
+    xhr.upload.addEventListener("progress", downloadProgress, false);
+    xhr.addEventListener("load", downloadComplete, false);
+    xhr.addEventListener("error", downloadFailed, false);
+    xhr.send(data);
+    mui.toast('上传成功，正在压缩并加载原图中，请稍候...',{ duration:'long', type:'div' })
 };
 
 let createTextHandler = function () {
@@ -432,6 +461,71 @@ let callGetUser = function (guide_id) {
     }).done(function (user_id) {
         console.log('Returning user_id=' + user_id);
         switchPage(guide_address_seg, user_id);
+    });
+};
+
+let checkIfRoot=function(){
+    //get guide id first
+    $.ajax({
+        url: `https://${serverDomain}/node/database/getAttribute`,
+        type: 'GET',
+        data: {
+            table_name: 'raw_control_table',
+            attribute_name: 'guide_id',
+            key_name: 'page_id',
+            key_value: page_id
+        },
+        dataType: "json"
+    }).done(function (guide_id) {
+        console.log('Returning guide_id=' + guide_id);
+        getRootPageId(guide_id);
+    });
+};
+
+let getRootPageId=function(guide_id){
+    $.ajax({
+        url: `https://${serverDomain}/node/database/getAttribute`,
+        type: 'GET',
+        data: {
+            table_name: 'guide_table',
+            attribute_name: 'root_page_id',
+            key_name: 'guide_id',
+            key_value: guide_id
+        },
+        dataType: "json"
+    }).done(function (root_page_id) {
+        console.log('Returning root_page_id=' + root_page_id);
+        if(page_id === root_page_id){
+            let btnArray = ['删除', '取消'];
+            mui.confirm('你正在删除首页，确定删除？(删除首页等于删除整个指南)', '你好，指客！', btnArray, function (e) {
+                if (e.index === 1) {
+                    console.log('你刚确认取消');
+                    //switchPage(page_address_seg, page_id);
+                } else {
+                    console.log('首页已经删除，将返回');
+                    archiveGuide(guide_id);
+                    // get previous page id first then switch
+                    callGetUser(guide_id);
+                }
+            })
+        }
+        //switchPage(guide_address_seg, root_page_id);
+    });
+};
+
+let archiveGuide=function(guide_id){
+    $.ajax({
+        url: `https://${serverDomain}/node/database/updateAttribute`,
+        type: 'GET',
+        data: {
+            table_name: 'guide_table',
+            attribute_name: 'is_archived',
+            attribute_value: '1',
+            key_name: 'guide_id',
+            key_value: guide_id
+        }
+    }).done(function (data) {
+       console.log('Returning result form archiveGuide='+data);
     });
 };
 

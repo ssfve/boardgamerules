@@ -115,7 +115,7 @@ let addListEvent = function (page_id) {
         //element is to page id
         let button_text = $('#desc_input').val();
         if (button_text === '' || button_text === undefined) {
-            button_text = 'BTN-DFT-TXT'
+            button_text = '下一步'
         }
         console.log(button_text);
         updateAttribute('raw_button_table', 'button_text', button_text, 'button_id', button_id);
@@ -192,7 +192,7 @@ let addListElement = function (guide_id, page_list, to_page_id) {
         console.log("default_new_page tapped");
         let button_text = $('#desc_input').val();
         if (button_text === '' || button_text === undefined) {
-            button_text = 'BTN-DFT-TXT'
+            button_text = '下一步'
         }
         console.log(button_text);
         updateAttribute('raw_button_table', 'button_text', button_text, 'button_id', button_id);
