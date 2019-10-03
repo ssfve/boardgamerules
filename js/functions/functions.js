@@ -96,10 +96,11 @@ let addEditGuideToSlot=function(o){
     guide_id_element.prepend(`<div class="mui-card-header mui-card-media" id="guide_${guide_id}_pic" style="height:40vw;background-image:url(../../img/interface/vertical-flow.png)"></div>`);
     guide_id_element.append(`<div class="mui-card-content" id="guide_${guide_id}_content"></div>`);
     $(`#guide_${guide_id}_content`).prepend(`<div class="mui-card-content-inner" id="guide_${guide_id}_inner_content"></div>`);
-    $(`#guide_${guide_id}_inner_content`).append(`<input type="text" class="mui-input-clear" placeholder="请输入流名称" id="guide_${guide_id}_text">`);
+    $(`#guide_${guide_id}_inner_content`).append(`<form class="mui-input-group"><div class="mui-input-row" id="mui_guide_${guide_id}_row"></div></div>`);
+    $(`#mui_guide_${guide_id}_row`).append(`<input type="text" class="mui-input-clear" placeholder="请输入流名称" id="guide_${guide_id}_text">`);
 
     if( image_id !== '0' && image_id !== ''){
-        $('<img/>').attr('src', `https://${serverDomain}/img-compressed/${image_id}.jpg`).on('load', function() {
+        $('<img alt="" src=""/>').attr('src', `https://${serverDomain}/img-compressed/${image_id}.jpg`).on('load', function() {
             console.log('blurred and compressed img is downloaded');
             $(this).remove(); // prevent memory leaks as @between suggested
             $(`#guide_${guide_id}_pic`).css('background-image', `url(https://${serverDomain}/img-compressed/${image_id}.jpg)`);
@@ -111,7 +112,9 @@ let addEditGuideToSlot=function(o){
     // set guide name
     guide_text_ele.val(guide_name);
     console.log('the text is set to '+guide_name);
-    guide_text_ele.on('oninput', function (){
+    // dynamically initialize
+    mui(`#guide_${guide_id}_text`).input();
+    guide_text_ele.on('input', function (){
         let guide_name = $(`#guide_${guide_id}_text`).val();
         console.log('text changed to '+guide_name);
         let o = {
