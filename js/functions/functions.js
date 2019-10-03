@@ -229,7 +229,8 @@ let showBlurBackground = function(file_name){
         console.log('original img is downloaded');
         $(this).remove();// prevent memory leaks
         $('body').css('background-image', `url(https://${serverDomain}/img-blurred/${file_name})`);
-        showTrueBackground(file_name);
+        //showTrueBackground(file_name);
+        getImageFromNodejs(file_name);
     });
 };
 
@@ -239,6 +240,56 @@ let showTrueBackground = function(file_name){
         $(this).remove();// prevent memory leaks
         $('body').css('background-image', `url(https://${serverDomain}/img/${file_name})`);
     });
+};
+
+let getImageFromNodejs = function (fileName) {
+    mui.toast('原图加载中，请稍候...', {duration: 'long', type: 'div'});
+    let data = {'file_name': fileName};
+    if ( xhr_global instanceof XMLHttpRequest){
+        console.log('another xhr is destroyed');
+        xhr_global.abort();
+    }
+    xhr_global = new XMLHttpRequest();
+    let url_action = `https://${serverDomain}/node/image/getImageStream/?file_name=` + fileName;
+    xhr_global.responseType = 'blob';
+    console.log(url_action);
+    xhr_global.open('GET', url_action, true);
+    xhr_global.withCredentials = true;
+    let progress_element = $('#progress');
+    mui("#progress").progressbar({progress:0}).show();
+    $("#progress").css("opacity",100);
+    let downloadProgress = function (evt) {
+        if (evt.lengthComputable) {
+            let percentComplete = Math.round(evt.loaded * 100 / evt.total);
+            //progress_element.val(percentComplete - 1);
+            mui("#progress").progressbar().setProgress(percentComplete - 1);
+        }
+    };
+    let downloadComplete = function (evt) {
+        mui("#progress").progressbar().setProgress(0);
+        $("#progress").css("opacity",0);
+        //mui("#progress").progressbar().hide();
+        console.log('background should have downloaded');
+        let res = xhr_global.response;
+        let blob = new Blob([res],{type: "mime"});
+        let imgUrl = window.URL.createObjectURL(blob);
+        console.log(imgUrl);
+        let body_ele = $('body');
+        body_ele.css('background-image', `url(${imgUrl})`);
+        body_ele.on('transitionend', function () {
+            console.log('memory released');
+            window.URL.revokeObjectURL(imgUrl);
+            body_ele.off('transitionend');
+        });
+    };
+
+    let downloadFailed = function () {
+        progress_element.val(0);
+    };
+    xhr_global.addEventListener("progress", downloadProgress, false);
+    xhr_global.addEventListener("load", downloadComplete, false);
+    xhr_global.addEventListener("error", downloadFailed, false);
+    xhr_global.send(data);
 };
 
 var index_games_gen = function (array) {

@@ -2,6 +2,7 @@
 let fileName = '';
 let button_address_seg = "choosePage.html?buttonid=%data%";
 let guide_address_seg = "createGuide.html?userid=%data%";
+let page_address_seg = "createPage.html?pageid=%data%";
 
 // get page_id globally
 let index = window.location.href.lastIndexOf("=");
@@ -148,11 +149,15 @@ let getImageForBackground = function () {
 };
 
 let callChangeBackground = function (form, form_data) {
-    let xhr = new XMLHttpRequest();
+    if ( xhr_global instanceof XMLHttpRequest){
+        console.log('another xhr is destroyed');
+        xhr_global.abort();
+    }
+    xhr_global = new XMLHttpRequest();
     let url_action = `https://${serverDomain}/node/games/saveBackgroundImage/?file_name=` + fileName;
     console.log(url_action);
-    xhr.open(form.attr('method'), url_action, true);
-    xhr.withCredentials = true;
+    xhr_global.open(form.attr('method'), url_action, true);
+    xhr_global.withCredentials = true;
     let progress_element = $('#progress');
     let uploadProgress = function (evt) {
         //console.log(evt);
@@ -173,10 +178,10 @@ let callChangeBackground = function (form, form_data) {
     let uploadFailed = function () {
         progress_element.val(0);
     };
-    xhr.upload.addEventListener("progress", uploadProgress, false);
-    xhr.addEventListener("load", uploadComplete, false);
-    xhr.addEventListener("error", uploadFailed, false);
-    xhr.send(form_data);
+    xhr_global.upload.addEventListener("progress", uploadProgress, false);
+    xhr_global.addEventListener("load", uploadComplete, false);
+    xhr_global.addEventListener("error", uploadFailed, false);
+    xhr_global.send(form_data);
     //mui.toast('图片正在上传，请稍候...', {duration: 'long', type: 'div'})
 
 };
@@ -192,40 +197,6 @@ let previewImage = function (form_data) {
         window.URL.revokeObjectURL(imgUrl);
         body_ele.off('transitionend');
     });
-};
-
-let getImageFromNodejs = function (fileName) {
-    let data = {'file_name': fileName};
-    let xhr = new XMLHttpRequest();
-    let url_action = `https://${serverDomain}/node/image/getImageStream/?file_name=` + fileName;
-    console.log(url_action);
-    xhr.open('GET', url_action, true);
-    xhr.withCredentials = true;
-    let progress_element = $('#progress');
-    let downloadProgress = function (evt) {
-        if (evt.lengthComputable) {
-            let percentComplete = Math.round(evt.loaded * 100 / evt.total);
-            progress_element.val(percentComplete - 1);
-        }
-    };
-    let downloadComplete = function () {
-        progress_element.val(0);
-        console.log('background should have downloaded');
-        let res = xhr.response;
-        let blob = new Blob([res]);
-        let imgUrl = window.URL.createObjectURL(blob);
-        console.log(imgUrl);
-        $('body').css('background-image', `url(${imgUrl})`);
-    };
-
-    let downloadFailed = function () {
-        progress_element.val(0);
-    };
-    xhr.upload.addEventListener("progress", downloadProgress, false);
-    xhr.addEventListener("load", downloadComplete, false);
-    xhr.addEventListener("error", downloadFailed, false);
-    xhr.send(data);
-    mui.toast('上传成功，正在压缩并加载原图中，请稍候...', {duration: 'long', type: 'div'})
 };
 
 let createTextHandler = function () {
@@ -340,7 +311,7 @@ let callCreateText = function (button_default_name) {
     let text_value = $('#desc_input').val();
     console.log(text_value);
     if (text_value === '' || text_value === undefined) {
-        text_value = 'PG-DFLT-TXT'
+        text_value = '下一步'
     }
     $.ajax({
         url: `https://${serverDomain}/node/text/writeTextDB`,
@@ -514,21 +485,55 @@ let getRootPageId = function (guide_id) {
         dataType: "json"
     }).done(function (root_page_id) {
         console.log('Returning root_page_id=' + root_page_id);
-        if (page_id === root_page_id) {
-            let btnArray = ['删除', '取消'];
-            mui.confirm('你正在删除首页，确定删除？(删除首页等于删除整个指南)', '你好，指客！', btnArray, function (e) {
-                if (e.index === 1) {
-                    console.log('你刚确认取消');
-                    //switchPage(page_address_seg, page_id);
-                } else {
-                    console.log('首页已经删除，将返回');
-                    archiveGuide(guide_id);
-                    // get previous page id first then switch
-                    callGetUser(guide_id);
-                }
-            })
+        console.log('page id='+page_id);
+        if (page_id.toString() === root_page_id.toString()) {
+            deleteRootConfirm(guide_id);
+        }else{
+            deletePageConfirm(guide_id, root_page_id);
         }
         //switchPage(guide_address_seg, root_page_id);
+    });
+};
+
+let deleteRootConfirm=function(guide_id){
+    let btnArray = ['删除', '取消'];
+    mui.confirm('你正在删除首页，确认删除？(删除首页等于删除整个指南)', '你好，指客！', btnArray, function (e) {
+        if (e.index === 1) {
+            console.log('你刚确认取消');
+            //switchPage(page_address_seg, page_id);
+        } else {
+            console.log('首页已经删除，将返回');
+            archiveGuide(guide_id);
+            // get previous page id first then switch
+            callGetUser(guide_id);
+        }
+    });
+};
+
+let deletePageConfirm=function(guide_id, root_page_id){
+    let btnArray = ['删除', '取消'];
+    mui.confirm('确认删除该页面？(指向该页面的所有按钮都将失效，这些按钮需要重新指定跳转页，失效按钮前台不会显示，删除页面后你将返回至首页)', '你好，指客！', btnArray, function (e) {
+        if (e.index === 1) {
+            console.log('你刚确认取消');
+        } else {
+            console.log('该页面已经删除，将返回');
+            unlinkPage(guide_id);
+            // get previous page id first then switch
+            switchPage(page_address_seg, root_page_id);
+        }
+    });
+};
+
+let unlinkPage=function(guide_id) {
+    $.ajax({
+        url: `https://${serverDomain}/node/guide/unlinkPageId`,
+        type: 'GET',
+        data: {
+            guide_id: guide_id,
+            page_id: page_id
+        }
+    }).done(function (result) {
+        console.log('Returning result form unlinkPageId=' + result);
     });
 };
 

@@ -176,6 +176,15 @@ let getTextInfo = function (page_id, to_page_id) {
 let addListElement = function (guide_id, page_list, to_page_id) {
     let page_array = page_list.split(",");
     console.log(page_array);
+    let page_id_hit_flag = false;
+    page_array.forEach(function (element) {
+        if(element === to_page_id){
+            page_id_hit_flag = true;
+        }
+    });
+    if(page_id_hit_flag === false){
+        mui.toast('之前指定的跳转页已被删除，重新指定即可', {duration: 'short', type: 'div'})
+    }
     page_array.forEach(function (element) {
         console.log('processing page_' + element);
         // there are two page_id here

@@ -25,3 +25,4 @@ let serverDomain = 'www.boardgamerules.cn';
 // 3001 is the port nginx listening for nodejs
 // http will automatically changed to https
 let nodejs_url = `https://${serverDomain}/node`;
+let xhr_global = null;
