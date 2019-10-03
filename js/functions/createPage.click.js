@@ -165,8 +165,9 @@ let callChangeBackground = function (form, form_data) {
         progress_element.val(0);
         // upload is success what is waiting is direct download
         console.log('Going to change background');
-        getImageFromNodejs(fileName);
-
+        //getImageFromNodejs(fileName);
+        previewImage(form_data);
+        mui.toast('上传成功', {duration: 'short', type: 'div'})
     };
 
     let uploadFailed = function () {
@@ -176,11 +177,24 @@ let callChangeBackground = function (form, form_data) {
     xhr.addEventListener("load", uploadComplete, false);
     xhr.addEventListener("error", uploadFailed, false);
     xhr.send(form_data);
-    mui.toast('图片正在上传，请稍候...',{ duration:'long', type:'div' })
+    //mui.toast('图片正在上传，请稍候...', {duration: 'long', type: 'div'})
 
 };
 
-let getImageFromNodejs=function(fileName){
+let previewImage = function (form_data) {
+    let file_data = form_data.get('file');
+    let blob = new Blob([file_data]);
+    let imgUrl = window.URL.createObjectURL(blob);
+    let body_ele = $('body');
+    body_ele.css('background-image', `url(${imgUrl})`);
+    body_ele.on('transitionend', function () {
+        console.log('memory released');
+        window.URL.revokeObjectURL(imgUrl);
+        body_ele.off('transitionend');
+    });
+};
+
+let getImageFromNodejs = function (fileName) {
     let data = {'file_name': fileName};
     let xhr = new XMLHttpRequest();
     let url_action = `https://${serverDomain}/node/image/getImageStream/?file_name=` + fileName;
@@ -197,6 +211,11 @@ let getImageFromNodejs=function(fileName){
     let downloadComplete = function () {
         progress_element.val(0);
         console.log('background should have downloaded');
+        let res = xhr.response;
+        let blob = new Blob([res]);
+        let imgUrl = window.URL.createObjectURL(blob);
+        console.log(imgUrl);
+        $('body').css('background-image', `url(${imgUrl})`);
     };
 
     let downloadFailed = function () {
@@ -206,7 +225,7 @@ let getImageFromNodejs=function(fileName){
     xhr.addEventListener("load", downloadComplete, false);
     xhr.addEventListener("error", downloadFailed, false);
     xhr.send(data);
-    mui.toast('上传成功，正在压缩并加载原图中，请稍候...',{ duration:'long', type:'div' })
+    mui.toast('上传成功，正在压缩并加载原图中，请稍候...', {duration: 'long', type: 'div'})
 };
 
 let createTextHandler = function () {
@@ -464,7 +483,7 @@ let callGetUser = function (guide_id) {
     });
 };
 
-let checkIfRoot=function(){
+let checkIfRoot = function () {
     //get guide id first
     $.ajax({
         url: `https://${serverDomain}/node/database/getAttribute`,
@@ -482,7 +501,7 @@ let checkIfRoot=function(){
     });
 };
 
-let getRootPageId=function(guide_id){
+let getRootPageId = function (guide_id) {
     $.ajax({
         url: `https://${serverDomain}/node/database/getAttribute`,
         type: 'GET',
@@ -495,7 +514,7 @@ let getRootPageId=function(guide_id){
         dataType: "json"
     }).done(function (root_page_id) {
         console.log('Returning root_page_id=' + root_page_id);
-        if(page_id === root_page_id){
+        if (page_id === root_page_id) {
             let btnArray = ['删除', '取消'];
             mui.confirm('你正在删除首页，确定删除？(删除首页等于删除整个指南)', '你好，指客！', btnArray, function (e) {
                 if (e.index === 1) {
@@ -513,7 +532,7 @@ let getRootPageId=function(guide_id){
     });
 };
 
-let archiveGuide=function(guide_id){
+let archiveGuide = function (guide_id) {
     $.ajax({
         url: `https://${serverDomain}/node/database/updateAttribute`,
         type: 'GET',
@@ -525,7 +544,7 @@ let archiveGuide=function(guide_id){
             key_value: guide_id
         }
     }).done(function (data) {
-       console.log('Returning result form archiveGuide='+data);
+        console.log('Returning result form archiveGuide=' + data);
     });
 };
 
