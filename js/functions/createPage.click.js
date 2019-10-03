@@ -441,6 +441,8 @@ $('#home-button').on('tap', function () {
 });
 
 $('#fullscreen-button').on('tap', goToFullScreen);
+$('#delete-button').on('tap', checkIfRoot);
+
 
 callGetButtonText();
 callGetPageText();

@@ -242,6 +242,7 @@ htmlBody.on('touchmove', function(e) {
     } else if ( Y < 0 && headerFlag) {
         console.log('touch pull up');
         header_bar_ele.empty();
+        $('#qr-image').attr('src', '');
         headerFlag = false;
     }
 });
