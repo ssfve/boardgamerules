@@ -39,7 +39,7 @@ let addButtonFunction = function (guide_id) {
 
 let callGetGuideId = function () {
     $.ajax({
-        url: `https://${serverDomain}/node/database/writeGuideDB',
+        url: `https://${serverDomain}/node/database/writeGuideDB`,
         type: 'GET',
     }).done(function (guideId) {
         console.log('Going to get GuideId');
@@ -50,7 +50,7 @@ let callGetGuideId = function () {
 
 let callGetPageId = function (guide_id) {
     $.ajax({
-        url: `https://${serverDomain}/node/guide/checkRootPage',
+        url: `https://${serverDomain}/node/guide/checkRootPage`,
         type: 'GET',
         data: {guide_id: guide_id}
     }).done(function (page_id) {
@@ -62,7 +62,7 @@ let callGetPageId = function (guide_id) {
 
 let saveRootPageId = function (guide_id, page_id) {
     $.ajax({
-        url: `https://${serverDomain}/node/database/saveRootPageId',
+        url: `https://${serverDomain}/node/database/saveRootPageId`,
         type: 'GET',
         data: {
             guide_id: guide_id,
@@ -76,7 +76,7 @@ let saveRootPageId = function (guide_id, page_id) {
 
 let savePageId = function (guide_id, page_id) {
     $.ajax({
-        url: `https://${serverDomain}/node/database/savePageId',
+        url: `https://${serverDomain}/node/database/savePageId`,
         type: 'GET',
         data: {
             guide_id: guide_id,
@@ -93,7 +93,7 @@ let getRecommendedGuides = function () {
     // recommendation should be user focused
     // recommendation rely on good content
     $.ajax({
-        url: `https://${serverDomain}/node/page/getValidGuides',
+        url: `https://${serverDomain}/node/page/getValidGuides`,
         type: 'GET',
         dataType: 'json'
     }).done(function (guide_id_list) {
@@ -104,7 +104,7 @@ let getRecommendedGuides = function () {
 
 let getRootPageId=function(guide_id){
     $.ajax({
-        url: `https://${serverDomain}/node/database/getAttribute',
+        url: `https://${serverDomain}/node/database/getAttribute`,
         type: 'GET',
         data:{
             table_name: 'guide_table',
@@ -123,7 +123,7 @@ let getUserGuides = function (search_word) {
     // recommendation should be user focused
     // recommendation rely on good content
     $.ajax({
-        url: `https://${serverDomain}/node/guide/getGuideList',
+        url: `https://${serverDomain}/node/guide/getGuideList`,
         type: 'GET',
         data:{
             search_word: search_word
