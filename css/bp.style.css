@@ -8,6 +8,12 @@
 	padding: 0;
 }
 
+.mui-card{
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+}
+
 body{
 	/* this is shorthand one line setting*/
 	background: url('../img/interface/background-blur.jpg') no-repeat top center fixed;
