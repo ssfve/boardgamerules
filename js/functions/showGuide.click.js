@@ -167,8 +167,19 @@ let addGuide = function (guide_id_list) {
     */
 };
 
-$('#user_search_button').on('tap',function () {
+/*$('#user_search_button').on('tap',function () {
     let search_word = $('#user_search_input').val();
+    $(`#slot-1`).empty();
+    $(`#slot-2`).empty();
+    $(`#slot-3`).empty();
+    $(`#slot-4`).empty();
+    getUserGuides(search_word);
+});*/
+
+$('#user_search_input').on('input', function () {
+    //console.log(e.keyCode);
+    let search_word = $('#user_search_input').val();
+    console.log(search_word);
     $(`#slot-1`).empty();
     $(`#slot-2`).empty();
     $(`#slot-3`).empty();
