@@ -153,40 +153,24 @@ let addGuide = function (guide_id_list) {
             image_id: ''
         };
         getPageIdOnLoad(o);
-
-        // add click response to picture
-        // use mui event management here
-        //$(`#guide_${guide_id}_pic`).on('click', function(){
-        // on cellphone it is tap
         slot_count = slot_count + 1;
     }
-
-    /*
-    guide_id_pic_element.on('click',function(){
-        console.log(`${guide_name} tapped`);
-        callGetPageId(guide_id);
-    });
-    */
 };
 
-/*$('#user_search_button').on('tap',function () {
-    let search_word = $('#user_search_input').val();
-    $(`#slot-1`).empty();
-    $(`#slot-2`).empty();
-    $(`#slot-3`).empty();
-    $(`#slot-4`).empty();
-    getUserGuides(search_word);
-});*/
 
-$('#user_search_input').on('input', function () {
-    //console.log(e.keyCode);
-    let search_word = $('#user_search_input').val();
-    console.log(search_word);
-    $(`#slot-1`).empty();
-    $(`#slot-2`).empty();
-    $(`#slot-3`).empty();
-    $(`#slot-4`).empty();
-    getUserGuides(search_word);
-});
+let getUserGuideById = function (search_word) {
+    $.ajax({
+        url: `https://${serverDomain}/node/guide/getGuideListById`,
+        type: 'GET',
+        data:{
+            search_word: search_word
+        },
+        dataType: 'json'
+    }).done(function (guide_id_list) {
+        console.log(guide_id_list);
+        addGuide(guide_id_list)
+    });
+};
 
+$('#user_search_input').on('input', instantSearch);
 getRecommendedGuides();

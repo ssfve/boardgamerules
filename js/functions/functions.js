@@ -611,3 +611,20 @@ let escFullScreen=function(){
     fullscreen_global = "全屏";
     fullscreenElement.html(fullscreen_global);
 };
+
+let instantSearch=function(){
+    let search_word = $('#user_search_input').val();
+    $(`#slot-1`).empty();
+    $(`#slot-2`).empty();
+    $(`#slot-3`).empty();
+    $(`#slot-4`).empty();
+    if(search_word === undefined || search_word === ''|| search_word === null){
+        return;
+    }
+    if(isNaN(search_word)){
+        getUserGuides(search_word);
+    }else{
+        console.log('search word is all digits');
+        getUserGuideById(search_word);
+    }
+};

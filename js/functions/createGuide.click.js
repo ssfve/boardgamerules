@@ -185,37 +185,21 @@ let addGuide = function (guide_id_list) {
         // on cellphone it is tap
         slot_count = slot_count + 1;
     }
-
-    /*
-    guide_id_pic_element.on('click',function(){
-        console.log(`${guide_name} tapped`);
-        callGetPageId(guide_id);
-    });
-    */
 };
 
+let getUserGuideById = function (search_word) {
+    $.ajax({
+        url: `https://${serverDomain}/node/guide/getGuideListById`,
+        type: 'GET',
+        data:{
+            search_word: search_word
+        },
+        dataType: 'json'
+    }).done(function (guide_id_list) {
+        console.log(guide_id_list);
+        addGuide(guide_id_list)
+    });
+};
 
+$('#user_search_input').on('input', instantSearch);
 getUserGuides('');
-
-/*$('#user_search_input').on('keypress', function (e) {
-    console.log(e.keyCode);
-    if (e.keyCode === 13) { //如果按的是enter键 13是enter
-        let search_word = $('#user_search_input').val();
-        $(`#slot-1`).empty();
-        $(`#slot-2`).empty();
-        $(`#slot-3`).empty();
-        $(`#slot-4`).empty();
-        getUserGuides(search_word);
-    }
-});*/
-
-$('#user_search_input').on('input', function () {
-    //console.log(e.keyCode);
-    let search_word = $('#user_search_input').val();
-    console.log(search_word);
-    $(`#slot-1`).empty();
-    $(`#slot-2`).empty();
-    $(`#slot-3`).empty();
-    $(`#slot-4`).empty();
-    getUserGuides(search_word);
-});
