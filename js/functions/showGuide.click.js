@@ -2,6 +2,8 @@
 
 // TODO: get guide list
 let page_address_seg = "showPage.html?pageid=%data%";
+//let show_address_seg = "showGuide.html";
+let show_flow_url = 'https://www.boardgamerules.cn/index/branchs/showGuide.html';
 
 $("#create_guide_button").on('click', function () {
     console.log('create_guide_button clicked');

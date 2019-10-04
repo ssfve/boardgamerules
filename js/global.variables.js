@@ -26,3 +26,4 @@ let serverDomain = 'www.boardgamerules.cn';
 // http will automatically changed to https
 let nodejs_url = `https://${serverDomain}/node`;
 let xhr_global = null;
+let fullscreen_global = "全屏";

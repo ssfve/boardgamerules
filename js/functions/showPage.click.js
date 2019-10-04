@@ -2,6 +2,8 @@
 let fileName = '';
 let button_address_seg = "choosePage.html?buttonid=%data%";
 let page_address_seg = "showPage.html?pageid=%data%";
+//let show_address_seg = "showGuide.html";
+let show_flow_url = 'https://www.boardgamerules.cn/index/branchs/showGuide.html';
 
 // get page_id globally
 let index = window.location.href.lastIndexOf("=");
@@ -226,6 +228,10 @@ htmlBody.on('touchstart', function(e) {
     startY = e.touches[0].pageY;
 });
 
+let returnHome=function(){
+    location.href = show_flow_url;
+};
+
 htmlBody.on('touchmove', function(e) {
     e.preventDefault();
     moveEndX = e.changedTouches[0].pageX;
@@ -238,11 +244,13 @@ htmlBody.on('touchmove', function(e) {
     if ( Y > 0 && !headerFlag) {
         console.log('touch pull down');
         header_bar_ele.append(`<div class="mui-col-sm-2"><button type="button" class="mui-btn mui-btn-royal" id="back-button">返回</button></div>`);
-        header_bar_ele.append(`<div class = "mui-col-sm-2"><button type = "button" class="mui-btn mui-btn-royal" id = "fullscreen-button">全屏</button></div>`);
+        header_bar_ele.append(`<div class = "mui-col-sm-2"><button type = "button" class="mui-btn mui-btn-royal" id = "fullscreen-button">${fullscreen_global}</button></div>`);
         header_bar_ele.append(`<div class="mui-col-sm-2"><button type="button" class="mui-btn mui-btn-royal" id="share-button">分享</button></div>`);
+        header_bar_ele.append(`<div class="mui-col-sm-2"><button type="button" class="mui-btn mui-btn-royal" id="home-button">回家</button></div>`);
         $('#back-button').on('tap',function(){history.back()});
         $('#fullscreen-button').on('tap', goToFullScreen);
         $('#share-button').on('tap', toggleQRCode);
+        $('#home-button').on('tap', returnHome);
         headerFlag = true;
     } else if ( Y < 0 && headerFlag) {
         console.log('touch pull up');

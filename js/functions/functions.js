@@ -590,10 +590,12 @@ let goToFullScreen=function(){
     let fullscreenElement = $('#fullscreen-button');
     fullscreenElement.off('tap');
     fullscreenElement.on('tap', escFullScreen);
-    fullscreenElement.html('半屏');
+    fullscreen_global = "半屏";
+    fullscreenElement.html(fullscreen_global);
 };
 
 let escFullScreen=function(){
+    let fullscreenElement = $('#fullscreen-button');
     let element = document.documentElement;
     if(document.exitFullscreen) {
         document.exitFullscreen();
@@ -604,8 +606,8 @@ let escFullScreen=function(){
     } else if (document.msExitFullscreen) {
         document.msExitFullscreen();
     }
-    let fullscreenElement = $('#fullscreen-button');
     fullscreenElement.off('tap');
     fullscreenElement.on('tap', goToFullScreen);
-    fullscreenElement.html('全屏');
+    fullscreen_global = "全屏";
+    fullscreenElement.html(fullscreen_global);
 };
