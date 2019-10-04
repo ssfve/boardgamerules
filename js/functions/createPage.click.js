@@ -3,6 +3,7 @@ let fileName = '';
 let button_address_seg = "choosePage.html?buttonid=%data%";
 let guide_address_seg = "createGuide.html?userid=%data%";
 let page_address_seg = "createPage.html?pageid=%data%";
+let quick_address_seg = 'quickSwitch.html?guideid=%data%';
 
 // get page_id globally
 let index = window.location.href.lastIndexOf("=");
@@ -553,11 +554,25 @@ let archiveGuide = function (guide_id) {
     });
 };
 
-$('#home-button').on('tap', function () {
-    console.log('page_id=' + page_id);
-    callReturnHome()
-});
+let quickSwitch=function(){
+    $.ajax({
+        url: `https://${serverDomain}/node/database/getAttribute`,
+        type: 'GET',
+        data: {
+            table_name: 'raw_control_table',
+            attribute_name: 'guide_id',
+            key_name: 'page_id',
+            key_value: page_id
+        },
+        dataType: "json"
+    }).done(function (guide_id) {
+        console.log('Returning guide_id=' + guide_id);
+        switchPage(quick_address_seg, guide_id);
+    });
+};
 
+$('#switch-button').on('tap', quickSwitch);
+$('#home-button').on('tap', callReturnHome);
 $('#fullscreen-button').on('tap', goToFullScreen);
 $('#delete-button').on('tap', checkIfRoot);
 

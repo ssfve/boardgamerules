@@ -248,7 +248,14 @@ htmlBody.on('touchmove', function(e) {
         header_bar_ele.append(`<div class="mui-col-sm-2"><button type="button" class="mui-btn mui-btn-royal" id="share-button">分享</button></div>`);
         header_bar_ele.append(`<div class="mui-col-sm-2"><button type="button" class="mui-btn mui-btn-royal" id="home-button">回家</button></div>`);
         $('#back-button').on('tap',function(){history.back()});
-        $('#fullscreen-button').on('tap', goToFullScreen);
+        let fullscreen_ele = $('#fullscreen-button');
+        if(fullscreen_global === "全屏"){
+            fullscreen_ele.off('tap');
+            fullscreen_ele.on('tap', goToFullScreen);
+        }else{
+            fullscreen_ele.off('tap');
+            fullscreen_ele.on('tap', escFullScreen);
+        }
         $('#share-button').on('tap', toggleQRCode);
         $('#home-button').on('tap', returnHome);
         headerFlag = true;
