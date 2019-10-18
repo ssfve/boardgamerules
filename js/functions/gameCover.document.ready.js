@@ -98,7 +98,7 @@ if (currentPage === 'gameCover') {
                 text: '0-CN-TCH-Publisher'
             },{
                 value: '7',
-                text: '0-EN-BGG'
+                text: '0-EN-Publisher-NoSplit'
             },{
                 value: '8',
                 text: '0-EN-Other'
