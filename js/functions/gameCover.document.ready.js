@@ -100,29 +100,27 @@ if (currentPage === 'gameCover') {
                     modNamePickerArray[index] = selectorMap[data[index]["mode_no"]]
                 }
             }
-
+            (function ($, doc) {
+                $.init();
+                $.ready(function () {
+                    let modNamePicker = new $.PopPicker();
+                    modNamePicker.setData(modNamePickerArray);
+                    let showModNamePickerButton = doc.getElementById('modNamePicker');
+                    let modNameResult = doc.getElementById('modNameResult');
+                    let modNotice = doc.getElementById('modNotice');
+                    showModNamePickerButton.addEventListener('tap', function (event) {
+                        modNamePicker.show(function (items) {
+                            modNameResult.innerText = items[0].value;
+                            modNotice.innerText = '已选择pdf样式：'+items[0].text;
+                        });
+                    }, false);
+                });
+            })(mui, document);
         },
         error: function(err) {
             console.log('there is error getting selector rank')
         }
     });
-
-    (function ($, doc) {
-        $.init();
-        $.ready(function () {
-            let modNamePicker = new $.PopPicker();
-            modNamePicker.setData(modNamePickerArray);
-            let showModNamePickerButton = doc.getElementById('modNamePicker');
-            let modNameResult = doc.getElementById('modNameResult');
-            let modNotice = doc.getElementById('modNotice');
-            showModNamePickerButton.addEventListener('tap', function (event) {
-                modNamePicker.show(function (items) {
-                    modNameResult.innerText = items[0].value;
-                    modNotice.innerText = '已选择pdf样式：'+items[0].text;
-                });
-            }, false);
-        });
-    })(mui, document);
 
     let folder_query_url = `https://${serverDomain}/node/folder/getFolderFileList`;
     let folder_path = '/opt/mount/pdf-upload';
