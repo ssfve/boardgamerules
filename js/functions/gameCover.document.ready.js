@@ -88,7 +88,7 @@ if (currentPage === 'gameCover') {
         12:{value: '12', text: '120-EN-Publisher-RulesReference'},
         13:{value: '13', text: '0-CN-SCH-Publisher-其他规则'},
         14:{value: '14', text: '85-CN-SCH-Publisher-其他规则'},
-        15:{value: '15', text: '120-CN-SCH-Publisher-其他规则则'},
+        15:{value: '15', text: '120-CN-SCH-Publisher-其他规则'},
         16:{value: '16', text: '0-CN-TCH-Publisher-其他规则'},
         17:{value: '17', text: '85-CN-TCH-Publisher-其他规则'},
         18:{value: '18', text: '120-CN-TCH-Publisher-其他规则'},
@@ -104,7 +104,7 @@ if (currentPage === 'gameCover') {
         27:{value: '27', text: '120-EN-Other-UnofficialRulebook'},
         28:{value: '28', text: '0-CN-SCH-Other-其他规则'},
         29:{value: '29', text: '85-CN-SCH-Other-其他规则'},
-        30:{value: '30', text: '120-CN-SCH-Other-其他规则书'},
+        30:{value: '30', text: '120-CN-SCH-Other-其他规则'},
 
         31:{value: '31', text: '0-EN-BGG-UnofficialRulebook'},
         32:{value: '32', text: '85-EN-BGG-UnofficialRulebook'},
