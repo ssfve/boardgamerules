@@ -107,8 +107,8 @@ if (currentPage === 'gameCover') {
         30:{value: '30', text: '120-CN-SCH-Other-其他规则书'},
 
         31:{value: '31', text: '0-EN-BGG-UnofficialRulebook'},
-        32:{value: '31', text: '85-EN-BGG-UnofficialRulebook'},
-        33:{value: '31', text: '120-EN-BGG-UnofficialRulebook'}
+        32:{value: '32', text: '85-EN-BGG-UnofficialRulebook'},
+        33:{value: '33', text: '120-EN-BGG-UnofficialRulebook'}
     };
     let get_rank_url = `https://${serverDomain}/node/database/getSelectorRank`;
     let modNamePickerArray = [];
