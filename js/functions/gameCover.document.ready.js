@@ -71,53 +71,47 @@ let queryFolderInfo=function(folder_query_url, folder_path){
 let currentPage = 'gameCover';
 if (currentPage === 'gameCover') {
     console.log("at gameCover page");
+
+    let selectorMap = {
+        0:{value: '0', text: '0-EN-Publisher'},
+        1:{value: '1', text: '85-EN-Publisher'},
+        2:{value: '2', text: '120-EN-Publisher'},
+        3:{value: '3', text: '0-CN-SCH-Other'},
+        4:{value: '4', text: '0-CN-TCH-Other'},
+        5:{value: '5', text: '0-CN-SCH-Publisher'},
+        6:{value: '6', text: '0-CN-TCH-Publisher'},
+        7:{value: '7', text: '0-EN-Publisher-NoSplit'},
+        8:{value: '8', text: '0-EN-Other'},
+        9:{value: '9', text: '120-CN-SCH-Publisher'},
+        10:{value: '10', text: '120-CN-TCH-Other'},
+        11:{value: '11', text: '120-CN-SCH-Other'},
+        12:{value: '12', text: '0-EN-ENG-Publisher-RulesReference'},
+        13:{value: '13', text: '85-CN-SCH-Other-非官方中文规则书'},
+        14:{value: '14', text: '85-CN-SCH-Other-玩家手册'}
+    };
+    let get_rank_url = `https://${serverDomain}/node/database/getSelectorRank`;
+    let modNamePickerArray = [];
+    $.ajax({
+        url: get_rank_url,
+        dataType: "json",
+        success: function(data) {
+            for(let index in data){
+                if(data.hasOwnProperty(index)){
+                    modNamePickerArray[index] = selectorMap.get(data[index]["mode_no"])
+                }
+            }
+
+        },
+        error: function(err) {
+            console.log('there is error getting selector rank')
+        }
+    });
+
     (function ($, doc) {
         $.init();
         $.ready(function () {
             let modNamePicker = new $.PopPicker();
-            modNamePicker.setData([{
-                value: '0',
-                text: '0-EN-Publisher'
-            }, {
-                value: '1',
-                text: '85-EN-Publisher'
-            }, {
-                value: '2',
-                text: '120-EN-Publisher'
-            },{
-                value: '3',
-                text: '0-CN-SCH-Other'
-            },{
-                value: '4',
-                text: '0-CN-TCH-Other'
-            },{
-                value: '5',
-                text: '0-CN-SCH-Publisher'
-            },{
-                value: '6',
-                text: '0-CN-TCH-Publisher'
-            },{
-                value: '7',
-                text: '0-EN-Publisher-NoSplit'
-            },{
-                value: '8',
-                text: '0-EN-Other'
-            },{
-                value: '9',
-                text: '120-CN-SCH-Publisher'
-            },{
-                value: '10',
-                text: '120-CN-TCH-Other'
-            },{
-                value: '11',
-                text: '120-CN-SCH-Other'
-            },{
-                value: '12',
-                text: '0-EN-ENG-Publisher-RulesReference'
-            },{
-                value: '13',
-                text: '85-CN-SCH-Other-非官方中文规则书'
-            }]);
+            modNamePicker.setData(modNamePickerArray);
             let showModNamePickerButton = doc.getElementById('modNamePicker');
             let modNameResult = doc.getElementById('modNameResult');
             let modNotice = doc.getElementById('modNotice');
