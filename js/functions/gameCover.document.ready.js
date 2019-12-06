@@ -97,7 +97,7 @@ if (currentPage === 'gameCover') {
         success: function(data) {
             for(let index in data){
                 if(data.hasOwnProperty(index)){
-                    modNamePickerArray[index] = selectorMap.get(data[index]["mode_no"])
+                    modNamePickerArray[index] = selectorMap[data[index]["mode_no"]]
                 }
             }
 
