@@ -30,19 +30,37 @@ function submit_pdf_info() {
         alert('请选择pdf样式');
         return
     }
-    saveUploadInfo(gstone_id, mod_name, source_detail);
+    saveUploadInfo(gstone_id, mod_name, source_detail,0);
     let modNotice = document.getElementById('modNotice');
     modNotice.innerText = "";
 }
 
-let saveUploadInfo=function(gstone_id, mod_name, source_detail){
+function cover_pdf_info() {
+    let gstone_id = document.getElementById("gstone_id").value;
+    let mod_name = document.getElementById("modNameResult").innerText;
+    let source_detail = document.getElementById("source_detail").value;
+    if(gstone_id === '') {
+        alert('请输入gstone_id');
+        return
+    }
+    if(mod_name === '' || mod_name === undefined) {
+        alert('请选择pdf样式');
+        return
+    }
+    saveUploadInfo(gstone_id, mod_name, source_detailcover,1);
+    let modNotice = document.getElementById('modNotice');
+    modNotice.innerText = "";
+}
+
+let saveUploadInfo=function(gstone_id, mod_name, source_detail,cover_bit){
     let pdf_query_url = `https://${serverDomain}/node/games/savePDFInfo`;
     $.ajax({
         url: pdf_query_url,
         data: {
             gstone_id: gstone_id,
             mod_name: mod_name,
-            source_detail: source_detail
+            source_detail: source_detail,
+            cover_bit: cover_bit
         },
         success: function() {
             console.log("savePDFInfo Success");

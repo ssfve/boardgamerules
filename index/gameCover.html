@@ -57,6 +57,8 @@
                             <label for="source_detail"></label><input type="text" id="source_detail" class="mui-input-clear" placeholder="如果来源是other,可输入译者姓名(选填)"/>
                             <button class="mui-btn button" type="button" onclick="submit_pdf_info()">提交pdf信息</button>
                             <br><br>
+                            <button class="mui-btn button" type="button" onclick="cover_pdf_info()">覆盖pdf信息</button>
+                            <br><br>
                             <form method="POST" enctype="multipart/form-data"
                                   action="https://www.boardgamerules.cn/node/games/savePDF">
                                 <input type="file" id="pdf_file" name="pdf_file"/>
