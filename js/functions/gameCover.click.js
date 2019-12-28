@@ -17,49 +17,61 @@ $.ajax({
     }
 });
 
-function submit_pdf_info() {
-    let gstone_id = document.getElementById("gstone_id").value;
-    let mod_name = document.getElementById("modNameResult").innerText;
-    let source_detail = document.getElementById("source_detail").value;
-    if (gstone_id === '') {
+function get_info(){
+    let info_object = {
+        gstone_id:'',
+        mod_name:'',
+        source_detail:'',
+        cover_bit:0,
+        fix_mode:0
+    };
+    info_object.gstone_id = document.getElementById("gstone_id").value;
+    info_object.mod_name = document.getElementById("modNameResult").innerText;
+    info_object.source_detail = document.getElementById("source_detail").value;
+    if (info_object.gstone_id === '') {
         alert('请输入gstone_id');
         return
     }
-    if (mod_name === '' || mod_name === undefined) {
+    if (info_object.mod_name === '' || info_object.mod_name === undefined) {
         alert('请选择pdf样式');
         return
     }
-    saveUploadInfo(gstone_id, mod_name, source_detail, 0);
+    return info_object
+}
+
+function submit_pdf_info() {
+    let o = get_info();
+    saveUploadInfo(o);
     let modNotice = document.getElementById('modNotice');
     modNotice.innerText = "";
 }
 
 function cover_pdf_info() {
-    let gstone_id = document.getElementById("gstone_id").value;
-    let mod_name = document.getElementById("modNameResult").innerText;
-    let source_detail = document.getElementById("source_detail").value;
-    if (gstone_id === '') {
-        alert('请输入gstone_id');
-        return
-    }
-    if (mod_name === '' || mod_name === undefined) {
-        alert('请选择pdf样式');
-        return
-    }
-    saveUploadInfo(gstone_id, mod_name, source_detail, 1);
+    let o = get_info();
+    o.cover_bit = 1;
+    saveUploadInfo(o);
     let modNotice = document.getElementById('modNotice');
     modNotice.innerText = "";
 }
 
-let saveUploadInfo = function (gstone_id, mod_name, source_detail, cover_bit) {
+function fix_pdf_info() {
+    let o = get_info();
+    o.fix_mode=1;
+    saveUploadInfo(o);
+    let modNotice = document.getElementById('modNotice');
+    modNotice.innerText = "";
+}
+
+let saveUploadInfo = function (o) {
     let pdf_query_url = `https://${serverDomain}/node/games/savePDFInfo`;
     $.ajax({
         url: pdf_query_url,
         data: {
-            gstone_id: gstone_id,
-            mod_name: mod_name,
-            source_detail: source_detail,
-            cover_bit: cover_bit
+            gstone_id: o.gstone_id,
+            mod_name: o.mod_name,
+            source_detail: o.source_detail,
+            cover_bit: o.cover_bit,
+            fix_mode: o.fix_mode
         },
         success: function () {
             console.log("savePDFInfo Success");

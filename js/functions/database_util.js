@@ -287,12 +287,6 @@ var setImagePath = function(id, type, loc) {
 			},
 			dataType: 'json',
 			success: function(data, loc) {
-				//alert(loc.split('_')[1])
-				//if (loc.split('_')[1] === '0'){
-				//add_no_collapse_img(type);
-				//}
-				//queryImageInfo(data,obj)
-				//lineImage[loc] = []
 				var temp = []
 				$.each(data, function(index, content) {
 					temp[index] = content.image_path;
@@ -320,13 +314,6 @@ var setTextContent = function(id, type, loc) {
 			},
 			dataType: 'json',
 			success: function(data, loc) {
-				//if (loc.split('_')[1] === '0'){
-				//add_no_collapse_text(type);
-				//}else if (loc.split('_')[1] === undefined){
-				//add_collapse(type);
-				//}
-				//queryTextInfo(data,obj)
-				//alert(data.text_content)
 				var temp = []
 				temp[loc] = data.text_content
 				resolve(temp[loc])
