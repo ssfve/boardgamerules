@@ -22,7 +22,7 @@ function get_info(){
         gstone_id:'',
         mod_name:'',
         source_detail:'',
-        cover_bit:0,
+        cover_bit:1,
         fix_mode:0
     };
     info_object.gstone_id = document.getElementById("gstone_id").value;
