@@ -54,6 +54,15 @@ function cover_pdf_info() {
     modNotice.innerText = "";
 }
 
+function switch_pdf_info() {
+    let o = get_info();
+    o.cover_bit = 0;
+    o.fix_mode = 2;
+    saveUploadInfo(o);
+    let modNotice = document.getElementById('modNotice');
+    modNotice.innerText = "";
+}
+
 function fix_pdf_info() {
     let o = get_info();
     o.cover_bit = 1;
